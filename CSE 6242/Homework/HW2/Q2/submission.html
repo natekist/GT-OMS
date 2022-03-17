@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<script type="text/javascript" src="../lib/d3.v5.min.js"></script>
+<style>
+
+
+path.link0 {
+  fill: none;
+  stroke: gray;
+  stroke-width: 5px;
+}
+
+path.link1 {
+  fill: none;
+  stroke: green;
+  stroke-width: 1.5px;
+  stroke-dasharray: 5;
+}
+
+circle {
+  stroke: #fff;
+  stroke: black;
+  stroke-width: 1.5px;
+}
+
+text {
+  fill: #000;
+  font: 10px sans-serif;
+  pointer-events: none;
+}
+
+</style>
+<head>
+<title></title></head>
+<body>
+<script>
+
+d3.dsv(",", "board_games.csv", function(d) {
+  return {
+    source: d.source,
+    target: d.target,
+    value: +d.value
+  }
+}).then(function(data) {
+
+  var links = data;
+
+  var nodes = {};
+
+  // compute the distinct nodes from the links.
+  links.forEach(function(link) {
+      link.source = nodes[link.source] || (nodes[link.source] = {name: link.source});
+      link.target = nodes[link.target] || (nodes[link.target] = {name: link.target});
+      if(link.value == 0) { link.type = "0" } if(link.value == 1) {link.type = "1"};
+  });
+
+  var width = 1200,
+      height = 700;
+
+  var force = d3.forceSimulation()
+      .nodes(d3.values(nodes))
+      .force("link", d3.forceLink(links).distance(100))
+      .force('center', d3.forceCenter(width / 2, height / 2))
+      .force("x", d3.forceX())
+      .force("y", d3.forceY())
+      .force("charge", d3.forceManyBody().strength(-250))
+      .alphaTarget(1)
+      .on("tick", tick);
+
+  var svg = d3.select("body").append("svg")
+      .attr("width", width)
+      .attr("height", height);
+
+  // add the links
+  var path = svg.append("g")
+      .selectAll("path")
+      .data(links)
+      .enter()
+      .append("path")
+      .attr("class", function(d) { return "link" + d.type; })
+
+  // define the nodes
+  var node = svg.selectAll(".node")
+      .data(force.nodes())
+      .enter().append("g")
+      .attr("class", "node")
+      .call(d3.drag()
+          .on("start", dragstarted)
+          .on("drag", dragged)
+          .on("end", dragended))
+      .on("dblclick", releasenode);
+
+  // add the nodes
+  node.append("circle")
+      .attr("id", function(d){
+         return (d.name.replace(/\s+/g,'').toLowerCase());
+      })
+      .attr("r", function(d){
+             d.weight = path.filter(function(l) {
+               return l.source.index == d.index || l.target.index == d.index
+             }).size();
+             var minRadius = 2;
+             return minRadius + (d.weight * 2);
+           })
+      .attr("fill", function(d){
+             d.weight = path.filter(function(l) {
+               return l.source.index == d.index || l.target.index == d.index
+             }).size();
+             if (d.weight > 6) {return "#e6550d"} else if (d.weight > 3) {return "#fdae6b"} else {return "#fee6ce"}
+           });
+
+  node.append("text")
+      .text(function(d) {
+        return d.name;
+      })
+      .attr('x', 10)
+      .attr('y', 3)
+      .style("font-weight", "bold");
+
+  // add the curvy lines
+  function tick() {
+      path.attr("d", function(d) {
+          var dx = d.target.x - d.source.x,
+              dy = d.target.y - d.source.y,
+              dr = Math.sqrt(dx * dx + dy * dy);
+          return "M" +
+              d.source.x + "," +
+              d.source.y + "A" +
+              dr + "," + dr + " 0 0,1 " +
+              d.target.x + "," +
+              d.target.y;
+      });
+
+      node.attr("transform", function(d) {
+          return "translate(" + d.x + "," + d.y + ")"; 
+      });
+  };
+
+  function dragstarted(d) {
+      if (!d3.event.active) force.alphaTarget(0.3).restart();
+      d.fx = d.x;
+      d.fy = d.y;
+      d.fixed = true;
+  };
+
+  function dragged(d) {
+      d.fx = d3.event.x;
+      d.fy = d3.event.y;
+  };
+
+  function dragended(d) {
+      if (!d3.event.active) force.alphaTarget(0);
+      if (d.fixed == true) {
+          d.fx = d.x;
+          d.fy = d.y;
+          d3.select(this).select("circle").style("fill", "red");
+      }
+      else {
+          d.fx = null;
+          d.fy = null;
+      }
+  };
+
+  function releasenode(d) {
+    d.fixed = false;
+    d.fx = null;
+    d.fy = null;
+    d3.select(this).select("circle").style("fill", function(d){
+             d.weight = path.filter(function(l) {
+               return l.source.index == d.index || l.target.index == d.index
+             }).size();
+             if (d.weight > 6) {return "#e6550d"} else if (d.weight > 3) {return "#fdae6b"} else {return "#fee6ce"}
+           });
+    }
+
+    svg.append("text")
+      .attr("id", "credit")
+      .attr("transform",
+            "translate(" + (width -10) + "," + (height + 50) + ")")
+      .style("fill", "gray")
+      .text("nkistler3")
+  
+}).catch(function(error) {
+  console.log(error);
+});
+
+</script>
+</body>
+</html>

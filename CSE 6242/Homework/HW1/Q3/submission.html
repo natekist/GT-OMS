@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<!-- cse6242 -->
+
+<!-- run: http-server & -->
+
+<head>
+  <style>
+    .bar {fill: steelblue}
+  </style>
+</head>
+
+<body>
+
+  <script src="lib/d3/d3.min.js"></script>
+  <script src="lib/d3-dsv/d3-dsv.min.js"></script>
+  <script src="lib/d3-fetch/d3-fetch.min.js"></script>
+
+  <title>Running Total of TMDb Movies by Year</title>
+
+
+  <script>
+    // define the dimensions and margins for the graph
+    var w = 500;
+    var h = 100;
+    var barPadding = 0;
+    var padding = 30;
+    var margin = {top: 50,bottom: 50, right: 50, left: 70}
+    var width = 960
+    var height = 500
+
+    // define function to parse time in years format
+    var formatDate = d3.timeParse("%Y");
+	
+
+    // create scales x & y for X and Y axis and set their ranges
+    var x = d3.scaleTime().range([0, width]);
+    var y = d3.scaleLinear().range([height, 0]);
+
+
+    // append svg element to the body of the page
+    // set dimensions and position of the svg element
+    var svg = d3.select("body").append("svg")
+              .attr("width", width )
+              .attr("height", height)
+              .append("g")
+              .attr("transform",
+                    "translate(" + margin.left + "," + margin.top + ")");
+
+
+    // Get the data
+	var pathToCsv = "q3.csv";		// path to csv
+	
+    d3.dsv(",", pathToCsv, function (d) {
+      return {
+        year: formatDate(d.year),
+        running_total: parseFloat(d.running_total)
+        // format data attributes if required
+      }
+    }).then(function (data) {
+      console.log(data); // you should see the data in your browser's developer tools console
+
+      
+      /* Create bar plot using data from csv */
+      var minYear = d3.min(data, d => d.year).getFullYear();
+      var maxYear = d3.max(data, d => d.year).getFullYear();
+      var numYears = maxYear - minYear
+
+      var maxRunningTotal = d3.max(data, d => d.running_total);
+
+      // set the domains of X and Y scales based on data
+      x.domain([new Date(minYear, 0, 1), new Date(maxYear, 0, 1)]);
+      y.domain([0,maxRunningTotal]);
+
+      // Add bars to svg - create new elements based on your data
+      svg.selectAll("rect").data(data).enter().append("rect").attr("class", "bar")
+         .attr("x", function (d, i) {return x(d.year);})
+         .attr("y", function (d) {return y(d.running_total);})
+         .attr("width", w / data.length - barPadding)
+         .attr("height", function (d) {return height - y(d.running_total)});
+
+      // Add the X Axis
+      var xAxis = d3.axisBottom(x).ticks(d3.timeYear.every(10));
+      svg.append("g")
+          .attr("class", "axis")
+          .attr("id", "x_axis")
+          .attr("transform", "translate(0," + height + ")")
+          .call(xAxis);
+
+      // Add the text label for X Axis
+      svg.append("text")
+          .attr("id", "x_axis_label")
+          .attr("transform",
+                "translate(" + (width / 2) + "," +
+                                (height + 35) + ")")
+          .style("text-anchor", "middle")
+          .text("Year")
+
+      // Add the Y Axis
+      var yAxis = d3.axisLeft(y);
+      svg.append("g")
+          .attr("id", "y_axis")
+          .call(yAxis);
+
+      // Add the text label for Y axis
+      svg.append("text")
+         .attr("id", "y_axis_label")
+         .attr("transform", "rotate(-90)")
+         .attr("y", 0 - margin.left)
+         .attr("x", 0 - (height / 2))
+         .attr("dy", "1em")
+         .style("text-anchor", "middle")
+         .text("Running Total")
+
+      svg.append("text")
+          .attr("id", "credit")
+          .attr("transform",
+                "translate(" + (width -10) + "," + (height + 50) + ")")
+          .style("fill", "gray")
+          .text("nkistler3")
+
+      svg.append("text")
+          .attr("id", "title")
+          .attr("transform",
+                "translate(" + (width/2) + "," + 0 + ")")
+          .style("text-anchor", "middle")
+          .text("Running Total of TMDb Movies by Year")
+
+    }).catch(function (error) {
+      console.log(error);
+    });
+
+
+  </script>
+
+</body>
