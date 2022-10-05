@@ -1,0 +1,34 @@
+
+/*********************************************************************/
+/***** BEGIN DESIGN TOOLS THEME IMPORT & CUSTOMIZATION  **************/
+/*********************************************************************/
+/* Import statements need to be at the top of your CSS file */
+/* For Main CSS file */
+@import url(https://designtools.ciditools.com/css/themes.css);
+/* For Mobile app CSS file */
+/*@import url(https://designtools.ciditools.com/css/app.css);*/
+/* Institution color customizations */
+@import url(https://designtools.ciditools.com/css/inst_theme_overrides.css);
+/* Theme Colors */
+:root {
+  --dt-color-primary: #B3A369;
+  --dt-color-primary-contrast: #000000;
+  --dt-color-primary-dark-text: #786B32;
+  --dt-color-secondary: #003057;
+  --dt-color-secondary-contrast: #FFFFFF;
+  --dt-color-secondary-dark-text: #003057;
+  --dt-color-accent: #EAAA00;
+  --dt-color-accent-contrast: #000000;
+  --dt-color-graybg: #E6E6E6;
+  --dt-color-graybg-contrast: #000000;
+}
+/*********************************************************************/
+/***** END DESIGN TOOLS HEME IMPORT & CUSTOMIZATION   ****************/
+/*********************************************************************/
+/* Hide default crosslist buttons */
+.crosslist_link {
+  display: none !important;
+}
+.uncrosslist_link {
+  display: none !important;
+}

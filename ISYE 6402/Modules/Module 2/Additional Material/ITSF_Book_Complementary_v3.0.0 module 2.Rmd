@@ -1,0 +1,1103 @@
+---
+title: "Introduction to Time Series and Forecasting Book Complementary"
+author: "Adhitya Arif Wibowo ( AWibowo6@gatech.edu )"
+date: "`r format(Sys.time(), '%d %B %Y')`"
+output:
+  html_document:
+    toc: yes
+    toc_depth: '6'
+    df_print: paged
+  bookdown::pdf_document2:
+    toc: yes
+    toc_depth: 6
+    df_print: kable
+    highlight: kate
+urlcolor: blue
+linkcolor: blue
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE)
+options(knitr.table.format = "simple")
+```
+
+# Preface {-}
+
+This document is created based on *Introduction to Time Series and Forecasting, 3^rd^ Edition* by *Peter J. Brockwell* and *Richard A. Davis* as one of the textbook suggested to be used in *ISYE 6402 - Time Series Analysis* course taught in Georgia Tech.
+
+The scope of the document only discuss materials in the book that are also discussed in the lecturer.
+
+# How To Use The Document {-}
+
+The course related documents reference will be the documents used in Spring 2022 semester for the course. As for the book reference will be based on the 3^rd^ edition of the book mentioned in [Preface] section above.
+
+One should have both the book and the course related documents opened to refer to section, example, figures, module, lesson, slide etc., that are discussed in this document.
+
+Most of the codes are implementation of equation or algorithm in the book, try to understand the code to support the understanding of the equation or vice versa and come up with your own code to achieve the same result.
+
+# Prerequisites {-}
+
+1. Basic probability and statistics, refer to *Probability, Statistics, and Stochastic Processes* by *Peter Olofsson* [https://g.co/kgs/tHPF95].
+2. Basic programming in R or any language is expected to follow along with the code in this document, refer to *R for Everyone: Advanced Analytics and Graphics* by *Jared P. Lander* [https://g.co/kgs/qjgw2B].
+
+# R {-}
+
+The programming language that is used in the course is R, this section will deal with the most common setup throughout the document.
+
+## Common Libraries {-}
+
+Here are common libraries that will be used throughout the document:
+
+```{r}
+library( dplyr )
+library( ggplot2 )
+library( ggthemes )
+library( lubridate )
+```
+
+## Book Related Library {-}
+
+Below is the library related with the book *Introduction to Time Series and Forecasting, 3^rd^ Edition* by *Peter J. Brockwell* and *Richard A. Davis*:
+
+```{r eval=FALSE}
+install.packages("itsmr")
+```
+
+## Helper Function {-}
+
+### get_data_frame {-}
+
+Helper function to get data set as data frame:
+
+```{r}
+get_data_frame <-
+  function (
+    v, start_date,
+    period = "monthly",
+    date_format = "%d-%b-%Y",
+    multiplier = 1
+  ) {
+    data_t <- 1:length( v )
+    t_to_date <- list(
+        monthly = function( t, start_date, multiplier ) {
+            return(
+              as_date( start_date, format = date_format ) %m+%
+                months( ( t - 1 ) * multiplier )
+            )
+        },
+        yearly = function( t, start_date, multiplier ) {
+            return(
+              as_date( start_date, format = date_format ) %m+%
+                months( ( t - 1 ) * 12 * multiplier )
+            )
+        }
+    )
+    return( data.frame(
+        t = data_t,
+        date = t_to_date[[ period ]]( data_t, start_date, multiplier ),
+        value = v
+    ) )
+  }
+```
+
+### plot_data {-}
+
+To get same look feel of graph:
+
+```{r}
+plot_data <-
+  function (
+    data, title,
+    x_label = NULL, y_label = NULL,
+    line = TRUE, point = TRUE,
+    x_ticks = 6, y_ticks = 7
+  ) {
+    data_plot <-
+        ggplot( data, aes( date, value ) ) +
+        ggtitle( title ) +
+        xlab( x_label ) +
+        ylab( y_label ) +
+        scale_x_date(breaks = scales::pretty_breaks(n = x_ticks)) +
+        scale_y_continuous(breaks = scales::pretty_breaks(n = y_ticks))
+    if ( line ) {
+        data_plot <- data_plot + geom_line( size = 0.3, color = "blue" )
+    }
+    if ( point ) {
+        data_plot <- data_plot + geom_point( size = 1, shape = 0 )
+    }
+    data_plot <-
+        data_plot +
+            theme_tufte() +
+            theme(
+              text = element_text( family = "sans", size = 10 ),
+              plot.title = element_text( size = 10 ),
+              axis.title.x = element_text( size = 10 ),
+              axis.title.y = element_text( size = 10 )
+            )
+    return( data_plot )
+  }
+```
+
+### Sample Auto-Covariance Function {-}
+
+```{r}
+sacov <-
+    function ( series, shift ) {
+        series_length <- length( series )
+        abs_shift <- abs( shift )
+        avg <- sum( series ) / series_length
+        calculate_acv <-
+            function ( shift_index ) {
+                index <- 1:(series_length - shift_index)
+                sum(
+                    ( series[ index + shift_index ] - avg ) *
+                    ( series[ index ] - avg )
+                ) / series_length
+            }
+        return( sapply( abs_shift, calculate_acv ) )
+    }
+```
+
+### Sample Auto-Correlation Function {-}
+
+```{r}
+sacor <-
+    function( series, shift ) {
+        return( sacov( series, shift ) / sacov( series, 0 ) )
+    }
+
+plot_acor <- function ( series, title, ci = 0.95, max_lag = 40 ) {
+    sacor_index <- 0:min( length( series ), max_lag )
+    max_plot_lag <- max( sacor_index )
+    data_sacor <- data.frame(
+        index = sacor_index
+    )
+    data_sacor$value <- sacor( series, sacor_index )
+    ci_line <- qnorm( ( ( 1 - ci ) / 2 ) + c( 0, ci ) ) / sqrt( length( series ) )
+    data_acor <-
+        data.frame(
+            lag = rep( data_sacor$index, 2 ),
+            acor = c( rep( 0, max_plot_lag + 1 ), data_sacor$value )
+        )
+    data_plot <-
+        ggplot( data_acor , aes( lag, acor ) ) +
+        ggtitle( title ) +
+        ylab("ACF") +
+        geom_line(
+            aes( group = lag ),
+            size = 0.3,
+            color = "blue"
+        ) +
+        geom_hline(
+            yintercept = 0,
+            color = "black"
+        ) +
+        geom_hline(
+            yintercept = ci_line,
+            linetype = "dashed",
+            color = "black",
+            size = 0.3
+        ) +
+        theme_tufte() +
+        theme( text = element_text( family = "sans", size = 10 ) )
+    return( data_plot )
+}
+```
+
+```{r}
+backshift <- function ( series, repetition, shift = 1 ) {
+    result <- NULL
+    if ( repetition > 0 ) {
+        series_length <- length( series )
+        result <-
+            backshift(
+                series[ (1 + shift):series_length ] -
+                    series[ 1:(series_length - shift) ],
+                repetition - 1
+            )
+    } else {
+        result <- series
+    }
+    return( result )
+}
+```
+
+### Durbin-Levinson Algorithm {-}
+
+```{r}
+dla <- function ( number_of_predictors, acvf.or.series ) {
+    acvf <- NA
+    if ( typeof(acvf.or.series) == "closure" ) {
+        acvf <- acvf.or.series
+    } else {
+        acvf <- function ( h ) {
+            return( sacov( acvf.or.series, h ) )
+        }
+    }
+    result <- list()
+    result$v <- list()
+    result$phi <- list()
+    result$v[[ "0" ]] <- acvf( 0 )
+    result$phi[[ "1" ]] <- c( acvf( 1 ) / result$v[[ "0" ]] )
+    for ( n in 1:number_of_predictors ) {
+        if (n > 1) {
+            result$phi[[ as.character( n ) ]] <- numeric( n )
+            result$phi[[ as.character( n ) ]][ n ] <-
+                (
+                    acvf( n ) -
+                        sum( sapply( 1:(n - 1), function ( j ) {
+                            return(
+                                result$phi[[ as.character( n - 1 ) ]][ j ] *
+                                    acvf( n - j )
+                            )
+                        } ) )
+                ) / result$v[[ as.character( n - 1 ) ]]
+            result$phi[[ as.character( n ) ]][ 1:(n - 1) ] <-
+                result$phi[[ as.character( n - 1 ) ]][ 1:(n - 1) ] -
+                (
+                    result$phi[[ as.character( n ) ]][ n ] *
+                        result$phi[[ as.character( n - 1 ) ]][ (n - 1):1 ]
+                )
+        }
+        result$v[[ as.character( n ) ]] <-
+            result$v[[ as.character( n - 1 ) ]] *
+            (1 - (result$phi[[ as.character( n ) ]][ n ] ^ 2))
+    }
+    if ( typeof(acvf.or.series) != "closure" ) {
+        result[["n+1 prediction"]] <-
+            sum(
+                result$phi[[ as.character( number_of_predictors ) ]] *
+                rev( tail( acvf.or.series, number_of_predictors ) )
+            )
+    }
+    return( result )
+}
+```
+
+### Innovations Algorithm {-}
+
+```{r}
+ia <- function ( number_of_predictors, acvf.or.series ) {
+    acvf <- NA
+    is.series <- FALSE
+    if ( typeof(acvf.or.series) == "closure" ) {
+        acvf <- acvf.or.series
+    } else {
+        acvf <- function ( h ) {
+            return( sacov( acvf.or.series, h ) )
+        }
+        is.series <- TRUE
+    }
+    result <- list()
+    result$v <- list()
+    result$v[[ "0" ]] <- acvf( 0 )
+    result$theta[[ "1" ]] <- c( acvf( 1 ) / result$v[[ "0" ]] )
+    npo.prediction <- 0
+    tail.series <- NA
+    if ( is.series ) {
+        tail.series <- tail( acvf.or.series, number_of_predictors )
+    }
+    for ( n in 1:number_of_predictors ) {
+        if (n > 1) {
+            result$theta[[ as.character( n ) ]] <- numeric( n )
+            for ( k in 0:(n - 1) ) {
+                result$theta[[ as.character( n ) ]][ n - k ] <-
+                    (
+                        acvf(n - k) -
+                            ifelse(
+                                k > 0,
+                                sum( sapply( 0:(k - 1), function ( j ) {
+                                    return(
+                                        result$theta[[ as.character( k ) ]][ k - j ] *
+                                            result$theta[[ as.character( n ) ]][ n - j ] *
+                                            result$v[[ as.character( j ) ]]
+                                    ) } ) ),
+                                0
+                            )
+                    ) / result$v[[ as.character( k ) ]]
+            }
+            if ( is.series ) {
+                npo.prediction <-
+                    c(
+                        npo.prediction,
+                        sum(
+                            result$theta[[ as.character( n ) ]] *
+                            rev(tail.series[ 1:n ] - npo.prediction)
+                        )
+                    )
+            }
+        } else {
+            if ( is.series ) {
+                npo.prediction <-
+                    c(
+                        npo.prediction,
+                        result$theta[[ as.character( n ) ]][ 1 ] *
+                        tail.series[ n ]
+                    )
+            }
+        }
+        result$v[[ as.character( n ) ]] <-
+            result$v[[ "0" ]] - 
+            sum( sapply( 0:(n - 1), function ( j ) {
+                return(
+                    (result$theta[[ as.character( n ) ]][ n - j ] ^ 2) *
+                        result$v[[ as.character( j ) ]]
+                )
+            } ) )
+    }
+    if ( is.series ) {
+        result[["n+1 prediction"]] <- tail( npo.prediction, 1 )
+    }
+    return( result )
+}
+```
+# Reference By Course Lecture {-}
+
+This section contains links that are connecting the book's complementary in reference [By Book] section to the course lecture videos slide.
+## Module 2 - Lesson 1 - Slide 5 and 6 {-}
+
+ARMA Model: Definition
+
+1. [Definition 3.1.1]
+
+## Module 2 - Lesson 3 - Slide 4 {-}
+
+ARMA Model: Stationarity
+
+1. [Existence and Uniqueness]
+
+## Module 2 - Lesson 3 - Slide 5 and 9 {-}
+
+Causal and Invertible ARMA Process
+
+1. [Example 3.1.1]
+2. [Example 3.1.2]
+3. [Example 3.1.3]
+4. [Example 3.2.1]
+
+## Module 2 - Lesson 4 - Slide 4, 5, and 6 {-}
+
+ARMA Model: Auto-Covariance Function
+
+1. [3.2.1 Calculation of the ACVF]
+2. [Example 3.2.1]
+3. [Example 3.2.2]
+
+## Module 2 - Lesson 4 - Slide 7, 8, and 9 {-}
+
+Partial Auto-Correlation Function
+
+1. [Example 3.2.6]
+2. [Figure 3-7]
+
+## Module 2 - Lesson 4 - Slide 10 and 12 {-}
+
+ACF and MA( q ) process
+
+1. [Example 3.2.2]
+
+## Module 2 - Lesson 4 - Slide 11 and 12 {-}
+
+PACF and AR( p ) process
+
+1. [Example 3.2.6]
+
+## Module 2 - Lesson 6 - Slide 5, 6, 7, and 8 {-}
+
+Yule-Walker Equations, Estimates, and Properties
+
+1. [5.1.1 Yule-Walker Estimation]
+2. [Large-Sample Distribution of Yule-Walker Estimators]
+3. [Example 5.1.1]
+4. [Figure 5-1]
+5. [Figure 5-2]
+
+## Module 2 - Lesson 6 - Slide 9, 10 and 11 {-}
+
+Innovation Algorithm for MA( q ) and ARMA( p, q ) process.
+
+1. [Example 5.1.5]
+2. [Innovations Algorithm Estimates when p > 0 and q > 0]
+3. [Example 5.1.6]
+
+# Reference By Book {-}
+
+This section contains the book's complementary that will be referenced by [Reference By Course Lecture] section.
+
+## ARMA (p,q) Processes {-}
+
+### Definition 3.1.1 {-}
+
+$\{X_t\}$ is an **ARMA( p, q ) process** if $\{X_t\}$ is stationary and if for every *t*,
+
+$$
+X_t-\phi_1X_{t-1}-...-\phi_pX_{t-p}=Z_t+\theta_1Z_{t-1}+...+\theta_qZ_{t-q}
+$$
+
+where $\{Z_t\} \sim WN(0,\sigma^2)$ and the polynomials $(1-\phi_1z-...-\phi_pz^p)$ and $1+\theta_1z+...+\theta_qz^q$ have no common factors.
+
+No further explanation for this section but one thing to keep in mind is that from the book, the *Moving Average* part of the **ARMA(***p*,*q***)** process definition is different in the coefficient signs compared to the course's slide.
+
+In the the book the signs for coefficients $\theta_1,...,\theta_q$ are all positive (+) whilst in the course's slide is negative (-).
+
+Another thing that should be noticed is that $z$ in either *p*th degree Auto-Regressive polynomial $\phi(z)$ or *q*th degree Moving Average polynomial $\theta(z)$ is that $z\in\mathbb{C}$ where $\mathbb{C}$ is complex numbers, thus if any of the polynomial has root of let's say $z=3-4i$, than $\lvert z\rvert = \sqrt{3^2+4^2}=5$ which is outside the unit circle where all value of $z\in\mathbb{C}$ such that $\lvert z\rvert = 1$.
+
+### Existence and Uniqueness {-}
+
+Remember as explained in [Definition 3.1.1] above that $z \in \mathbb{C}$, where $\mathbb{C}$ is complex number, which will make the equation 3.1.4 in the book rewritten below makes more sense:
+
+$$
+\phi(z) = 1-\phi_{1}z-...-\phi_{p}z^p \ne 0\ for\ all\ \lvert z\rvert = 1\tag{3.1.4}
+$$
+
+### Example 3.1.1 {-}
+
+An ARMA( 1, 1 ) Process:
+
+$$
+X_t - 0.5X_{t-1} = Z_t + 0.4Z_{t-1},\ \ \ \{Z_t\} \sim WN( 0, \sigma^2)\tag{3.1.9}
+$$
+
+Where we have the Auto-Regression and Moving Average polynomial representation:
+
+\begin{align*}
+\phi(z)X_t&=\theta(z)Z_t\tag{3.1.9a}\\
+(1-0.5z)X_t&=(1+0.4z)Z_t\\
+\phi(z)&=1-0.5z\tag{3.1.9b}\\
+\theta(z)&=1+0.4z\tag{3.1.9c}
+\end{align*}
+
+with the root of Auto-Regressive polynomial:
+
+\begin{align*}
+\phi(z)&=(1-0.5z)=0\\
+\iff1&=0.5z\\
+\iff z&=2\\
+\end{align*}
+
+Since the root of the Auto-Regressive polynomial is outside the unit circle, $\lvert z\rvert=2 > 1$, then this ARMA( 1, 1 ) is stationary and causal. We will then find the causal equivalent of this ARMA(1,1). Remember that the causal representation is:
+
+$$
+X_{t}=\sum_{j=0}^{\infty}\psi_{j}Z_{t-j}=\psi(z)Z_{t}=(\sum_{j=0}^{\infty}\psi_{j}z^{j})Z_{t}=(\psi_{0}+\psi_{1}z+\psi_{2}z^{2}+\psi_{3}z^{3}+...)Z_{t}\tag{3.1.9d}
+$$
+
+And since we have from 3.1.9a:
+
+\begin{align*}
+\phi(z)X_t&=\theta(z)Z_t\\
+\iff X_{t}&=\frac{\theta(z)}{\phi(z)}Z_{t}\tag{3.1.9e}
+\end{align*}
+
+Thus from 3.1.9d and 3.1.9e we have:
+
+\begin{align*}
+\frac{\theta(z)}{\phi(z)}&=\psi(z)\\
+\theta(z)&=\psi(z)\phi(z)\\
+\theta(z)&=(\psi_{0}+\psi_{1}z+\psi_{2}z^{2}+\psi_{3}z^{3}+...)\phi(z)\tag{3.1.9f}
+\end{align*}
+
+where we get the value of $\psi_{j}$ by equating the coefficients of $z^{j}$ for $j=0,1,2,...$ by substituting 3.1.9b and 3.1.9c to 3.1.9f, we have:
+
+\begin{align*}
+\theta(z)=&\ (\psi_{0}+\psi_{1}z+\psi_{2}z^{2}+\psi_{3}z^{3}+...)\phi(z)\\
+1+0.4z=&\ (\psi_{0}+\psi_{1}z+\psi_{2}z^{2}+\psi_{3}z^{3}+...)(1-0.5z)\\
+1+0.4z=&\ (\psi_{0}+\psi_{1}z+\psi_{2}z^{2}+\psi_{3}z^{3}+...)-0.5z(\psi_{0}+\psi_{1}z+\psi_{2}z^{2}+\psi_{3}z^{3}+...)\\
+1+0.4z=&\ \psi_{0}+\ \ \ \psi_{1}z\ +\ \ \ \ \psi_{2}z^{2}+\ \ \ \ \ \psi_{3}z^{3}+\ ...\\
+&\ \ \ \ -0.5\psi_{0}z\ -0.5\psi_{1}z^2-\ 0.5\psi_{2}z^3-\ ...\\
+1+0.4z=&\ \psi_{0}+(\psi_{1}-0.5\psi_{0})z+(\psi_{2}-0.5\psi_{1})z^2 + \sum_{j=3}^{\infty}(\psi_{j}-0.5\psi_{j-1})z^j
+\end{align*}
+
+where we can find:
+
+\begin{align*}
+\psi_0&=1\\
+\psi_1-0.5\psi_0=0.4\iff\psi_1=0.5\psi_0+0.4=0.5(1)+0.4=0.9&=0.5^0\times0.9\\
+\psi_{2}-0.5\psi_{1}=0\iff\psi_2=0.5\psi_1&=0.5^1\times0.9\\
+\psi_{3}-0.5\psi_{2}=0\iff\psi_3=0.5\psi_2=0.5^1\times(0.5^1\times0.9)&=0.5^2\times0.9\\
+\psi_j&=0.5^{j-1}\times0.9,\ \ j=1,2,3,...
+\end{align*}
+
+Now we check for the root of Moving Average polynomial:
+
+\begin{align*}
+\theta(z)&=(1+0.4z)=0\\
+\iff 1&=-0.4z\\
+\iff z&=-2.5
+\end{align*}
+
+Since the root of the Moving Average is outside the unit circle, $\lvert z\rvert=2.5 > 1$, then this ARMA( 1, 1 ) is invertible which means we can find the invertible equivalence as:
+
+$$
+Z_{t}=\sum_{j=0}^{\infty}\pi_{j}X_{t-j}=\pi(z)X_{t}=(\sum_{j=0}^{\infty}\pi_{j}z^{j})X_{t}=(\pi_{0}+\pi_{1}z+\pi_{2}z^{2}+\pi_{3}z^{3}+...)X_{t}\tag{3.1.9g}
+$$
+
+And since we have from 3.1.9a:
+
+\begin{align*}
+\phi(z)X_t&=\theta(z)Z_t\\
+\iff Z_{t}&=\frac{\phi(z)}{\theta(z)}X_{t}\tag{3.1.9h}
+\end{align*}
+
+Thus from 3.1.9g and 3.1.9h we have:
+
+\begin{align*}
+\frac{\phi(z)}{\theta(z)}&=\pi(z)\\
+\phi(z)&=\pi(z)\theta(z)\\
+\phi(z)&=(\pi_{0}+\pi_{1}z+\pi_{2}z^{2}+\pi_{3}z^{3}+...)\theta(z)\tag{3.1.9i}
+\end{align*}
+
+where we get the value of $\pi_{j}$ by equating the coefficients of $z^{j}$ for $j=0,1,2,...$ by substituting 3.1.9b and 3.1.9c to 3.1.9i, we have:
+
+
+\begin{align*}
+\phi(z)=&\ (\pi_{0}+\pi_{1}z+\pi_{2}z^{2}+\pi_{3}z^{3}+...)\theta(z)\\
+1-0.5z=&\ (\pi_{0}+\pi_{1}z+\pi_{2}z^{2}+\pi_{3}z^{3}+...)(1+0.4z)\\
+1-0.5z=&\ \pi_{0}+\ \ \ \ \pi_{1}z\ +\ \ \ \ \ \pi_{2}z^{2}+\ \ \ \ \pi_{3}z^{3}+\ ...\\
+&\ \ \ \ + 0.4\pi_{0}z\ +\ 0.4\pi_{1}z^2+\ 0.4\pi_{2}z^3+\ ...\\
+1-0.5z=&\ \pi_0 + (\pi_1+0.4\pi_{0})z + (\pi_2+0.4\pi_1)z^2 + \sum_{j=3}^{\infty}(\pi_{j}+0.4\pi_{j-1})z^j
+\end{align*}
+
+where we can find:
+
+\begin{align*}
+\pi_0&=1\\
+\pi_1+0.4\pi_{0}=-0.5\iff\pi_1=-0.4\pi_0-0.5=-0.4(1)-0.5=-0.9&=(-0.4)^0\times(-0.9)\\
+\pi_{2}+0.4\pi_{1}=0\iff\pi_2=-0.4\pi_1&=(-0.4)^1\times(-0.9)\\
+\pi_{3}+0.4\pi_{2}=0\iff\pi_3=-0.4\pi_2=(-0.4)^1\times((-0.4)^1\times(-0.9))&=(-0.4)^2\times(-0.9)\\
+\pi_j&=(-0.4)^{j-1}\times(-0.9),\ \ j=1,2,3,...
+\end{align*}
+
+### Example 3.1.2 {-}
+
+The AR( 2 ) process of interest:
+
+\begin{align*}
+X_t&=0.7X_{t-1}-0.1X_{t-2}+Z_t\\
+\iff Z_t&=X_t-0.7X_{t-1}+0.1X_{t-2}
+\end{align*}
+
+is already in invertible form.
+
+The corresponding Auto-Regression and Moving Average polynomials are:
+
+\begin{align*}
+X_t&=0.7X_{t-1}-0.1X_{t-2}+Z_t\\
+X_t-0.7X_{t-1}+0.1X_{t-2}&=Z_t\\
+(1-0.7z+0.1z^2)X_t&=(1)Z_t\\
+\phi(z)&=1-0.7z+0.1z^2\\
+\theta(z)&=1
+\end{align*}
+
+The root of Auto-Regressive polynomial:
+
+\begin{align*}
+\phi(z)&=1-0.7z+0.1z^2\\
+\phi(z)&=(1-0.2z)(1-0.5z)\\
+z_1&=2\\
+z_2&=5
+\end{align*}
+
+Since the root of Auto-Regression are both outide the unit circle, then the AR( 2 ) process is stationary and causal, where we then implement the same technique of equating coefficient of $z^j$ from equation 3.1.9f substituting the Auto-Regression and Moving Average polynomials accordingly:
+
+\begin{align*}
+\theta(z)=&\ (\psi_{0}+\psi_{1}z+\psi_{2}z^{2}+\psi_{3}z^{3}+...)\phi(z)\\
+1=&\ (\psi_{0}+\psi_{1}z+\psi_{2}z^{2}+\psi_{3}z^{3}+...)(1-0.7z+0.1z^2)\\
+1=&\ \psi_{0}+\ \ \ \ \ \ \psi_{1}z\ +\ \ \ \ \ \ \psi_{2}z^{2}\ +\ \ \ \ \psi_{3}z^{3}\ +\ \ \ \ \ \ \psi_{4}z^{4}\ +...\\
+&\ \ \ \ -\ \ 0.7\psi_{0}z\ -\ \ 0.7\psi_{1}z^2\ -\ 0.7\psi_{2}z^3\ -\ \ 0.7\psi_{3}z^4\ -...\\
+&\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ +\ 0.1\psi_{0}z^2\ +\ 0.1\psi_{1}z^3\ +\ \ 0.1\psi_{2}z^4\ +...\\
+1=&\ \psi_0 + (\psi_1-0.7\psi_0)z + (\psi_2-0.7\psi_1+0.1\psi_0)z^2 + (\psi_3-0.7\psi_2+0.1\psi_1)z^3 + (\psi_4-0.7\psi_3+0.1\psi_2)z^4 + ...
+\end{align*}
+
+where we have
+
+\begin{align*}
+\psi_0&=1\\
+\psi_1-0.7\psi_0=0\iff\psi_1=0.7\psi_0\iff\psi_1=0.7\times 1&=0.7\\
+\psi_j-0.7\psi_{j-1}+0.1\psi_{j-2}=0\iff\psi_j&=0.7\psi_{j-1}-0.1\psi_{j-2},\ \ j=2,3,...
+\end{align*}
+
+### Example 3.1.3 {-}
+
+As what has been explained in [Definition 3.1.1], that the polynomial root $z \in \mathbb{C}$, thus the AR polynomial $\phi(z)$ roots magnitude $\lvert z \rvert$ with roots $z=2(1\pm i\sqrt{3})/3$ is:
+
+$$
+\lvert z\rvert=\sqrt{(\frac{2}{3})^2+(\frac{2\sqrt{3}}{3})^2}=\sqrt{\frac{4}{9}+\frac{12}{9}}=\sqrt{\frac{16}{9}}=\frac{4}{3}>1
+$$
+
+which means the Auto-Regressive polynomial roots lie outside the unit circle.
+
+### 3.2.1 Calculation of the ACVF {-}
+
+Recall that causality implies that:
+
+$$
+X_t=\sum_{j=0}^{\infty}\psi_jZ_{t-j},\ \ \{Z_t\}\sim WN( 0, \sigma^2)\tag{3.2.2}
+$$
+
+Then, the Auto-Covariance of lag $h$ will be:
+
+
+\begin{align*}
+\gamma(h)&=Cov(X_{t+h},X_t)\\
+\gamma(h)&=Cov(\sum_{i=0}^{\infty}\psi_iZ_{t+h-i},\sum_{j=0}^{\infty}\psi_jZ_{t-j}),\ \ by\ substituting\ 3.2.2\\
+\gamma(h)&=Cov(\sum_{(j+h)=0}^{\infty}\psi_{j+h}Z_{t+h-(j+h)},\sum_{j=0}^{\infty}\psi_jZ_{t-j}),\ by\ setting\ i = j+h\\
+\gamma(h)&=Cov(\sum_{j=-h}^{\infty}\psi_{j+h}Z_{t-j},\sum_{j=0}^{\infty}\psi_jZ_{t-j})\tag{3.2.3a}
+\end{align*}
+
+By covariance linearity and uncorrelation of white noises $Cov(Z_m,Z_n)=0,\ m\ne n$ we have:
+
+\begin{align*}
+\gamma(h)&=\sum_{j=0}^{\infty}Cov(\psi_jZ_{t-j},\psi_{j+h}Z_{t-j})\\
+\gamma(h)&=\sum_{j=0}^{\infty}\psi_j\psi_{j+h}Cov(Z_{t-j},Z_{t-j})
+\end{align*}
+
+Since covariance of random variable with itself is its variance, we have:
+
+\begin{align*}
+\gamma(h)&=\sum_{j=0}^{\infty}\psi_j\psi_{j+h}Var(Z_{t-j})\\
+\gamma(h)&=\sum_{j=0}^{\infty}\psi_j\psi_{j+h}\sigma^2\\
+\gamma(h)&=\sigma^2\sum_{j=0}^{\infty}\psi_j\psi_{j+h}\tag{3.2.3}\\
+\end{align*}
+
+### Example 3.2.1 {-}
+
+We need to find the causal process by equating coefficients of $z^j$ just like [Example 3.1.1] and [Example 3.1.2] of the ARMA( 1, 1 ) process below:
+
+\begin{align*}
+X_t-\phi X_{t-1}&=Z_t+\theta Z_{t-1},\ \ \{Z_t\}\sim WN( 0, \sigma^2)\tag{3.2.4}\\
+(1-\phi z)X_t&=(1+\theta)Z_t\\
+\phi(z)&=1-\phi z\\
+\theta(z)&=1+\theta z
+\end{align*}
+
+Recalling equation 3.1.9f, then substituting the Auto-Regression and Moving Average polynomials above, we have:
+
+\begin{align*}
+\theta(z)=&(\psi_{0}+\psi_{1}z+\psi_{2}z^{2}+\psi_{3}z^{3}+...)\phi(z)\\
+1+\theta z=&(\psi_{0}+\psi_{1}z+\psi_{2}z^{2}+\psi_{3}z^{3}+...)(1-\phi z)\\
+1+\theta z=&\ \psi_{0}+\ \ \ \ \ \psi_{1}z+\ \ \ \ \ \psi_{2}z^{2}+\ \ \ \ \ \psi_{3}z^{3}+...\\
+&\ \ \ \ -\ \ \ \phi\psi_0z\ -\ \ \ \phi\psi_1z^2-\ \ \ \phi\psi_2z^3-...\\
+1+\theta z=&\ \psi_0+(\psi_1-\phi\psi_0)z+(\psi_2-\phi\psi_1)z^2+(\psi_3-\phi\psi_2)z^3+...
+\end{align*}
+
+where we have:
+
+\begin{align*}
+\psi_0&=1\tag{3.2.4a}\\
+\psi_1-\phi\psi_0=\psi_1-\phi\times 1=\psi_1-\phi=\theta\iff \psi_1=\phi+\theta&=\phi^0(\phi+\theta)\\
+\psi_2-\phi\psi_1=\psi_2-\phi(\phi+\theta)=0\iff\psi_2=\phi(\phi+\theta)&=\phi^1(\phi+\theta)\\
+\psi_3-\phi\psi_2=\psi_3-\phi(\phi(\phi+\theta))=0\iff\psi_3&=\phi^2(\phi+\theta)\\
+\psi_j&=\phi^{j-1}(\phi+\theta),\ j=1,2,3,...\tag{3.2.4b}
+\end{align*}
+
+Substituting equation 3.2.4a and 3.2.4b to equation 3.2.3, we have:
+
+\begin{align*}
+\gamma(h)&=\sigma^2\sum_{j=0}^{\infty}\psi_j\psi_{j+h}=\sigma^2[\psi_0\psi_{0+h}+\sum_{j=1}^{\infty}\psi_j\psi_{j+h}]\\
+\gamma(h)&=\sigma^2[\psi_0\psi_{0+h}+\sum_{j=1}^{\infty}\phi^{j-1}(\phi+\theta)\phi^{j+h-1}(\phi+\theta)]\\
+\gamma(h)&=\sigma^2[(1)\psi_{h}+\sum_{j=1}^{\infty}(\phi+\theta)^2\phi^h\phi^{2(j-1)}]\\
+\gamma(h)&=\sigma^2[\psi_{h}+(\phi+\theta)^2\phi^h\sum_{j=1}^{\infty}\phi^{2(j-1)}]\\
+\gamma(h)&=\sigma^2[\psi_{h}+(\phi+\theta)^2\phi^h(1+\phi^2+\phi^4+\phi^6+...)]\\
+\gamma(h)&=\sigma^2[\psi_{h}+(\phi+\theta)^2\phi^h\lim_{n \to \infty}\frac{1-\phi^{2n}}{1-\phi^2}]\\
+\gamma(h)&=\sigma^2[\psi_{h}+(\phi+\theta)^2\phi^h\frac{1-\lim_{n \to \infty}\phi^{2n}}{1-\phi^2}],\ since\ \lvert \phi\rvert<1\ then\ \lim_{n \to \infty}\phi^{2n}=0,\ thus\\
+\gamma(h)&=\sigma^2[\psi_{h}+(\phi+\theta)^2\phi^h\frac{1}{1-\phi^2}]\\
+\gamma(h)&=\sigma^2[\psi_{h}+\frac{(\phi+\theta)^2\phi^h}{1-\phi^2}]\tag{3.2.4c}
+\end{align*}
+
+Where we have for $h=0$:
+
+\begin{align*}
+\gamma(0)&=\sigma^2[\psi_{0}+\frac{(\phi+\theta)^2\phi^0}{1-\phi^2}]=\sigma^2[1+\frac{(\phi+\theta)^2}{1-\phi^2}]
+\end{align*}
+
+and for $h>0$, substituting equation 3.2.4b into equation 3.2.4c:
+
+\begin{align*}
+\gamma(h)&=\sigma^2[\phi^{h-1}(\phi+\theta)+\frac{(\phi+\theta)^2\phi^h}{1-\phi^2}]=\phi^{h-1}\sigma^2[(\phi+\theta)+\frac{(\phi+\theta)^2\phi}{1-\phi^2}]\tag{3.2.4d}\\
+\gamma(1)&=\sigma^2[\phi^{1-1}(\phi+\theta)+\frac{(\phi+\theta)^2\phi^1}{1-\phi^2}]=\sigma^2[(\phi+\theta)+\frac{(\phi+\theta)^2\phi}{1-\phi^2}]\tag{3.2.4e}\\
+\end{align*}
+
+combining equation 3.2.4d and 3.2.4e, we have:
+
+$$
+\gamma(h)=\phi^{h-1}\gamma(1),\ for\ h\ge2
+$$
+
+### Example 3.2.2 {-}
+
+For process MA( q ) process:
+
+$$
+X_t=Z_t+\theta_1Z_{t-1}+...+\theta_qZ_{t-q},\ \ \{Z_t\}\sim WN( 0, \sigma^2)
+$$
+
+Equation 3.2.3 immediately gives the result
+
+$$
+\gamma(h)=
+\begin{cases}
+\sigma^2\sum_{j=0}^{q-\lvert h\rvert}\theta_j\theta_{j+\lvert h\rvert},\ if\ \lvert h\rvert\le q\\
+0,\ if\ \lvert h\rvert > q
+\end{cases}
+$$
+
+where $\theta_0$ is defined to be 1.
+
+Since Auto-Correlation $\rho(h)=\frac{\gamma(h)}{\gamma(0)}$, the MA( q ) process Auto-Correlation has the distinctive feature of vanishing at lags greater than q.
+
+### Example 3.2.6 {-}
+
+The causal AR( p ) defined by:
+
+$$
+X_t-\phi_1 X_{t-1}-...-\phi_p X_{t-p}=Z_t,\ \ \ \{Z_t\} \sim WN(0,\sigma^2)
+$$
+as we know from [Example 2.5.3] that for $h\ge p$ the best linear predictor of $X_{h+1}$ in terms of $X_1, ..., X_h$ is
+
+$$
+\hat{X}_{h+1}=\phi_{1}X_{h}+\phi_{2}X_{h-1}+...+\phi_{p}X_{h+1-p}
+$$
+
+Since the coefficient of $\phi_{hh}$ of $X_1$ is $\phi_p$ if $h=p$ and 0 if $h > p$, we conclude that the PACF $\alpha(.)$ of the process $\{X_t\}$ has the properties
+
+$$\alpha(p)=\phi_p$$
+
+and
+
+$$\alpha(h)=0\ for\ h>p$$
+
+For $h<p$, recall that the coefficient $\phi_{hh}$ of $X_1$ above is the last coefficient of *Durbin-Levinson Algorithm* which we will show in the way we build [Figure 3-7].
+
+### Figure 3-7 {-}
+
+Notice that the function `plot_partial_acor` below calls *Durbin-Levinson* `dla` function to calculate the partial auto-correlation values.
+
+```{r}
+plot_partial_acor <- function ( series, title, ci = 0.95, max_lag = 40 ) {
+    sacor_index <- 0:min( length( series ), max_lag )
+    max_plot_lag <- max( sacor_index )
+    data_sacor <- data.frame(
+        index = sacor_index
+    )
+    data_sacor$value <- c(
+        1,
+        sapply(
+            dla( max_plot_lag, series )$phi,
+            function ( dl.coefficients ) {
+                return( dl.coefficients[length(dl.coefficients)])
+            }
+        )
+    )
+    ci_line <- qnorm( ( ( 1 - ci ) / 2 ) + c( 0, ci ) ) / sqrt( length( series ) )
+    data_acor <-
+        data.frame(
+            lag = rep( data_sacor$index, 2 ),
+            acor = c( rep( 0, max_plot_lag + 1 ), data_sacor$value )
+        )
+    data_plot <-
+        ggplot( data_acor , aes( lag, acor ) ) +
+        ggtitle( title ) +
+        ylab("ACF") +
+        geom_line(
+            aes( group = lag ),
+            size = 0.3,
+            color = "blue"
+        ) +
+        geom_hline(
+            yintercept = 0,
+            color = "black"
+        ) +
+        geom_hline(
+            yintercept = ci_line,
+            linetype = "dashed",
+            color = "black",
+            size = 0.3
+        ) +
+        theme_tufte() +
+        theme( text = element_text( family = "sans", size = 10 ) )
+    return( data_plot )
+}
+
+plot_partial_acor(
+    series = itsmr::Sunspots,
+    title = "Sample PACF of sunspots numbers"
+)
+```
+
+### 5.1.1 Yule-Walker Estimation {-}
+
+For causal AR( p ) defined by:
+
+\begin{align*}
+X_t-\phi_1 X_{t-1}-...-\phi_p X_{t-p}=&Z_t,\ \ \ \{Z_t\} \sim WN(0,\sigma^2)\tag{5.5.1a}\\
+&Z_t\ is\ uncorrelated\ with\ X_s\ for\ each\ s < t\\
+(1-\phi_1 z-\phi_2 z^2-...-\phi_p z^p)X_t=&Z_t\\
+\phi(z) =& 1-\phi_1 z-\phi_2 z^2-...-\phi_p z^p,\ auto-regressive\\
+\theta(z)=&1,\ moving\ average
+\end{align*}
+
+with equating $z^j,\ j=1,2,3,...$ coefficients technique, substituting above polynomial to equation 3.1.9f, we have:
+
+\begin{align*}
+1&=(\psi_{0}+\psi_{1}z+\psi_{2}z^{2}+\psi_{3}z^{3}+...)(1-\phi_1 z-\phi_2 z^2-...-\phi_p z^p)\\
+\implies \psi_0&=1
+\end{align*}
+
+By causality we have:
+
+\begin{align*}
+X_t&=\sum_{j=0}^{\infty}\psi_{j}Z_{t-j}\\
+X_t&=\psi_0 Z_t+\sum_{j=1}^{\infty}\psi_{j}Z_{t-j}\\
+X_t&=(1) Z_t+\sum_{j=1}^{\infty}\psi_{j}Z_{t-j}\\
+X_t&=Z_t+\sum_{j=1}^{\infty}\psi_{j}Z_{t-j}\tag{5.1.1b}\\
+\end{align*}
+
+where we have:
+
+$$E[X_t]=E[\sum_{j=0}^{\infty}\psi_{j}Z_{t-j}]=\sum_{j=0}^{\infty}\psi_{j}E[Z_{t-j}]=\sum_{j=0}^{\infty}\psi_{j}(0)=0$$
+
+Then by definition of covariance we have:
+
+\begin{align*}
+\gamma(h)&=Cov(X_t,X_{t-h})=E[(X_t-E[X_t])(X_{t-h}-E[X_{t-h}])]\\
+\gamma(h)&=E[(X_t-0)(X_{t-h}-0)]\\
+\gamma(h)&=E[X_tX_{t-h}]\tag{5.1.1c}
+\end{align*}
+
+If we multiply both sides of equation 5.1.1a with $X_{t-j},\ j=1,2,3,...$ then take the expectation, we have:
+
+\begin{align*}
+E[(X_t-\phi_1 X_{t-1}-...-\phi_p X_{t-p})X_{t-j}]=&E[Z_tX_{t-j}]\\
+E[X_tX_{t-j}-\phi_1 X_{t-1}X_{t-j}-...-\phi_p X_{t-p}X_{t-j}]=&E[Z_tX_{t-j}]\tag{5.1.1d}\\
+\end{align*}
+
+since $Z_t$ is uncorrelated with $X_s$ for each s < t, the right hand side of equation 5.1.1d $E[Z_tX_{t-j}]=0$ thus we have:
+
+\begin{align*}
+E[(X_t-\phi_1 X_{t-1}-...-\phi_p X_{t-p})X_{t-j}]=&E[Z_tX_{t-j}]\\
+E[X_tX_{t-j}-\phi_1 X_{t-1}X_{t-j}-...-\phi_p X_{t-p}X_{t-j}]=&0\\
+\phi_1 X_{t-1}X_{t-j}+...+\phi_p X_{t-p}X_{t-j}]=&E[X_tX_{t-j}]\\
+substituting\ equation\ 5.1.1c:\\
+\phi_1\gamma(j-1)+\phi_2\gamma(j-2)+...+\phi_p\gamma(j-p)=&\gamma(j)\\
+\begin{bmatrix}\gamma(j-1)\ \gamma(j-2)\ ...\ \gamma(j-p)\end{bmatrix}\begin{bmatrix}\phi_1\\\phi_2\\...\\\phi_p\end{bmatrix}=&\gamma(j)\tag{5.1.1e}
+\end{align*}
+
+If we think equation 5.1.1e as row of matrix multiplied by AR( p ) coefficients we get for $j=1,2,3...$
+
+\begin{align*}
+\begin{bmatrix}
+\gamma(1-1)\ \gamma(1-2)\ ...\ \gamma(1-p)\\
+\gamma(2-1)\ \gamma(2-2)\ ...\ \gamma(2-p)\\
+...\\
+\gamma(p-1)\ \gamma(p-2)\ ...\ \gamma(p-p)
+\end{bmatrix}
+\begin{bmatrix}
+\phi_1\\
+\phi_2\\
+...\\
+\phi_p
+\end{bmatrix}=&
+\begin{bmatrix}
+\gamma(1)\\
+\gamma(2)\\
+...\\
+\gamma(p)
+\end{bmatrix}\\
+\\
+\Gamma_p\vec{\phi}=\vec{\gamma}_{p}\tag{5.1.3}
+\end{align*}
+
+
+Now if we multiply equation 5.1.1a with equation 5.1.1b for the same side respectively, and take the expectation we have:
+
+\begin{align*}
+E[(X_t-\phi_1 X_{t-1}-...-\phi_p X_{t-p})X_t]=&E[Z_t(Z_t+\sum_{j=1}^{\infty}\psi_{j}Z_{t-j})]\\
+E[X_tX_t-\phi_1 X_tX_{t-1}-...-\phi_p X_tX_{t-p}]=&E[(Z_tZ_t+\sum_{j=1}^{\infty}\psi_{j}Z_tZ_{t-j})]\\
+E[X_tX_t]-\phi_1 E[X_tX_{t-1}]-...-\phi_p E[X_tX_{t-p}]=&E[Z_tZ_t]+\sum_{j=1}^{\infty}\psi_{j}E[Z_tZ_{t-j}]\\
+substituting\ equation\ 5.1.1c:\\
+\gamma(0)-\phi_1 \gamma(1)-...-\phi_p \gamma(p)=&\sigma^2+\sum_{j=1}^{\infty}\psi_{j}(0)\\
+\gamma(0)-\begin{bmatrix}\phi_1\ \phi_2\ ...\ \phi_p\end{bmatrix}\begin{bmatrix}\gamma(1)\\\gamma(2)\\...\\\gamma(p)\end{bmatrix}=&\sigma^2\\
+\\
+\gamma(0)-\vec{\phi}^{\ T}\vec{\gamma}_{p} =&\sigma^2\tag{5.1.4}
+\end{align*}
+
+
+### Large-Sample Distribution of Yule-Walker Estimators {-}
+
+For a large sample from an AR( p ) process,
+
+$$\hat{\vec{\phi}} \approx N(\vec{\phi},\frac{\sigma^2}{n}\Gamma^{-1}_p)$$
+If we replace $\sigma^2$ and $\Gamma_p$ by their estimates $\hat{\sigma^2}$ and $\hat{\Gamma}_p$ we get:
+
+$$
+\hat{\phi}_{pj} \pm \Phi_{1-\alpha/2}\frac{\hat{v}_{jj}^{1/2}}{n}\tag{5.1.13}
+$$
+
+where $\hat{v}_{jj}$ is the j^th^ diagonal element of $\hat{v}_p\hat{\Gamma}_p^{-1}$, contains $\phi_{pj}$ with probability close to $1-\alpha$
+
+### Example 5.1.1 {-}
+
+We are analyzing Dow Jones from `itsmr` package.
+
+
+```{r}
+plot_acor(series = itsmr::dowj,title = "Sample ACF Dow Jones")
+```
+
+we can see indication of trend, let's difference the series to remove the trend and check the result:
+
+```{r}
+dowjones.diff <- backshift(itsmr::dowj,1,1)
+```
+
+Sample auto-covariance until lag 2:
+
+```{r}
+sacov(dowjones.diff, 0:2)
+```
+
+Applying Durbin-Levinson algorithm of order 2:
+
+```{r}
+dla.example.5.1.1 <- dla( 2, dowjones.diff )
+dla.example.5.1.1
+```
+
+#### Figure 5-1 {-}
+
+\  
+
+```{r}
+plot_acor(
+  series = dowjones.diff,
+  title = "Sample ACF Dow Jones Differenced",
+  max_lag = 30)
+```
+
+From ACF plot, the trend has been removed.
+
+#### Figure 5-2 {-}
+
+\  
+
+```{r}
+plot_partial_acor(
+  series = dowjones.diff,
+  title = "Sample PACF Dow Jones Differenced",
+  max_lag = 30)
+```
+
+PACF plot suggest an AR( 1 ) model.
+
+Centralize the mean for differenced data $X_t=Y_t-0.1336$:
+
+```{r}
+dowjones.diff.centralized <- dowjones.diff - mean( dowjones.diff )
+```
+
+Get the estimated coefficient using Durbin-Levinson algorithm:
+
+```{r}
+dla.example.5.1.1.centralized <- dla(1,dowjones.diff.centralized)
+dla.example.5.1.1.centralized
+```
+
+We can see that the first coefficient estimate for AR( 1 ) both are the same for differenced data, either having the mean centralized or not:
+
+```{r}
+dla.example.5.1.1$phi[[1]]
+dla.example.5.1.1.centralized$phi[[1]]
+```
+
+Following equation 5.1.13, we need to find $\hat{v}_{jj}$ for $j=1$, $v_{11}$:
+
+```{r}
+v.1 <- dla.example.5.1.1.centralized$v[["1"]]
+v.1
+gamma.matrix.1.inverse <- sacov(dowjones.diff.centralized,0)
+gamma.matrix.1.inverse
+v.11 <- v.1/ gamma.matrix.1.inverse
+v.11
+```
+
+Notice that in the code chunk above since $p=1$ the inverse of matrix $\Gamma_p$ is just its reciprocal $\Gamma_1^{-1}=\frac{1}{\Gamma_1}$
+
+The 95% confidence interval for the AR( 1 ) coefficient is then:
+
+```{r}
+dla.example.5.1.1.centralized$phi[[1]] +
+    ( c(-1,1) * abs(qnorm((1-0.95)/2)) * sqrt(v.11) / sqrt(length(dowjones.diff.centralized)) )
+```
+
+Notice that the difference of number results are caused by the book rounding to 4 decimal digits.
+
+
+### Example 5.1.5 {-}
+
+In [Example 5.1.1], [Figure 5-1] suggests that MA( 2 ) model might also provide a good fit for the data.
+
+Showing the coefficient of MA( 2 ) from innovation algorithm of order 17:
+
+```{r}
+ia.example.5.1.5 <- ia( 17, dowjones.diff.centralized )
+ia.example.5.1.5$theta[["17"]][1:2]
+```
+
+The whole MA( 17 ) coefficients:
+
+```{r}
+ia.example.5.1.5$theta[["17"]]
+```
+
+### Innovations Algorithm Estimates when p > 0 and q > 0 {-}
+
+Here is an example of function to get parameter estimation of an ARMA( p, q ) process with p > 0 and q > 0:
+
+```{r}
+ia.arma <- function ( number_of_predictors, series, p, q ) {
+    ia.coefficients <-
+        ia( number_of_predictors, series )$theta[[
+            as.character( number_of_predictors )
+        ]]
+    theta.vector <- as.matrix( ia.coefficients[(q+1):(q+p)] )
+    theta.matrix <-  t(as.matrix(
+        sapply(q:(q+p-1),function(i){
+            return(sapply( i:(i+1-p), function ( j ){
+                return(ifelse(j>0,ia.coefficients[j],0))
+            } ) )
+        } ) ) )
+    ar.vector <- as.vector(solve(theta.matrix) %*% theta.vector)
+    ma.vector <- sapply( 1:q, function ( j ) {
+        return(ia.coefficients[ j ] - sum(sapply( 1:min(j,p), function ( i ){
+            return(
+                ar.vector[ i ] *
+                ifelse( j -i >=0,
+                        ifelse(
+                            j - i == 0, 1,
+                            ia.coefficients[j-i])
+                        , 0 ) )
+        } ) ) )
+    } )
+    return( list(
+        ar = ar.vector,
+        ma = ma.vector
+    ) )
+}
+
+```
+
+### Example 5.1.6 {-}
+
+The coefficients of ARMA( 1, 1 ) model using the innovations methods as in the example of the book are given by:
+
+```{r}
+ia.arma( 17, itsmr::lake, 1, 1 )
+```
+
+pay attention to the consensus of the coefficient sign that the book used in [Definition 3.1.1], the ARMA( 1, 1 ) model is then given by:
+
+$$
+X_t-0.7234365X_{t-1}=Z_t+0.3596418Z_{t-1}
+$$
+
+where in the book the coefficients are rounded up to 4 decimal points.
