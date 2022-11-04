@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<!-- saved from url=(0043)https://app.honorlock.com/install/extension -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+<title>Honorlock Extension</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="shortcut icon" href="https://app.honorlock.com/favicons/favicon.ico">
+<link href="./bootstrap.min.css" rel="stylesheet" type="text/css" media="all">
+<link href="./font-awesome.min.css" rel="stylesheet" type="text/css" media="all">
+<link href="./icon" rel="stylesheet">
+<link href="./css" rel="stylesheet">
+<link rel="stylesheet" href="./install.css">
+
+<script src="./TweenLite.min.js"></script>
+<script src="./ColorPropsPlugin.min.js"></script>
+<script src="./jquery.min.js"></script>
+<script src="./jquery.easypiechart.min.js"></script>
+<script src="./install-extension-plugins.js"></script>
+<script src="./install-extension.js" defer=""></script>
+<script src="./bugsnag.min.js"></script>
+<script>
+    window.bugsnagClient = bugsnag({
+        apiKey: "021c7c868b955051cb03a3d9106faf89",
+    })
+</script><script async="" type="text/javascript" src="./tracking.js"></script></head>
+<body data-new-gr-c-s-check-loaded="14.1085.0" data-gr-ext-installed="">
+<a href="https://app.honorlock.com/install/extension#section-installer" class="hl-bypass-block" tabindex="0">Skip to Honorlock extension installation main content</a>
+<div class="main-container" role="main">
+
+    <!--<div id="hl-livechat"><span class="hl-livechat-text">Need Help?</span></div>-->
+
+    <section id="section-header" class="elements-title space--xxs text-center">
+        <div class="container">
+            <div class="row">
+                <div id="main-text-container" class="col-sm-12">
+                    <h2 class="main-text">Honorlock Chrome Extension</h2>
+                    <p class="main-text">This exam requires Google Chrome and the Honorlock Chrome Extension.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="section-installer" class="switchable feature-large single-section">
+        <div class="container" style="max-width: 750px;">
+            <div class="row">
+                <div id="icon-container" class="col-xs-1 col-sm-5 col-md-5 offset-md-1">
+                    <div id="radial-bar" alt="Extension Required" class="radial radial--active" data-value="5" data-size="260" data-bar-width="8" data-color="#4a90e2" style="height: 260px; width: 260px; font-size: 46px;">
+                        <i id="icon-visible" class="color-success icon icon--lg color--primary radial__label icon-Yes" style="opacity: 1; display: none;"></i>
+                        <i id="icon-staging" class="color-success icon icon--lg color--primary radial__label" style="display: none;"></i>
+                    <canvas height="260" width="260"></canvas></div>
+                </div>
+                <div id="context" class="col-xs-11 col-sm-6 col-md-6 shrink-lg">
+                    <div>
+                        <h2 id="header_text">Extension Added</h2>
+                        <p id="lead_text" class="lead">Please navigate back to your Learning Management System and begin your exam.</p>
+                        <div id="tos" class="type--fine-print" style="display: none;">
+                            <input id="consent-checkbox" type="checkbox" name="consent-checkbox">
+                            <label class="consent-checkbox-label" for="consent-checkbox">
+                                <svg viewBox="0 0 100 100">
+                                    <path fill="none" stroke="#000" stroke-width="13" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M12.1 52.1l24.4 24.4 53-53"></path>
+                                </svg>
+                                I agree to Honorlock's <a id="terms" href="https://honorlock.com/legal/terms" target="_blank" tabindex="0">Terms of Service</a> and acknowledge I have read and understand Honorlock's <a id="privacy" href="https://honorlock.com/legal/app_privacy" target="_blank" tabindex="0">Privacy Policy</a>
+                            </label>
+                        </div>
+                        <button id="action_button" role="button" class="btn btn--primary type--uppercase" style="margin-top: -8px; display: none;" aria-disabled="true" aria-label="The Add Extension button is disabled until the Terms of Service have been accepted" data-toggle="Accept terms to continue">
+                            <span class="btn__text" id="button_text">Loading</span>
+                        </button>
+                        <div id="tos-notice" class="type--fine-print red-highlight" style="display: none;">
+                            Click agreement checkbox to continue
+                        </div>
+                    </div>
+                    <a href="https://app.honorlock.com/install/extension#" id="instructions-link" class="hidden show" style="margin-top: 10px;">View Installation Guide</a>
+                    <a href="https://app.honorlock.com/install/extension#" id="need-help" role="button" class="show" style="margin-top: 10px;">Need Help? Chat with our support team now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</div><div class="all-page-modals"><div id="modal-object" class="modal-container modal-container-height-limit" data-modal-index="0">
+        <div class="modal-content">
+            <div class="boxed boxed--lg">
+                <h3 id="modal-header">Default text modal</h3>
+                <hr class="short">
+                <p id="modal-body" class="lead">
+                    Default modal body text
+                </p>
+            </div>
+        <div class="modal-close modal-close-cross"></div></div>
+    </div></div>
+<div id="stopmessage" class="row indent stopmessage" style="display: none;">
+    <h2>
+        <span style="font-size: 18pt;">
+            <strong>
+                <span style="background-color: #ff0000; color: #e25345; font-size: 36pt;"><span style="color: #ffffff;">&nbsp;STOP &nbsp;</span></span>
+                <br>You are missing the Honorlock Chrome Extension.<br>
+            </strong>
+        </span>
+        <span style="font-size: 14pt;">
+            <strong>You must add extension to continue:</strong>&nbsp;
+            <a id="install_link" href="https://app.honorlock.com/install/extension#action_button" role="link" aria-label="Non visible content to take user back to Install Honorlock before exam can be accessed.">
+                Install Honorlock
+            </a>
+        </span>
+    </h2>
+</div>
+<script type="text/javascript">
+    window.config = {"environment":"app","services_available":"1","debug_mode":"0","minimum_chrome_version":"53","min_ext_version":"5.10.0.0","unpacked_ext_mode":0,"archived_extension_ids":"[\u0022fhgpcfdhjfajlkccndfljdonilenijgf\u0022, \u0022hjkkeiocpfaoplfjaaohemllbheefnje\u0022, \u0022jebhipagmhgpfjaoenkjlpbmfdcmmppi\u0022, \u0022bomalocnnkfoggpeeekcgldopinlidgn\u0022, \u0022ncnmdfcijlbhobebhjjpmocinhkflnbm\u0022]","store_extension_id":"hnbmpkmhjackfpkpcbapafmpepgmmddc","manual_extension_id":"lfoeajgcchlidpicbabpmckkejpckcfb","livechat_id":11782353,"is_livechat":true,"manual_download_url":"https:\/\/s3.amazonaws.com\/hl-dist\/extension\/HL-app-ext-man-5.10.0.0.zip","webstore_url":"https:\/\/chrome.google.com\/webstore\/detail\/honorlock\/hnbmpkmhjackfpkpcbapafmpepgmmddc?hl=en"};
+    window.translations = {"extension-install":{"title":"Honorlock Extension","main":{"header":"Honorlock Chrome Extension","subheader":"This exam requires Google Chrome and the Honorlock Chrome Extension."},"checking_system":{"header":"Checking System","subheader":"One moment"},"add_extension":{"header":"","subheader":"","tos":{"consent":"I agree to Honorlock\u0027s \u003Ca id=\u0022terms\u0022 href=\u0022https:\/\/honorlock.com\/legal\/terms\u0022 target=\u0022_blank\u0022 tabindex=\u00220\u0022\u003ETerms of Service\u003C\/a\u003E and acknowledge I have read and understand Honorlock\u0027s \u003Ca id=\u0022privacy\u0022 href=\u0022https:\/\/honorlock.com\/legal\/app_privacy\u0022 target=\u0022_blank\u0022 tabindex=\u00220\u0022\u003EPrivacy Policy\u003C\/a\u003E","action":{"loading":"Loading","toggle":"Accept terms to continue"},"state":{"enabled":"The Add Extension button is enabled","disabled":"The Add Extension button is disabled until the Terms of Service have been accepted"},"notice":"Click agreement checkbox to continue"}},"modals":{"help":{"trigger":"Need Help? Chat with our support team now"},"instructions":{"trigger":"View Installation Guide"},"install_guide":{"header":"How to: Install the Honorlock chrome extension","guide_link":"\u003Ca href=\u0022\/extension\/assets\/guides\/Honorlock-Chrome-Extension-Manual-Installation.pdf\u0022 target=\u0022_blank\u0022\u003E(Click here to download install guide)\u003C\/a\u003E","guide_list":{"a":"Click \u0022Download Extension\u0022 link to download extension zip file.","b":"Move downloaded ZIP to Desktop and double-click the zipped file to unzip it.","c":"In your Chrome URL address bar, navigate to \u0022chrome:extensions\u0022.","d":"In the top right of the \u0022Extensions\u0022 page, toggle on \u0022Developer Mode\u0022.","e":"In the top left of the \u0022Extensions\u0022 page, click the \u0022Load unpacked\u0022 button.","f":"In the file select dialog, navigate to your desktop and select the unzipped \u0022HL-chrome-ext\u0022 folder. Click \u0022Select\u0022.","g":"The Honorlock extension will now appear and will be active."}},"defaults":{"trigger":"Trigger Modal","header":"Default text modal","body":"Default modal body text"}},"missing_extension":{"stop":{"title":"\u003Cspan style=\u0022background-color: #ff0000; color: #e25345; font-size: 36pt;\u0022\u003E\u003Cspan style=\u0022color: #ffffff;\u0022\u003E\u0026nbsp;STOP \u0026nbsp;\u003C\/span\u003E\u003C\/span\u003E","subtitle":"You are missing the Honorlock Chrome Extension."},"continue":{"title":"You must add extension to continue:","link_text":"Install Honorlock","aria_label":"Non visible content to take user back to Install Honorlock before exam can be accessed."}},"checklist":{"service_unavailable":{"header_text":"Services Unavailable","lead_text":"Honorlock is temporarily unavailable.\u003Ca href=\u0022https:\/\/status.honorlock.com\u0022 target=\u0022_blank\u0022\u003E https:\/\/status.honorlock.com\u003C\/a\u003E"},"desktop_chrome_required":{"header_text":"Desktop Chrome Required","lead_text":"Mobile devices are not supported for proctored exams","button_text":"Download Chrome","main_text":"\u003Cp id=\u0022sub-main-text\u0022 class=\u0022main-text\u0022\u003E\u003Cstrong\u003ECome back to this page using Google Chrome for Desktop to continue.\u003C\/strong\u003E\u003C\/p\u003E"},"exit_lockdown_browser":{"header_text":"Exit Lockdown Browser","lead_text":"You are using a non-Honorlock Lockdown Browser application. Exit the application and try again using Google Chrome."},"chrome_required":{"header_text":"Google Chrome","lead_text":"Google Chrome is required to use Honorlock","button_text":"Download Chrome","main_text":"\u003Cp id=\u0022sub-main-text\u0022 class=\u0022main-text\u0022\u003E\u003Cstrong\u003ECome back to this page using Google Chrome to continue.\u003C\/strong\u003E\u003C\/p\u003E"},"update_chrome":{"header_text":"Update Google Chrome","lead_text":"Google Chrome needs an update","button_text":"Show Me How"},"extension_required":{"header_text":"Extension Required","lead_text":"Add the Honorlock extension to continue","button_text":"Get Started"},"manual_extension_required":{"header_text":"Manual Extension Required","lead_text":"Add the Honorlock extension to continue","button_text":"Go to Download Page"},"add_extension":{"header_text":"Add Extension","lead_text":"Click below to add the Honorlock Chrome Extension","button_text":"Add Extension"},"download_extension":{"header_text":"Download Extension","lead_text":"Click below to download the Honorlock Chrome Extension","button_text":"Download Extension"},"extension_added":{"header_text":"Extension Added","lead_text":"Please navigate back to your Learning Management System and begin your exam."},"update_extension":{"header_text":"Update Extension"},"update_required":{"header_text":"Update Required"},"uninstall_extension":{"header_text":"Uninstall Extension","lead_text":"Would you like to remove the Honorlock Extension?\u003Cbr\u003E\u003Cbr\u003E\u003Cdiv style=\u0022float:right;\u0022\u003E\u003Ca id=\u0022yes-uninstall\u0022 href=\u0022#\u0022\u003EYes\u003C\/a\u003E\u003Ca id=\u0022no-uninstall\u0022 href=\u0022#\u0022 style=\u0022margin-left:10px;\u0022\u003ENo\u003C\/a\u003E\u003C\/div\u003E","button_text":"Uninstall Extension"},"extension_uninstalled":{"header_text":"Extension uninstalled","lead_text":"Honorlock has been removed. Thanks for using our proctoring solution!"}},"show_chrome_info":{"header":"Chrome browser needs update","instructions":"Complete these steps to update to the latest version:","instructions_list":{"a":"At the top right of browser, click More \u003Cimg class=\u0022update-chrome-img-steps\u0022 src=\u0022\/assets\/images\/chrome_more.png\u0022 width=\u002218\u0022 height=\u002218\u0022 alt=\u0022More\u0022 title=\u0022More\u0022\u003E.","b":"Click \u003Cstrong\u003EHelp\u003C\/strong\u003E \u003Cimg class=\u0022update-chrome-img-steps\u0022 src=\u0022\/assets\/images\/chrome_arrow.png\u0022 width=\u002213\u0022 height=\u002218\u0022 alt=\u0022and then\u0022 title=\u0022and then\u0022\u003E \u003Cstrong\u003EAbout Google Chrome.\u003C\/strong\u003E","c":"Click \u003Cstrong\u003ERelaunch\u003C\/strong\u003E to apply any available update."}},"livechat":{"source":"Extension Install"},"footer":{"support":"\u003Ca class=\u0022type--fine-print\u0022  href=\u0022https:\/\/honorlock.com\/support\u0022 target=\u0022_blank\u0022\u003ESupport\u003C\/a\u003E","privacy":"\u003Ca class=\u0022type--fine-print\u0022 href=\u0022https:\/\/honorlock.com\/legal\/app_privacy\u0022 target=\u0022_blank\u0022\u003EPrivacy Policy\u003C\/a\u003E","tos":"\u003Ca class=\u0022type--fine-print\u0022 href=\u0022https:\/\/honorlock.com\/legal\/terms\u0022 target=\u0022_blank\u0022\u003ETerms of Service\u003C\/a\u003E"}}};
+</script>
+<div id="modal-instance" class="modal-instance">
+    <a id="modal-trigger" class="btn modal-trigger hidden" href="https://app.honorlock.com/install/extension#" data-modal-index="0">
+        <span class="btn__text">
+            Trigger Modal
+        </span>
+    </a>
+    
+</div><footer id="footer-2" class="space--sm footer-2">
+    <div class="container">
+        <div id="footer-2-row" class="row">
+            <div id="footer-div" class="col-sm-12">
+                <span class="type--fine-print">© <span class="update-year">2022</span> Honorlock Inc.</span>
+                <a class="type--fine-print" href="https://honorlock.com/support" target="_blank">Support</a>
+                <a class="type--fine-print" href="https://honorlock.com/legal/app_privacy" target="_blank">Privacy Policy</a>
+                <a class="type--fine-print" href="https://honorlock.com/legal/terms" target="_blank">Terms of Service</a>
+            <a id="uninstall" class="type--fine-print" href="https://app.honorlock.com/install/extension#">Uninstall Extension</a></div>
+        </div>
+    </div>
+</footer>
+<div class="container containerMeasure" style="opacity:0;pointer-events:none;"></div><div id="chat-widget-container" style="opacity: 1; visibility: visible; z-index: 2147483639; position: fixed; bottom: 0px; width: 84px; height: 84px; max-width: 100%; max-height: calc(100% - 0px); min-height: 0px; min-width: 0px; background-color: transparent; border: 0px; overflow: hidden; right: 0px; transition: none 0s ease 0s !important;"><iframe allow="autoplay; microphone *; camera *; display-capture *; picture-in-picture *; fullscreen *;" src="./open_chat.html" allowtransparency="true" id="chat-widget" name="chat-widget" title="LiveChat chat widget" scrolling="no" style="width: 100%; height: 100%; min-height: 0px; min-width: 0px; margin: 0px; padding: 0px; background-image: none; background-position: 0% 0%; background-size: initial; background-attachment: scroll; background-origin: initial; background-clip: initial; background-color: rgba(0, 0, 0, 0); border-width: 0px; float: none; position: absolute; inset: 0px; transition: none 0s ease 0s !important; display: none;"></iframe><iframe allowtransparency="true" id="chat-widget-minimized" name="chat-widget-minimized" title="LiveChat chat widget" scrolling="no" style="width: 100%; height: 100%; min-height: 0px; min-width: 0px; margin: 0px; padding: 0px; background-image: none; background-position: 0% 0%; background-size: initial; background-attachment: scroll; background-origin: initial; background-clip: initial; background-color: rgba(0, 0, 0, 0); border-width: 0px; float: none; display: block;" src="./saved_resource.html"></iframe></div></body></html>
