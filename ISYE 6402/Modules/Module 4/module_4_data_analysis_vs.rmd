@@ -1,0 +1,189 @@
+---
+title: "VAR Bitcoin Price Forecasting"
+output:
+  html_document: default
+---
+
+```{r setup, include = FALSE}
+
+# Set up the default parameters
+# 1. The code block will be shown in the document
+# 2. set up figure display size
+# 3. turn off all the warnings and messages
+
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(fig.width = 15, fig.height = 10)
+knitr::opts_chunk$set(warning = FALSE, message = FALSE)
+
+```
+
+__Background__: Bitcoin is the first decentralized cryptocurrency in the world and possesses characteristics different from traditional financial assets. Its price surge in recent years has triggered enormous interest among the investing public.
+
+__Objective__: Forecast Daily Bitcoin price (in USD) and evaluate its relationship with gold price and stock market performance
+
+
+```{r}
+
+library(xts)
+library(mgcv)
+library(data.table)
+library(vars)
+library(tseries)
+library(aod)
+
+```
+
+__Time Series__: (September 17, 2014 - November 20, 2020)
+- Bitcoin Closing Price (BTC USD)
+- Gold price in USD
+- S&P 500 Index
+
+```{r}
+
+btc <- read.csv("btc.csv")
+gold <- read.csv("gold.csv")
+sp500 <- read.csv("sp500.csv")
+
+pricebtc<-btc[,2]
+datesbtc<-as.Date(btc[,1],"%m/%d/%Y")
+tsbtc=xts(pricebtc,datesbtc)
+
+pricegold<-gold[,2]
+datesgold<-as.Date(gold[,1],"%m/%d/%Y")
+tsgold<-xts(pricegold,datesgold)
+
+pricesp<-sp500[,2]
+datessp<-as.Date(sp500[,1],"%m/%d/%Y")
+tssp<-xts(pricesp,datessp)
+
+par(mfrow=c(2, 2))
+plot(tsbtc,main='BTC-USD')
+plot(tsgold,main='Gold Price-USD')
+plot(tssp,main='S&P 500')
+
+
+```
+
+```{r}
+
+dlbtc<-diff(log(tsbtc))[-1]
+dlgold<-diff(log(tsgold))[-1]
+dlsp<-diff(log(tssp))[-1]
+
+par(mfrow=c(2, 2))
+plot(dlbtc,main='BTC Return Price')
+plot(dlgold,main='Gold Return Price')
+plot(dlsp,main='S&P 500 Return Price')
+
+```
+
+```{r}
+
+## ACF Analysis for all three time series together
+ts.merge <- merge(tsbtc,tsgold, join='inner')
+ts.merge <- merge(ts.merge,tssp, join='inner')
+colnames(ts.merge)<-c("tsbtc","tsgold","tssp")
+
+dl.merge <- merge(dlbtc,dlgold, join='inner')
+dl.merge <- merge(dl.merge,dlsp, join='inner')
+colnames(dl.merge)<-c("dlbtc","dlgold","dlsp")
+acf(dl.merge)
+
+```
+
+## Order Selection
+
+```{r}
+
+VARselect(dl.merge, lag.max = 15)$selection
+
+```
+
+This shows us that the best order of `p` for `VAR(p)` differs based on the info criteria we choose.Note that "SC" is going to be the same as BIC. For our example, we are going to use the AIC example which is a `VAR(9)`. Forecast precision tends to be reduced for higher orders, but using this higher order will need more computation that I would like to explain in this example.
+
+```{r}
+
+# Model Fitting: Unrestricted VAR
+
+mod.var = VAR(dl.merge, p=9)
+summary(mod.var)
+
+# Model Fitting: Restricted VAR    
+
+mod.var.restrict = restrict(mod.var)
+summary(mod.var.restrict)
+
+``` 
+
+## Granger Causality Tests
+
+When indexing the variance-covariance matrix, it is important to slice it in the correct spot. Here is an algorithm to follow to make sure you have the correct slicing:
+
+- Let $i=$ the column index (first column index is 1 in R)
+- Let $n=$ the number of regressors
+- Let $p=$ the selected order
+- Index slice will be: `c(2+(i-1)*(n*p+1) : (n*p+1)*i)`
+
+
+```{r}
+
+# Estimated coefficients and their variance for Bitcoin regression Equation
+
+n = 3 # there are 3 different regressors 
+p = 9 # our var selected order
+
+var.all = vcov(mod.var)
+
+## coefficient and variance-covariance matrix for btc
+coef.btc = coefficients(mod.var)$dlbtc[-(n*p+1), 1]
+btc.i = 1 # BTC is the first column
+btc.index.min = 2+(btc.i-1)*(n*p+1) 
+btc.index.max = (n*p+1)*btc.i
+btc.index = c(btc.index.min:btc.index.max)
+var.btc = var.all[btc.index,btc.index]
+
+## coefficient and variance-covariance matrix for Gold
+coef.gold = coefficients(mod.var)$dlgold[-(n*p+1), 1]
+gold.i = 2 # Gold is the second column
+gold.index.min = 2+(gold.i-1)*(n*p+1) 
+gold.index.max = (n*p+1)*gold.i
+gold.index = c(gold.index.min:gold.index.max)
+var.gold = var.all[gold.index,gold.index]
+
+## coefficient and variance-covariance matrix for SP500
+coef.sp = coefficients(mod.var)$dlsp[-(n*p+1), 1]
+sp.i = 3 # SP500 is the third column
+sp.index.min = 2+(sp.i-1)*(n*p+1) 
+sp.index.max = (n*p+1)*sp.i
+sp.index = c(sp.index.min:sp.index.max)
+var.sp = var.all[sp.index,sp.index]
+
+```
+
+Let's identify if there is a lead-lag relationship between BTC and SP500 by running the Granger-causality tests. 
+
+__Note__: the notion of Granger causality _does not_ imply true causality. It _only_ imples forecasting ability!
+
+#### Wald Test
+
+$H_{0}$: All the coefficients on lagged values of $Y_{k}$ are zero in the equation for $Y_{l}$, meaning that $Y_{k}$ _does not_ Granger-cause $Y_{k}$
+
+$H_{a}$: At least one of the coefficients on lagged values of $Y_{k}$ does not equal zero in the equation for $Y_{l}$, meaning that $Y_{k}$ _does_ Granger-cause $Y_{l}$
+
+```{r}
+
+# For Terms parameter we use `seq(i, n*p, n)` where `i` is the column number we are looking for 
+
+wald.test(b=coef.btc, var.btc, Terms = seq(sp.i, n*p, n)) 
+wald.test(b=coef.sp, var.sp,Terms = seq(btc.i, n*p, n))
+
+```
+__Findings__:
+
+- __Test__ 1: The p-value $\approx 0.13$ which is larger than the the level of significance $\alpha =0.1$. Therefore, we cannot reject the null hypothesis. 
+  - Interpretation: Change in SP500 plausibly _does not_ influence change in Bitcoin
+  
+- __Test 2__: The p-value $\approx 0.014$ which is less than the the level of significance $\alpha =0.1$. We reject the null hypothesis and accept the alternative.
+  - Interpretation: Change in Bitcoin influences change in SP500
+  
+
