@@ -1,0 +1,452 @@
+---
+title: "Time Series Project"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include = FALSE}
+
+# Set up the default parameters
+# 1. The code block will be shown in the document
+# 2. set up figure display size
+# 3. turn off all the warnings and messages
+
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(fig.width = 8, fig.height = 4)
+knitr::opts_chunk$set(warning = FALSE, message = FALSE)
+
+```
+
+
+```{r library}
+
+library(zoo)
+library(lubridate)
+library(mgcv)
+library(TSA)
+library(dynlm)
+library(tframePlus)
+library(tidyverse)
+```
+
+
+```{r load data}
+setwd("C:/Users/megam//Downloads")
+##format dates
+median_sales <- read.csv("Time Series Project Data/Median Sales Price of Houses Sold by Quarter.csv")
+median_sales$DATE <- as.yearqtr(median_sales$DATE,format = "%Y-%m-%d")
+median_sales$DATE <- format(median_sales$DATE, format= "Q%q-%Y")
+median_sales <- as.ts(median_sales)
+
+gdp <- read.csv("Time Series Project Data/Real GDP by Quarter.csv")
+gdp$DATE <- as.yearqtr(gdp$DATE,format = "%Y-%m-%d")
+gdp$DATE <- format(gdp$DATE, format= "Q%q-%Y")
+gdp <- as.ts(gdp)
+
+homeownership <- read.csv("Time Series Project Data/Homeownership Rate-1.csv")
+#colnames(homeownership)[0] = "DATE"
+names(homeownership)[1] <- 'DATE'
+#print(names(homeownership)[1])
+homeownership <- as.ts(homeownership)
+homeownership <- as.data.frame(homeownership)
+
+interest_rate <- read.csv("Time Series Project Data/Interest Rate.csv")
+interest_rate$DATE <- as.yearqtr(interest_rate$DATE,format = "%Y-%m-%d")
+interest_rate <- aggregate(FEDFUNDS ~ DATE, interest_rate, mean)
+interest_rate$DATE <- format(interest_rate$DATE, format="Q%q-%Y")
+interest_rate <- as.ts(interest_rate)
+
+```
+
+
+```{r}
+#merge all data
+all <- merge(median_sales,gdp, by="DATE")
+all <- merge(all,interest_rate, by="DATE")
+all <- merge(all, homeownership, by="DATE")
+all <- na.omit(all)
+all <- as.ts(all)
+all <- as.data.frame(all)
+#View(all)
+all.ts <- ts(all, frequency = 4)
+```
+
+
+```{r}
+library(scales)
+library(tseries)
+library(astsa)
+library(forecast)
+library(ggplot2)
+
+plt <- ggplot(data = all, aes(x = DATE, y = Value, color=FEDFUNDS )) + geom_line(size=1)
+plt + ggtitle("Quarterly Homeownership Rate By Interest Rate") +
+  ylab("Homeownership Rate") + xlab("Quarterly") + scale_y_continuous()
+
+ggsave("plot.png")
+
+plt2 <- ggplot(data = all, aes(x = DATE, y = Value, color=GDPC1 )) + geom_line(size=1)
+plt2 + ggtitle("Quarterly Homeownership Rate By GDP") +
+  ylab("Homeownership Rate") + xlab("Quarterly") + scale_y_continuous()
+plt2
+ggsave("plot2.png")
+
+plt3 <-  ggplot(data = all, aes(x = DATE, y = Value, color=MSPUS )) + geom_line(size=1)
+plt3 + ggtitle("Quarterly Homeownership Rate By Median Sales Price") +
+  ylab("Homeownership Rate") + xlab("Quarterly") + scale_y_continuous()
+plt3
+ggsave("plot3.png")
+
+
+home <- ts(all$Value, frequency = 4)
+acf(home, main="Homeownership Rate ACF plot")
+pacf(home, main="Homeownership Rate PACF Plot")
+
+#Forecast without factors
+plot(forecast(auto.arima(home)),main="Homeownership Forecast Without Other Factors",
+        xlab="Ownership Rate",
+        ylab="Quarterly/Year")
+
+forecast_home <- forecast(auto.arima(home))
+forecast_home
+
+forecast.resid = resid(forecast_home)
+acf(forecast.resid,main="Residuals of ARIMA forecast")
+acf(forecast.resid^2,main="Squared Residuals of ARIMA forecast")
+pacf(forecast.resid,main="Residuals of ARIMA forecast")
+pacf(forecast.resid^2,main="Squared Residuals of ARIMA forecast")
+
+```
+
+```{r}
+print("ARIMA MAPE: ")
+mean(abs(forecast_home$mean[1:8] - home.test)/abs(home.test))
+print("ARIMA PM: ")
+sum((forecast_home$mean[1:8] - home.test)^2)/sum((home.test-mean(home.test))^2)
+```
+
+
+```{r}
+home.train <- ts(all[1:(130),]$Value, frequency = 4)
+home.test <- ts(all[130:137,]$Value, frequency = 4)
+
+all.train <- ts(all[1:(130),], frequency = 4)
+all.test <- ts(all[130:137,], frequency = 4)
+```
+
+
+
+```{r}
+##### Order Selection Weekly ################################################
+## Find GARCH Order given ARMA order identified before
+## ugrach from rugarch libary
+library(rugarch)
+
+#Initial GARCH Order
+#ARIMA-GARCH: Select GARCH order
+test_modelAGG <- function(m,n){
+    spec = ugarchspec(variance.model=list(garchOrder=c(m,n)),
+                      mean.model=list(armaOrder=c(4,5),
+                                      include.mean=T),
+                      distribution.model="std")
+    fit = ugarchfit(spec, home.train, solver = 'hybrid')
+    current.bic = infocriteria(fit)[2]
+    df = data.frame(m,n,current.bic)
+    names(df) <- c("m","n","BIC")
+    print(paste(m,n,current.bic,sep=" "))
+    return(df)
+}
+
+ordersAGG = data.frame(Inf,Inf,Inf)
+names(ordersAGG) <- c("m","n","BIC")
+
+for (m in 0:2){
+    for (n in 0:2){
+        possibleError <- tryCatch(
+            ordersAGG<-rbind(ordersAGG,test_modelAGG(m,n)),
+            error=function(e) e
+        )
+        if(inherits(possibleError, "error")) next
+    }
+}
+ordersAGG <- ordersAGG[order(-ordersAGG$BIC),]
+tail(ordersAGG)
+#1,0
+```
+
+
+
+
+
+
+```{r}
+#ARMA update
+#ARIMA-GARCH: Select ARIMA order
+test_modelAGA <- function(p,q){
+    spec = ugarchspec(variance.model=list(garchOrder=c(1,0)),
+                      mean.model=list(armaOrder=c(p,q),
+                                      include.mean=T),
+                      distribution.model="std")
+    fit = ugarchfit(spec, home.train, solver = 'hybrid')
+    current.bic = infocriteria(fit)[2]
+    df = data.frame(p,q,current.bic)
+    names(df) <- c("p","q","BIC")
+    print(paste(p,q,current.bic,sep=" "))
+    return(df)
+}
+
+ordersAGA = data.frame(Inf,Inf,Inf)
+names(ordersAGA) <- c("p","q","BIC")
+for (p in 0:4){
+    for (q in 0:4){
+        possibleError <- tryCatch(
+            ordersAGA<-rbind(ordersAGA,test_modelAGA(p,q)),
+            error=function(e) e
+        )
+        if(inherits(possibleError, "error")) next
+    }
+}
+ordersAGA <- ordersAGA[order(-ordersAGA$BIC),]
+tail(ordersAGA)
+#2,1
+```
+
+
+
+```{r}
+#GARCH update
+test_modelAGG <- function(m,n){
+    spec = ugarchspec(variance.model=list(garchOrder=c(m,n)),
+                      mean.model=list(armaOrder=c(2,1),
+                                      include.mean=T), distribution.model="std")
+    fit = ugarchfit(spec, home.train, solver = 'hybrid')
+    current.bic = infocriteria(fit)[2]
+    df = data.frame(m,n,current.bic)
+    names(df) <- c("m","n","BIC")
+    print(paste(m,n,current.bic,sep=" "))
+    return(df)
+}
+
+ordersAGG = data.frame(Inf,Inf,Inf)
+names(ordersAGG) <- c("m","n","BIC")
+
+for (m in 0:2){
+    for (n in 0:2){
+        possibleError <- tryCatch(
+            ordersAGG<-rbind(ordersAGG,test_modelAGG(m,n)),
+            error=function(e) e
+        )
+        if(inherits(possibleError, "error")) next
+    }
+}
+ordersAGG <- ordersAGG[order(-ordersAGG$BIC),]
+tail(ordersAGG)
+# Final ARMA(2,1)+GARCH(1,0) selected 
+```
+
+
+```{r}
+garch.spec = ugarchspec(variance.model=list(garchOrder=c(1,0)),
+                 mean.model=list(armaOrder=c(2, 1),
+                 include.mean=T), distribution.model="std")
+garch.model = ugarchfit(garch.spec, home.train, solver = 'hybrid')
+```
+
+```{r}
+resids.garch.model = residuals(garch.model)
+acf(resids.garch.model,main="ACF of ARCH Residuals")
+acf(resids.garch.model^2,main="ACF of Squared ARCH Residuals")
+Box.test(resids.garch.model,lag=10,type='Ljung')
+Box.test(resids.garch.model^2,lag=10,type='Ljung')
+```
+
+The box ljung test shows that there is no significance, so there is no covariance in the residuals.
+
+```{r}
+n_fit = length(home.train)
+n_forward = length(home.test)
+## 1. Prediction of the return time series
+## 2. Prediction of the volatility
+
+fore.series.1 = NULL
+fore.sigma.1 = NULL
+
+for(f in 1:n_forward){
+    ## Fit models
+    data = home.train
+    if(f>2)
+       data = c(home.train,home.test[1:(f-1)])
+    weekly.model = ugarchfit(garch.spec, data, solver = 'hybrid')
+    ## Forecast
+    fore = ugarchforecast(garch.model, n.ahead=1)
+    fore.series.1 = c(fore.series.1, fore@forecast$seriesFor)
+    fore.sigma.1 = c(fore.sigma.1, fore@forecast$sigmaFor)
+}
+```
+
+```{r}
+print("GARCH MAPE: ")
+mean(abs(fore.series.1 - home.test)/abs(home.test))
+print("GARCH PM: ")
+sum((fore.series.1 - home.test)^2)/sum((home.test-mean(home.test))^2)
+```
+
+Pretty good values
+
+```{r}
+# Model Fitting: Unrestricted VAR
+#all.ts$DATE <-NULL
+mod.var = VAR(all.ts, p=4)
+summary(mod.var)
+
+# Model Fitting: Restricted VAR    
+
+mod.var.restrict = restrict(mod.var)
+summary(mod.var.restrict)
+```
+
+```{r}
+pred.test <- predict(mod.var,n.ahead=8)
+fits <- fitted(mod.var)
+fc <- structure(list(mean=pred.test$fcst[[5]][,"fcst"], x=all.train[,i],
+     fitted=c(NA,NA,fits[,5])),class="forecast")
+print(accuracy(fc$mean,all.test[,5]))
+print("VAR PM: ")
+sum((fc$mean - all.test[,5])^2)/sum((all.test[,5]-mean(all.test[,5]))^2)
+
+```
+
+
+```{r}
+pred.test <- predict(mod.var.restrict,n.ahead=8)
+fits <- fitted(mod.var.restrict)
+fc <- structure(list(mean=pred.test$fcst[[5]][,"fcst"], x=all.train[,i],
+     fitted=c(NA,NA,fits[,5])),class="forecast")
+print(accuracy(fc$mean,all.test[,5]))
+print("VAR RESTRICTED PM: ")
+sum((fc$mean - all.test[,5])^2)/sum((all.test[,5]-mean(all.test[,5]))^2)
+```
+
+
+```{r}
+grangertest(GDPC1~Value, order = 4, data=all.ts)
+grangertest(Value~GDPC1, order = 4, data=all.ts)
+grangertest(Value~FEDFUNDS, order = 4, data=all.ts)
+grangertest(Value~MSPUS, order = 4, data=all.ts)
+
+```
+
+
+```{r}
+##setwd("C:/Users/megam//Downloads")
+house_price <- read.csv("homevalue.csv")
+
+drops <- c("X","RegionID", "SizeRank", "RegionType","CityName")
+house_price2 <- house_price[ , !(names(house_price) %in% drops)]
+
+house_price3 <- aggregate(house_price2[, 2:262], list(house_price2$StateName), mean)
+
+house_price4<-as.data.frame(t(house_price3))
+
+names(house_price4) <- house_price4[1,]
+
+house_price5 <- house_price4[-1,]
+
+house_price6 <- cbind(newColName = rownames(house_price5), house_price5)
+rownames(house_price6) <- 1:nrow(house_price5)
+
+library(tidyr)
+library(ellipsis)
+mdata <- gather(house_price6, "stock", "price", -newColName)
+
+mdata$newColName <- substring(mdata$newColName, 2)
+
+library(dplyr)
+mdata <- mutate(mdata, newColName= as.Date(newColName, format= "%Y.%m.%d"))
+
+colnames(mdata) <- c( "Date", "StateName", "MeanHomeValue")
+
+mdata$MeanHomeValue <- as.numeric(as.character(mdata$MeanHomeValue))
+```
+
+```{r data exploration and visualization}
+library(ggplot2)
+
+library(scales)
+plt <- ggplot(data = mdata, aes(x = Date, y = MeanHomeValue, color = StateName)) + geom_line(size=1) 
+
+plt + ggtitle("Monthly Average Housing Prices By States") +
+  ylab("Average Sale Price (USD)") + xlab("Year") + scale_y_continuous(labels = dollar)
+
+ggsave("plot.png")
+```
+
+```{r prediction plot example}
+library(tseries)
+library(astsa)
+library(forecast)
+gtemp <- mdata[mdata$StateName == "CA",]
+
+plot(forecast(auto.arima(ts(gtemp[,3],start=c(2000,1),end = c(2021,9),frequency = 12))),main="CA Housing Price Forecast",
+        xlab="Sale Price(USD)",
+        ylab="Year")
+
+```
+
+```{r}
+names <- c(unique(mdata$StateName))
+df_predict <- data.frame(matrix(nrow=24))
+accuracy_list <- data.frame(matrix(nrow=7))
+
+aafc <- function(y, h, xreg = NULL, ...){
+    fit <- auto.arima(y, ...)
+    return(forecast(fit, h = h))
+}
+
+for (k in names) {
+  
+  
+  
+  gtemp <- mdata[mdata$StateName == k,]
+  
+  y = ts(gtemp[,3],start=c(2000,1),end = c(2020,12),frequency = 12)
+  a <- forecast(auto.arima(y))
+  b <- a$mean
+  c <- ts_reshape(a$mean, type = "long", frequency = NULL)
+  df_predict[k] <- c[3]
+  
+  
+  system.time({
+    aa1_cv <- tsCV(y, aafc, d = 1)
+})
+
+  acc <- t(accuracy(ts(y[-1] - aa1_cv[-252]), ts(y[-1])))
+  colnames(acc) <- k
+  accuracy_list <- cbind(accuracy_list,acc)
+}
+
+drops <- c("matrix.nrow...7.")
+accuracy_list <- accuracy_list[ , !(names(accuracy_list) %in% drops)]
+
+
+drops <- c("matrix.nrow...24.", "Date")
+df_predict <- df_predict[ , !(names(df_predict) %in% drops)]
+drops <- c("matrix.nrow...7.")
+accuracy_list <- accuracy_list[ , !(names(accuracy_list) %in% drops)]
+
+# write.csv(df_predict, "HousingPriceForcast.csv")
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
