@@ -1,0 +1,1159 @@
+﻿1
+00:00:02,411 --> 00:00:03,427
+- Hi everyone!
+
+2
+00:00:03,427 --> 00:00:06,633
+Well, now we're about to begin module two,
+
+3
+00:00:06,633 --> 00:00:08,767
+which is basically a series of boot camps
+
+4
+00:00:08,767 --> 00:00:11,832
+on calculus, probability, and statistics.
+
+5
+00:00:11,832 --> 00:00:13,777
+We're done with the easy stuff,
+we've done a little tour,
+
+6
+00:00:13,777 --> 00:00:15,213
+now we're gonna get to do a little math,
+
+7
+00:00:15,213 --> 00:00:18,370
+but hopefully it's
+mostly a review for you.
+
+8
+00:00:18,370 --> 00:00:21,090
+So here's the lesson overview for now.
+
+9
+00:00:21,090 --> 00:00:24,109
+In the last module I gave
+a very high-level overview
+
+10
+00:00:24,109 --> 00:00:26,934
+of what simulation is, that was our tour,
+
+11
+00:00:26,934 --> 00:00:30,155
+and this time the module
+is going to present
+
+12
+00:00:30,155 --> 00:00:32,847
+these various boot camps,
+and I'm gonna start right now
+
+13
+00:00:32,847 --> 00:00:34,603
+with a calculus lesson.
+
+14
+00:00:34,603 --> 00:00:36,433
+Now here's the dirty little secret,
+
+15
+00:00:36,433 --> 00:00:39,846
+in fact there's nothing here
+that you haven't taken before
+
+16
+00:00:39,846 --> 00:00:41,240
+if you've taken the prerequisites,
+
+17
+00:00:41,240 --> 00:00:43,569
+so don't worry too much,
+just go with the flow
+
+18
+00:00:43,569 --> 00:00:46,455
+and let's see what we remember.
+
+19
+00:00:46,455 --> 00:00:49,039
+So we'll start our calculus primer now.
+
+20
+00:00:49,039 --> 00:00:52,000
+The goal here is just
+to give a brief review
+
+21
+00:00:52,000 --> 00:00:55,027
+of these little tidbits
+that we'll be using later on
+
+22
+00:00:55,027 --> 00:00:56,798
+throughout the entire course.
+
+23
+00:00:56,798 --> 00:00:59,117
+First of all, let's go
+through a couple sort of
+
+24
+00:00:59,117 --> 00:01:01,060
+elementary definitions
+that you might remember
+
+25
+00:01:01,060 --> 00:01:02,235
+from long time ago.
+
+26
+00:01:02,235 --> 00:01:05,222
+Let's suppose that f of x is a function
+
+27
+00:01:05,222 --> 00:01:09,477
+that maps different values of
+x from a domain to a range,
+
+28
+00:01:09,477 --> 00:01:12,103
+and you can represent
+this thing in shorthand,
+
+29
+00:01:12,103 --> 00:01:15,552
+f goes from X to Y, you've
+probably seen that before.
+
+30
+00:01:15,552 --> 00:01:16,655
+Here's an example.
+
+31
+00:01:16,655 --> 00:01:19,322
+If f of x equals x
+squared, a little parabola,
+
+32
+00:01:19,322 --> 00:01:23,321
+then this function takes
+x-values from the real line R,
+
+33
+00:01:23,321 --> 00:01:24,663
+that's some more notation,
+
+34
+00:01:24,663 --> 00:01:27,813
+and it maps it to the nonnegative
+portion of the real line,
+
+35
+00:01:27,813 --> 00:01:29,813
+we'll call that R plus.
+
+36
+00:01:29,813 --> 00:01:31,817
+So let's do a little definition here.
+
+37
+00:01:31,817 --> 00:01:35,592
+We'll say that a function
+f of x is continuous
+
+38
+00:01:35,592 --> 00:01:38,931
+if for any x naught and x in the domain
+
+39
+00:01:38,931 --> 00:01:42,925
+we have that the limit as x
+goes to x naught of f of x
+
+40
+00:01:42,925 --> 00:01:44,541
+equals f of x naught.
+
+41
+00:01:44,541 --> 00:01:48,651
+Now that limit just
+denotes the familiar limit
+
+42
+00:01:48,651 --> 00:01:51,494
+that we're all used to
+even in high school,
+
+43
+00:01:51,494 --> 00:01:55,308
+and we'll assume that f
+of x is going to exist
+
+44
+00:01:55,308 --> 00:01:57,868
+for all the x in the domain.
+
+45
+00:01:57,868 --> 00:01:59,277
+So here's a simple example.
+
+46
+00:01:59,277 --> 00:02:01,879
+Let's let f of x equals three x squared,
+
+47
+00:02:01,879 --> 00:02:03,788
+now that's just a quadratic function,
+
+48
+00:02:03,788 --> 00:02:06,548
+that thing is obviously
+continuous for all x.
+
+49
+00:02:06,548 --> 00:02:10,069
+Now the function f of x equals integer x,
+
+50
+00:02:10,069 --> 00:02:12,389
+that's the round down function,
+
+51
+00:02:12,389 --> 00:02:15,065
+some people call it the floor function,
+
+52
+00:02:15,065 --> 00:02:18,031
+that thing's got what's
+called a jump discontinuity
+
+53
+00:02:18,031 --> 00:02:21,570
+at any integer, so for
+instance 3.4 equals three,
+
+54
+00:02:21,570 --> 00:02:24,430
+3.5 equals three, et cetera et cetera,
+
+55
+00:02:24,430 --> 00:02:28,528
+then it jumps up to
+four when we get to 4.0.
+
+56
+00:02:28,528 --> 00:02:29,699
+Here's another definition,
+
+57
+00:02:29,699 --> 00:02:31,667
+we needed continuity for this one,
+
+58
+00:02:31,667 --> 00:02:35,450
+if f of x is continuous,
+then the derivative,
+
+59
+00:02:35,450 --> 00:02:38,223
+which we denote as d dx f of x,
+
+60
+00:02:38,223 --> 00:02:40,954
+or sometimes we call it f prime of x,
+
+61
+00:02:40,954 --> 00:02:44,379
+that's the limit as h goes
+to zero of the following:
+
+62
+00:02:44,379 --> 00:02:47,629
+f of x plus h, minus f of x, over h.
+
+63
+00:02:48,765 --> 00:02:52,023
+Now that can also be
+interpreted as a slope
+
+64
+00:02:52,023 --> 00:02:54,653
+because f of x plus h minus f of x,
+
+65
+00:02:54,653 --> 00:02:56,748
+that's kinda the rise
+
+66
+00:02:56,748 --> 00:02:59,500
+and divided by h, that's the run,
+
+67
+00:02:59,500 --> 00:03:02,417
+over the range x to x plus h,
+
+68
+00:03:03,387 --> 00:03:05,415
+so that can be interpreted as a slope,
+
+69
+00:03:05,415 --> 00:03:08,345
+or an instantaneous slope at any point x.
+
+70
+00:03:08,345 --> 00:03:09,981
+Now we'll assume that it exists
+
+71
+00:03:09,981 --> 00:03:11,449
+and it's well-defined for any given x,
+
+72
+00:03:11,449 --> 00:03:13,915
+but that thing is the derivative.
+
+73
+00:03:13,915 --> 00:03:16,553
+Here are some old friends.
+
+74
+00:03:16,553 --> 00:03:19,425
+So when you take the derivative
+of a polynomial term,
+
+75
+00:03:19,425 --> 00:03:23,226
+x to the k, you may remember
+that that derivative is
+
+76
+00:03:23,226 --> 00:03:25,928
+k times x to the k minus one.
+
+77
+00:03:25,928 --> 00:03:27,105
+If you don't remember,
+
+78
+00:03:27,105 --> 00:03:30,783
+go back to your calculus
+book lickety split.
+
+79
+00:03:30,783 --> 00:03:33,545
+One nice derivative is e to the x,
+
+80
+00:03:33,545 --> 00:03:35,829
+e is that exponential constant
+
+81
+00:03:35,829 --> 00:03:39,081
+but e to the x, the derivative
+of that stays the same,
+
+82
+00:03:39,081 --> 00:03:40,724
+e to the x.
+
+83
+00:03:40,724 --> 00:03:42,303
+It's kind of a neat property
+
+84
+00:03:42,303 --> 00:03:47,201
+but you can go back to your
+calculus book and see why.
+
+85
+00:03:47,201 --> 00:03:50,854
+Sine of x, the derivative
+of that is cosine of x,
+
+86
+00:03:50,854 --> 00:03:52,876
+and sort of complimentary to that,
+
+87
+00:03:52,876 --> 00:03:56,248
+cosine of x, the derivative
+of that is minus sine of x,
+
+88
+00:03:56,248 --> 00:03:58,997
+that's just something
+that you have to remember.
+
+89
+00:03:58,997 --> 00:04:02,522
+The natural log of x, the
+derivative of that, is one over x,
+
+90
+00:04:02,522 --> 00:04:05,727
+we'll be using that in a
+little while when we integrate.
+
+91
+00:04:05,727 --> 00:04:08,047
+And finally, this last old friend,
+
+92
+00:04:08,047 --> 00:04:10,822
+if for some reason you want the derivative
+
+93
+00:04:10,822 --> 00:04:14,806
+of arctangent of x, well that's
+one over one plus x squared,
+
+94
+00:04:14,806 --> 00:04:16,337
+and believe it or not we'll be using that
+
+95
+00:04:16,337 --> 00:04:18,487
+a couple times in the course.
+
+96
+00:04:18,487 --> 00:04:21,122
+So, here are some well known
+properties of derivatives,
+
+97
+00:04:21,122 --> 00:04:22,872
+and I'll just using these on and off,
+
+98
+00:04:22,872 --> 00:04:24,320
+just wanted to remind you of them.
+
+99
+00:04:24,320 --> 00:04:27,465
+First of all, derivatives
+have this linearity property.
+
+100
+00:04:27,465 --> 00:04:31,075
+The derivative of a times f of x plus b,
+
+101
+00:04:31,075 --> 00:04:34,428
+well that's just equal to a
+times the derivative of x,
+
+102
+00:04:34,428 --> 00:04:35,993
+the derivative of b,
+
+103
+00:04:35,993 --> 00:04:38,019
+well that's the derivative of a constant,
+
+104
+00:04:38,019 --> 00:04:39,956
+and that's zero so that goes away.
+
+105
+00:04:39,956 --> 00:04:42,865
+If you've got the sum of two functions
+
+106
+00:04:42,865 --> 00:04:46,446
+then the derivative of the sum
+is the sum of the derivative.
+
+107
+00:04:46,446 --> 00:04:49,368
+So f of x plus g of x,
+the derivative of that,
+
+108
+00:04:49,368 --> 00:04:52,698
+is the derivative of f
+plus the derivative of g.
+
+109
+00:04:52,698 --> 00:04:54,361
+Very nice.
+
+110
+00:04:54,361 --> 00:04:56,446
+Here's what's called the product rule,
+
+111
+00:04:56,446 --> 00:04:57,988
+the derivative of the product
+
+112
+00:04:57,988 --> 00:05:00,375
+is this slightly complicated thing,
+
+113
+00:05:00,375 --> 00:05:04,381
+f prime of x times g,
+plus f of x times g prime.
+
+114
+00:05:04,381 --> 00:05:06,406
+So that's just the product
+rule, you have to remember it,
+
+115
+00:05:06,406 --> 00:05:10,247
+that'll be useful later on when
+we do integration by parts.
+
+116
+00:05:10,247 --> 00:05:11,792
+Now we've got this quotient rule,
+
+117
+00:05:11,792 --> 00:05:15,474
+this is an interesting one,
+the derivative of the quotient
+
+118
+00:05:15,474 --> 00:05:17,722
+is this mess on the right hand side,
+
+119
+00:05:17,722 --> 00:05:20,925
+so the derivative of f of x over g of x is
+
+120
+00:05:20,925 --> 00:05:24,008
+g times f prime minus f times g prime
+
+121
+00:05:25,116 --> 00:05:26,791
+over g squared.
+
+122
+00:05:26,791 --> 00:05:28,532
+That's a little bit hard to remember,
+
+123
+00:05:28,532 --> 00:05:30,440
+I'll go over a mnemonic in a second.
+
+124
+00:05:30,440 --> 00:05:34,736
+Finally, the chain rule, I'll
+also give a reference on that,
+
+125
+00:05:34,736 --> 00:05:38,924
+that's the derivative of a
+more complicated function.
+
+126
+00:05:38,924 --> 00:05:43,091
+So if we want the derivative
+of f of another function g,
+
+127
+00:05:44,314 --> 00:05:47,578
+so we're kind of doing a
+composition of functions,
+
+128
+00:05:47,578 --> 00:05:50,801
+the derivative of f of
+g of x, that's equal to
+
+129
+00:05:50,801 --> 00:05:54,843
+the derivative of f evaluated
+at g, now you take the inside,
+
+130
+00:05:54,843 --> 00:05:57,797
+kind of do this in a chain, times g prime.
+
+131
+00:05:57,797 --> 00:06:01,964
+So f g quantity prime equals
+f prime of g times g prime.
+
+132
+00:06:03,440 --> 00:06:04,588
+It's kind of like a chain.
+
+133
+00:06:04,588 --> 00:06:05,769
+So here are a couple references,
+
+134
+00:06:05,769 --> 00:06:08,833
+the first one is a mnemonic
+for the quotient rule.
+
+135
+00:06:08,833 --> 00:06:13,111
+So if you consider f of x
+as Hi because it's on top,
+
+136
+00:06:13,111 --> 00:06:16,128
+it's in the numerator, and g of x as Ho,
+
+137
+00:06:16,128 --> 00:06:18,926
+cause it's in the denominator,
+
+138
+00:06:18,926 --> 00:06:22,459
+then the derivative of the
+quotient can be expressed as
+
+139
+00:06:22,459 --> 00:06:24,542
+Ho dee Hi minus Hi dee Ho
+
+140
+00:06:26,425 --> 00:06:27,957
+over Ho Ho.
+
+141
+00:06:27,957 --> 00:06:30,738
+Think about that, but it's
+an easy way to remember it.
+
+142
+00:06:30,738 --> 00:06:31,995
+And then the chain rule,
+
+143
+00:06:31,995 --> 00:06:34,801
+there's a reference that you
+can go look up on YouTube.
+
+144
+00:06:34,801 --> 00:06:36,379
+Here's an example, cause
+you know we went through
+
+145
+00:06:36,379 --> 00:06:38,494
+all these equations, time
+to do a little example,
+
+146
+00:06:38,494 --> 00:06:39,921
+here's an easy one I could think of,
+
+147
+00:06:39,921 --> 00:06:42,300
+let's let f of x equal x squared
+
+148
+00:06:42,300 --> 00:06:45,346
+and we'll set g of x
+equal to natural log of x,
+
+149
+00:06:45,346 --> 00:06:47,713
+let's just see what some of
+these things end up equaling
+
+150
+00:06:47,713 --> 00:06:49,296
+when we do these derivative rules.
+
+151
+00:06:49,296 --> 00:06:52,001
+First of all let's do the product rule,
+
+152
+00:06:52,001 --> 00:06:55,088
+so what's the derivative
+of f of x times g of x?
+
+153
+00:06:55,088 --> 00:06:59,782
+Well remember, we said
+that this is gonna be the
+
+154
+00:06:59,782 --> 00:07:04,327
+f of x times g prime plus
+f prime times g of x.
+
+155
+00:07:04,327 --> 00:07:06,426
+And let's see if that
+turns out to be the case.
+
+156
+00:07:06,426 --> 00:07:09,443
+So the first equality is just a,
+
+157
+00:07:09,443 --> 00:07:12,264
+I've reexpressed the
+derivative of f times g
+
+158
+00:07:12,264 --> 00:07:15,597
+as the derivative of x squared
+times natural log of x,
+
+159
+00:07:15,597 --> 00:07:17,986
+so according to my product rule it's,
+
+160
+00:07:17,986 --> 00:07:20,885
+well we'll do f prime of x times g,
+
+161
+00:07:20,885 --> 00:07:24,549
+so f prime is two x,
+g is natural log of x,
+
+162
+00:07:24,549 --> 00:07:28,359
+plus f of x times g prime,
+this looks a little tricky
+
+163
+00:07:28,359 --> 00:07:30,193
+because all of a sudden we just have an x,
+
+164
+00:07:30,193 --> 00:07:31,721
+but it actually makes sense.
+
+165
+00:07:31,721 --> 00:07:33,437
+What's g prime?
+
+166
+00:07:33,437 --> 00:07:36,634
+The derivative of natural
+log of x is one over x,
+
+167
+00:07:36,634 --> 00:07:39,762
+and so that's cancels out
+partially with the x squared
+
+168
+00:07:39,762 --> 00:07:41,165
+and that leaves me with the x
+
+169
+00:07:41,165 --> 00:07:43,390
+and so that's how we get
+that answer, very very easy.
+
+170
+00:07:43,390 --> 00:07:44,653
+How about the quotient rule?
+
+171
+00:07:44,653 --> 00:07:48,644
+F of x over g of x, prime,
+so that's the derivative
+
+172
+00:07:48,644 --> 00:07:50,929
+of x squared over natural log of x,
+
+173
+00:07:50,929 --> 00:07:55,356
+well you do Ho dee Hi
+minus Hi dee Ho over Ho Ho,
+
+174
+00:07:55,356 --> 00:07:57,656
+Ho Ho in the denominator is very easy,
+
+175
+00:07:57,656 --> 00:08:00,291
+that's just natural log
+squared of x, that's easy.
+
+176
+00:08:00,291 --> 00:08:02,708
+So Ho dee Hi minus Hi dee Ho,
+
+177
+00:08:04,204 --> 00:08:08,025
+well let's do the dee Hi part first,
+
+178
+00:08:08,025 --> 00:08:10,717
+that's two x, Ho is natural log of x
+
+179
+00:08:10,717 --> 00:08:14,121
+so that's where we get the left
+hand side of that numerator,
+
+180
+00:08:14,121 --> 00:08:15,288
+and then minus
+
+181
+00:08:16,729 --> 00:08:18,013
+Hi dee Ho,
+
+182
+00:08:18,013 --> 00:08:19,464
+well we've already done that,
+
+183
+00:08:19,464 --> 00:08:22,861
+that's minus x, so that's
+where that comes from.
+
+184
+00:08:22,861 --> 00:08:26,184
+Okay how about f of g quantity prime,
+
+185
+00:08:26,184 --> 00:08:27,723
+so we're gonna need the chain rule,
+
+186
+00:08:27,723 --> 00:08:29,198
+and that's gonna be
+
+187
+00:08:29,198 --> 00:08:33,119
+two times g of x times g prime of x,
+
+188
+00:08:33,119 --> 00:08:34,179
+and that turns out to equal
+
+189
+00:08:34,179 --> 00:08:37,025
+two times natural log of x over x.
+
+190
+00:08:37,025 --> 00:08:41,112
+Again you can go and check
+that out, it's very very easy,
+
+191
+00:08:41,112 --> 00:08:43,191
+very very simple.
+
+192
+00:08:43,191 --> 00:08:44,796
+Okay let's make a remark now.
+
+193
+00:08:44,796 --> 00:08:47,472
+If one derivative is good enough,
+how about two derivatives?
+
+194
+00:08:47,472 --> 00:08:49,962
+The second derivative,
+f double prime of x,
+
+195
+00:08:49,962 --> 00:08:52,673
+equals the derivative
+of the first derivative,
+
+196
+00:08:52,673 --> 00:08:55,677
+so I can express it as
+d dx of f prime of x,
+
+197
+00:08:55,677 --> 00:08:58,825
+and you can kinda think of
+it as the slope of the slope,
+
+198
+00:08:58,825 --> 00:09:00,812
+and if you remember physics class,
+
+199
+00:09:00,812 --> 00:09:03,072
+if f of x is what we'll call position,
+
+200
+00:09:03,072 --> 00:09:06,216
+then f prime of x is usually
+regarded as velocity,
+
+201
+00:09:06,216 --> 00:09:09,473
+and f double prime is acceleration,
+
+202
+00:09:09,473 --> 00:09:11,977
+so if we wanna be Isaac Newton,
+we remember all this stuff.
+
+203
+00:09:11,977 --> 00:09:13,995
+Knowing the second derivative is very nice
+
+204
+00:09:13,995 --> 00:09:15,863
+because it's helpful in finding mins
+
+205
+00:09:15,863 --> 00:09:17,567
+and maxes of a function.
+
+206
+00:09:17,567 --> 00:09:21,014
+So it turns out that the
+minimum or maximum of f of x
+
+207
+00:09:21,014 --> 00:09:24,660
+can only occur when the
+slope of f of x is zero,
+
+208
+00:09:24,660 --> 00:09:26,608
+think about it, kinda makes sense.
+
+209
+00:09:26,608 --> 00:09:29,553
+In other words, only when
+f prime of x equals zero,
+
+210
+00:09:29,553 --> 00:09:31,076
+let's pretend for now that that happens
+
+211
+00:09:31,076 --> 00:09:34,047
+at the specific values x equals x naught,
+
+212
+00:09:34,047 --> 00:09:37,626
+then if f double prime of
+x naught is less than zero,
+
+213
+00:09:37,626 --> 00:09:39,352
+it turns out you get a max.
+
+214
+00:09:39,352 --> 00:09:41,857
+If f double prime of x
+naught is greater than zero,
+
+215
+00:09:41,857 --> 00:09:46,533
+you get a minimum, that's known
+as concave down, concave up,
+
+216
+00:09:46,533 --> 00:09:50,579
+and if f double prime
+of x naught equals zero
+
+217
+00:09:50,579 --> 00:09:52,071
+you get a point of inflection,
+
+218
+00:09:52,071 --> 00:09:53,367
+that doesn't happen very often
+
+219
+00:09:53,367 --> 00:09:54,735
+but when it does you get real sick
+
+220
+00:09:54,735 --> 00:09:56,740
+and that's why it's called
+a point of infection.
+
+221
+00:09:56,740 --> 00:09:58,561
+I'm gonna go through this
+example pretty quickly,
+
+222
+00:09:58,561 --> 00:10:01,583
+then we'll talk again in the
+next lesson about this one.
+
+223
+00:10:01,583 --> 00:10:05,092
+Let's find x that minimizes f of x equals
+
+224
+00:10:05,092 --> 00:10:08,139
+e to the two x plus e to the minus x.
+
+225
+00:10:08,139 --> 00:10:10,603
+It turns out that the
+minimum can only occur
+
+226
+00:10:10,603 --> 00:10:12,468
+when the derivative equals zero,
+
+227
+00:10:12,468 --> 00:10:15,711
+and I can take the derivative
+of that using the chain rule,
+
+228
+00:10:15,711 --> 00:10:19,019
+the derivative of the
+first term, e to the two x,
+
+229
+00:10:19,019 --> 00:10:21,939
+think of it as e to the g of x,
+
+230
+00:10:21,939 --> 00:10:24,162
+when I take the derivative of that,
+
+231
+00:10:24,162 --> 00:10:27,829
+I get e to the g of x times g prime of x,
+
+232
+00:10:28,805 --> 00:10:32,754
+and so that gives me,
+cause g prime is two,
+
+233
+00:10:32,754 --> 00:10:34,908
+I get two e to the two x,
+
+234
+00:10:34,908 --> 00:10:37,188
+similarly the minus sign comes down
+
+235
+00:10:37,188 --> 00:10:38,956
+from the e to the minus x,
+
+236
+00:10:38,956 --> 00:10:41,442
+so the second term in the
+derivative f prime of x
+
+237
+00:10:41,442 --> 00:10:43,613
+is gonna be minus e to the minus x.
+
+238
+00:10:43,613 --> 00:10:45,179
+Anyway, take all that,
+
+239
+00:10:45,179 --> 00:10:48,147
+two times e to the two x
+minus e to the minus x,
+
+240
+00:10:48,147 --> 00:10:51,736
+set that equal to zero
+and then solve for x.
+
+241
+00:10:51,736 --> 00:10:54,297
+So that solution occurs when x naught,
+
+242
+00:10:54,297 --> 00:10:58,819
+after a little algebra, equals
+minus 1/3 natural log of 2,
+
+243
+00:10:58,819 --> 00:11:02,086
+and it turns out it's very easy to show,
+
+244
+00:11:02,086 --> 00:11:03,976
+if I take the second derivative
+
+245
+00:11:03,976 --> 00:11:07,082
+that f double prime of x is
+greater than zero for all x,
+
+246
+00:11:07,082 --> 00:11:10,787
+and so therefore x naught is the minimum.
+
+247
+00:11:10,787 --> 00:11:12,937
+Okay, great, done with that example.
+
+248
+00:11:12,937 --> 00:11:14,987
+And in fact, done with this lesson.
+
+249
+00:11:14,987 --> 00:11:16,263
+Here's a summary.
+
+250
+00:11:16,263 --> 00:11:19,069
+What we did here is
+that we did a little bit
+
+251
+00:11:19,069 --> 00:11:21,754
+of calculus derivative
+memories, very nice stuff,
+
+252
+00:11:21,754 --> 00:11:24,337
+I hope there were no surprises.
+
+253
+00:11:25,680 --> 00:11:29,343
+And next time, I'm gonna take
+sort of that last example
+
+254
+00:11:29,343 --> 00:11:31,507
+and I'm gonna give some
+numerical techniques
+
+255
+00:11:31,507 --> 00:11:33,950
+to solve nonlinear equations,
+
+256
+00:11:33,950 --> 00:11:38,263
+in particular I'll try to
+solve these nonlinear equations
+
+257
+00:11:38,263 --> 00:11:39,889
+to find out what the zeroes are,
+
+258
+00:11:39,889 --> 00:11:41,285
+and this is always pretty interesting
+
+259
+00:11:41,285 --> 00:11:42,767
+and it's actually stuff
+that we'll be using
+
+260
+00:11:42,767 --> 00:11:44,127
+throughout the course.
+
+261
+00:11:44,127 --> 00:11:45,960
+So, see you next time!
+

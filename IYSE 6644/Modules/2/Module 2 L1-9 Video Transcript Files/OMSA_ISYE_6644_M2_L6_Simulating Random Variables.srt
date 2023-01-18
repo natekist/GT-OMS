@@ -1,0 +1,994 @@
+﻿1
+00:00:02,276 --> 00:00:04,553
+- Hi everybody. In this lesson,
+
+2
+00:00:04,553 --> 00:00:07,597
+I'm finally gonna start
+simulating random variables.
+
+3
+00:00:07,597 --> 00:00:09,648
+And again, this by way of doing
+
+4
+00:00:09,648 --> 00:00:11,594
+some review of prob and stats,
+
+5
+00:00:11,594 --> 00:00:15,735
+but I figured I'd sneak
+in some simulation now.
+
+6
+00:00:15,735 --> 00:00:17,172
+Here's the lesson overview.
+
+7
+00:00:17,172 --> 00:00:19,481
+Last time we started
+our probability primer.
+
+8
+00:00:19,481 --> 00:00:21,066
+All right, finally.
+
+9
+00:00:21,066 --> 00:00:23,516
+And this time, I'm gonna
+show you how to simulate
+
+10
+00:00:23,516 --> 00:00:26,709
+some very easy random
+variables on the computer.
+
+11
+00:00:26,709 --> 00:00:28,615
+And of course, this is
+one of the main reasons
+
+12
+00:00:28,615 --> 00:00:31,876
+that you're taking this class.
+
+13
+00:00:31,876 --> 00:00:33,148
+So first of all, let's start out
+
+14
+00:00:33,148 --> 00:00:34,840
+with kind of the easiest example.
+
+15
+00:00:34,840 --> 00:00:36,580
+I'm just gonna pick a random integer,
+
+16
+00:00:36,580 --> 00:00:40,036
+a discrete uniform
+distribution from one to n.
+
+17
+00:00:40,036 --> 00:00:43,804
+In other words, the
+random variable X equals i
+
+18
+00:00:43,804 --> 00:00:48,346
+with probability one over n
+for i equals one, two, up to n.
+
+19
+00:00:48,346 --> 00:00:52,113
+This is like a n-sided
+dice toss or die toss
+
+20
+00:00:52,113 --> 00:00:54,550
+for Dungeons and Dragons people.
+
+21
+00:00:54,550 --> 00:00:56,087
+So, here's how we do it.
+
+22
+00:00:56,087 --> 00:00:58,762
+If U is a uniform zero
+one random variable,
+
+23
+00:00:58,762 --> 00:01:01,393
+which I can get in Excel
+using the RAND function.
+
+24
+00:01:01,393 --> 00:01:04,236
+We'll talk more about uniform
+zero ones in a little while.
+
+25
+00:01:04,236 --> 00:01:08,403
+We can simulate a discrete
+uniform random variate,
+
+26
+00:01:09,347 --> 00:01:12,496
+simply by setting X equal to
+
+27
+00:01:12,496 --> 00:01:14,826
+n times a number between zero and one,
+
+28
+00:01:14,826 --> 00:01:16,710
+random number between zero and one,
+
+29
+00:01:16,710 --> 00:01:20,094
+and then rounding up,
+taking the ceiling function.
+
+30
+00:01:20,094 --> 00:01:21,794
+It's very, very easy, and you'll see why.
+
+31
+00:01:21,794 --> 00:01:23,804
+For example, let's take n equals 10,
+
+32
+00:01:23,804 --> 00:01:26,147
+so we have a ten-sided die toss.
+
+33
+00:01:26,147 --> 00:01:28,838
+I'm going to sample a uniform
+number between zero and one.
+
+34
+00:01:28,838 --> 00:01:31,993
+Let's pretend it turns out to be 0.73
+
+35
+00:01:31,993 --> 00:01:33,482
+the number between zero and one.
+
+36
+00:01:33,482 --> 00:01:36,157
+Then, that gives me X equal
+to the ceiling function
+
+37
+00:01:36,157 --> 00:01:39,568
+of n times U, ceiling function of 7.3,
+
+38
+00:01:39,568 --> 00:01:42,301
+and that equals eight. So very simple.
+
+39
+00:01:42,301 --> 00:01:45,470
+I get a uniform of 0.73 and that gives me
+
+40
+00:01:45,470 --> 00:01:49,089
+a discrete uniform of
+eight. Very, very easy.
+
+41
+00:01:49,089 --> 00:01:50,389
+Here's another discrete random variable.
+
+42
+00:01:50,389 --> 00:01:52,009
+This one's a little more complicated.
+
+43
+00:01:52,009 --> 00:01:53,569
+Let's let little f of x
+
+44
+00:01:53,569 --> 00:01:55,276
+or the probability that f equals little x
+
+45
+00:01:55,276 --> 00:01:58,484
+equal to 0.25, if x equals minus two,
+
+46
+00:01:58,484 --> 00:02:00,619
+0.10 if x equals three,
+
+47
+00:02:00,619 --> 00:02:02,952
+and 0.65 if x equals 4.2.
+
+48
+00:02:04,019 --> 00:02:05,887
+And notice how those things add up to one.
+
+49
+00:02:05,887 --> 00:02:08,898
+Now, I can't use a die
+toss to simulate this one.
+
+50
+00:02:08,898 --> 00:02:10,474
+This is a little bit too complicated.
+
+51
+00:02:10,474 --> 00:02:11,898
+So I'm going to use what's sort of called
+
+52
+00:02:11,898 --> 00:02:13,795
+the inverse transform method.
+
+53
+00:02:13,795 --> 00:02:14,901
+Here's what it is.
+
+54
+00:02:14,901 --> 00:02:17,380
+We'll go into more
+detail on this later on,
+
+55
+00:02:17,380 --> 00:02:19,168
+but I make a little table.
+
+56
+00:02:19,168 --> 00:02:22,608
+x, little f of x, the cdf, capital F of x,
+
+57
+00:02:22,608 --> 00:02:24,906
+or probably that x is less
+than or equal to little x,
+
+58
+00:02:24,906 --> 00:02:27,390
+and then associated uniform zero one.
+
+59
+00:02:27,390 --> 00:02:29,451
+So what I mean by that,
+
+60
+00:02:29,451 --> 00:02:33,276
+the x values are minus
+two, three, and 4.2.
+
+61
+00:02:33,276 --> 00:02:35,864
+I just make those up. Little f of x,
+
+62
+00:02:35,864 --> 00:02:39,379
+read the previous
+definition of probability
+
+63
+00:02:39,379 --> 00:02:40,571
+that X equals little x.
+
+64
+00:02:40,571 --> 00:02:44,161
+That's 0.25, 0.10, 0.65 respectively.
+
+65
+00:02:44,161 --> 00:02:48,328
+The cdf at those points,
+well I just add up the pmfs.
+
+66
+00:02:49,327 --> 00:02:52,771
+0.25, 0.35, 1.00. That's the third column.
+
+67
+00:02:52,771 --> 00:02:56,684
+Now, let's associate some
+uniforms with those cdf values.
+
+68
+00:02:56,684 --> 00:02:59,231
+The first value of x, x equals minus two,
+
+69
+00:02:59,231 --> 00:03:02,219
+that corresponds to a cdf of 0.25.
+
+70
+00:03:02,219 --> 00:03:06,516
+So any time I sample a
+uniform between zero and 0.25,
+
+71
+00:03:06,516 --> 00:03:08,897
+that's going to correspond
+to x equals minus two.
+
+72
+00:03:08,897 --> 00:03:12,171
+x equals three has a probability of 0.10,
+
+73
+00:03:12,171 --> 00:03:15,081
+and the cdf at that point is 0.35.
+
+74
+00:03:15,081 --> 00:03:18,490
+I'm going to correspond to
+that x equals three value,
+
+75
+00:03:18,490 --> 00:03:20,657
+the uniforms 0.25 to 0.35.
+
+76
+00:03:21,952 --> 00:03:24,025
+The probability that I end
+up with a uniform between
+
+77
+00:03:24,025 --> 00:03:26,406
+0.25 and 0.35 is 0.10,
+
+78
+00:03:26,406 --> 00:03:29,234
+just the probability that
+I want for x equals three.
+
+79
+00:03:29,234 --> 00:03:31,399
+And the final value, x equals 4.2,
+
+80
+00:03:31,399 --> 00:03:33,130
+that is the probability of 0.65,
+
+81
+00:03:33,130 --> 00:03:37,842
+all correspond uniforms to
+be between 0.35 and 1.0,
+
+82
+00:03:37,842 --> 00:03:41,943
+thus completing the whole
+grid of uniform zero ones
+
+83
+00:03:41,943 --> 00:03:43,431
+and let's see what we get here.
+
+84
+00:03:43,431 --> 00:03:45,547
+Let's sample a uniform and we choose
+
+85
+00:03:45,547 --> 00:03:47,352
+the corresponding x value, in other words,
+
+86
+00:03:47,352 --> 00:03:51,220
+we take the inverse, x
+equals F inverse of U.
+
+87
+00:03:51,220 --> 00:03:52,324
+Don't worry about that for now,
+
+88
+00:03:52,324 --> 00:03:53,939
+because we'll talk about it later.
+
+89
+00:03:53,939 --> 00:03:58,410
+For example, if U equals 0.46,
+you look at that third line,
+
+90
+00:03:58,410 --> 00:04:01,046
+that falls between 0.35 and 1.00,
+
+91
+00:04:01,046 --> 00:04:04,178
+so that corresponds to x equals 4.2.
+
+92
+00:04:04,178 --> 00:04:06,083
+Much more on this later.
+
+93
+00:04:06,083 --> 00:04:08,304
+Now, I'm going to use inverse transform
+
+94
+00:04:08,304 --> 00:04:10,778
+to generate continuous random variable.
+
+95
+00:04:10,778 --> 00:04:13,242
+Here's the main result.
+We'll prove it later on.
+
+96
+00:04:13,242 --> 00:04:15,643
+Theorem: If X is a
+continuous random variables
+
+97
+00:04:15,643 --> 00:04:17,701
+with cdf capital F of x,
+
+98
+00:04:17,701 --> 00:04:22,452
+then the random variable capital
+F of capital X is uniform.
+
+99
+00:04:22,452 --> 00:04:26,717
+Now this is crazy. What the
+thing on the second line there,
+
+100
+00:04:26,717 --> 00:04:30,594
+capital F of capital X,
+that is not a cdf anymore,
+
+101
+00:04:30,594 --> 00:04:33,053
+because there's a capital X sitting there
+
+102
+00:04:33,053 --> 00:04:34,959
+in the middle of that, not a little x.
+
+103
+00:04:34,959 --> 00:04:37,308
+It's capital F of capital X.
+
+104
+00:04:37,308 --> 00:04:40,595
+That thing is a nasty,
+horrible random variable.
+
+105
+00:04:40,595 --> 00:04:42,372
+Okay, fine. What that's
+gonna allow me to do though,
+
+106
+00:04:42,372 --> 00:04:44,290
+just take my word for it for now,
+
+107
+00:04:44,290 --> 00:04:46,381
+since that's uniform,
+according to my theorem,
+
+108
+00:04:46,381 --> 00:04:47,851
+which I haven't proven for you,
+
+109
+00:04:47,851 --> 00:04:50,827
+I'm going to just set
+capital F of capital X
+
+110
+00:04:50,827 --> 00:04:54,761
+equal to the uniform and
+solve backwards for x.
+
+111
+00:04:54,761 --> 00:04:56,902
+So that's going to require that I can take
+
+112
+00:04:56,902 --> 00:05:01,069
+X equals to F inverse of
+U. That's the inverse cdf.
+
+113
+00:05:04,045 --> 00:05:06,200
+And so what I'll be able to do,
+
+114
+00:05:06,200 --> 00:05:09,622
+if I can solve for X, that
+generates a value of X,
+
+115
+00:05:09,622 --> 00:05:11,987
+given that I can come up with a uniform,
+
+116
+00:05:11,987 --> 00:05:13,828
+which I can from Excel or from
+
+117
+00:05:13,828 --> 00:05:15,657
+any other programing language.
+
+118
+00:05:15,657 --> 00:05:18,390
+Here's an example, suppose capital X
+
+119
+00:05:18,390 --> 00:05:20,189
+random variable is exponential,
+
+120
+00:05:20,189 --> 00:05:24,101
+then the cdf of the
+exponential is a real function,
+
+121
+00:05:24,101 --> 00:05:26,978
+capital F of little x is one
+minus e to the minus lambda x
+
+122
+00:05:26,978 --> 00:05:29,268
+for X greater than zero.
+We showed you that before.
+
+123
+00:05:29,268 --> 00:05:31,397
+So now if I plug in capital X to get this
+
+124
+00:05:31,397 --> 00:05:34,006
+big, horrible, nasty random variable,
+
+125
+00:05:34,006 --> 00:05:37,511
+one minus e to the minus lambda capital X,
+
+126
+00:05:37,511 --> 00:05:40,363
+that gives me a uniform distribution
+
+127
+00:05:40,363 --> 00:05:41,346
+according to the theorem.
+
+128
+00:05:41,346 --> 00:05:43,906
+That is a messy, awful random variable.
+
+129
+00:05:43,906 --> 00:05:46,781
+I set it equal to U and solve for X.
+
+130
+00:05:46,781 --> 00:05:48,720
+Here's what I get after
+a little bit of algebra,
+
+131
+00:05:48,720 --> 00:05:50,085
+which we'll go through later.
+
+132
+00:05:50,085 --> 00:05:52,048
+X equals negative one over lambda
+
+133
+00:05:52,048 --> 00:05:55,706
+natural log of one minus U.
+That's exponential. Amazing.
+
+134
+00:05:55,706 --> 00:05:58,091
+So if I take a uniform,
+plug it into that thing,
+
+135
+00:05:58,091 --> 00:06:00,180
+I get an exponential. Beautiful.
+
+136
+00:06:00,180 --> 00:06:02,244
+Now the only things I
+haven't told you about is
+
+137
+00:06:02,244 --> 00:06:04,026
+how do you generate uniforms?
+
+138
+00:06:04,026 --> 00:06:06,657
+Well the above random
+number generation examples,
+
+139
+00:06:06,657 --> 00:06:10,636
+they all required us to
+generate basically independent
+
+140
+00:06:10,636 --> 00:06:12,810
+and identically distributed uniforms.
+
+141
+00:06:12,810 --> 00:06:14,415
+I'm going to use iid from now on,
+
+142
+00:06:14,415 --> 00:06:16,428
+because it's a mouth
+full. How do you do that?
+
+143
+00:06:16,428 --> 00:06:19,421
+If I'm lazy I can just go to
+Excel and use the RAND function
+
+144
+00:06:19,421 --> 00:06:21,709
+or something similar,
+your favorite language,
+
+145
+00:06:21,709 --> 00:06:22,828
+but what I'm going to do is
+
+146
+00:06:22,828 --> 00:06:25,278
+I'll give you an algorithm
+to generate these
+
+147
+00:06:25,278 --> 00:06:27,912
+pseudo random numbers,
+which we talked about
+
+148
+00:06:27,912 --> 00:06:30,370
+in the tour of simulation.
+
+149
+00:06:30,370 --> 00:06:32,933
+What it's gonna do, it's
+gonna give me a series,
+
+150
+00:06:32,933 --> 00:06:35,778
+we'll call them R one,
+R two, dot, dot, dot
+
+151
+00:06:35,778 --> 00:06:40,749
+of deterministic numbers that
+appear to be iid uniform.
+
+152
+00:06:40,749 --> 00:06:43,432
+So these are not really random numbers,
+
+153
+00:06:43,432 --> 00:06:45,039
+but to you and me they're gonna look it.
+
+154
+00:06:45,039 --> 00:06:47,175
+And there are deterministic
+algorithms to do this.
+
+155
+00:06:47,175 --> 00:06:49,135
+I need to start out with a seed,
+
+156
+00:06:49,135 --> 00:06:50,623
+an integer seed just to get going.
+
+157
+00:06:50,623 --> 00:06:53,853
+Let's pick your favorite
+fairly large integer, x naught,
+
+158
+00:06:53,853 --> 00:06:56,853
+and you calculate X i equal to 16807
+
+159
+00:06:58,628 --> 00:07:01,545
+the previous integer, X i minus one
+
+160
+00:07:02,757 --> 00:07:05,048
+mod two to the 31st minus one.
+
+161
+00:07:05,048 --> 00:07:06,720
+Now we had gone over this in the tour,
+
+162
+00:07:06,720 --> 00:07:09,284
+we'll give more details in this later on.
+
+163
+00:07:09,284 --> 00:07:13,451
+So the first one, x one is gonna
+equal 16807 times x naught,
+
+164
+00:07:14,461 --> 00:07:16,068
+which you've already picked out.
+
+165
+00:07:16,068 --> 00:07:18,093
+Mod two to the 31st minus one.
+
+166
+00:07:18,093 --> 00:07:22,749
+The second one, x two
+equals 16807 times x one,
+
+167
+00:07:22,749 --> 00:07:26,300
+which you just calculated,
+mod two to the 31st minus one.
+
+168
+00:07:26,300 --> 00:07:29,059
+This is gonna give me a
+series of very large integers.
+
+169
+00:07:29,059 --> 00:07:31,527
+X one, x two, dot, dot, dot.
+
+170
+00:07:31,527 --> 00:07:33,023
+I'm going to turn them into my
+
+171
+00:07:33,023 --> 00:07:35,827
+supposedly pseudo random numbers,
+
+172
+00:07:35,827 --> 00:07:38,577
+R i by just taking my
+integers and dividing
+
+173
+00:07:38,577 --> 00:07:42,395
+by the biggest possible integer
+from my modular arithmetic
+
+174
+00:07:42,395 --> 00:07:44,455
+two to the 31st minus one.
+
+175
+00:07:44,455 --> 00:07:47,091
+This is little bit of a
+hassle to program by yourself,
+
+176
+00:07:47,091 --> 00:07:49,459
+but it's really kinda
+easy. It's not that bad.
+
+177
+00:07:49,459 --> 00:07:50,898
+You can program it by yourself,
+
+178
+00:07:50,898 --> 00:07:54,397
+you can use the following pseudo code.
+
+179
+00:07:54,397 --> 00:07:56,182
+Here's a FORTRAN
+implementation for instance,
+
+180
+00:07:56,182 --> 00:07:58,935
+from an old book by
+Bratley, Fox, and Schrage.
+
+181
+00:07:58,935 --> 00:08:01,353
+I won't go through the details
+here, we'll do that later,
+
+182
+00:08:01,353 --> 00:08:04,531
+but it's basically two or
+three lines of code here.
+
+183
+00:08:04,531 --> 00:08:06,812
+And it works really well,
+
+184
+00:08:06,812 --> 00:08:09,413
+so you can look at this
+yourself during the commercials
+
+185
+00:08:09,413 --> 00:08:11,041
+while you're watching
+you favorite TV show.
+
+186
+00:08:11,041 --> 00:08:12,942
+This thing actually works pretty well.
+
+187
+00:08:12,942 --> 00:08:15,156
+And it gives me proper uniforms.
+
+188
+00:08:15,156 --> 00:08:18,499
+So what you do, you input your
+favorite x naught integer,
+
+189
+00:08:18,499 --> 00:08:22,505
+and the functions returns a
+pseudo random number called UNIF
+
+190
+00:08:22,505 --> 00:08:25,815
+as well as an updated integer
+that you can go and use again.
+
+191
+00:08:25,815 --> 00:08:27,404
+And this thing works pretty well.
+
+192
+00:08:27,404 --> 00:08:29,718
+A couple exercises I'm gonna
+just blow through these.
+
+193
+00:08:29,718 --> 00:08:30,850
+Look at them at your leisure.
+
+194
+00:08:30,850 --> 00:08:32,845
+These are sort of bonus exercises.
+
+195
+00:08:32,845 --> 00:08:36,450
+You can use whatever you
+want, these are bonus.
+
+196
+00:08:36,450 --> 00:08:38,140
+As long as you can give me a uniform,
+
+197
+00:08:38,140 --> 00:08:39,450
+you can do these very easily.
+
+198
+00:08:39,450 --> 00:08:42,788
+Make a histogram of minus
+natural log of U one.
+
+199
+00:08:42,788 --> 00:08:45,028
+It turns out, of U sub i.
+
+200
+00:08:45,028 --> 00:08:49,141
+These are gonna give you
+exponential random variables.
+
+201
+00:08:49,141 --> 00:08:50,797
+You can try that by yourself.
+
+202
+00:08:50,797 --> 00:08:54,699
+Now you can plug in to a slightly
+more complicated function.
+
+203
+00:08:54,699 --> 00:08:57,290
+Let's generate X i and Y i.
+
+204
+00:08:57,290 --> 00:09:00,223
+Those are going to be
+independent pairs of uniforms.
+
+205
+00:09:00,223 --> 00:09:03,350
+Plug into this nasty
+equation for Z i equals
+
+206
+00:09:03,350 --> 00:09:07,397
+square root of minus two log
+of X i times sin of two pi Y i.
+
+207
+00:09:07,397 --> 00:09:08,851
+See what you get.
+
+208
+00:09:08,851 --> 00:09:11,767
+I think you're gonna feel pretty
+normal about what you get.
+
+209
+00:09:11,767 --> 00:09:14,351
+And finally this really nasty one.
+
+210
+00:09:14,351 --> 00:09:17,781
+Again, let X i and Y i
+be independent uniforms.
+
+211
+00:09:17,781 --> 00:09:21,198
+Now define Z i as X i over X i minus Y i.
+
+212
+00:09:23,131 --> 00:09:24,683
+I'm not gonna tell you what you get,
+
+213
+00:09:24,683 --> 00:09:26,534
+but it's something very interesting.
+
+214
+00:09:26,534 --> 00:09:28,818
+So what you do, you
+plug in the X i and Y i.
+
+215
+00:09:28,818 --> 00:09:30,674
+Do that ten thousand
+times. Make a histogram.
+
+216
+00:09:30,674 --> 00:09:34,848
+See what you get and it's
+gonna be something interesting.
+
+217
+00:09:34,848 --> 00:09:37,298
+Here's summary of this lesson.
+
+218
+00:09:37,298 --> 00:09:39,445
+This was actually a starter lesson
+
+219
+00:09:39,445 --> 00:09:41,277
+on random variate generation.
+
+220
+00:09:41,277 --> 00:09:45,181
+Just get psyched up.
+Good stuff is coming up.
+
+221
+00:09:45,181 --> 00:09:48,021
+And next time I know that
+you've been expecting this,
+
+222
+00:09:48,021 --> 00:09:50,892
+but we're gonna have a nice
+lecture on expectations!
+
+223
+00:09:50,892 --> 00:09:52,725
+So, I'll see you then.
+
+224
+00:09:53,950 --> 00:09:56,700
+(ethereal music)
+

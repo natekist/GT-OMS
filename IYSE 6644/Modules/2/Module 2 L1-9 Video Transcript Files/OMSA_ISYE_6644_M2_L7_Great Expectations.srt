@@ -1,0 +1,1870 @@
+﻿1
+00:00:02,424 --> 00:00:03,940
+- In this lesson, we're
+gonna be continuing
+
+2
+00:00:03,940 --> 00:00:06,852
+our probability boot camp,
+
+3
+00:00:06,852 --> 00:00:08,955
+except I might diverge a little
+
+4
+00:00:08,955 --> 00:00:11,719
+into classic literature.
+
+5
+00:00:11,719 --> 00:00:15,073
+In this lesson, we'll be
+doing Great Expectations.
+
+6
+00:00:15,073 --> 00:00:17,117
+So, here's the lesson overview.
+
+7
+00:00:17,117 --> 00:00:19,537
+Last time, I took a brief detour
+
+8
+00:00:19,537 --> 00:00:23,576
+to show you how to simulate
+some very easy random variables.
+
+9
+00:00:23,576 --> 00:00:25,546
+In this lesson, I'll be back to the
+
+10
+00:00:25,546 --> 00:00:27,395
+formal Probability Review.
+
+11
+00:00:27,395 --> 00:00:28,491
+In particular, this module
+
+12
+00:00:28,491 --> 00:00:31,267
+is gonna be all about
+taking expected values
+
+13
+00:00:31,267 --> 00:00:32,934
+of random variables.
+
+14
+00:00:33,794 --> 00:00:36,182
+Now, we'll be paying particular attention
+
+15
+00:00:36,182 --> 00:00:37,749
+to something called LOTUS,
+
+16
+00:00:37,749 --> 00:00:41,083
+L-O-T-U-S, and we'll talk about that soon.
+
+17
+00:00:41,083 --> 00:00:42,476
+So, the fundamental definition
+
+18
+00:00:42,476 --> 00:00:45,126
+that we'll be working with
+is the expected value,
+
+19
+00:00:45,126 --> 00:00:48,108
+or mean, of a random variable X.
+
+20
+00:00:48,108 --> 00:00:49,291
+That's defined as
+
+21
+00:00:49,291 --> 00:00:51,816
+E of X equals, and now what I've done
+
+22
+00:00:51,816 --> 00:00:54,426
+is I've broken things up into two pieces,
+
+23
+00:00:54,426 --> 00:00:57,407
+a discrete version and
+a continuous version.
+
+24
+00:00:57,407 --> 00:00:59,239
+So, this discrete version
+
+25
+00:00:59,239 --> 00:01:02,083
+is just summation over all values of X
+
+26
+00:01:02,083 --> 00:01:03,583
+of X times f of X,
+
+27
+00:01:04,794 --> 00:01:07,050
+and that's if X is a
+discrete random variable,
+
+28
+00:01:07,050 --> 00:01:08,776
+and every place we see a summation,
+
+29
+00:01:08,776 --> 00:01:13,062
+we put an integral sign
+if X is continuous.
+
+30
+00:01:13,062 --> 00:01:15,143
+So, the expected value
+of X is the integral
+
+31
+00:01:15,143 --> 00:01:18,587
+over all X, of X times f of X DX.
+
+32
+00:01:18,587 --> 00:01:22,263
+In either case, the
+expected value is basically
+
+33
+00:01:22,263 --> 00:01:25,747
+just a weighted average of the X values,
+
+34
+00:01:25,747 --> 00:01:27,856
+and the weights are the f of X's,
+
+35
+00:01:27,856 --> 00:01:31,124
+the probability mass, or
+probability density functions.
+
+36
+00:01:31,124 --> 00:01:33,486
+Now, if you're real into notation,
+
+37
+00:01:33,486 --> 00:01:35,226
+here's a shorthand,
+
+38
+00:01:35,226 --> 00:01:36,912
+and occasionally, I'll use this
+
+39
+00:01:36,912 --> 00:01:39,254
+integral, or the real line of
+
+40
+00:01:39,254 --> 00:01:40,671
+X times d f of X.
+
+41
+00:01:42,339 --> 00:01:44,697
+D, f of X, d capital f of X,
+
+42
+00:01:44,697 --> 00:01:47,322
+is just shorthand notation for
+
+43
+00:01:47,322 --> 00:01:50,823
+the two braced items to the left.
+
+44
+00:01:50,823 --> 00:01:53,023
+Here's an example, very simple example
+
+45
+00:01:53,023 --> 00:01:54,962
+for the Bernoulli distribution,
+
+46
+00:01:54,962 --> 00:01:58,362
+so X has the Bernoulli p distribution,
+
+47
+00:01:58,362 --> 00:02:01,444
+if X equals one with probability p and
+
+48
+00:02:01,444 --> 00:02:03,833
+X equals zero with probability one minus,
+
+49
+00:02:03,833 --> 00:02:05,910
+which sometimes they'll call that q.
+
+50
+00:02:05,910 --> 00:02:09,563
+So that's just a coin
+flip with probability, p,
+
+51
+00:02:09,563 --> 00:02:13,135
+of landing on heads, or X
+equals one in that case.
+
+52
+00:02:13,135 --> 00:02:16,014
+Probability q of landing
+on tails, X equals zero.
+
+53
+00:02:16,014 --> 00:02:18,253
+So here, we have the expected value of X,
+
+54
+00:02:18,253 --> 00:02:20,753
+just the summation overall
+X of X times f of X,
+
+55
+00:02:20,753 --> 00:02:22,519
+that's a discrete random variable,
+
+56
+00:02:22,519 --> 00:02:24,932
+and you can see right here,
+
+57
+00:02:24,932 --> 00:02:28,461
+it's just a X can take
+the value of zero and one,
+
+58
+00:02:28,461 --> 00:02:30,498
+so it's zero times f of zero
+
+59
+00:02:30,498 --> 00:02:32,343
+plus one times f of one.
+
+60
+00:02:32,343 --> 00:02:35,949
+F of one equals p, and so
+it simplifies down to p,
+
+61
+00:02:35,949 --> 00:02:38,416
+as we have, on the bottom there.
+
+62
+00:02:38,416 --> 00:02:41,092
+So that's the expected value
+of a Bernoulli random variable.
+
+63
+00:02:41,092 --> 00:02:43,542
+Here's another example, this
+is the continuous example.
+
+64
+00:02:43,542 --> 00:02:45,804
+X is a Uniform distribution from a to b,
+
+65
+00:02:45,804 --> 00:02:49,626
+and what that means is
+that X is sample uniformly
+
+66
+00:02:49,626 --> 00:02:53,878
+sort of with equal probability,
+anywhere between a and b.
+
+67
+00:02:53,878 --> 00:02:58,153
+In this case, f of X
+equals one over b minus a,
+
+68
+00:02:58,153 --> 00:03:01,339
+for all values of X between a and b.
+
+69
+00:03:01,339 --> 00:03:03,295
+And you can see that that's
+just the equal sampling,
+
+70
+00:03:03,295 --> 00:03:04,889
+sort of, between a and b.
+
+71
+00:03:04,889 --> 00:03:06,857
+So this is a continuous random variable.
+
+72
+00:03:06,857 --> 00:03:11,024
+And so for the expected value,
+we now take the integral,
+
+73
+00:03:12,986 --> 00:03:15,854
+over all values, X, between a and b.
+
+74
+00:03:15,854 --> 00:03:19,923
+So the integral of X
+time f of X from a to b,
+
+75
+00:03:19,923 --> 00:03:21,840
+after the smoke clears,
+
+76
+00:03:22,726 --> 00:03:25,348
+it's just a plus b over two.
+
+77
+00:03:25,348 --> 00:03:28,981
+And in fact, if you draw
+a picture out of f of X,
+
+78
+00:03:28,981 --> 00:03:31,427
+it's just a constant, one over b minus a,
+
+79
+00:03:31,427 --> 00:03:35,507
+you can see that the average
+is just that a plus b over two.
+
+80
+00:03:35,507 --> 00:03:37,675
+You can tell just by looking at the thing.
+
+81
+00:03:37,675 --> 00:03:40,655
+Let's look at a slightly more
+difficult continuous example,
+
+82
+00:03:40,655 --> 00:03:43,096
+namely, let's supposed
+that X is distributed
+
+83
+00:03:43,096 --> 00:03:46,155
+as an Exponential distribution
+with parameter lambda.
+
+84
+00:03:46,155 --> 00:03:48,982
+In this case, f of X just equals lambda e
+
+85
+00:03:48,982 --> 00:03:52,105
+to the minus lambda X
+for X greater than zero,
+
+86
+00:03:52,105 --> 00:03:53,572
+and zero otherwise,
+
+87
+00:03:53,572 --> 00:03:56,748
+and this often represents the distribution
+
+88
+00:03:56,748 --> 00:03:58,657
+of the lifetime of say a light bulb,
+
+89
+00:03:58,657 --> 00:04:00,430
+or some electrical component.
+
+90
+00:04:00,430 --> 00:04:03,268
+In any case, the expected value of X,
+
+91
+00:04:03,268 --> 00:04:05,804
+we're gonna have to do
+some integration by parts,
+
+92
+00:04:05,804 --> 00:04:07,633
+and the L'Hospital's Rule,
+and all sorts of stuff,
+
+93
+00:04:07,633 --> 00:04:08,942
+I'll let you go through that.
+
+94
+00:04:08,942 --> 00:04:11,275
+The expected value of X,
+since it's continuous,
+
+95
+00:04:11,275 --> 00:04:15,442
+is gonna be the integral from
+X equals zero to infinity
+
+96
+00:04:16,964 --> 00:04:20,961
+of X times f of X, as we're
+starting at zero in this case,
+
+97
+00:04:20,961 --> 00:04:25,128
+X times f of X is X times
+lambda e to the minus lambda X,
+
+98
+00:04:26,424 --> 00:04:28,460
+after the smoke clears, again,
+
+99
+00:04:28,460 --> 00:04:30,125
+this is after integration by parts,
+
+100
+00:04:30,125 --> 00:04:33,675
+and L'Hospital's Rule,
+you get one over lambda,
+
+101
+00:04:33,675 --> 00:04:35,153
+and that's a famous result,
+
+102
+00:04:35,153 --> 00:04:38,432
+hopefully you remember that
+from a probability class.
+
+103
+00:04:38,432 --> 00:04:41,304
+Here's a definition, or
+actually it's a theorem
+
+104
+00:04:41,304 --> 00:04:43,191
+that you may not have seen before.
+
+105
+00:04:43,191 --> 00:04:45,862
+This is called the Law of
+the Unconscious Statistician,
+
+106
+00:04:45,862 --> 00:04:46,695
+or LOTUS.
+
+107
+00:04:47,551 --> 00:04:50,645
+And this is a very, very
+important nice little result.
+
+108
+00:04:50,645 --> 00:04:52,758
+We'll kind of pretend it's a definition,
+
+109
+00:04:52,758 --> 00:04:54,351
+but in fact it's a theorem.
+
+110
+00:04:54,351 --> 00:04:56,883
+So, this just gives us the expected value
+
+111
+00:04:56,883 --> 00:04:59,831
+of sort of an arbitrary function of X,
+
+112
+00:04:59,831 --> 00:05:03,607
+let's call that arbitrary function h of X,
+
+113
+00:05:03,607 --> 00:05:04,703
+and it can kind of be anything,
+
+114
+00:05:04,703 --> 00:05:06,081
+I'll give you some examples in a minute.
+
+115
+00:05:06,081 --> 00:05:08,589
+But the expected value of h of X,
+
+116
+00:05:08,589 --> 00:05:10,609
+this is a general definition now,
+
+117
+00:05:10,609 --> 00:05:14,789
+is, in the discrete case,
+its summation over all X
+
+118
+00:05:14,789 --> 00:05:18,319
+of h of X of f of X,
+that's if X is discrete.
+
+119
+00:05:18,319 --> 00:05:21,336
+And if X is continuous,
+it's the integral over all X
+
+120
+00:05:21,336 --> 00:05:24,800
+of h of X times f of X dx, again,
+
+121
+00:05:24,800 --> 00:05:27,842
+wherever you see a summation,
+put an integral sign
+
+122
+00:05:27,842 --> 00:05:29,517
+for the continuous case.
+
+123
+00:05:29,517 --> 00:05:31,370
+Here's my shorthand notation.
+
+124
+00:05:31,370 --> 00:05:35,537
+Integral over the real line
+of h of X times d f of X.
+
+125
+00:05:36,402 --> 00:05:38,623
+Like I said, the function
+h of X can be anything,
+
+126
+00:05:38,623 --> 00:05:39,723
+kind of nice.
+
+127
+00:05:39,723 --> 00:05:42,999
+For example, h of X equals
+X squared or one over X,
+
+128
+00:05:42,999 --> 00:05:44,682
+or sin of X or log of X.
+
+129
+00:05:44,682 --> 00:05:46,351
+It can be anything nice.
+
+130
+00:05:46,351 --> 00:05:48,398
+Here's an example. Here's
+a discrete example.
+
+131
+00:05:48,398 --> 00:05:49,925
+Suppose X has the following discrete
+
+132
+00:05:49,925 --> 00:05:51,842
+random variable distribution.
+
+133
+00:05:51,842 --> 00:05:54,659
+X can equal two, three, or four,
+
+134
+00:05:54,659 --> 00:05:59,285
+with probabilities 0.3,
+0.6, and 0.1, respectively.
+
+135
+00:05:59,285 --> 00:06:00,776
+Let's suppose, for some reason,
+
+136
+00:06:00,776 --> 00:06:03,637
+we wanna calculate the
+expected value of X cubed.
+
+137
+00:06:03,637 --> 00:06:08,414
+So, h of X equals X cubed,
+and we plug in to my equation
+
+138
+00:06:08,414 --> 00:06:12,581
+the expected value of X
+cubed is just sum over all X
+
+139
+00:06:14,344 --> 00:06:17,125
+of X cubed times f of X,
+
+140
+00:06:17,125 --> 00:06:20,209
+I plug in the three different
+values that X can take,
+
+141
+00:06:20,209 --> 00:06:22,695
+namely, X equals two, three, and four,
+
+142
+00:06:22,695 --> 00:06:26,912
+so here's X cubed, two cubed times f of X,
+
+143
+00:06:26,912 --> 00:06:30,404
+f of two is 0.3, plus
+three cubed times 0.6,
+
+144
+00:06:30,404 --> 00:06:34,759
+plus 4 cubed times 0.1,
+and after a little algebra,
+
+145
+00:06:34,759 --> 00:06:35,792
+you get 25.
+
+146
+00:06:35,792 --> 00:06:37,865
+What could be easier?
+
+147
+00:06:37,865 --> 00:06:39,042
+Here's another example.
+
+148
+00:06:39,042 --> 00:06:41,887
+Suppose that X is Uniform 0.2,
+
+149
+00:06:41,887 --> 00:06:45,076
+now I'll go for the whole thing
+
+150
+00:06:45,076 --> 00:06:47,140
+instead of the expected value of X cubed,
+
+151
+00:06:47,140 --> 00:06:48,901
+let's just be arbitrary
+and get the expected value
+
+152
+00:06:48,901 --> 00:06:50,448
+of X to the nth power.
+
+153
+00:06:50,448 --> 00:06:51,580
+So that's gonna be,
+
+154
+00:06:51,580 --> 00:06:53,585
+using the Law of the
+Unconscious Statistician,
+
+155
+00:06:53,585 --> 00:06:56,199
+integral over the real line of X to the n
+
+156
+00:06:56,199 --> 00:06:57,282
+times f of X,
+
+157
+00:06:58,937 --> 00:07:00,546
+so since it's a uniform distribution,
+
+158
+00:07:00,546 --> 00:07:04,552
+I only have to integrate from zero to two,
+
+159
+00:07:04,552 --> 00:07:06,885
+and then f of X is one half,
+
+160
+00:07:09,241 --> 00:07:11,107
+and after the smoke clears there,
+
+161
+00:07:11,107 --> 00:07:15,818
+my answer is two to the
+n divided by n plus one.
+
+162
+00:07:15,818 --> 00:07:17,388
+So, since we saw that thing,
+
+163
+00:07:17,388 --> 00:07:20,030
+the expected value of X to the n,
+
+164
+00:07:20,030 --> 00:07:23,639
+let's actually define that
+because it's quite useful.
+
+165
+00:07:23,639 --> 00:07:24,856
+The expected value of X to the n
+
+166
+00:07:24,856 --> 00:07:27,804
+is actually called the nth moment of X.
+
+167
+00:07:27,804 --> 00:07:29,283
+The slightly more complicated thing,
+
+168
+00:07:29,283 --> 00:07:32,945
+the expected value of the
+following messy, awful function,
+
+169
+00:07:32,945 --> 00:07:36,617
+is the expected value of X minus E of X,
+
+170
+00:07:36,617 --> 00:07:38,768
+that whole thing to the nth power,
+
+171
+00:07:38,768 --> 00:07:40,860
+that's called the nth central moment.
+
+172
+00:07:40,860 --> 00:07:43,844
+Now, even though it
+looks awful, don't panic.
+
+173
+00:07:43,844 --> 00:07:47,443
+That number E of X is just a number.
+
+174
+00:07:47,443 --> 00:07:52,201
+And so, this messy thing
+inside X minus a number
+
+175
+00:07:52,201 --> 00:07:53,713
+to the nth power,
+
+176
+00:07:53,713 --> 00:07:57,069
+that's just a complicated,
+big old h of X function.
+
+177
+00:07:57,069 --> 00:07:59,635
+That's called the nth central moment of X.
+
+178
+00:07:59,635 --> 00:08:03,802
+And that just sort of a
+specialty case of moments.
+
+179
+00:08:06,905 --> 00:08:09,703
+The most special case
+is the variance of X.
+
+180
+00:08:09,703 --> 00:08:12,492
+That's defined as the
+second central moment,
+
+181
+00:08:12,492 --> 00:08:15,602
+and you can see it's the expected value
+
+182
+00:08:15,602 --> 00:08:19,286
+of the squared deviation
+of X from its mean.
+
+183
+00:08:19,286 --> 00:08:20,783
+Now what does that mean?
+
+184
+00:08:20,783 --> 00:08:23,848
+E of X, the thing in the middle there,
+
+185
+00:08:23,848 --> 00:08:25,635
+is the expected value of X.
+
+186
+00:08:25,635 --> 00:08:29,161
+X minus E of X is how far
+does the random variable
+
+187
+00:08:29,161 --> 00:08:31,234
+tend to deviate from the mean.
+
+188
+00:08:31,234 --> 00:08:32,348
+Now that could be plus or minus,
+
+189
+00:08:32,348 --> 00:08:33,959
+so let's square it and take the average
+
+190
+00:08:33,959 --> 00:08:35,337
+over all those values.
+
+191
+00:08:35,337 --> 00:08:37,004
+And you get the variance.
+
+192
+00:08:37,004 --> 00:08:39,462
+So, whereas the expected
+value of X is a measure of,
+
+193
+00:08:39,462 --> 00:08:41,247
+sort of the middle of the distribution,
+
+194
+00:08:41,247 --> 00:08:43,402
+the variance of X is a measure
+
+195
+00:08:43,402 --> 00:08:46,400
+of how much the
+distribution is spread out.
+
+196
+00:08:46,400 --> 00:08:49,128
+You may be familiar with
+the standard deviation of X,
+
+197
+00:08:49,128 --> 00:08:52,140
+that's just the positive
+square root of the variance.
+
+198
+00:08:52,140 --> 00:08:54,660
+And here's a theorem that I always like to
+
+199
+00:08:54,660 --> 00:08:56,861
+calculate the variance of X with.
+
+200
+00:08:56,861 --> 00:08:58,844
+After a little bit of algebra,
+
+201
+00:08:58,844 --> 00:09:02,039
+it turns out that you can
+calculate the variance
+
+202
+00:09:02,039 --> 00:09:05,004
+simply by using the
+expected value of X squared
+
+203
+00:09:05,004 --> 00:09:07,421
+minus the square of the mean.
+
+204
+00:09:09,559 --> 00:09:12,776
+That's just an easier way to
+calculate variance sometimes.
+
+205
+00:09:12,776 --> 00:09:14,349
+As an example, let's suppose that X is
+
+206
+00:09:14,349 --> 00:09:17,498
+our good friend, the
+Bernoulli distribution.
+
+207
+00:09:17,498 --> 00:09:18,773
+And you might want to remember that
+
+208
+00:09:18,773 --> 00:09:21,390
+the expected value of that X equals p.
+
+209
+00:09:21,390 --> 00:09:24,420
+Then it turns out that the
+expected value of X squared is,
+
+210
+00:09:24,420 --> 00:09:27,114
+by the Law of the
+Unconscious Statistician,
+
+211
+00:09:27,114 --> 00:09:31,116
+it's a summation of X squared times f of X
+
+212
+00:09:31,116 --> 00:09:33,974
+when you substitute in
+the zero and the one,
+
+213
+00:09:33,974 --> 00:09:35,847
+turns out that's equal to p.
+
+214
+00:09:35,847 --> 00:09:38,164
+And so then the variance of X equals,
+
+215
+00:09:38,164 --> 00:09:40,942
+using my formula from the last page,
+
+216
+00:09:40,942 --> 00:09:42,657
+the expected value of X squared
+
+217
+00:09:42,657 --> 00:09:44,239
+minus E of X quantity squared
+
+218
+00:09:44,239 --> 00:09:47,072
+that's gonna be p minus p squared,
+
+219
+00:09:48,743 --> 00:09:51,499
+and that simplifies to
+p times one minus p.
+
+220
+00:09:51,499 --> 00:09:53,503
+Let's be a little more ambitious,
+
+221
+00:09:53,503 --> 00:09:55,262
+let's look at the exponential distribution
+
+222
+00:09:55,262 --> 00:09:56,423
+with parameter lambda.
+
+223
+00:09:56,423 --> 00:09:58,168
+By the Law of the
+Unconscious Statistician,
+
+224
+00:09:58,168 --> 00:10:01,171
+the expected value of
+X to the nth power is
+
+225
+00:10:01,171 --> 00:10:03,521
+the integral over the real line,
+
+226
+00:10:03,521 --> 00:10:05,604
+in this case you only have
+to go from zero to infinity,
+
+227
+00:10:05,604 --> 00:10:08,326
+'cause that's the only
+place where X is defined,
+
+228
+00:10:08,326 --> 00:10:12,049
+of X to the n times lambda
+E to the minus lambda X.
+
+229
+00:10:12,049 --> 00:10:14,299
+That's X e n f of X d exit,
+
+230
+00:10:15,293 --> 00:10:17,985
+and after you do the calculus,
+
+231
+00:10:17,985 --> 00:10:21,769
+now you may recognize this as
+what's called a gamma function
+
+232
+00:10:21,769 --> 00:10:24,598
+or you may have recognized
+your integral tables,
+
+233
+00:10:24,598 --> 00:10:26,767
+but believe it or not, after the algebra,
+
+234
+00:10:26,767 --> 00:10:30,580
+this comes out to be n
+factorial over lambda to the n.
+
+235
+00:10:30,580 --> 00:10:32,041
+That's sort of a famous result.
+
+236
+00:10:32,041 --> 00:10:35,082
+In particular, the variance
+of X equals E of X squared
+
+237
+00:10:35,082 --> 00:10:37,430
+minus E of X quantity squared,
+
+238
+00:10:37,430 --> 00:10:40,104
+that's gonna be if I plug
+in to the above equation
+
+239
+00:10:40,104 --> 00:10:42,736
+n equals two, that gives
+me two over lambda squared
+
+240
+00:10:42,736 --> 00:10:45,684
+minus the square of the mean,
+
+241
+00:10:45,684 --> 00:10:48,719
+we've already calculated
+the mean as one over lambda,
+
+242
+00:10:48,719 --> 00:10:50,717
+after I do the algebra there,
+
+243
+00:10:50,717 --> 00:10:53,296
+the variance of X equals
+one over lambda squared.
+
+244
+00:10:53,296 --> 00:10:54,792
+That's sort of a famous result.
+
+245
+00:10:54,792 --> 00:10:56,411
+Okay, fantastic.
+
+246
+00:10:56,411 --> 00:10:57,987
+Here's a general theorem.
+
+247
+00:10:57,987 --> 00:11:00,959
+It shows that expectation
+is a linear function.
+
+248
+00:11:00,959 --> 00:11:02,373
+So what I mean by that is,
+
+249
+00:11:02,373 --> 00:11:05,623
+the expected value of aX plus b equals,
+
+250
+00:11:06,774 --> 00:11:08,957
+well just move the expected value inside.
+
+251
+00:11:08,957 --> 00:11:10,993
+a times the expected value of X plus b,
+
+252
+00:11:10,993 --> 00:11:12,811
+so just move the expected value inside.
+
+253
+00:11:12,811 --> 00:11:15,437
+Doesn't quite work out
+like that for the variance.
+
+254
+00:11:15,437 --> 00:11:17,996
+The variance of aX plus b equals
+
+255
+00:11:17,996 --> 00:11:20,697
+a squared times the variance of X.
+
+256
+00:11:20,697 --> 00:11:24,026
+So the a comes outside as an
+a squared, the b goes away.
+
+257
+00:11:24,026 --> 00:11:25,438
+Let's think about that.
+
+258
+00:11:25,438 --> 00:11:28,601
+If I have a random variable,
+and I just shift it by b,
+
+259
+00:11:28,601 --> 00:11:31,205
+that's not gonna change
+how much it's spread out.
+
+260
+00:11:31,205 --> 00:11:35,233
+It's just gonna affect
+where it's centered.
+
+261
+00:11:35,233 --> 00:11:37,540
+So, that b doesn't come into play
+
+262
+00:11:37,540 --> 00:11:39,260
+when I look at the variance.
+
+263
+00:11:39,260 --> 00:11:41,920
+Here's an example,
+let's supposed that X is
+
+264
+00:11:41,920 --> 00:11:45,638
+exponential three, lambda
+equals three from the last page,
+
+265
+00:11:45,638 --> 00:11:48,619
+the expected value then
+of minus two X plus seven,
+
+266
+00:11:48,619 --> 00:11:49,904
+I just made that up,
+
+267
+00:11:49,904 --> 00:11:53,409
+is, well let's bring the expected
+value inside, like I said,
+
+268
+00:11:53,409 --> 00:11:56,257
+so minus two, expected
+value of X plus seven,
+
+269
+00:11:56,257 --> 00:11:58,852
+the expected value of
+X is one over lambda,
+
+270
+00:11:58,852 --> 00:12:00,040
+one over three,
+
+271
+00:12:00,040 --> 00:12:02,926
+so that's where I get
+this minus two thirds,
+
+272
+00:12:02,926 --> 00:12:04,655
+and then I'm so totally lazy,
+
+273
+00:12:04,655 --> 00:12:06,290
+I'm just gonna keep the plus seven there.
+
+274
+00:12:06,290 --> 00:12:08,637
+If you have extra time
+during commercials tonight,
+
+275
+00:12:08,637 --> 00:12:11,953
+you can calculate minus two
+thirds plus seven for yourself.
+
+276
+00:12:11,953 --> 00:12:16,678
+The variance, meanwhile, well
+minus two is my value of a,
+
+277
+00:12:16,678 --> 00:12:19,193
+it comes outside as minus two squared,
+
+278
+00:12:19,193 --> 00:12:22,182
+so that's gonna be four
+times the variance of X,
+
+279
+00:12:22,182 --> 00:12:24,177
+so that's where that four comes from.
+
+280
+00:12:24,177 --> 00:12:26,610
+The variance of X is
+one over lambda squared,
+
+281
+00:12:26,610 --> 00:12:28,593
+so that's four over nine.
+
+282
+00:12:28,593 --> 00:12:30,821
+So very, very easy.
+
+283
+00:12:30,821 --> 00:12:34,329
+Let's take a tiny little
+break here, just a moment.
+
+284
+00:12:34,329 --> 00:12:36,292
+And, turns out, we've just gotten through
+
+285
+00:12:36,292 --> 00:12:39,142
+a bunch of good stuff with
+respect to expectations.
+
+286
+00:12:39,142 --> 00:12:40,638
+And now I'm gonna do one more topic,
+
+287
+00:12:40,638 --> 00:12:42,606
+this is sort of a bonus topic.
+
+288
+00:12:42,606 --> 00:12:46,036
+I'd like you to take a
+look at it carefully,
+
+289
+00:12:46,036 --> 00:12:48,056
+but this really is a bonus topic,
+
+290
+00:12:48,056 --> 00:12:51,594
+and turns out it's very useful
+for a variety of reasons,
+
+291
+00:12:51,594 --> 00:12:55,298
+and these are called moment
+generating functions.
+
+292
+00:12:55,298 --> 00:12:56,521
+And it's a little more challenging,
+
+293
+00:12:56,521 --> 00:12:58,728
+that's why I decided to take
+this little break for a second.
+
+294
+00:12:58,728 --> 00:13:00,311
+Okay, break's over.
+
+295
+00:13:01,459 --> 00:13:04,500
+So, here's a definition of a
+moment generating function.
+
+296
+00:13:04,500 --> 00:13:09,007
+M X of t equals the expected
+value of e to the t X.
+
+297
+00:13:09,007 --> 00:13:10,261
+Now it looks a little awful,
+
+298
+00:13:10,261 --> 00:13:13,508
+but that's what the moment
+generating function is, mgf.
+
+299
+00:13:13,508 --> 00:13:17,231
+So it turns out, M X of
+t is a function of t,
+
+300
+00:13:17,231 --> 00:13:18,898
+not explicitly of X.
+
+301
+00:13:19,864 --> 00:13:21,930
+I mean, once you define
+the random variable, X,
+
+302
+00:13:21,930 --> 00:13:23,593
+the moment generating function
+
+303
+00:13:23,593 --> 00:13:25,980
+for the random variable, X,
+is just the expected value
+
+304
+00:13:25,980 --> 00:13:29,037
+of e to the t X, it's a function of t.
+
+305
+00:13:29,037 --> 00:13:30,296
+Here's an example.
+
+306
+00:13:30,296 --> 00:13:32,306
+Now, we don't panic, we're just gonna use
+
+307
+00:13:32,306 --> 00:13:34,584
+the Law of the Unconscious Statistician.
+
+308
+00:13:34,584 --> 00:13:36,783
+Let's let X equal our friend
+the Bernoulli distribution
+
+309
+00:13:36,783 --> 00:13:38,115
+with parameter, p.
+
+310
+00:13:38,115 --> 00:13:41,710
+So, the mgf, M X of t is, by definition,
+
+311
+00:13:41,710 --> 00:13:44,316
+the expected value of e to the t X,
+
+312
+00:13:44,316 --> 00:13:46,322
+by the Law of the
+Unconscious Statistician,
+
+313
+00:13:46,322 --> 00:13:50,356
+it's the sum over all X of
+e to the t X times f of X.
+
+314
+00:13:50,356 --> 00:13:53,235
+At this point, see it's
+a discrete distribution,
+
+315
+00:13:53,235 --> 00:13:55,434
+so we use a summation,
+not an integral sign,
+
+316
+00:13:55,434 --> 00:13:57,574
+that darn thing looks
+like Laplace transform,
+
+317
+00:13:57,574 --> 00:14:00,255
+if you remember back to
+your engineering days,
+
+318
+00:14:00,255 --> 00:14:01,287
+the only thing that's different is that
+
+319
+00:14:01,287 --> 00:14:04,004
+we have a t instead of a minus t.
+
+320
+00:14:04,004 --> 00:14:05,824
+So, if you remember Laplace transforms,
+
+321
+00:14:05,824 --> 00:14:08,214
+that's great, if you don't,
+don't worry about it.
+
+322
+00:14:08,214 --> 00:14:10,124
+In any case, the only
+two possible values of X
+
+323
+00:14:10,124 --> 00:14:11,899
+are zero and one.
+
+324
+00:14:11,899 --> 00:14:13,524
+Here's the X equals zero term,
+
+325
+00:14:13,524 --> 00:14:17,324
+e to the t zero times f of zero, that's q,
+
+326
+00:14:17,324 --> 00:14:19,660
+probability X equals
+zero is q for Bernoulli,
+
+327
+00:14:19,660 --> 00:14:24,285
+and e to the t times one,
+f of one, that's this term,
+
+328
+00:14:24,285 --> 00:14:25,820
+f of one is p,
+
+329
+00:14:25,820 --> 00:14:28,446
+after a little algebra,
+you get the answer,
+
+330
+00:14:28,446 --> 00:14:30,779
+p e to the t plus q, pet q.
+
+331
+00:14:32,372 --> 00:14:33,466
+That's the answer.
+
+332
+00:14:33,466 --> 00:14:35,611
+As another example, let's
+go continuous again.
+
+333
+00:14:35,611 --> 00:14:37,435
+Take the exponential distribution,
+
+334
+00:14:37,435 --> 00:14:39,112
+that's just 'cause it's easy for me.
+
+335
+00:14:39,112 --> 00:14:41,727
+M X of t equals the
+integral over the real line
+
+336
+00:14:41,727 --> 00:14:44,808
+e to the t x f of X d X,
+the integral only goes from
+
+337
+00:14:44,808 --> 00:14:46,225
+zero to infinity,
+
+338
+00:14:47,453 --> 00:14:49,551
+because that's where the
+exponential is defined.
+
+339
+00:14:49,551 --> 00:14:53,107
+We have the e to the t X right there,
+
+340
+00:14:53,107 --> 00:14:54,754
+that's the e to the t X.
+
+341
+00:14:54,754 --> 00:14:57,805
+The e to the minus lambda X times lambda,
+
+342
+00:14:57,805 --> 00:14:59,878
+well there's the lambda right here,
+
+343
+00:14:59,878 --> 00:15:02,574
+here's the e to the minus
+lambda X right there,
+
+344
+00:15:02,574 --> 00:15:04,382
+I take the integral of that thing,
+
+345
+00:15:04,382 --> 00:15:07,025
+and it's lambda over lambda minus t,
+
+346
+00:15:07,025 --> 00:15:09,270
+if lambda is greater than t.
+
+347
+00:15:09,270 --> 00:15:11,240
+The reason lambda has to
+be greater than t is that
+
+348
+00:15:11,240 --> 00:15:14,936
+the darn thing will equal
+infinity if that's not the case.
+
+349
+00:15:14,936 --> 00:15:16,688
+You'll get an issue.
+
+350
+00:15:16,688 --> 00:15:20,611
+Okay now why is the moment
+generating function important?
+
+351
+00:15:20,611 --> 00:15:22,494
+Well, under certain technical conditions,
+
+352
+00:15:22,494 --> 00:15:23,943
+which I'm not gonna get into,
+
+353
+00:15:23,943 --> 00:15:27,335
+it turns out that the expected
+value of X to the kth power
+
+354
+00:15:27,335 --> 00:15:31,840
+equals a function of the moment
+generating function, wow.
+
+355
+00:15:31,840 --> 00:15:33,385
+In fact that function's
+a little bit complicated,
+
+356
+00:15:33,385 --> 00:15:34,685
+it looks like a Christmas tree.
+
+357
+00:15:34,685 --> 00:15:38,348
+It's the kth derivative with
+respect to t of the mgf,
+
+358
+00:15:38,348 --> 00:15:40,973
+M X of t evaluated at t equals zero.
+
+359
+00:15:40,973 --> 00:15:42,550
+And you gotta do things in that order.
+
+360
+00:15:42,550 --> 00:15:44,881
+Take the kth derivative of the mgf,
+
+361
+00:15:44,881 --> 00:15:47,383
+then shove in t equals zero,
+
+362
+00:15:47,383 --> 00:15:49,161
+and you're gonna come up
+with the expected value
+
+363
+00:15:49,161 --> 00:15:50,495
+of X to the kth power.
+
+364
+00:15:50,495 --> 00:15:53,520
+So, in other words, you
+can generate moments of X
+
+365
+00:15:53,520 --> 00:15:55,692
+from the moment generating function.
+
+366
+00:15:55,692 --> 00:15:57,879
+Isn't it amazing why they named it that.
+
+367
+00:15:57,879 --> 00:15:59,926
+So the moment generating
+function's got a lot
+
+368
+00:15:59,926 --> 00:16:01,433
+of other important uses,
+
+369
+00:16:01,433 --> 00:16:05,122
+but in particular in
+identifying distributions
+
+370
+00:16:05,122 --> 00:16:06,890
+and proving convergence in some things,
+
+371
+00:16:06,890 --> 00:16:09,696
+we'll talk about those a
+little bit later in the course.
+
+372
+00:16:09,696 --> 00:16:12,994
+But for right now, the
+mgf generates moments.
+
+373
+00:16:12,994 --> 00:16:14,792
+What a surprise.
+
+374
+00:16:14,792 --> 00:16:17,726
+Here's an example let's look
+at the exponential distribution
+
+375
+00:16:17,726 --> 00:16:19,611
+you might remember from
+a couple pages ago,
+
+376
+00:16:19,611 --> 00:16:22,491
+that the mgf is lambda
+over lambda minus t,
+
+377
+00:16:22,491 --> 00:16:24,773
+let's take the expected value of that.
+
+378
+00:16:24,773 --> 00:16:29,463
+Let's get the expected value
+of the exponential distribution
+
+379
+00:16:29,463 --> 00:16:31,368
+Well, from the previous theorem,
+
+380
+00:16:31,368 --> 00:16:34,326
+it's the first derivative of M X of t
+
+381
+00:16:34,326 --> 00:16:36,114
+evaluated at t equals zero.
+
+382
+00:16:36,114 --> 00:16:38,777
+The first derivative of
+lambda over lambda over t,
+
+383
+00:16:38,777 --> 00:16:39,990
+we can do this in our heads,
+
+384
+00:16:39,990 --> 00:16:43,108
+turns out is lambda over
+lambda minus t squared.
+
+385
+00:16:43,108 --> 00:16:44,498
+Just use the chain rule.
+
+386
+00:16:44,498 --> 00:16:46,155
+Evaluate that at t equals zero.
+
+387
+00:16:46,155 --> 00:16:47,765
+So I shove in the t equals zero,
+
+388
+00:16:47,765 --> 00:16:50,366
+I get lambda over lambda
+minus zero squared
+
+389
+00:16:50,366 --> 00:16:52,208
+which is one over lambda.
+
+390
+00:16:52,208 --> 00:16:53,408
+It looked like a lot of work,
+
+391
+00:16:53,408 --> 00:16:55,230
+but this is actually a little less work
+
+392
+00:16:55,230 --> 00:16:58,408
+than going and using L'Hospital's Rule
+
+393
+00:16:58,408 --> 00:16:59,979
+and integration by parts, and all that.
+
+394
+00:16:59,979 --> 00:17:01,737
+So, this is actually a quicker way
+
+395
+00:17:01,737 --> 00:17:04,360
+to get the expected value, in my opinion.
+
+396
+00:17:04,360 --> 00:17:06,960
+If you wanna get expected
+value of X squared,
+
+397
+00:17:06,960 --> 00:17:08,829
+well just play the game again.
+
+398
+00:17:08,829 --> 00:17:10,904
+Take the second derivative and that's just
+
+399
+00:17:10,904 --> 00:17:14,723
+two times lambda over
+lambda minus t cubed,
+
+400
+00:17:14,723 --> 00:17:17,571
+again, we do the chain rule, very easy.
+
+401
+00:17:17,571 --> 00:17:19,548
+Set t equals zero and plug in,
+
+402
+00:17:19,548 --> 00:17:22,019
+and you get two over lambda squared.
+
+403
+00:17:22,019 --> 00:17:24,024
+And this immediately
+gives you the variance,
+
+404
+00:17:24,024 --> 00:17:26,716
+expected value of X squared
+minus E of X quantity squared
+
+405
+00:17:26,716 --> 00:17:29,908
+blah, blah, blah, equals
+one over lambda squared.
+
+406
+00:17:29,908 --> 00:17:31,469
+So that's an old result,
+
+407
+00:17:31,469 --> 00:17:33,443
+and I think we actually,
+we were able to do this
+
+408
+00:17:33,443 --> 00:17:36,889
+a little bit more quickly this way.
+
+409
+00:17:36,889 --> 00:17:40,583
+So, here's a summary of
+what we did in this lesson.
+
+410
+00:17:40,583 --> 00:17:44,315
+Did lots of expectations,
+I just love using LOTUS.
+
+411
+00:17:44,315 --> 00:17:47,297
+We'll be using LOTUS all
+the time in this course.
+
+412
+00:17:47,297 --> 00:17:50,691
+And it's especially useful
+in terms of simulation,
+
+413
+00:17:50,691 --> 00:17:53,062
+you'll see why later.
+
+414
+00:17:53,062 --> 00:17:56,641
+Next time, let's suppose I know
+everything there is to know
+
+415
+00:17:56,641 --> 00:17:58,879
+about the random variable,
+
+416
+00:17:58,879 --> 00:18:01,765
+in this lesson, we just
+looked at expected values,
+
+417
+00:18:01,765 --> 00:18:03,860
+that's kind of small stuff.
+
+418
+00:18:03,860 --> 00:18:07,812
+Suppose we know everything, we
+know the whole distribution.
+
+419
+00:18:07,812 --> 00:18:11,861
+Well, what happens if we square
+the thing or take the log?
+
+420
+00:18:11,861 --> 00:18:14,901
+So, what I'm gonna do
+now, in the next lesson,
+
+421
+00:18:14,901 --> 00:18:18,707
+we'll look at arbitrary
+functions of random variables,
+
+422
+00:18:18,707 --> 00:18:22,040
+and these play huge roles in simulation.
+
+423
+00:18:23,857 --> 00:18:25,857
+(gleam)
+

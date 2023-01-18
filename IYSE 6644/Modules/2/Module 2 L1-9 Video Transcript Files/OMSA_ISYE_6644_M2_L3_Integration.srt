@@ -1,0 +1,1111 @@
+﻿1
+00:00:02,333 --> 00:00:03,716
+- Hi everybody.
+
+2
+00:00:03,716 --> 00:00:05,957
+We're now going to continue in module two
+
+3
+00:00:05,957 --> 00:00:09,747
+with integration as we go
+through our calculus primer.
+
+4
+00:00:09,747 --> 00:00:11,736
+Here is the lesson overview.
+
+5
+00:00:11,736 --> 00:00:15,376
+So, last time, we went through
+a couple of different ways
+
+6
+00:00:15,376 --> 00:00:17,837
+to find zero of a complicated function.
+
+7
+00:00:17,837 --> 00:00:18,670
+That was nice.
+
+8
+00:00:18,670 --> 00:00:20,517
+We learned a couple of
+ways that we'll be using
+
+9
+00:00:20,517 --> 00:00:22,619
+throughout the rest of the course.
+
+10
+00:00:22,619 --> 00:00:26,517
+Now, we'll kinda do what
+goes up, must come down.
+
+11
+00:00:26,517 --> 00:00:28,945
+A couple lessons ago,
+we reviewed derivatives,
+
+12
+00:00:28,945 --> 00:00:30,667
+now we're gonna go the other direction.
+
+13
+00:00:30,667 --> 00:00:32,419
+We're gonna do integration.
+
+14
+00:00:32,419 --> 00:00:34,867
+And again, this is the situation
+
+15
+00:00:34,867 --> 00:00:38,288
+where I hope that you'll
+remember a lot of old friends.
+
+16
+00:00:38,288 --> 00:00:40,637
+Let's make the fundamental definition
+
+17
+00:00:40,637 --> 00:00:43,677
+that a function, capital f of x,
+
+18
+00:00:43,677 --> 00:00:46,098
+having derivative, little f of x,
+
+19
+00:00:46,098 --> 00:00:48,387
+is called the antiderivative.
+
+20
+00:00:48,387 --> 00:00:51,737
+The antiderivative is
+denoted, capital f of x
+
+21
+00:00:51,737 --> 00:00:53,067
+equals the integral,
+
+22
+00:00:53,067 --> 00:00:55,387
+that little sign there
+is the integral sign,
+
+23
+00:00:55,387 --> 00:01:00,068
+of f of x, d x, and it's also
+called the indefinite integral
+
+24
+00:01:00,068 --> 00:01:01,608
+of little f of x.
+
+25
+00:01:01,608 --> 00:01:05,408
+So, there's a couple ways that
+you can say the notations.
+
+26
+00:01:05,408 --> 00:01:07,645
+This is the fundamental
+theorem of calculus.
+
+27
+00:01:07,645 --> 00:01:09,987
+If little f of x is continuous,
+
+28
+00:01:09,987 --> 00:01:13,728
+then the area under the
+curve, over the interval a, b
+
+29
+00:01:13,728 --> 00:01:17,949
+is denoted and given by what's
+called the definite integral.
+
+30
+00:01:17,949 --> 00:01:21,528
+Integral from a to b of f, of x, d x
+
+31
+00:01:21,528 --> 00:01:24,677
+that's equal to, and this is notation,
+
+32
+00:01:24,677 --> 00:01:28,746
+capital f of x, the big straight up thingy
+
+33
+00:01:28,746 --> 00:01:30,517
+evaluate a and b.
+
+34
+00:01:30,517 --> 00:01:31,996
+That's just the way you say it.
+
+35
+00:01:31,996 --> 00:01:36,163
+This is equal to capital f
+of b minus capital f of a.
+
+36
+00:01:37,325 --> 00:01:39,546
+That's the fundamental
+theorem of calculus.
+
+37
+00:01:39,546 --> 00:01:43,713
+This relates the derivative
+of a function capital f of x
+
+38
+00:01:45,506 --> 00:01:50,285
+and it relates it to the
+antiderivative little f of x.
+
+39
+00:01:50,285 --> 00:01:52,576
+So, everything's all nice
+what you would expect.
+
+40
+00:01:52,576 --> 00:01:54,426
+The reason they call
+it a definite integral,
+
+41
+00:01:54,426 --> 00:01:57,909
+is because it's really,
+really an integral.
+
+42
+00:01:57,909 --> 00:01:59,618
+Here are some old friends.
+
+43
+00:01:59,618 --> 00:02:02,669
+Just like we looked at the
+friends of the derivatives,
+
+44
+00:02:02,669 --> 00:02:05,277
+here are the friends involving integrals.
+
+45
+00:02:05,277 --> 00:02:09,480
+So, the indefinite integral
+of x to the k power,
+
+46
+00:02:09,480 --> 00:02:13,709
+is x to the k, plus one
+over k, plus one, plus c.
+
+47
+00:02:13,709 --> 00:02:15,669
+C is an arbitrary constant,
+
+48
+00:02:15,669 --> 00:02:17,689
+because you'll see that
+when you take the derivative
+
+49
+00:02:17,689 --> 00:02:19,669
+of x to the k, plus one over k, plus one
+
+50
+00:02:19,669 --> 00:02:22,170
+that c, just becomes a zero.
+
+51
+00:02:22,170 --> 00:02:24,170
+So, I'm gonna have that c every place.
+
+52
+00:02:24,170 --> 00:02:25,003
+And I'll give you a little mnemonic
+
+53
+00:02:25,003 --> 00:02:27,039
+to remember that in a minute.
+
+54
+00:02:27,039 --> 00:02:31,730
+This particular integral holds
+for all k not equal to one.
+
+55
+00:02:31,730 --> 00:02:33,969
+For k equal to negative one.
+
+56
+00:02:33,969 --> 00:02:35,478
+For k equal to negative one,
+
+57
+00:02:35,478 --> 00:02:39,170
+we have to look at the special
+case, integral of d x over x.
+
+58
+00:02:39,170 --> 00:02:41,269
+It turns out that's the natural log
+
+59
+00:02:41,269 --> 00:02:43,787
+of absolute value of x plus c.
+
+60
+00:02:43,787 --> 00:02:46,889
+We'll look at a mnemonic
+for that in a little while.
+
+61
+00:02:46,889 --> 00:02:48,558
+The reason for this is
+
+62
+00:02:48,558 --> 00:02:52,391
+there's some convergence
+and divergence issues
+
+63
+00:02:53,421 --> 00:02:57,254
+which only take place
+when k equals minus one,
+
+64
+00:02:58,459 --> 00:03:00,059
+so let's just remember that.
+
+65
+00:03:00,059 --> 00:03:03,061
+Now, if the derivative
+e to the x is e to the x
+
+66
+00:03:03,061 --> 00:03:07,399
+then the integral of e to the
+x, d x is e to the x plus c.
+
+67
+00:03:07,399 --> 00:03:11,869
+Similarly, the integral of
+cosine equals sine plus c.
+
+68
+00:03:11,869 --> 00:03:12,702
+Because, remember when we took
+
+69
+00:03:12,702 --> 00:03:15,077
+the derivative of sine we got cosine.
+
+70
+00:03:15,077 --> 00:03:19,648
+And the integral of one
+over one plus x squared,
+
+71
+00:03:19,648 --> 00:03:22,296
+is equal to arctan plus c.
+
+72
+00:03:22,296 --> 00:03:24,952
+So, these are just, there's
+a million of these things.
+
+73
+00:03:24,952 --> 00:03:27,810
+I just gave a few that you might remember.
+
+74
+00:03:27,810 --> 00:03:28,724
+Here's an example.
+
+75
+00:03:28,724 --> 00:03:30,583
+And this is that mnemonic
+I was talking about.
+
+76
+00:03:30,583 --> 00:03:33,845
+It's very easy to see from
+the previous argument,
+
+77
+00:03:33,845 --> 00:03:38,373
+that since the integral
+of d x over x is log of x,
+
+78
+00:03:38,373 --> 00:03:42,315
+then the integral of d cabin
+over cabin, is log cabin.
+
+79
+00:03:42,315 --> 00:03:43,925
+Pretty funny math joke.
+
+80
+00:03:43,925 --> 00:03:45,422
+But, the reason I'm giving you this
+
+81
+00:03:45,422 --> 00:03:47,685
+is because I want you
+to remember that plus c,
+
+82
+00:03:47,685 --> 00:03:48,973
+the arbitrary constant.
+
+83
+00:03:48,973 --> 00:03:53,104
+And then we remember that log cabin plus c
+
+84
+00:03:53,104 --> 00:03:54,613
+is equal to houseboat.
+
+85
+00:03:54,613 --> 00:03:57,576
+So that's just something to keep in mind,
+
+86
+00:03:57,576 --> 00:03:59,935
+and I'm sure you'll remember
+that the rest of your lives.
+
+87
+00:03:59,935 --> 00:04:00,768
+Theorem.
+
+88
+00:04:00,768 --> 00:04:02,106
+Some well-know properties
+
+89
+00:04:02,106 --> 00:04:03,936
+of definite integrals are as follows.
+
+90
+00:04:03,936 --> 00:04:07,795
+The integral of f of x, d x from a to a,
+
+91
+00:04:07,795 --> 00:04:10,324
+so think of the area under this continuous
+
+92
+00:04:10,324 --> 00:04:13,176
+function under one point.
+
+93
+00:04:13,176 --> 00:04:14,165
+There is no area.
+
+94
+00:04:14,165 --> 00:04:15,324
+So, it's zero.
+
+95
+00:04:15,324 --> 00:04:16,947
+The integral from a to b
+
+96
+00:04:16,947 --> 00:04:20,203
+is negative of the integral from b to a.
+
+97
+00:04:20,203 --> 00:04:24,015
+And finally, the integral from a to b
+
+98
+00:04:24,015 --> 00:04:28,805
+plus the integral, equals
+the integral from a to c
+
+99
+00:04:28,805 --> 00:04:30,955
+plus the integral from c to b.
+
+100
+00:04:30,955 --> 00:04:34,864
+So, if you stop taking the
+integral at some midpoint, c,
+
+101
+00:04:34,864 --> 00:04:37,324
+and then you start up again,
+
+102
+00:04:37,324 --> 00:04:38,723
+when you add those two pieces up
+
+103
+00:04:38,723 --> 00:04:40,947
+you just get the whole thing from a to b.
+
+104
+00:04:40,947 --> 00:04:44,016
+Here's some other properties
+of general integrals.
+
+105
+00:04:44,016 --> 00:04:46,755
+The integral of the sum is
+the sum of the integrals.
+
+106
+00:04:46,755 --> 00:04:48,338
+This is sort of the
+
+107
+00:04:49,381 --> 00:04:52,555
+analogous to the product
+rule and derivatives.
+
+108
+00:04:52,555 --> 00:04:54,877
+And this is called integration by parts.
+
+109
+00:04:54,877 --> 00:04:58,294
+Integral of f times g prime equals f of x
+
+110
+00:04:59,509 --> 00:05:03,619
+times g of x minus integral
+of g times f prime.
+
+111
+00:05:03,619 --> 00:05:05,459
+That's called integration by parts.
+
+112
+00:05:05,459 --> 00:05:08,259
+'Cause we're breaking
+things up into f and g.
+
+113
+00:05:08,259 --> 00:05:12,437
+And finally, this is sort of
+reminiscent of the chain rule.
+
+114
+00:05:12,437 --> 00:05:16,528
+The integral of f of g of x times g prime
+
+115
+00:05:16,528 --> 00:05:18,528
+is equal to f of u, d u.
+
+116
+00:05:19,419 --> 00:05:21,076
+That's the substitution rule,
+
+117
+00:05:21,076 --> 00:05:23,539
+where we take u equal to g of x.
+
+118
+00:05:23,539 --> 00:05:25,189
+We got to be a little bit careful here,
+
+119
+00:05:25,189 --> 00:05:29,917
+because this substitution
+of u of x equal to g of x
+
+120
+00:05:29,917 --> 00:05:32,107
+will possibly change the
+limits of integration.
+
+121
+00:05:32,107 --> 00:05:33,808
+But it's something you should remember.
+
+122
+00:05:33,808 --> 00:05:36,338
+And here's a couple mnemonics
+that will help you remember.
+
+123
+00:05:36,338 --> 00:05:38,229
+You can go look them up on the web.
+
+124
+00:05:38,229 --> 00:05:39,739
+Let's use integration by parts
+
+125
+00:05:39,739 --> 00:05:41,709
+with f of x equal to x
+
+126
+00:05:41,709 --> 00:05:45,807
+and g prime of x equal to e to the two x.
+
+127
+00:05:45,807 --> 00:05:47,968
+And then we'll also use
+the chain rule, as well.
+
+128
+00:05:47,968 --> 00:05:51,720
+So, integral of x times e to the two x.
+
+129
+00:05:51,720 --> 00:05:53,392
+So, this thing
+
+130
+00:05:53,392 --> 00:05:57,419
+you can see that I'm
+associating x with f of x
+
+131
+00:05:57,419 --> 00:06:00,155
+and e to the two x with g prime of x.
+
+132
+00:06:00,155 --> 00:06:02,757
+When you use this integration by parts,
+
+133
+00:06:02,757 --> 00:06:04,568
+one of the tricks is just figuring out
+
+134
+00:06:04,568 --> 00:06:05,808
+what's the f of x part
+
+135
+00:06:05,808 --> 00:06:07,509
+what's the g prime of x part.
+
+136
+00:06:07,509 --> 00:06:09,629
+So, according to integration by parts,
+
+137
+00:06:09,629 --> 00:06:12,748
+the first term is gonna
+be f of x times g of x,
+
+138
+00:06:12,748 --> 00:06:15,299
+which is f of x is x.
+
+139
+00:06:15,299 --> 00:06:18,267
+G of x, the integral of g prime
+
+140
+00:06:18,267 --> 00:06:20,080
+which is integral of e to the two x
+
+141
+00:06:20,080 --> 00:06:22,899
+is gonna be e to the two x over two.
+
+142
+00:06:22,899 --> 00:06:24,851
+I needed the chain rule for that.
+
+143
+00:06:24,851 --> 00:06:26,200
+So, that first term,
+
+144
+00:06:26,200 --> 00:06:27,928
+x times e to the two x over two
+
+145
+00:06:27,928 --> 00:06:29,731
+evaluate at zero and one.
+
+146
+00:06:29,731 --> 00:06:33,549
+And then subtract off g
+of x times f prime of x.
+
+147
+00:06:33,549 --> 00:06:36,240
+And g of x is e to the two x over two,
+
+148
+00:06:36,240 --> 00:06:37,758
+f prime equals one.
+
+149
+00:06:37,758 --> 00:06:38,789
+And so what I have.
+
+150
+00:06:38,789 --> 00:06:40,759
+I do my substitution of zero and one
+
+151
+00:06:40,759 --> 00:06:43,989
+into that first term with
+the big vertical thingy,
+
+152
+00:06:43,989 --> 00:06:45,939
+and then I subtract off the integral.
+
+153
+00:06:45,939 --> 00:06:49,638
+And I get e squared over
+two after I substitute.
+
+154
+00:06:49,638 --> 00:06:51,179
+Now I do the integral.
+
+155
+00:06:51,179 --> 00:06:54,148
+That turns out to be minus
+e to the two x over four,
+
+156
+00:06:54,148 --> 00:06:56,289
+evaluate at zero and one.
+
+157
+00:06:56,289 --> 00:06:57,451
+And there's my answer.
+
+158
+00:06:57,451 --> 00:07:00,789
+e to the two, e squared
+plus one over four.
+
+159
+00:07:00,789 --> 00:07:02,091
+When the smoke clears.
+
+160
+00:07:02,091 --> 00:07:03,296
+A pretty easy example.
+
+161
+00:07:03,296 --> 00:07:04,888
+Let's give another definition.
+
+162
+00:07:04,888 --> 00:07:07,884
+Derivatives of arbitrary
+order k can be written as
+
+163
+00:07:07,884 --> 00:07:10,120
+f, k in parentheses of x
+
+164
+00:07:10,120 --> 00:07:12,240
+or d k, d x k, f of x.
+
+165
+00:07:12,240 --> 00:07:16,629
+And by convention we let f not
+just be the same as f of x.
+
+166
+00:07:16,629 --> 00:07:19,808
+So one nice thing, which we'll
+use a couples times in class,
+
+167
+00:07:19,808 --> 00:07:22,454
+is that you can write f of x
+
+168
+00:07:22,454 --> 00:07:24,966
+in what's called a Taylor series expansion
+
+169
+00:07:24,966 --> 00:07:28,747
+about a point a and it's
+given by this infinite sum,
+
+170
+00:07:28,747 --> 00:07:31,197
+sum from k equal to zero
+of the k'th derivative
+
+171
+00:07:31,197 --> 00:07:33,797
+evaluated at a times x minus a
+
+172
+00:07:33,797 --> 00:07:36,197
+to the k'th power over k factorial.
+
+173
+00:07:36,197 --> 00:07:38,379
+That's what's called a
+Taylor series expansion,
+
+174
+00:07:38,379 --> 00:07:39,212
+and it's quite nice.
+
+175
+00:07:39,212 --> 00:07:40,557
+It's used occasionally.
+
+176
+00:07:40,557 --> 00:07:42,848
+Maclaurin series is just the Taylor series
+
+177
+00:07:42,848 --> 00:07:46,037
+expanded around a equals zero.
+
+178
+00:07:46,037 --> 00:07:47,957
+Now without going into huge detail
+
+179
+00:07:47,957 --> 00:07:49,223
+here are some Maclaurin friends.
+
+180
+00:07:49,223 --> 00:07:50,743
+You may remember this.
+
+181
+00:07:50,743 --> 00:07:53,015
+Sine of x, if I do all those derivatives
+
+182
+00:07:53,015 --> 00:07:56,454
+in the previous slide, can be
+written as that infinite sum.
+
+183
+00:07:56,454 --> 00:07:57,701
+The first one.
+
+184
+00:07:57,701 --> 00:07:59,895
+Cosine of x, the second infinite sum,
+
+185
+00:07:59,895 --> 00:08:01,602
+and e to the x, is the third one.
+
+186
+00:08:01,602 --> 00:08:02,614
+They all look a little messy
+
+187
+00:08:02,614 --> 00:08:03,653
+but they're really not bad at all
+
+188
+00:08:03,653 --> 00:08:06,713
+and they're actually kind of famous.
+
+189
+00:08:06,713 --> 00:08:07,913
+And while we're at it,
+
+190
+00:08:07,913 --> 00:08:10,273
+'cause I'm looking at all these sums.
+
+191
+00:08:10,273 --> 00:08:12,783
+Here are three that
+have nothing to do with
+
+192
+00:08:12,783 --> 00:08:14,564
+these Taylor series, really,
+
+193
+00:08:14,564 --> 00:08:16,573
+but these are just things that come up
+
+194
+00:08:16,573 --> 00:08:17,633
+every once in a while.
+
+195
+00:08:17,633 --> 00:08:20,653
+So this is as good a place
+as any to talk about 'em.
+
+196
+00:08:20,653 --> 00:08:21,963
+If I'm interested in adding up
+
+197
+00:08:21,963 --> 00:08:24,575
+all the values of k from one to n,
+
+198
+00:08:24,575 --> 00:08:27,713
+that's just n times n plus one over two.
+
+199
+00:08:27,713 --> 00:08:30,062
+This is something that
+Gauss was able to do
+
+200
+00:08:30,062 --> 00:08:33,703
+when he was five or six
+years old, believe it or not.
+
+201
+00:08:33,703 --> 00:08:36,175
+If I want to add up all
+the values of k squared,
+
+202
+00:08:36,175 --> 00:08:39,073
+you get n times n plus one,
+times two n plus one, over six.
+
+203
+00:08:39,073 --> 00:08:40,255
+That's famous.
+
+204
+00:08:40,255 --> 00:08:43,563
+And if I have this
+infinite geometric series,
+
+205
+00:08:43,563 --> 00:08:47,925
+I want to add up p to the k
+from k equals zero infinity,
+
+206
+00:08:47,925 --> 00:08:50,711
+and turns out that that's
+just one over one minus p.
+
+207
+00:08:50,711 --> 00:08:51,687
+And that's something
+that you probably learned
+
+208
+00:08:51,687 --> 00:08:55,358
+in high school, but it bears repeating.
+
+209
+00:08:55,358 --> 00:08:58,919
+So one last thing we'll talk
+about is L'Hospital's Rule.
+
+210
+00:08:58,919 --> 00:09:01,109
+Every once in a while we get into trouble
+
+211
+00:09:01,109 --> 00:09:02,707
+when we have something of the form
+
+212
+00:09:02,707 --> 00:09:06,447
+zero over zero or infinity over infinity.
+
+213
+00:09:06,447 --> 00:09:09,177
+So sometimes, L'Hospital's Rule's useful
+
+214
+00:09:09,177 --> 00:09:10,829
+because it turns out that zero over zero
+
+215
+00:09:10,829 --> 00:09:12,890
+or infinity over infinity,
+they could equal anything.
+
+216
+00:09:12,890 --> 00:09:13,957
+So here's what it says,
+
+217
+00:09:13,957 --> 00:09:17,090
+if the limits f of x as x goes to a,
+
+218
+00:09:17,090 --> 00:09:19,189
+and g of x as x goes to a,
+
+219
+00:09:19,189 --> 00:09:21,678
+both go to zero or go to infinity,
+
+220
+00:09:21,678 --> 00:09:24,170
+then the limit of x goes to a,
+
+221
+00:09:24,170 --> 00:09:26,869
+a limit as x goes to a,
+
+222
+00:09:26,869 --> 00:09:29,970
+of f of x over g of x, equals the limit
+
+223
+00:09:29,970 --> 00:09:34,137
+as x goes to a of f prime
+of x over g prime of x.
+
+224
+00:09:34,999 --> 00:09:36,528
+And it looks liked we're
+complicating things
+
+225
+00:09:36,528 --> 00:09:39,109
+but sometimes this
+rule, L'Hospital's Rule,
+
+226
+00:09:39,109 --> 00:09:40,669
+makes things a lot easier.
+
+227
+00:09:40,669 --> 00:09:43,010
+And this rule makes me
+sick, ha ha ha, L'Hospital.
+
+228
+00:09:43,010 --> 00:09:44,499
+So here's a quick example.
+
+229
+00:09:44,499 --> 00:09:47,141
+And this characterizes
+why this things so useful.
+
+230
+00:09:47,141 --> 00:09:49,580
+So let's look at sine of x over x.
+
+231
+00:09:49,580 --> 00:09:53,341
+Now as x goes to zero, this is
+a zero over zero type thing.
+
+232
+00:09:53,341 --> 00:09:55,450
+So turns out, let's take the derivative.
+
+233
+00:09:55,450 --> 00:09:58,399
+Derivative of the top,
+sine of x is cosine of x.
+
+234
+00:09:58,399 --> 00:10:01,181
+The derivative of the
+bottom, x is equal to one.
+
+235
+00:10:01,181 --> 00:10:04,567
+So I can now take the
+limit is x goes to zero
+
+236
+00:10:04,567 --> 00:10:06,399
+of cosine of x over one,
+
+237
+00:10:06,399 --> 00:10:09,157
+is gonna be cosine of zero
+over one, which is one.
+
+238
+00:10:09,157 --> 00:10:10,829
+So congratulations, you've just shown
+
+239
+00:10:10,829 --> 00:10:13,101
+sine of x over x goes to one.
+
+240
+00:10:13,101 --> 00:10:14,748
+Again you gotta be a little careful
+
+241
+00:10:14,748 --> 00:10:16,798
+because these zero over zero things
+
+242
+00:10:16,798 --> 00:10:19,739
+or infinity over infinity
+can go to any quantity.
+
+243
+00:10:19,739 --> 00:10:22,581
+You've gotta be very careful about that.
+
+244
+00:10:22,581 --> 00:10:24,981
+Here's a summary of what we just did.
+
+245
+00:10:24,981 --> 00:10:26,599
+We've renewed acquaintances
+
+246
+00:10:26,599 --> 00:10:28,409
+with a bunch of old integral friends
+
+247
+00:10:28,409 --> 00:10:30,547
+and we looked at some
+elementary properties,
+
+248
+00:10:30,547 --> 00:10:32,847
+including L'Hopsital's Rule.
+
+249
+00:10:32,847 --> 00:10:34,650
+Next time, I'm gonna look at
+
+250
+00:10:34,650 --> 00:10:36,610
+some numerical integration techniques
+
+251
+00:10:36,610 --> 00:10:38,650
+and I want to see what happens
+
+252
+00:10:38,650 --> 00:10:42,650
+when I can't do the integrals
+in those nice, close form.
+
+253
+00:10:42,650 --> 00:10:43,929
+So what do we do if those friends
+
+254
+00:10:43,929 --> 00:10:46,418
+don't wanna come out and play with us?
+
+255
+00:10:46,418 --> 00:10:49,335
+And anyway, we'll see ya next time.
+

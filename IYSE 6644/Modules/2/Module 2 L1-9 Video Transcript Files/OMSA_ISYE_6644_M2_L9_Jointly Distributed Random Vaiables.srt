@@ -1,0 +1,1598 @@
+﻿1
+00:00:02,209 --> 00:00:03,050
+- Hi everyone,
+
+2
+00:00:03,050 --> 00:00:06,415
+so we're still continuing
+the probability boot camp.
+
+3
+00:00:06,415 --> 00:00:09,533
+And in this lesson, we'll be talking about
+
+4
+00:00:09,533 --> 00:00:11,615
+jointly distributed random variables
+
+5
+00:00:11,615 --> 00:00:14,118
+because one is just never enough.
+
+6
+00:00:14,118 --> 00:00:16,295
+Here's our lesson overview,
+
+7
+00:00:16,295 --> 00:00:18,589
+in the last lesson we looked at
+
+8
+00:00:18,589 --> 00:00:20,045
+functions of random variables,
+
+9
+00:00:20,045 --> 00:00:23,739
+and in particular, we looked
+at the inverse transform method
+
+10
+00:00:23,739 --> 00:00:26,276
+for generating random
+variable from uniforms,
+
+11
+00:00:26,276 --> 00:00:30,092
+which has tremendous
+implications in simulation.
+
+12
+00:00:30,092 --> 00:00:30,925
+In this lesson,
+
+13
+00:00:30,925 --> 00:00:33,315
+we'll look at two
+dimensional random variables
+
+14
+00:00:33,315 --> 00:00:35,547
+that may or may not be
+correlated with each other.
+
+15
+00:00:35,547 --> 00:00:38,906
+Think about height and
+weight, for instance.
+
+16
+00:00:38,906 --> 00:00:43,171
+And in simulation, I think
+about things like consecutive,
+
+17
+00:00:43,171 --> 00:00:45,059
+correlated waiting times.
+
+18
+00:00:45,059 --> 00:00:48,974
+So if we have customers
+in a line, obviously,
+
+19
+00:00:48,974 --> 00:00:51,477
+the waiting times between
+customers are going to be
+
+20
+00:00:51,477 --> 00:00:53,653
+correlated with each other.
+
+21
+00:00:53,653 --> 00:00:54,701
+So here's the idea,
+
+22
+00:00:54,701 --> 00:00:56,726
+let's consider two
+random variables for now,
+
+23
+00:00:56,726 --> 00:00:59,542
+interacting together, let's
+think height and weight.
+
+24
+00:00:59,542 --> 00:01:03,709
+So let's look at the definition
+of the joint cdf of X and Y,
+
+25
+00:01:04,933 --> 00:01:07,123
+two random variables, so that's capital
+
+26
+00:01:07,123 --> 00:01:10,859
+F of (x, y), capital F for the cdf,
+
+27
+00:01:10,859 --> 00:01:13,831
+that equals the probability that X
+
+28
+00:01:13,831 --> 00:01:15,602
+is less than or equal to little x,
+
+29
+00:01:15,602 --> 00:01:19,381
+Y is less than or equal
+to little y, jointly.
+
+30
+00:01:19,381 --> 00:01:21,035
+We're looking at the two random variables,
+
+31
+00:01:21,035 --> 00:01:22,426
+x and y, simultaneously.
+
+32
+00:01:22,426 --> 00:01:26,276
+Here's the remark then,
+the marginal cdf of X is
+
+33
+00:01:26,276 --> 00:01:28,609
+the cdf of X just by itself,
+
+34
+00:01:29,527 --> 00:01:31,789
+so marginal means, just by itself.
+
+35
+00:01:31,789 --> 00:01:34,291
+So you can think of F of
+(x) as the probability that
+
+36
+00:01:34,291 --> 00:01:35,909
+X is less than or equal to little x, well,
+
+37
+00:01:35,909 --> 00:01:38,776
+if I let Y equal to infinity,
+
+38
+00:01:38,776 --> 00:01:40,995
+in the joint cdf definition,
+
+39
+00:01:40,995 --> 00:01:44,095
+that's the probability that
+X is less than or equal to
+
+40
+00:01:44,095 --> 00:01:46,963
+little x, Y is less than
+or equal to infinity.
+
+41
+00:01:46,963 --> 00:01:49,716
+So that's the same thing
+as X all by itself.
+
+42
+00:01:49,716 --> 00:01:51,997
+I'm using the subscript
+capital X to remind us
+
+43
+00:01:51,997 --> 00:01:53,765
+it's just X all by itself.
+
+44
+00:01:53,765 --> 00:01:57,261
+Similarly, the marginal
+cdf of Y all by itself,
+
+45
+00:01:57,261 --> 00:02:01,467
+capital F of subscript
+y, that's the joint cdf
+
+46
+00:02:01,467 --> 00:02:04,854
+evaluated, X equals
+infinity, and little y.
+
+47
+00:02:04,854 --> 00:02:08,127
+Another definition now,
+if capital X and capital Y
+
+48
+00:02:08,127 --> 00:02:09,702
+are discrete random variables,
+
+49
+00:02:09,702 --> 00:02:14,624
+then the joint pmf probability
+mass function of X and Y
+
+50
+00:02:14,624 --> 00:02:18,790
+is little F of (x) equals
+the probability that
+
+51
+00:02:18,790 --> 00:02:21,779
+capital X equals little x,
+capital Y equals little y.
+
+52
+00:02:21,779 --> 00:02:26,135
+So, that completely defines
+the joint probability
+
+53
+00:02:26,135 --> 00:02:27,403
+mass function of X and Y.
+
+54
+00:02:27,403 --> 00:02:30,475
+In fact, if you add up all
+those possible F of (x)
+
+55
+00:02:30,475 --> 00:02:32,795
+y values, you'll get one.
+
+56
+00:02:32,795 --> 00:02:34,714
+Just as before, for the cdf
+
+57
+00:02:34,714 --> 00:02:38,357
+we can calculate the marginal pmf of x,
+
+58
+00:02:38,357 --> 00:02:41,268
+and that's just the
+pmf of x all by itself,
+
+59
+00:02:41,268 --> 00:02:43,970
+little F of (x) equals
+the probability that
+
+60
+00:02:43,970 --> 00:02:45,682
+capital X equals little x.
+
+61
+00:02:45,682 --> 00:02:48,633
+And by, you may remember the
+law of total probability,
+
+62
+00:02:48,633 --> 00:02:51,778
+the way you get that is
+you take the joint pmf,
+
+63
+00:02:51,778 --> 00:02:55,523
+and just add up all the possible y values.
+
+64
+00:02:55,523 --> 00:02:57,754
+For all the y's, you add
+them up, you get f of (x).
+
+65
+00:02:57,754 --> 00:03:01,921
+Similarly, the marginal pmf
+of Y, Fy is the probability
+
+66
+00:03:03,131 --> 00:03:04,564
+that Y equals little y,
+
+67
+00:03:04,564 --> 00:03:08,731
+that's just the sum over all
+x values of the joint pmf.
+
+68
+00:03:10,682 --> 00:03:15,253
+So you fix y, and add up
+all the possible x values,
+
+69
+00:03:15,253 --> 00:03:17,827
+and you get the probability
+that Y equals little y.
+
+70
+00:03:17,827 --> 00:03:19,033
+Now, you'll see what I'm talking about
+
+71
+00:03:19,033 --> 00:03:21,150
+when we do a numerical example.
+
+72
+00:03:21,150 --> 00:03:24,139
+This table gives the joint
+probability mass function,
+
+73
+00:03:24,139 --> 00:03:27,768
+f of (x, y), for a little,
+simple example that I thought of.
+
+74
+00:03:27,768 --> 00:03:28,844
+Very simple.
+
+75
+00:03:28,844 --> 00:03:32,388
+And we have the possible values of X are
+
+76
+00:03:32,388 --> 00:03:34,114
+two, three, and four.
+
+77
+00:03:34,114 --> 00:03:35,547
+Right here.
+
+78
+00:03:35,547 --> 00:03:37,609
+The possible values of Y are four and six,
+
+79
+00:03:37,609 --> 00:03:39,590
+I just made these up.
+
+80
+00:03:39,590 --> 00:03:42,572
+The numbers in the interior of the table
+
+81
+00:03:42,572 --> 00:03:43,699
+give the joint pmfs.
+
+82
+00:03:43,699 --> 00:03:45,188
+So for instance,
+
+83
+00:03:45,188 --> 00:03:48,697
+the probability that X
+equals two and Y equals for
+
+84
+00:03:48,697 --> 00:03:51,793
+is point three, same with
+the other five entries.
+
+85
+00:03:51,793 --> 00:03:55,870
+They add up, these
+interior entries, to one.
+
+86
+00:03:55,870 --> 00:03:57,419
+You add them all up, you get one.
+
+87
+00:03:57,419 --> 00:04:01,047
+Now, here's why we call little f of (x),
+
+88
+00:04:01,047 --> 00:04:03,565
+little f of (y), marginals.
+
+89
+00:04:03,565 --> 00:04:04,398
+So here's little f of (x)
+
+90
+00:04:04,398 --> 00:04:07,023
+and it's called the marginal
+probability mass function
+
+91
+00:04:07,023 --> 00:04:11,916
+because if I were to take
+all the y values for say,
+
+92
+00:04:11,916 --> 00:04:13,248
+x equals two,
+
+93
+00:04:13,248 --> 00:04:14,532
+add them up,
+
+94
+00:04:14,532 --> 00:04:17,349
+I get point three, plus point one,
+
+95
+00:04:17,349 --> 00:04:19,004
+equals point four.
+
+96
+00:04:19,004 --> 00:04:22,284
+That corresponds to the
+probability that x equals two.
+
+97
+00:04:22,284 --> 00:04:25,108
+So I added up all the y
+values when x equals two
+
+98
+00:04:25,108 --> 00:04:27,868
+and I got the marginal value,
+
+99
+00:04:27,868 --> 00:04:30,448
+probability that x equals two.
+
+100
+00:04:30,448 --> 00:04:32,053
+And turns out, it was point four.
+
+101
+00:04:32,053 --> 00:04:35,584
+Similarly, I get x equals
+three, x equals four,
+
+102
+00:04:35,584 --> 00:04:38,056
+and so that completely defines the
+
+103
+00:04:38,056 --> 00:04:41,551
+probability mass function for x,
+
+104
+00:04:41,551 --> 00:04:44,041
+and namely, it's point four,
+point four, and point two,
+
+105
+00:04:44,041 --> 00:04:46,102
+for x equals two, three,
+and four, respectively.
+
+106
+00:04:46,102 --> 00:04:47,655
+And that adds up to one,
+
+107
+00:04:47,655 --> 00:04:49,860
+because it's a probability mass function.
+
+108
+00:04:49,860 --> 00:04:51,151
+Same thing with y,
+
+109
+00:04:51,151 --> 00:04:53,782
+the probability that y
+equals four, is point six,
+
+110
+00:04:53,782 --> 00:04:55,927
+the probability that y
+equals six, is point four,
+
+111
+00:04:55,927 --> 00:04:58,238
+I just added up all the
+x values along the row.
+
+112
+00:04:58,238 --> 00:04:59,543
+So very, very nice.
+
+113
+00:04:59,543 --> 00:05:02,217
+Here's the continuous
+version of these definitions.
+
+114
+00:05:02,217 --> 00:05:04,192
+If X and Y are continuous,
+
+115
+00:05:04,192 --> 00:05:06,268
+then the joint pdf,
+
+116
+00:05:06,268 --> 00:05:07,921
+probability density function,
+
+117
+00:05:07,921 --> 00:05:09,504
+of X and Y,
+
+118
+00:05:09,504 --> 00:05:11,664
+is given by this nasty looking thing,
+
+119
+00:05:11,664 --> 00:05:15,831
+little f of (x, y) equals
+the second partial derivative
+
+120
+00:05:17,463 --> 00:05:19,845
+of capital F of (x, y).
+
+121
+00:05:19,845 --> 00:05:21,192
+So just take my word for that
+
+122
+00:05:21,192 --> 00:05:24,032
+and note that if I take
+the double integral of
+
+123
+00:05:24,032 --> 00:05:26,459
+f of (x, y), dxdy, that equals one,
+
+124
+00:05:26,459 --> 00:05:29,082
+that corresponds to adding
+up in two dimensions
+
+125
+00:05:29,082 --> 00:05:31,914
+all the x and y probabilities
+in the discrete case.
+
+126
+00:05:31,914 --> 00:05:34,124
+I can get the marginals of X and Y.
+
+127
+00:05:34,124 --> 00:05:38,410
+The marginal pdf of X is
+given by f of (x) equals
+
+128
+00:05:38,410 --> 00:05:43,258
+the integral, over all
+values of y of f of (x, y),
+
+129
+00:05:43,258 --> 00:05:47,425
+that corresponds to adding
+up, in the discrete case,
+
+130
+00:05:48,279 --> 00:05:53,198
+all the f of (x, y)
+values, over all the y's,
+
+131
+00:05:53,198 --> 00:05:55,615
+to get the marginal pmf of x.
+
+132
+00:05:56,930 --> 00:05:59,960
+So here's the marginal pdf
+of x that's just the integral
+
+133
+00:05:59,960 --> 00:06:02,130
+over all y of f of (x, y).
+
+134
+00:06:02,130 --> 00:06:06,049
+The marginal pdf of y,
+similarly, is integral of
+
+135
+00:06:06,049 --> 00:06:09,216
+x of f of (x, y), dx.
+
+136
+00:06:10,158 --> 00:06:12,304
+So I'm integrating out the x's,
+
+137
+00:06:12,304 --> 00:06:15,034
+and I'm just left with
+the function of the y's.
+
+138
+00:06:15,034 --> 00:06:15,867
+Here's an example,
+
+139
+00:06:15,867 --> 00:06:17,800
+and I'll be using this
+example for a while.
+
+140
+00:06:17,800 --> 00:06:20,005
+Let's suppose that the
+joint pdf is given by
+
+141
+00:06:20,005 --> 00:06:24,681
+f of (x, y) equals 21
+over four, x squared, y.
+
+142
+00:06:24,681 --> 00:06:29,396
+And this is for all y values
+between x squared and one.
+
+143
+00:06:29,396 --> 00:06:31,107
+This is a legitimate pdf,
+
+144
+00:06:31,107 --> 00:06:34,230
+if I take the double integral
+over all the (x, y) values
+
+145
+00:06:34,230 --> 00:06:38,231
+satisfying x squared less
+than y less than one,
+
+146
+00:06:38,231 --> 00:06:40,862
+this thing does, in
+fact, integrate to one.
+
+147
+00:06:40,862 --> 00:06:42,287
+It's a little bit tricky,
+
+148
+00:06:42,287 --> 00:06:43,300
+because of these limits,
+
+149
+00:06:43,300 --> 00:06:47,573
+the limits are x squared,
+less than y, less than one.
+
+150
+00:06:47,573 --> 00:06:49,013
+I call these funny limits,
+
+151
+00:06:49,013 --> 00:06:51,052
+I'll be using that
+expression occasionally.
+
+152
+00:06:51,052 --> 00:06:53,319
+Funny, as in strange, not ha-ha.
+
+153
+00:06:53,319 --> 00:06:54,916
+So this is the joint pdf,
+
+154
+00:06:54,916 --> 00:06:56,193
+the darn thing does integrate to one.
+
+155
+00:06:56,193 --> 00:06:58,039
+Here's the marginal.
+
+156
+00:06:58,039 --> 00:07:00,165
+Marginal of x is given by
+
+157
+00:07:00,165 --> 00:07:04,186
+integral over all values
+of y of f (x, y) and
+
+158
+00:07:04,186 --> 00:07:06,337
+here's where we have
+to be a little careful,
+
+159
+00:07:06,337 --> 00:07:09,739
+the limits of y are from x squared to one.
+
+160
+00:07:09,739 --> 00:07:12,418
+So let's slavishly plug that in.
+
+161
+00:07:12,418 --> 00:07:16,049
+Integral from x squared
+to one of f of (x, y) is
+
+162
+00:07:16,049 --> 00:07:18,532
+21 over four, x squared, y.
+
+163
+00:07:18,532 --> 00:07:20,435
+After the smoke clears,
+
+164
+00:07:20,435 --> 00:07:23,052
+you get 21 over eight, x squared,
+
+165
+00:07:23,052 --> 00:07:24,684
+times 1 minus x to the fourth.
+
+166
+00:07:24,684 --> 00:07:28,477
+Now, that is for x between
+negative one and one.
+
+167
+00:07:28,477 --> 00:07:30,090
+Where did the y go?
+
+168
+00:07:30,090 --> 00:07:32,364
+Well I integrated it out, it's gone.
+
+169
+00:07:32,364 --> 00:07:34,347
+So, after I get rid of the y,
+
+170
+00:07:34,347 --> 00:07:37,335
+I'm just left with the limits of x squared
+
+171
+00:07:37,335 --> 00:07:38,933
+having to be less than one,
+
+172
+00:07:38,933 --> 00:07:40,813
+and that's the same thing as negative one
+
+173
+00:07:40,813 --> 00:07:41,706
+less than x, less than one.
+
+174
+00:07:41,706 --> 00:07:42,683
+That's how I got that.
+
+175
+00:07:42,683 --> 00:07:44,565
+The marginal for y, similarly,
+
+176
+00:07:44,565 --> 00:07:48,437
+f of (y) equals integral
+of f of (x, y), dx.
+
+177
+00:07:48,437 --> 00:07:52,395
+Now, if x squared is less
+than y, is less than one,
+
+178
+00:07:52,395 --> 00:07:54,735
+well, that means that x squared
+
+179
+00:07:54,735 --> 00:07:56,410
+runs from negative square root of y
+
+180
+00:07:56,410 --> 00:07:57,601
+to plus square root of y.
+
+181
+00:07:57,601 --> 00:07:58,620
+It looks a little bit tricky,
+
+182
+00:07:58,620 --> 00:07:59,747
+but that's what it is.
+
+183
+00:07:59,747 --> 00:08:01,580
+And after the smoke clears there,
+
+184
+00:08:01,580 --> 00:08:04,747
+I'm left with 7 halves, y to the 5 halves.
+
+185
+00:08:04,747 --> 00:08:07,291
+And there are no x's anymore
+
+186
+00:08:07,291 --> 00:08:08,818
+because this is the marginal y's and
+
+187
+00:08:08,818 --> 00:08:10,293
+I've integrated the x's out.
+
+188
+00:08:10,293 --> 00:08:14,123
+That just means that y
+is between zero and one.
+
+189
+00:08:14,123 --> 00:08:16,582
+Because I got rid of all
+of the x's in my limits.
+
+190
+00:08:16,582 --> 00:08:18,387
+That's where I get zero
+less than y, less than one.
+
+191
+00:08:18,387 --> 00:08:19,835
+The nice thing is,
+
+192
+00:08:19,835 --> 00:08:23,715
+I can integrate this pdf,
+7 halves y to the 5 halves,
+
+193
+00:08:23,715 --> 00:08:25,682
+in my head between zero and one,
+
+194
+00:08:25,682 --> 00:08:28,669
+and the darn thing integrates
+to one, just like I promise.
+
+195
+00:08:28,669 --> 00:08:30,283
+It's a legitimate pdf.
+
+196
+00:08:30,283 --> 00:08:31,273
+Here's the definition.
+
+197
+00:08:31,273 --> 00:08:33,535
+X and Y are independent
+random variables if
+
+198
+00:08:33,535 --> 00:08:38,290
+f of (x, y) equals f of (x)
+times f of (y) for all x and y.
+
+199
+00:08:38,290 --> 00:08:41,070
+This corresponds to the same
+definition of independence
+
+200
+00:08:41,070 --> 00:08:44,779
+we had way, way long ago
+when we started our review.
+
+201
+00:08:44,779 --> 00:08:45,997
+Here's the theorem,
+
+202
+00:08:45,997 --> 00:08:48,972
+X and Y are independent if
+you can write their joint pdf
+
+203
+00:08:48,972 --> 00:08:51,754
+as a function of x times a function of y.
+
+204
+00:08:51,754 --> 00:08:53,541
+I'm calling that a(x) times b(y).
+
+205
+00:08:53,541 --> 00:08:56,533
+Just for any old a(x) and b(y).
+
+206
+00:08:56,533 --> 00:08:57,885
+This is all fine and good,
+
+207
+00:08:57,885 --> 00:09:01,635
+but sometimes it looks
+like you can write it as
+
+208
+00:09:01,635 --> 00:09:03,034
+a of (x) times b of (y),
+
+209
+00:09:03,034 --> 00:09:05,493
+but if the darn thing has funny limits,
+
+210
+00:09:05,493 --> 00:09:07,412
+that's why I keep on
+saying the darn thing,
+
+211
+00:09:07,412 --> 00:09:09,580
+then these guys are not independent.
+
+212
+00:09:09,580 --> 00:09:11,827
+So if you can write it as
+a of (x) times b of (y),
+
+213
+00:09:11,827 --> 00:09:12,817
+that's great,
+
+214
+00:09:12,817 --> 00:09:15,122
+but don't forget the funny
+limits if they're there.
+
+215
+00:09:15,122 --> 00:09:17,844
+And I'll give examples in a
+second, to show you what I mean.
+
+216
+00:09:17,844 --> 00:09:20,362
+So, funny limits cause a lot of trouble.
+
+217
+00:09:20,362 --> 00:09:22,757
+In the previous example that I did,
+
+218
+00:09:22,757 --> 00:09:24,020
+again, I'll show you that in a minute,
+
+219
+00:09:24,020 --> 00:09:25,468
+we had funny limits.
+
+220
+00:09:25,468 --> 00:09:27,171
+So, here are a bunch of examples.
+
+221
+00:09:27,171 --> 00:09:29,268
+Let's let f of (x, y) equal cxy,
+
+222
+00:09:29,268 --> 00:09:31,372
+for zero less than x, less than two,
+
+223
+00:09:31,372 --> 00:09:33,468
+zero less than y, less than three.
+
+224
+00:09:33,468 --> 00:09:36,256
+What's nice here is that, look at that,
+
+225
+00:09:36,256 --> 00:09:40,123
+a(x) times b(y), very
+simple, no funny limits.
+
+226
+00:09:40,123 --> 00:09:43,011
+These guys are independent,
+that's an easy one.
+
+227
+00:09:43,011 --> 00:09:44,694
+How about this? This is
+our previous example,
+
+228
+00:09:44,694 --> 00:09:46,839
+from a couple pages ago.
+
+229
+00:09:46,839 --> 00:09:49,648
+Look at that, I can write a(x) times b(y),
+
+230
+00:09:49,648 --> 00:09:51,646
+but hold on, funny limits.
+
+231
+00:09:51,646 --> 00:09:55,669
+So that means that x and y
+are not independent, too bad.
+
+232
+00:09:55,669 --> 00:09:56,902
+And finally,
+
+233
+00:09:56,902 --> 00:10:00,988
+here's f of (x, y) equals c over x plus y.
+
+234
+00:10:00,988 --> 00:10:02,051
+The reason I say c,
+
+235
+00:10:02,051 --> 00:10:03,285
+is because I'm too lazy
+to figure out what the
+
+236
+00:10:03,285 --> 00:10:05,559
+appropriate consonant is gonna be.
+
+237
+00:10:05,559 --> 00:10:09,111
+C over x plus y, that you
+cannot write as a function
+
+238
+00:10:09,111 --> 00:10:11,248
+of a(x) times b(y), so too bad,
+
+239
+00:10:11,248 --> 00:10:12,560
+they're not independent.
+
+240
+00:10:12,560 --> 00:10:14,829
+Notice that I didn't
+have funny limits here,
+
+241
+00:10:14,829 --> 00:10:16,790
+but so what, I couldn't
+write that as a function
+
+242
+00:10:16,790 --> 00:10:19,621
+of a(x) times b(y) so, not independent.
+
+243
+00:10:19,621 --> 00:10:20,990
+Too bad.
+
+244
+00:10:20,990 --> 00:10:22,524
+Let's give another definition,
+
+245
+00:10:22,524 --> 00:10:24,549
+the conditional probability
+density function or
+
+246
+00:10:24,549 --> 00:10:28,376
+probability mass function of
+Y, given X equals little x,
+
+247
+00:10:28,376 --> 00:10:31,045
+is just like, when we
+were doing the initial
+
+248
+00:10:31,045 --> 00:10:32,677
+probability review,
+
+249
+00:10:32,677 --> 00:10:35,324
+it's f of (x, y) over f of (x),
+
+250
+00:10:35,324 --> 00:10:37,647
+and that assumes that
+x is greater than zero.
+
+251
+00:10:37,647 --> 00:10:39,937
+This is a legitimate probability mass or
+
+252
+00:10:39,937 --> 00:10:41,321
+probability density function.
+
+253
+00:10:41,321 --> 00:10:42,668
+For instance, in the continuous case,
+
+254
+00:10:42,668 --> 00:10:45,784
+the thing integrates to one,
+just like it's supposed to.
+
+255
+00:10:45,784 --> 00:10:48,352
+So if I integrate over all values of y,
+
+256
+00:10:48,352 --> 00:10:51,447
+that will integrate to
+one for any given x.
+
+257
+00:10:51,447 --> 00:10:54,427
+And I'll motivate that a
+little more in a second.
+
+258
+00:10:54,427 --> 00:10:58,035
+Here's an example, if f of
+(x, y) equals our old friend,
+
+259
+00:10:58,035 --> 00:10:59,311
+21 over four, x squared, y,
+
+260
+00:10:59,311 --> 00:11:01,636
+for x squared less than y, less than one,
+
+261
+00:11:01,636 --> 00:11:05,285
+then f of (y) given x, is, by definition,
+
+262
+00:11:05,285 --> 00:11:08,087
+f of (x, y) over f of (x),
+
+263
+00:11:08,087 --> 00:11:11,005
+I plug and chug all this mess here,
+
+264
+00:11:11,005 --> 00:11:14,336
+this is 21 over four, x squared,
+y, that's my f of (x, y),
+
+265
+00:11:14,336 --> 00:11:18,828
+here's f of (x), which we
+calculated a couple pages ago.
+
+266
+00:11:18,828 --> 00:11:21,993
+I do the algebra, and here's my answer.
+
+267
+00:11:21,993 --> 00:11:24,868
+Two, y, over one minus x to the fourth.
+
+268
+00:11:24,868 --> 00:11:28,105
+And this is for y between
+x squared, and one.
+
+269
+00:11:28,105 --> 00:11:31,706
+I did nothing to get rid of the x value,
+
+270
+00:11:31,706 --> 00:11:34,581
+I mean, those x's are
+there because I told you,
+
+271
+00:11:34,581 --> 00:11:36,205
+I've got this information about x,
+
+272
+00:11:36,205 --> 00:11:38,503
+so of course it should be included in the
+
+273
+00:11:38,503 --> 00:11:39,964
+conditional pdf.
+
+274
+00:11:39,964 --> 00:11:42,694
+These conditional distributions
+are very, very important.
+
+275
+00:11:42,694 --> 00:11:45,405
+If X and Y are independent,
+then it turns out that
+
+276
+00:11:45,405 --> 00:11:50,118
+f of (y), given x, equals f
+of (y) for all of x and y.
+
+277
+00:11:50,118 --> 00:11:54,012
+So what this means, is
+that information about x,
+
+278
+00:11:54,012 --> 00:11:57,206
+contributes nothing to
+the distribution of y.
+
+279
+00:11:57,206 --> 00:11:59,253
+So this might be one of these cases where,
+
+280
+00:11:59,253 --> 00:12:02,003
+what's the IBM stock price today,
+
+281
+00:12:03,503 --> 00:12:07,695
+given the fact that it's
+thirty degrees on Mars?
+
+282
+00:12:07,695 --> 00:12:10,548
+Well, the information
+x equals 30 degrees has
+
+283
+00:12:10,548 --> 00:12:13,528
+no impact, at all, on the IBM stock price.
+
+284
+00:12:13,528 --> 00:12:15,611
+Or is that what we're told to believe.
+
+285
+00:12:15,611 --> 00:12:16,703
+So here's a quick proof.
+
+286
+00:12:16,703 --> 00:12:18,142
+F of (y), given x
+
+287
+00:12:18,142 --> 00:12:19,096
+equals, by definition,
+
+288
+00:12:19,096 --> 00:12:21,999
+f of (x, y) over f of (x).
+
+289
+00:12:21,999 --> 00:12:25,558
+Now, if x and y are
+independent, then f of (x, y)
+
+290
+00:12:25,558 --> 00:12:28,032
+equals f of (x) times f of (y),
+
+291
+00:12:28,032 --> 00:12:29,630
+by definition of independence.
+
+292
+00:12:29,630 --> 00:12:32,689
+And then, the f of (x)'s
+on top and bottom cancel,
+
+293
+00:12:32,689 --> 00:12:33,759
+and I'm done.
+
+294
+00:12:33,759 --> 00:12:35,813
+So that's the end of
+the proof, very simple.
+
+295
+00:12:35,813 --> 00:12:38,008
+This is gonna lead me
+now to the conditional
+
+296
+00:12:38,008 --> 00:12:41,319
+expectation of Y given X equals little x.
+
+297
+00:12:41,319 --> 00:12:43,871
+If you're willing to
+believe that I can give you
+
+298
+00:12:43,871 --> 00:12:46,283
+the conditional pdf or pmf of Y given X,
+
+299
+00:12:46,283 --> 00:12:50,280
+then I can take the expected
+value of that updated
+
+300
+00:12:50,280 --> 00:12:52,421
+information of Y.
+
+301
+00:12:52,421 --> 00:12:53,677
+And again, I'll motivate in a second.
+
+302
+00:12:53,677 --> 00:12:54,774
+Here's the definition,
+
+303
+00:12:54,774 --> 00:12:58,941
+the conditional expectation
+of Y given X equals little x
+
+304
+00:12:59,980 --> 00:13:01,832
+is in the discrete case,
+
+305
+00:13:01,832 --> 00:13:06,767
+summation of y times f of (y) given x,
+
+306
+00:13:06,767 --> 00:13:09,628
+in the continuous case, integral,
+
+307
+00:13:09,628 --> 00:13:13,821
+of y times f of (y) given
+x, and that's taken over dy.
+
+308
+00:13:13,821 --> 00:13:17,654
+X is fixed, and we
+integrate, or sum, the y's.
+
+309
+00:13:19,277 --> 00:13:22,541
+Now, this is a very,
+very important concept.
+
+310
+00:13:22,541 --> 00:13:24,446
+Because what it allows
+us to do is to update
+
+311
+00:13:24,446 --> 00:13:27,098
+our information about y,
+
+312
+00:13:27,098 --> 00:13:30,094
+after we've heard about x.
+
+313
+00:13:30,094 --> 00:13:31,997
+So for example, let's suppose
+
+314
+00:13:31,997 --> 00:13:34,244
+I've got a guy in the room
+and he's seven feet tall,
+
+315
+00:13:34,244 --> 00:13:36,284
+and I'm interested in his expected weight.
+
+316
+00:13:36,284 --> 00:13:38,907
+The information that he's seven feet tall,
+
+317
+00:13:38,907 --> 00:13:42,927
+is going to give me an
+expected value for his weight,
+
+318
+00:13:42,927 --> 00:13:45,925
+an expected value of y,
+given that x equals seven.
+
+319
+00:13:45,925 --> 00:13:48,156
+That's probably going
+to be greater than the
+
+320
+00:13:48,156 --> 00:13:51,087
+expected weight of some
+totally random guy,
+
+321
+00:13:51,087 --> 00:13:53,148
+with no information about his height.
+
+322
+00:13:53,148 --> 00:13:54,687
+Now, that would be the
+expected value of y,
+
+323
+00:13:54,687 --> 00:13:58,438
+that's total, random
+guy from the population,
+
+324
+00:13:58,438 --> 00:14:00,556
+no knowledge at all about his height,
+
+325
+00:14:00,556 --> 00:14:03,886
+that's going to give me a
+different expected value
+
+326
+00:14:03,886 --> 00:14:07,943
+for weight, than somebody
+who's height I already know.
+
+327
+00:14:07,943 --> 00:14:09,869
+Here's our old continuous example,
+
+328
+00:14:09,869 --> 00:14:11,574
+that we've seen nine
+thousand times already.
+
+329
+00:14:11,574 --> 00:14:14,597
+Let's let f of (x, y) equal 21 over four,
+
+330
+00:14:14,597 --> 00:14:17,135
+x squared, y, x squared
+less than y, less than one.
+
+331
+00:14:17,135 --> 00:14:19,882
+Here's the conditional expected value,
+
+332
+00:14:19,882 --> 00:14:23,352
+by definition, it equals the
+integral over the real line
+
+333
+00:14:23,352 --> 00:14:25,520
+of y times f of (y) given x.
+
+334
+00:14:25,520 --> 00:14:29,656
+I plug in f of (y) given x,
+that's two y squared over
+
+335
+00:14:29,656 --> 00:14:32,503
+one minus x to the fourth times y.
+
+336
+00:14:32,503 --> 00:14:34,364
+I integrate y between x squared and one,
+
+337
+00:14:34,364 --> 00:14:37,758
+and after the algebra, here's my answer.
+
+338
+00:14:37,758 --> 00:14:40,163
+Two-thirds, one minus x to the sixth over
+
+339
+00:14:40,163 --> 00:14:41,678
+1 minus x to the fourth.
+
+340
+00:14:41,678 --> 00:14:44,215
+And this is actually for x
+between negative one and one.
+
+341
+00:14:44,215 --> 00:14:46,890
+Notice it's perfectly
+okay to have an x here,
+
+342
+00:14:46,890 --> 00:14:49,935
+because in fact, the
+expected value of y is
+
+343
+00:14:49,935 --> 00:14:51,275
+a function of little x.
+
+344
+00:14:51,275 --> 00:14:54,199
+The expected weight is a
+function of the height.
+
+345
+00:14:54,199 --> 00:14:56,525
+So it's perfectly okay to have
+
+346
+00:14:56,525 --> 00:14:58,864
+that nasty looking expression.
+
+347
+00:14:58,864 --> 00:15:02,458
+So here's a summary of what
+we just did in this lesson.
+
+348
+00:15:02,458 --> 00:15:05,710
+We did a lot of stuff with
+joint pmf's and pdf's,
+
+349
+00:15:05,710 --> 00:15:08,170
+we looked at independents,
+
+350
+00:15:08,170 --> 00:15:10,367
+we looked at conditional distributions,
+
+351
+00:15:10,367 --> 00:15:12,550
+we even looked at conditional expectation,
+
+352
+00:15:12,550 --> 00:15:14,396
+that's a lot of stuff.
+
+353
+00:15:14,396 --> 00:15:17,241
+Next time, I'm gonna continue the fun,
+
+354
+00:15:17,241 --> 00:15:19,103
+with conditional expectation,
+
+355
+00:15:19,103 --> 00:15:21,583
+including something I call double trouble.
+
+356
+00:15:21,583 --> 00:15:23,488
+This is by far the hardest lesson
+
+357
+00:15:23,488 --> 00:15:25,384
+that we'll do in the boot camp.
+
+358
+00:15:25,384 --> 00:15:28,815
+I want you to see it, I'm
+not gonna have you repeat it
+
+359
+00:15:28,815 --> 00:15:31,088
+verbatim ever, but I
+do want you to see it.
+
+360
+00:15:31,088 --> 00:15:33,264
+So really looking forward to next time,
+
+361
+00:15:33,264 --> 00:15:35,514
+it's gonna be a lot of fun.
+

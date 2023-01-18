@@ -1,0 +1,937 @@
+﻿1
+00:00:02,257 --> 00:00:04,539
+- In this lesson, I'm
+going to be solving certain
+
+2
+00:00:04,539 --> 00:00:07,396
+nonlinear equations, looking for zeros
+
+3
+00:00:07,396 --> 00:00:09,504
+in all the wrong places.
+
+4
+00:00:09,504 --> 00:00:12,360
+So, here's the lesson overview.
+
+5
+00:00:12,360 --> 00:00:16,402
+Last time, I talked about
+certain calculus basics,
+
+6
+00:00:16,402 --> 00:00:19,796
+and right at the end, we
+started looking for solutions
+
+7
+00:00:19,796 --> 00:00:23,674
+to nonlinear equations, in
+other words, finding a zero.
+
+8
+00:00:23,674 --> 00:00:26,715
+This time, I'm going to be
+a little bit more formal
+
+9
+00:00:26,715 --> 00:00:30,586
+about ways that we can
+conduct such a search.
+
+10
+00:00:30,586 --> 00:00:32,508
+The material is going
+to be used several times
+
+11
+00:00:32,508 --> 00:00:35,151
+in the course, take my word for this,
+
+12
+00:00:35,151 --> 00:00:37,911
+because it's actually
+very, very important,
+
+13
+00:00:37,911 --> 00:00:41,123
+and is useful in a lot of
+different methodologies
+
+14
+00:00:41,123 --> 00:00:42,623
+within simulation.
+
+15
+00:00:43,747 --> 00:00:47,226
+So, finding zeros, how
+might you find a zero
+
+16
+00:00:47,226 --> 00:00:49,658
+for some complicated linear function?
+
+17
+00:00:49,658 --> 00:00:51,886
+In other words, I'm
+looking for the value of x,
+
+18
+00:00:51,886 --> 00:00:54,558
+such that f(x) = 0.
+
+19
+00:00:54,558 --> 00:00:55,831
+There's a couple ways:
+
+20
+00:00:55,831 --> 00:00:57,965
+trial and error, now
+I've used this before,
+
+21
+00:00:57,965 --> 00:01:02,484
+it is not so great, sort of a
+search and destroy type thing.
+
+22
+00:01:02,484 --> 00:01:05,131
+Bisection, this is actually better.
+
+23
+00:01:05,131 --> 00:01:08,664
+Here we're using a sort of
+divide and conquer strategy,
+
+24
+00:01:08,664 --> 00:01:13,305
+where we at least narrow things
+down every step of the way,
+
+25
+00:01:13,305 --> 00:01:16,983
+and Newton's method, or some
+variation of Newton's method,
+
+26
+00:01:16,983 --> 00:01:20,562
+this is sort of a highly
+dependable, very quick method,
+
+27
+00:01:20,562 --> 00:01:23,372
+and then, maybe later on in the course,
+
+28
+00:01:23,372 --> 00:01:25,782
+we may have time to look
+at a fixed-point method,
+
+29
+00:01:25,782 --> 00:01:27,986
+those are a little bit more
+complicated and specialized,
+
+30
+00:01:27,986 --> 00:01:30,548
+but they're very nice as well.
+
+31
+00:01:30,548 --> 00:01:33,020
+So, here's an example that you may recall
+
+32
+00:01:33,020 --> 00:01:36,557
+from the last lesson, and
+this example actually has
+
+33
+00:01:36,557 --> 00:01:39,787
+an exact answer, at least
+we can solve for it.
+
+34
+00:01:39,787 --> 00:01:41,614
+Nevertheless, I'm just going to remind us
+
+35
+00:01:41,614 --> 00:01:46,362
+of this example just for
+stabilization purposes.
+
+36
+00:01:46,362 --> 00:01:50,124
+Let's find the value of x
+that minimizes this function,
+
+37
+00:01:50,124 --> 00:01:52,541
+e to the 2x plus e to the -x.
+
+38
+00:01:53,532 --> 00:01:56,328
+It turns out that this
+minimum can only occur
+
+39
+00:01:56,328 --> 00:01:58,441
+when you take the derivative
+and set it equal to zero,
+
+40
+00:01:58,441 --> 00:02:01,641
+so I took the derivative
+using the chain rule,
+
+41
+00:02:01,641 --> 00:02:05,615
+and I got two times e to
+the 2x, minus e to the -x,
+
+42
+00:02:05,615 --> 00:02:07,613
+set that equal to zero.
+
+43
+00:02:07,613 --> 00:02:11,008
+I'm going to make a little
+algebra manipulation here,
+
+44
+00:02:11,008 --> 00:02:14,096
+and it turns out that the solution to this
+
+45
+00:02:14,096 --> 00:02:18,009
+is x naught equals
+negative 1/3 log of two,
+
+46
+00:02:18,009 --> 00:02:22,013
+and that's approximately
+equal to minus .231.
+
+47
+00:02:22,013 --> 00:02:24,314
+It turns out it's also easy to show
+
+48
+00:02:24,314 --> 00:02:26,240
+that the second derivative
+is greater than zero
+
+49
+00:02:26,240 --> 00:02:29,967
+for all x, and so since that's
+concave up at that point,
+
+50
+00:02:29,967 --> 00:02:31,770
+x naught is indeed a minimum.
+
+51
+00:02:31,770 --> 00:02:34,915
+So that's actually getting a real answer,
+
+52
+00:02:34,915 --> 00:02:37,765
+and the thing works,
+it's possible to do that.
+
+53
+00:02:37,765 --> 00:02:39,792
+Now we'll look at the method of bisection.
+
+54
+00:02:39,792 --> 00:02:41,990
+Here, let's suppose that
+I can find x values,
+
+55
+00:02:41,990 --> 00:02:44,740
+x1 and x2, such that the function
+
+56
+00:02:45,937 --> 00:02:48,585
+g(x1) is less than zero,
+
+57
+00:02:48,585 --> 00:02:51,956
+and g(x) value of x2,
+is greater than zero.
+
+58
+00:02:51,956 --> 00:02:54,581
+I'm using g here instead
+of f because I can use
+
+59
+00:02:54,581 --> 00:02:56,979
+any letter I want, and
+I'll follow a similar logic
+
+60
+00:02:56,979 --> 00:02:59,382
+if the inequalities are reversed,
+
+61
+00:02:59,382 --> 00:03:02,221
+but let's just pretend that
+g(x1) is less than zero,
+
+62
+00:03:02,221 --> 00:03:04,584
+g(x2) is greater than zero,
+then by what's known as
+
+63
+00:03:04,584 --> 00:03:06,656
+the Intermediate Value Theorem,
+
+64
+00:03:06,656 --> 00:03:08,664
+which you may remember
+from calculus class,
+
+65
+00:03:08,664 --> 00:03:11,376
+if one value of x gives
+you a g(x) less than zero,
+
+66
+00:03:11,376 --> 00:03:14,349
+and one value of x gives you
+a g(x) greater than zero,
+
+67
+00:03:14,349 --> 00:03:16,895
+that that means that there must be a zero
+
+68
+00:03:16,895 --> 00:03:18,645
+in between x1 and x2,
+
+69
+00:03:19,678 --> 00:03:23,120
+so x*, let's say that's the zero,
+
+70
+00:03:23,120 --> 00:03:25,726
+falls between x1 and x2, that's what
+
+71
+00:03:25,726 --> 00:03:27,444
+the Intermediate Value Theorem says,
+
+72
+00:03:27,444 --> 00:03:29,851
+at least if g(x) is continuous.
+
+73
+00:03:29,851 --> 00:03:32,999
+So what I'm going to do is,
+I'm now going to kind of
+
+74
+00:03:32,999 --> 00:03:33,983
+split things in the middle.
+
+75
+00:03:33,983 --> 00:03:38,064
+Let's take x3 equal to x1 + x2 over two,
+
+76
+00:03:38,064 --> 00:03:41,318
+if g(x3) is less than zero,
+
+77
+00:03:41,318 --> 00:03:45,500
+then that means that there's
+a zero between x3 and x2,
+
+78
+00:03:45,500 --> 00:03:48,182
+otherwise if g(x3) is greater than zero,
+
+79
+00:03:48,182 --> 00:03:51,528
+there must be a zero in x1 to x3.
+
+80
+00:03:51,528 --> 00:03:54,814
+That just follows again by the
+Intermediate Value Theorem.
+
+81
+00:03:54,814 --> 00:03:58,123
+Either way, the length of
+the search interval decreases
+
+82
+00:03:58,123 --> 00:04:01,130
+by a factor of two, so what we'll do
+
+83
+00:04:01,130 --> 00:04:04,123
+is that we'll continue
+in the same exact manner
+
+84
+00:04:04,123 --> 00:04:05,721
+until the length of the search interval
+
+85
+00:04:05,721 --> 00:04:08,457
+is as small as desired,
+because every time we iterate
+
+86
+00:04:08,457 --> 00:04:10,967
+when we go to x4, x5, dot dot dot,
+
+87
+00:04:10,967 --> 00:04:12,879
+the length of the interval gets smaller
+
+88
+00:04:12,879 --> 00:04:16,403
+and smaller and smaller,
+so let's try this out
+
+89
+00:04:16,403 --> 00:04:19,927
+for this function g(x)
+equals x squared minus two.
+
+90
+00:04:19,927 --> 00:04:23,182
+Now, in fact, we know that
+x equals square root of two
+
+91
+00:04:23,182 --> 00:04:26,657
+is a solution to this, so x
+squared minus two equals zero,
+
+92
+00:04:26,657 --> 00:04:30,080
+that has a zero at x
+equals square root of two,
+
+93
+00:04:30,080 --> 00:04:32,929
+so we know that, but by
+doing this iteration,
+
+94
+00:04:32,929 --> 00:04:35,315
+which I'll show you on the next slide,
+
+95
+00:04:35,315 --> 00:04:38,754
+we'll be able to approximate
+square root of two.
+
+96
+00:04:38,754 --> 00:04:41,765
+Now, I'll illustrate the bisection method
+
+97
+00:04:41,765 --> 00:04:44,375
+on the function g(x)
+equals x squared minus two,
+
+98
+00:04:44,375 --> 00:04:46,379
+and we already know that
+the zero is going to be
+
+99
+00:04:46,379 --> 00:04:48,066
+x equals square root of two.
+
+100
+00:04:48,066 --> 00:04:51,470
+I have graciously graphed
+out the function in Excel,
+
+101
+00:04:51,470 --> 00:04:53,964
+here it is right there, beautiful.
+
+102
+00:04:53,964 --> 00:04:56,243
+You can see just by looking at the thing
+
+103
+00:04:56,243 --> 00:04:58,993
+that the zero occurs right there,
+
+104
+00:04:59,911 --> 00:05:04,453
+and if you look carefully, it
+occurs between 1.38 and 1.44,
+
+105
+00:05:04,453 --> 00:05:06,809
+which is not a surprise
+because you and I know
+
+106
+00:05:06,809 --> 00:05:10,032
+that the square root of
+two is 1.41 blah blah blah.
+
+107
+00:05:10,032 --> 00:05:12,926
+Let's just arbitrarily
+pick a starting point,
+
+108
+00:05:12,926 --> 00:05:15,832
+x1 equals one, and x2 equals two,
+
+109
+00:05:15,832 --> 00:05:19,999
+so here's x1 equals one,
+x2 equals two right there,
+
+110
+00:05:21,551 --> 00:05:24,610
+and you can see that the g of one value
+
+111
+00:05:24,610 --> 00:05:28,836
+and the g of two value
+are negative and positive,
+
+112
+00:05:28,836 --> 00:05:32,864
+and so that means, since g(x1) is negative
+
+113
+00:05:32,864 --> 00:05:36,195
+and g(x2) is positive, that
+means that there's a zero
+
+114
+00:05:36,195 --> 00:05:39,380
+between one and two, so my rules says
+
+115
+00:05:39,380 --> 00:05:42,202
+that I split the difference
+between one and two,
+
+116
+00:05:42,202 --> 00:05:45,971
+I take the midpoint, so x3 is going to be
+
+117
+00:05:45,971 --> 00:05:48,638
+x1 plus x2 over two, that's 1.5,
+
+118
+00:05:49,664 --> 00:05:51,997
+and here's 1.5 on the graph.
+
+119
+00:05:53,508 --> 00:05:55,376
+You can see that we're
+getting pretty close
+
+120
+00:05:55,376 --> 00:05:56,209
+to 1.414,
+
+121
+00:05:57,670 --> 00:06:00,003
+but g of 1.5 turns out to be
+
+122
+00:06:02,574 --> 00:06:04,188
+0.25, which is greater than zero,
+
+123
+00:06:04,188 --> 00:06:07,127
+and the implication is that the zero
+
+124
+00:06:07,127 --> 00:06:11,339
+is between one and 1.5,
+so now I can continue
+
+125
+00:06:11,339 --> 00:06:13,672
+in this manner, dot dot dot.
+
+126
+00:06:14,838 --> 00:06:17,338
+I'll calculate x4 equals 1.25,
+
+127
+00:06:19,787 --> 00:06:22,120
+continuing, x5 equals 1.375,
+
+128
+00:06:23,602 --> 00:06:25,871
+and x6 equals 1.375,
+
+129
+00:06:25,871 --> 00:06:28,549
+and look at this, we
+can really see quickly
+
+130
+00:06:28,549 --> 00:06:31,463
+that x* is starting to converge,
+
+131
+00:06:31,463 --> 00:06:35,213
+it's converging to 1.414, kind of fast.
+
+132
+00:06:35,213 --> 00:06:37,913
+It's still taking its time
+compared to Newton's method,
+
+133
+00:06:37,913 --> 00:06:39,127
+which I'll show you in a minute,
+
+134
+00:06:39,127 --> 00:06:41,300
+but it's doing a really good job.
+
+135
+00:06:41,300 --> 00:06:43,660
+So now, let's look at Newton's method.
+
+136
+00:06:43,660 --> 00:06:47,054
+So suppose somehow that I can
+find a reasonable first guess
+
+137
+00:06:47,054 --> 00:06:50,419
+for the zero, say xi or x naught.
+
+138
+00:06:50,419 --> 00:06:54,439
+We'll start the iteration
+at x, at i equals zero.
+
+139
+00:06:54,439 --> 00:06:58,189
+So, if g(x) has a very nice,
+well-behaved derivative,
+
+140
+00:06:58,189 --> 00:07:00,851
+and by well-behaved I don't
+want it to be too flat
+
+141
+00:07:00,851 --> 00:07:03,418
+near the zero, I'll show
+you why in a minute,
+
+142
+00:07:03,418 --> 00:07:07,445
+then I'm going to
+iterate my guess x sub i,
+
+143
+00:07:07,445 --> 00:07:10,216
+to xi plus one, as follows.
+
+144
+00:07:10,216 --> 00:07:13,468
+Xi plus one, my new guess for the zero,
+
+145
+00:07:13,468 --> 00:07:14,635
+is equal to xi
+
+146
+00:07:16,320 --> 00:07:20,820
+minus g(xi), divided by g prime of xi.
+
+147
+00:07:20,820 --> 00:07:24,390
+So, g(xi), if I'm close to my answer,
+
+148
+00:07:24,390 --> 00:07:26,017
+that's going to be approximately zero,
+
+149
+00:07:26,017 --> 00:07:28,152
+so I'm not going to be
+moving my answer too much,
+
+150
+00:07:28,152 --> 00:07:30,699
+and depending on the derivative,
+
+151
+00:07:30,699 --> 00:07:32,300
+if the derivative is close to zero,
+
+152
+00:07:32,300 --> 00:07:34,457
+I may have to move things a lot.
+
+153
+00:07:34,457 --> 00:07:36,124
+If the derivative is
+
+154
+00:07:37,444 --> 00:07:39,788
+quite big or quite small,
+
+155
+00:07:39,788 --> 00:07:43,966
+or quite big negatively, I
+won't be moving much at all.
+
+156
+00:07:43,966 --> 00:07:46,089
+But these two things taken together,
+
+157
+00:07:46,089 --> 00:07:48,267
+the g(x) and the g prime of x, show me
+
+158
+00:07:48,267 --> 00:07:51,036
+how much I'm going to be moving my guess.
+
+159
+00:07:51,036 --> 00:07:53,847
+Now, what I'll do if things go well,
+
+160
+00:07:53,847 --> 00:07:56,684
+believe it or not, is
+I iterate xi plus one,
+
+161
+00:07:56,684 --> 00:07:59,054
+xi plus two, dot dot dot.
+
+162
+00:07:59,054 --> 00:08:01,308
+Things are gonna actually
+converge, unless I've got
+
+163
+00:08:01,308 --> 00:08:04,271
+a couple crazy cases which I
+won't talk about right now.
+
+164
+00:08:04,271 --> 00:08:08,558
+In fact, this makes sense
+because if xi and xi plus one
+
+165
+00:08:08,558 --> 00:08:12,854
+are close to each other
+and close to the zero, x*,
+
+166
+00:08:12,854 --> 00:08:14,762
+if you do a little bit of algebra,
+
+167
+00:08:14,762 --> 00:08:17,257
+you end up with g prime of x sub i,
+
+168
+00:08:17,257 --> 00:08:21,673
+approximately equal to g(x*) minus g(xi),
+
+169
+00:08:21,673 --> 00:08:25,437
+over x* minus xi, so that's
+kind of the derivative
+
+170
+00:08:25,437 --> 00:08:29,292
+at point x sub i, so in
+fact, if things go well,
+
+171
+00:08:29,292 --> 00:08:32,687
+this will converge fairly quickly.
+
+172
+00:08:32,687 --> 00:08:34,467
+Let's try Newton out for the same example
+
+173
+00:08:34,467 --> 00:08:36,321
+that we used for bisection,
+
+174
+00:08:36,321 --> 00:08:39,219
+namely g(x) equals x squared minus two,
+
+175
+00:08:39,219 --> 00:08:43,176
+and of course we secretly know
+that the zero for this thing
+
+176
+00:08:43,176 --> 00:08:46,412
+is x equals square root of
+two, which is about 1.414.
+
+177
+00:08:46,412 --> 00:08:51,107
+Notice that the iteration step
+here is to set xi plus one
+
+178
+00:08:51,107 --> 00:08:56,061
+equal to xi minus g(xi)
+over g prime of xi,
+
+179
+00:08:56,061 --> 00:08:58,641
+it's this thing right there, and g(xi)
+
+180
+00:08:58,641 --> 00:09:01,197
+is equal to xi squared minus two,
+
+181
+00:09:01,197 --> 00:09:05,353
+g prime of xi, is equal
+to 2xi, that's very easy.
+
+182
+00:09:05,353 --> 00:09:08,930
+A little algebra gives
+us that last expression,
+
+183
+00:09:08,930 --> 00:09:12,784
+xi over two, plus one
+over xi, very very simple.
+
+184
+00:09:12,784 --> 00:09:15,403
+Let's start with this bad
+guess of x1 equals one,
+
+185
+00:09:15,403 --> 00:09:17,299
+or x0 equals one, doesn't matter.
+
+186
+00:09:17,299 --> 00:09:19,216
+Here's what we have, x2
+
+187
+00:09:20,081 --> 00:09:22,312
+equals xi over two,
+
+188
+00:09:22,312 --> 00:09:26,307
+plus one over xi, and
+xi is x1 in this case,
+
+189
+00:09:26,307 --> 00:09:30,178
+so x1 equals one, so that's one over two,
+
+190
+00:09:30,178 --> 00:09:34,369
+plus one over one, which is equal to 1.5.
+
+191
+00:09:34,369 --> 00:09:37,286
+Now, I plug 1.5 into this equation,
+
+192
+00:09:38,441 --> 00:09:41,108
+1.5 over two, plus one over 1.5,
+
+193
+00:09:42,217 --> 00:09:43,717
+now we get 1.4167.
+
+194
+00:09:44,583 --> 00:09:46,441
+Actually, it's a bunch of sixes,
+
+195
+00:09:46,441 --> 00:09:48,587
+but I rounded up to six seven.
+
+196
+00:09:48,587 --> 00:09:50,837
+Then finally, I plug 1.4167
+
+197
+00:09:52,438 --> 00:09:54,358
+into here and here,
+
+198
+00:09:54,358 --> 00:09:58,525
+and I end up with, on just
+three or four iterations,
+
+199
+00:09:59,536 --> 00:10:03,619
+1.4142, amazing, very
+close to the actual answer,
+
+200
+00:10:04,526 --> 00:10:08,877
+1.414 blah blah blah, and it
+only took three iterations.
+
+201
+00:10:08,877 --> 00:10:11,960
+Absolutely fantastic, very very nice.
+
+202
+00:10:12,826 --> 00:10:15,002
+Here's a summary of what we just did.
+
+203
+00:10:15,002 --> 00:10:18,137
+I went over some very easy,
+basic techniques to solve
+
+204
+00:10:18,137 --> 00:10:21,672
+certain nonlinear equations for zeros.
+
+205
+00:10:21,672 --> 00:10:26,539
+Next time I'll be doing the
+battle of Leibniz versus Newton.
+
+206
+00:10:26,539 --> 00:10:28,143
+It's going to be integration
+time, we're going to see
+
+207
+00:10:28,143 --> 00:10:31,196
+a lot of old friends from calculus class.
+
+208
+00:10:31,196 --> 00:10:35,185
+I hope everybody is looking
+forward to that, because I am.
+
+209
+00:10:35,185 --> 00:10:38,102
+(mysterious music)
+

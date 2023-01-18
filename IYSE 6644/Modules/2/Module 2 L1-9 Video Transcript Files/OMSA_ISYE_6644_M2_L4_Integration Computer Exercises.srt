@@ -1,0 +1,805 @@
+﻿1
+00:00:02,440 --> 00:00:03,389
+- Hi, everyone.
+
+2
+00:00:03,389 --> 00:00:05,568
+So now, we're gonna be moving
+
+3
+00:00:05,568 --> 00:00:08,979
+into some integration techniques
+
+4
+00:00:08,979 --> 00:00:11,519
+when you can't get the
+answer in closed form.
+
+5
+00:00:11,519 --> 00:00:13,852
+So, this lesson is entitled,
+
+6
+00:00:14,799 --> 00:00:17,269
+Integration Computer Exercises.
+
+7
+00:00:17,269 --> 00:00:19,200
+You'll see why.
+
+8
+00:00:19,200 --> 00:00:20,789
+Here's the overview.
+
+9
+00:00:20,789 --> 00:00:22,427
+Last time I did this wonderful,
+
+10
+00:00:22,427 --> 00:00:24,829
+puntastic integration review.
+
+11
+00:00:24,829 --> 00:00:26,368
+And you'll see for yourselves
+
+12
+00:00:26,368 --> 00:00:29,287
+when you go through that last lesson.
+
+13
+00:00:29,287 --> 00:00:32,229
+This time, I'm gonna implement several,
+
+14
+00:00:32,229 --> 00:00:33,869
+what are called, numerical techniques,
+
+15
+00:00:33,869 --> 00:00:35,299
+that you might need if you can't
+
+16
+00:00:35,299 --> 00:00:37,952
+get those beautiful printed
+closed-form solutions
+
+17
+00:00:37,952 --> 00:00:40,512
+to a particular integral.
+
+18
+00:00:40,512 --> 00:00:42,752
+Which happens every once and awhile.
+
+19
+00:00:42,752 --> 00:00:44,085
+And one of these techniques
+
+20
+00:00:44,085 --> 00:00:45,952
+actually incorporates simulation.
+
+21
+00:00:45,952 --> 00:00:47,955
+I'm just gonna give you a
+hint as to how that works
+
+22
+00:00:47,955 --> 00:00:49,355
+and we'll do that in gross
+
+23
+00:00:49,355 --> 00:00:52,005
+and tedious detail a little bit later.
+
+24
+00:00:52,005 --> 00:00:56,851
+As an exercise, let's do
+some very easy integration
+
+25
+00:00:56,851 --> 00:00:59,414
+via what I call Riemann sums.
+
+26
+00:00:59,414 --> 00:01:00,613
+And here what we're gonna do,
+
+27
+00:01:00,613 --> 00:01:02,654
+is we'll simply approximate the area
+
+28
+00:01:02,654 --> 00:01:05,390
+under this nice beautiful,
+continuous function,
+
+29
+00:01:05,390 --> 00:01:07,443
+f of x from a to b,
+
+30
+00:01:07,443 --> 00:01:11,350
+just by adding up the areas
+of n adjacent rectangles.
+
+31
+00:01:11,350 --> 00:01:13,345
+And you might remember from calculus class
+
+32
+00:01:13,345 --> 00:01:16,298
+that let's say these rectangles
+
+33
+00:01:16,298 --> 00:01:19,814
+evenly divide the
+interval ab into n pieces,
+
+34
+00:01:19,814 --> 00:01:21,385
+so n as in Nancy.
+
+35
+00:01:21,385 --> 00:01:24,343
+And so, the width of each
+rectangle is gonna be,
+
+36
+00:01:24,343 --> 00:01:25,894
+we'll call it delta x.
+
+37
+00:01:25,894 --> 00:01:28,132
+And that's just b minus a over n.
+
+38
+00:01:28,132 --> 00:01:31,683
+And the height of the
+rectangle is f of xi,
+
+39
+00:01:31,683 --> 00:01:35,163
+where xi is one of the points
+inside each of the rectangles.
+
+40
+00:01:35,163 --> 00:01:37,454
+So xi in this case could
+be a lot of things.
+
+41
+00:01:37,454 --> 00:01:40,990
+So, I'm gonna take it equal
+to a plus i times delta x.
+
+42
+00:01:40,990 --> 00:01:43,493
+That's the right hand n
+point of the ith rectangle.
+
+43
+00:01:43,493 --> 00:01:47,442
+So you can picture me writing
+little adjacent rectangles
+
+44
+00:01:47,442 --> 00:01:50,305
+next to each other under the curve
+
+45
+00:01:50,305 --> 00:01:53,713
+and those rectangles are
+approximately equal the curve.
+
+46
+00:01:53,713 --> 00:01:56,872
+So, the integral from a to b of f of x dx
+
+47
+00:01:56,872 --> 00:01:58,493
+is approximately equal to
+
+48
+00:01:58,493 --> 00:02:00,842
+the sum of the areas of the rectangles.
+
+49
+00:02:00,842 --> 00:02:03,583
+The height of the rectangle is f of xi
+
+50
+00:02:03,583 --> 00:02:06,723
+and the width of the rectangle is delta x.
+
+51
+00:02:06,723 --> 00:02:10,745
+So, what I've said now
+is that as Riemann did,
+
+52
+00:02:10,745 --> 00:02:12,835
+I can approximate the integral
+
+53
+00:02:12,835 --> 00:02:16,502
+by this very simple
+summation of rectangles.
+
+54
+00:02:18,294 --> 00:02:20,704
+And now to simplify things a little bit,
+
+55
+00:02:20,704 --> 00:02:21,803
+looks a little bit nastier,
+
+56
+00:02:21,803 --> 00:02:23,802
+but these are actual simplifications.
+
+57
+00:02:23,802 --> 00:02:25,250
+Delta x, I'm just taking the same
+
+58
+00:02:25,250 --> 00:02:27,310
+for each of the rectangles.
+
+59
+00:02:27,310 --> 00:02:28,993
+It's b minus a over n,
+
+60
+00:02:28,993 --> 00:02:30,233
+instead of having x of i,
+
+61
+00:02:30,233 --> 00:02:34,073
+I'm substituting a plus
+i times b minus a over n.
+
+62
+00:02:34,073 --> 00:02:35,305
+That's x of i.
+
+63
+00:02:35,305 --> 00:02:37,134
+And the nice thing about this is,
+
+64
+00:02:37,134 --> 00:02:42,043
+as n goes to infinity for
+nicely behaved functions,
+
+65
+00:02:42,043 --> 00:02:44,213
+the right hand side of this mess
+
+66
+00:02:44,213 --> 00:02:46,065
+equals the left hand side.
+
+67
+00:02:46,065 --> 00:02:47,585
+That's as n goes to infinity.
+
+68
+00:02:47,585 --> 00:02:49,803
+The rectangles get skinnier and skinnier
+
+69
+00:02:49,803 --> 00:02:52,099
+and they eventually approximate the area
+
+70
+00:02:52,099 --> 00:02:53,123
+under the curve really well.
+
+71
+00:02:53,123 --> 00:02:55,854
+We've sorta seen that in
+some of the demos I've given.
+
+72
+00:02:55,854 --> 00:03:00,094
+So, let's try this out on the
+integral from zero to one.
+
+73
+00:03:00,094 --> 00:03:02,532
+A sign of pi x over 2dx.
+
+74
+00:03:02,532 --> 00:03:04,092
+We've sorta seen this before.
+
+75
+00:03:04,092 --> 00:03:06,094
+It's secretly equals two over pi,
+
+76
+00:03:06,094 --> 00:03:07,427
+which is 0.6366.
+
+77
+00:03:09,683 --> 00:03:12,694
+And I'm gonna do this for
+different values of n.
+
+78
+00:03:12,694 --> 00:03:14,203
+Actually, I'll write down for one
+
+79
+00:03:14,203 --> 00:03:16,083
+and then you can see for
+yourself for other values.
+
+80
+00:03:16,083 --> 00:03:17,174
+Okay, here we go.
+
+81
+00:03:17,174 --> 00:03:18,418
+Since I'm a very nice guy
+
+82
+00:03:18,418 --> 00:03:20,619
+I'm gonna try to make
+things as easy as possible.
+
+83
+00:03:20,619 --> 00:03:23,673
+And I'm gonna take a equals
+zero and b equals one.
+
+84
+00:03:23,673 --> 00:03:25,323
+And that just simplifies things.
+
+85
+00:03:25,323 --> 00:03:29,327
+So instead of writing delta
+x equals b minus a over n,
+
+86
+00:03:29,327 --> 00:03:31,241
+b is one, a is zero,
+
+87
+00:03:31,241 --> 00:03:33,539
+then delta x is just one over n.
+
+88
+00:03:33,539 --> 00:03:35,529
+And xi is i over n.
+
+89
+00:03:35,529 --> 00:03:36,763
+So this simplifies things.
+
+90
+00:03:36,763 --> 00:03:41,080
+So what we have is, integral
+from a to b, f of x dx,
+
+91
+00:03:41,080 --> 00:03:44,165
+just equals, like I promised,
+integral from zero to one
+
+92
+00:03:44,165 --> 00:03:45,323
+of f of x.
+
+93
+00:03:45,323 --> 00:03:49,119
+And that approximately
+equals, by that 2nd equation
+
+94
+00:03:49,119 --> 00:03:52,825
+on the previous page,
+summation f of xi delta x.
+
+95
+00:03:52,825 --> 00:03:57,526
+Delta x is b minus a over n,
+which is one minus zero over n,
+
+96
+00:03:57,526 --> 00:03:58,999
+so that's where we get the one over n.
+
+97
+00:03:58,999 --> 00:04:03,166
+F of xi, well f of x is
+sine of pi, x over two.
+
+98
+00:04:06,823 --> 00:04:09,631
+So you can see how I've got
+the sine of pi over two,
+
+99
+00:04:09,631 --> 00:04:11,999
+and the x is just i over n.
+
+100
+00:04:11,999 --> 00:04:16,180
+So let's take n equals 100,
+get Excel or whatever out,
+
+101
+00:04:16,180 --> 00:04:18,367
+don't do it by hand,
+'cause there's 100 of 'em.
+
+102
+00:04:18,367 --> 00:04:21,997
+This calculates out to a value of .6416,
+
+103
+00:04:21,997 --> 00:04:24,397
+which is actually pretty
+close to that true answer
+
+104
+00:04:24,397 --> 00:04:28,403
+of two over pi, which
+is approximately .6366.
+
+105
+00:04:28,403 --> 00:04:31,929
+If I made n bigger, I'm gonna
+get closer to that answer.
+
+106
+00:04:31,929 --> 00:04:33,721
+And maybe you can try that out at home.
+
+107
+00:04:33,721 --> 00:04:35,111
+Here's another computer exercise.
+
+108
+00:04:35,111 --> 00:04:36,869
+This is the trapezoid version.
+
+109
+00:04:36,869 --> 00:04:38,221
+Now we're gonna do
+
+110
+00:04:38,221 --> 00:04:41,221
+the same type of numerical
+integration problem,
+
+111
+00:04:41,221 --> 00:04:43,379
+except now I'm using the trapezoid rule,
+
+112
+00:04:43,379 --> 00:04:44,690
+which is usually a little bit better
+
+113
+00:04:44,690 --> 00:04:46,811
+than this Riemann summation.
+
+114
+00:04:46,811 --> 00:04:51,231
+Now we have integral
+from a to b of f of x dx,
+
+115
+00:04:51,231 --> 00:04:53,702
+that equals this more
+complicated function.
+
+116
+00:04:53,702 --> 00:04:55,887
+In the middle there,
+there's still this summation
+
+117
+00:04:55,887 --> 00:04:58,368
+from i equals one to n minus one,
+
+118
+00:04:58,368 --> 00:05:01,634
+so the sum now instead of
+going from i equals zero to n,
+
+119
+00:05:01,634 --> 00:05:04,415
+goes from i equals one to
+n minus one of f of xi.
+
+120
+00:05:04,415 --> 00:05:07,701
+But now we have these end
+points f of x naught over two,
+
+121
+00:05:07,701 --> 00:05:10,707
+f of xn over two, and so it turns out
+
+122
+00:05:10,707 --> 00:05:11,591
+if you draw the little picture,
+
+123
+00:05:11,591 --> 00:05:14,008
+instead of having rectangles,
+
+124
+00:05:15,203 --> 00:05:17,609
+you have sort of little trapezoids now.
+
+125
+00:05:17,609 --> 00:05:21,495
+This mess simplifies
+down to the next line,
+
+126
+00:05:21,495 --> 00:05:25,682
+b minus a over n, times the
+giant thing in brackets.
+
+127
+00:05:25,682 --> 00:05:27,128
+And I'm not gonna have you
+
+128
+00:05:27,128 --> 00:05:29,285
+actually go through an example right now.
+
+129
+00:05:29,285 --> 00:05:31,496
+You might wanna try this out at home
+
+130
+00:05:31,496 --> 00:05:35,084
+on the same integral, zero to
+one, sine of pi x over two.
+
+131
+00:05:35,084 --> 00:05:36,860
+You'll get pretty much the same answer,
+
+132
+00:05:36,860 --> 00:05:39,449
+except it turns out you
+get a little bit faster
+
+133
+00:05:39,449 --> 00:05:43,377
+for a smaller values of
+n converge the answer
+
+134
+00:05:43,377 --> 00:05:45,093
+two over pi a little bit more quickly.
+
+135
+00:05:45,093 --> 00:05:46,861
+You can try this out yourself.
+
+136
+00:05:46,861 --> 00:05:48,070
+It's not that hard.
+
+137
+00:05:48,070 --> 00:05:50,214
+Okay now, the thing that
+interests me the most,
+
+138
+00:05:50,214 --> 00:05:53,035
+and in fact this is a simulation class,
+
+139
+00:05:53,035 --> 00:05:55,493
+we're gonna learn in more detail
+
+140
+00:05:55,493 --> 00:05:57,989
+a Monte Carlo simulation method
+
+141
+00:05:57,989 --> 00:06:00,925
+to accomplish the same
+approximate integration.
+
+142
+00:06:00,925 --> 00:06:04,021
+So I'm gonna have you just
+take my word for it for now,
+
+143
+00:06:04,021 --> 00:06:06,529
+but we'll get into this
+in more detail later on.
+
+144
+00:06:06,529 --> 00:06:08,174
+I just wanna show you what
+we're dealing with here.
+
+145
+00:06:08,174 --> 00:06:12,978
+Let's suppose that I can
+generate a series of independent,
+
+146
+00:06:12,978 --> 00:06:14,990
+identically distributed random numbers,
+
+147
+00:06:14,990 --> 00:06:17,333
+uniform random numbers
+between zero and one.
+
+148
+00:06:17,333 --> 00:06:19,725
+If you don't remember
+what a uniform number is
+
+149
+00:06:19,725 --> 00:06:20,558
+between zero and one,
+
+150
+00:06:20,558 --> 00:06:23,427
+it's just a random real
+number between zero and one.
+
+151
+00:06:23,427 --> 00:06:27,594
+You can use Excel, the
+function RAND, what a surprise.
+
+152
+00:06:28,693 --> 00:06:30,409
+How do we use these random numbers
+
+153
+00:06:30,409 --> 00:06:33,243
+between zero and one to
+approximate the integral?
+
+154
+00:06:33,243 --> 00:06:36,001
+It turns out that with
+just a little bit of work,
+
+155
+00:06:36,001 --> 00:06:38,468
+and we'll go through this
+in tedious detail later on,
+
+156
+00:06:38,468 --> 00:06:40,950
+the integral from a to b of f of x dx
+
+157
+00:06:40,950 --> 00:06:43,658
+is approximately equal
+to b minus a over n,
+
+158
+00:06:43,658 --> 00:06:44,865
+that looks familiar.
+
+159
+00:06:44,865 --> 00:06:47,503
+Times the summation from x equals one to n
+
+160
+00:06:47,503 --> 00:06:50,336
+of f of a plus b minus a use of i.
+
+161
+00:06:51,212 --> 00:06:54,370
+This looks a lot like the Riemann integral
+
+162
+00:06:54,370 --> 00:06:55,618
+except what's going on
+
+163
+00:06:55,618 --> 00:06:57,438
+is that these are not gonna be rectangles
+
+164
+00:06:57,438 --> 00:06:58,814
+that are right next to each other.
+
+165
+00:06:58,814 --> 00:07:01,273
+These are gonna be rectangles
+that are randomly placed
+
+166
+00:07:01,273 --> 00:07:02,935
+between a and b.
+
+167
+00:07:02,935 --> 00:07:04,732
+Take my word for it for now.
+
+168
+00:07:04,732 --> 00:07:09,319
+And it turns out, this converges
+at about the same speed
+
+169
+00:07:09,319 --> 00:07:11,426
+as Riemann, to the correct answer,
+
+170
+00:07:11,426 --> 00:07:13,364
+namely integral from a to b of f of x.
+
+171
+00:07:13,364 --> 00:07:16,016
+And if you want, you can
+go home and try this out
+
+172
+00:07:16,016 --> 00:07:17,965
+on the same integral that
+we've been working with
+
+173
+00:07:17,965 --> 00:07:22,346
+but you'll be given adequate
+practice with this later on.
+
+174
+00:07:22,346 --> 00:07:24,114
+Here's a summary.
+
+175
+00:07:24,114 --> 00:07:25,220
+This time we went over
+
+176
+00:07:25,220 --> 00:07:27,583
+some very easy numerical
+integration techniques.
+
+177
+00:07:27,583 --> 00:07:30,219
+And right at the end I
+snuck in a little simulation
+
+178
+00:07:30,219 --> 00:07:34,200
+while you weren't looking,
+we snuck it in there.
+
+179
+00:07:34,200 --> 00:07:36,386
+Next time I'm just gonna make a guess
+
+180
+00:07:36,386 --> 00:07:38,387
+that it's very, very likely
+
+181
+00:07:38,387 --> 00:07:41,184
+that we're gonna be starting
+our probability primer.
+
+182
+00:07:41,184 --> 00:07:43,431
+You might say it's probable.
+
+183
+00:07:43,431 --> 00:07:45,181
+So we'll see ya then.
+

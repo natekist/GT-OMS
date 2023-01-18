@@ -1,0 +1,1537 @@
+﻿1
+00:00:02,433 --> 00:00:03,653
+- Hi everyone.
+
+2
+00:00:03,653 --> 00:00:05,707
+So now we're finally
+gonna start our review
+
+3
+00:00:05,707 --> 00:00:08,668
+on some Probability basics, and again,
+
+4
+00:00:08,668 --> 00:00:11,009
+if you've had these for
+requisites that's just great,
+
+5
+00:00:11,009 --> 00:00:14,342
+if not, have some fun and sort of recall
+
+6
+00:00:15,545 --> 00:00:17,208
+maybe what you might've seen
+
+7
+00:00:17,208 --> 00:00:18,738
+for the first time way back
+
+8
+00:00:18,738 --> 00:00:21,981
+even in high school if you
+took an AP Stats class.
+
+9
+00:00:21,981 --> 00:00:24,459
+So here's the lesson overview.
+
+10
+00:00:24,459 --> 00:00:28,220
+In the previous lesson we
+completed our Calculus Primer,
+
+11
+00:00:28,220 --> 00:00:31,783
+did a little bit of numerical integration.
+
+12
+00:00:31,783 --> 00:00:34,480
+This time I'm gonna start
+a review of Probability
+
+13
+00:00:34,480 --> 00:00:36,730
+with some very easy basics,
+
+14
+00:00:37,644 --> 00:00:40,989
+and if you're a tyro,
+which means beginner,
+
+15
+00:00:40,989 --> 00:00:43,620
+feel free to peruse, take a look at,
+
+16
+00:00:43,620 --> 00:00:44,752
+the notes at your leisure,
+
+17
+00:00:44,752 --> 00:00:46,325
+but you know, pay
+attention to the material
+
+18
+00:00:46,325 --> 00:00:48,993
+that you don't happen to remember so well.
+
+19
+00:00:48,993 --> 00:00:50,097
+So here are the basics.
+
+20
+00:00:50,097 --> 00:00:52,712
+I'm gonna assume that you know
+about the real, real basics
+
+21
+00:00:52,712 --> 00:00:54,321
+like sample spaces, events,
+
+22
+00:00:54,321 --> 00:00:56,395
+and even the definition of probability,
+
+23
+00:00:56,395 --> 00:00:58,269
+so if somebody tells you
+
+24
+00:00:58,269 --> 00:01:00,362
+well I think that this thing happens
+
+25
+00:01:00,362 --> 00:01:02,038
+with a probability greater than one
+
+26
+00:01:02,038 --> 00:01:04,056
+or a probability less than zero,
+
+27
+00:01:04,056 --> 00:01:05,456
+you'll laugh at them because we know
+
+28
+00:01:05,456 --> 00:01:08,577
+that probabilities can only
+be between zero and one.
+
+29
+00:01:08,577 --> 00:01:11,094
+So I'm assuming you know stuff like that.
+
+30
+00:01:11,094 --> 00:01:13,095
+Anyway, here's sort of a definition
+
+31
+00:01:13,095 --> 00:01:17,153
+I always start out with in such a class,
+
+32
+00:01:17,153 --> 00:01:20,441
+and that is the definition
+of conditional probability.
+
+33
+00:01:20,441 --> 00:01:23,246
+So the probability of some event A,
+
+34
+00:01:23,246 --> 00:01:26,410
+given event B, is equal to the probability
+
+35
+00:01:26,410 --> 00:01:29,078
+of the intersection of
+the two events A and B
+
+36
+00:01:29,078 --> 00:01:31,820
+divided by the probability
+of B all by itself.
+
+37
+00:01:31,820 --> 00:01:35,596
+That's called the conditional
+probability of A given B.
+
+38
+00:01:35,596 --> 00:01:37,237
+And this assumes that the probability of B
+
+39
+00:01:37,237 --> 00:01:38,683
+is greater than zero so you don't
+
+40
+00:01:38,683 --> 00:01:42,346
+run into these dividing
+by zero type issues
+
+41
+00:01:42,346 --> 00:01:44,284
+but this is a very standard definition.
+
+42
+00:01:44,284 --> 00:01:46,122
+Now, if you don't like math,
+
+43
+00:01:46,122 --> 00:01:48,680
+just think of it as the probability
+
+44
+00:01:48,680 --> 00:01:50,468
+that A is going to occur
+
+45
+00:01:50,468 --> 00:01:53,801
+given the updated information B,
+
+46
+00:01:53,801 --> 00:01:55,961
+and we'll do a couple
+examples to show you.
+
+47
+00:01:55,961 --> 00:01:56,980
+This is certainly something
+
+48
+00:01:56,980 --> 00:01:59,063
+that we'll be using throughout the course.
+
+49
+00:01:59,063 --> 00:02:02,072
+So, what's the probability
+that an event A happens
+
+50
+00:02:02,072 --> 00:02:05,700
+given that your friend has
+told you that B has happened?
+
+51
+00:02:05,700 --> 00:02:09,227
+And this allows you to
+update the probabilities.
+
+52
+00:02:09,227 --> 00:02:10,849
+Now for instance, what's the probability
+
+53
+00:02:10,849 --> 00:02:12,925
+that it's gonna rain today
+
+54
+00:02:12,925 --> 00:02:15,550
+given that it's rained
+for the last four days?
+
+55
+00:02:15,550 --> 00:02:17,587
+That's probably not
+equal to the probability
+
+56
+00:02:17,587 --> 00:02:21,372
+it's gonna rain today, given
+no information whatsoever.
+
+57
+00:02:21,372 --> 00:02:23,615
+Let's go through an example or two
+
+58
+00:02:23,615 --> 00:02:26,112
+and we can expand on this.
+
+59
+00:02:26,112 --> 00:02:27,681
+Let's toss a fair die.
+
+60
+00:02:27,681 --> 00:02:29,626
+I'm gonna define the event A
+
+61
+00:02:29,626 --> 00:02:33,439
+as having a one, two, or a three appear
+
+62
+00:02:33,439 --> 00:02:35,566
+and I'll define the event B
+
+63
+00:02:35,566 --> 00:02:39,025
+as having a three, four,
+five, or six appear.
+
+64
+00:02:39,025 --> 00:02:41,906
+Then the probability of A given B
+
+65
+00:02:41,906 --> 00:02:44,747
+which means what's the
+probability that I saw
+
+66
+00:02:44,747 --> 00:02:47,040
+a one or a two or a three
+
+67
+00:02:47,040 --> 00:02:49,352
+given that my friend secretly told me,
+
+68
+00:02:49,352 --> 00:02:51,557
+well, a three, four,
+five, or six appeared,
+
+69
+00:02:51,557 --> 00:02:52,933
+but I'm not gonna tell you which one.
+
+70
+00:02:52,933 --> 00:02:55,534
+So what's the probability that
+a one, two, three appeared
+
+71
+00:02:55,534 --> 00:02:57,939
+given that my friend has
+already told me that,
+
+72
+00:02:57,939 --> 00:03:00,318
+well, a three, four,
+five, or six has appeared?
+
+73
+00:03:00,318 --> 00:03:02,516
+Well, what's gonna happen here
+
+74
+00:03:02,516 --> 00:03:04,687
+is that my friend has eliminated
+
+75
+00:03:04,687 --> 00:03:06,576
+the possibility of one and two,
+
+76
+00:03:06,576 --> 00:03:10,682
+so the probability of A
+intersect B in this case
+
+77
+00:03:10,682 --> 00:03:14,217
+is just the probability
+that a three occurred,
+
+78
+00:03:14,217 --> 00:03:16,064
+which equals 1/6.
+
+79
+00:03:16,064 --> 00:03:20,073
+The probability of B all
+by itself occurring is 4/6
+
+80
+00:03:20,073 --> 00:03:22,693
+and so even my cat can do this division.
+
+81
+00:03:22,693 --> 00:03:27,453
+1/6 over 4/6, the updated
+probability of A occurring is 1/4.
+
+82
+00:03:27,453 --> 00:03:29,901
+So before we did the experiment
+
+83
+00:03:29,901 --> 00:03:32,444
+the probability of A
+occurring all by itself,
+
+84
+00:03:32,444 --> 00:03:33,995
+the probability of getting
+a one, two, or three,
+
+85
+00:03:33,995 --> 00:03:34,939
+that was 1/2.
+
+86
+00:03:34,939 --> 00:03:37,191
+But given that my friend has
+told me this information,
+
+87
+00:03:37,191 --> 00:03:39,171
+that a three, four, five,
+or six has occurred,
+
+88
+00:03:39,171 --> 00:03:41,290
+the updated probability of A occurring
+
+89
+00:03:41,290 --> 00:03:43,467
+unfortunately goes down to 1/4,
+
+90
+00:03:43,467 --> 00:03:45,112
+so there's lots of interesting problems
+
+91
+00:03:45,112 --> 00:03:46,101
+that you can do.
+
+92
+00:03:46,101 --> 00:03:50,001
+On the homework I'll give you
+one or two that you can enjoy.
+
+93
+00:03:50,001 --> 00:03:51,295
+Here's another definition.
+
+94
+00:03:51,295 --> 00:03:53,616
+If the probability of A intersect B
+
+95
+00:03:53,616 --> 00:03:56,276
+equals P of A times P of B,
+
+96
+00:03:56,276 --> 00:03:59,398
+then A and B are called
+independent events,
+
+97
+00:03:59,398 --> 00:04:01,648
+and I'll give some motivation for that.
+
+98
+00:04:01,648 --> 00:04:04,243
+For instance, if I'm interested
+
+99
+00:04:04,243 --> 00:04:07,724
+in looking at the temperature on Mars
+
+100
+00:04:07,724 --> 00:04:10,359
+and the IBM stock price,
+
+101
+00:04:10,359 --> 00:04:12,660
+it turns out that those are
+gonna be independent events,
+
+102
+00:04:12,660 --> 00:04:14,828
+they have nothing to do with each other,
+
+103
+00:04:14,828 --> 00:04:17,405
+and I'll show you where this
+nothing to do with each other
+
+104
+00:04:17,405 --> 00:04:19,217
+motivation comes from in a second.
+
+105
+00:04:19,217 --> 00:04:21,358
+So, at least they would have you believe
+
+106
+00:04:21,358 --> 00:04:23,083
+that they have nothing
+to do with each other.
+
+107
+00:04:23,083 --> 00:04:25,876
+Hopefully they are in fact independent.
+
+108
+00:04:25,876 --> 00:04:27,674
+Theorem, this is sort of the motivational
+
+109
+00:04:27,674 --> 00:04:29,629
+definition of independence.
+
+110
+00:04:29,629 --> 00:04:31,150
+If A and B are independent,
+
+111
+00:04:31,150 --> 00:04:33,272
+then the probability of A given B
+
+112
+00:04:33,272 --> 00:04:35,760
+equals the probability of A all by itself,
+
+113
+00:04:35,760 --> 00:04:38,392
+so this is not a
+definition, it's a theorem,
+
+114
+00:04:38,392 --> 00:04:41,279
+and it's kind of a nice theorem
+
+115
+00:04:41,279 --> 00:04:43,733
+that I sort of pretend is a definition.
+
+116
+00:04:43,733 --> 00:04:45,878
+What it means is the information
+
+117
+00:04:45,878 --> 00:04:47,753
+that my friend gives me about B
+
+118
+00:04:47,753 --> 00:04:50,497
+does not affect the
+probability of A at all,
+
+119
+00:04:50,497 --> 00:04:54,121
+so the probability of A
+occurring given that I know B,
+
+120
+00:04:54,121 --> 00:04:56,210
+that's just the probability
+of A all by itself.
+
+121
+00:04:56,210 --> 00:04:59,671
+B has given no influence on
+the probability of A occurring,
+
+122
+00:04:59,671 --> 00:05:01,483
+so that's why they're called independent,
+
+123
+00:05:01,483 --> 00:05:03,077
+B has nothin' to do with A.
+
+124
+00:05:03,077 --> 00:05:05,477
+Here's an example, let's toss two dice.
+
+125
+00:05:05,477 --> 00:05:07,568
+I'll let A equal the event
+
+126
+00:05:07,568 --> 00:05:09,128
+that the sum is a seven,
+
+127
+00:05:09,128 --> 00:05:10,492
+and B is gonna be the event
+
+128
+00:05:10,492 --> 00:05:12,765
+that the first die is a four.
+
+129
+00:05:12,765 --> 00:05:15,331
+A die is the singular version of dice,
+
+130
+00:05:15,331 --> 00:05:16,695
+I'm not being gross here.
+
+131
+00:05:16,695 --> 00:05:19,859
+So the probability of A is 1/6
+
+132
+00:05:19,859 --> 00:05:22,060
+because there are six ways
+that you can get a seven.
+
+133
+00:05:22,060 --> 00:05:23,545
+You can get a one and a six,
+
+134
+00:05:23,545 --> 00:05:26,040
+you can get a two and a five, dot dot dot.
+
+135
+00:05:26,040 --> 00:05:27,084
+There's six ways you can do it,
+
+136
+00:05:27,084 --> 00:05:29,873
+six out of 36, and so that translates
+
+137
+00:05:29,873 --> 00:05:31,742
+to a probability of 1/6.
+
+138
+00:05:31,742 --> 00:05:33,740
+The probability of B occurring,
+
+139
+00:05:33,740 --> 00:05:35,763
+that the first die is a four,
+
+140
+00:05:35,763 --> 00:05:37,856
+well let's just look at the first die.
+
+141
+00:05:37,856 --> 00:05:40,591
+One, two, three, four, five, six,
+
+142
+00:05:40,591 --> 00:05:42,562
+one of those possibilities
+
+143
+00:05:42,562 --> 00:05:44,349
+is first die is a four,
+
+144
+00:05:44,349 --> 00:05:46,367
+so that probability is also 1/6,
+
+145
+00:05:46,367 --> 00:05:49,769
+Okay, meanwhile the
+probability of A intersect B,
+
+146
+00:05:49,769 --> 00:05:53,225
+the only way that A can intersect B
+
+147
+00:05:53,225 --> 00:05:56,076
+if the sum is a seven and
+the first die is a four,
+
+148
+00:05:56,076 --> 00:05:59,235
+that must be that the first die is a four
+
+149
+00:05:59,235 --> 00:06:00,946
+and the second die is a three,
+
+150
+00:06:00,946 --> 00:06:03,362
+that must be, it's the
+only way to intersect,
+
+151
+00:06:03,362 --> 00:06:06,215
+and so that event, a four and a three,
+
+152
+00:06:06,215 --> 00:06:09,075
+has a probability of
+1/36, which by coincidence
+
+153
+00:06:09,075 --> 00:06:10,946
+is probability of A
+times probability of B,
+
+154
+00:06:10,946 --> 00:06:13,684
+1/6 times 1/6, and so it shows
+
+155
+00:06:13,684 --> 00:06:16,210
+that the two events in that case, A and B,
+
+156
+00:06:16,210 --> 00:06:18,773
+are independent of each
+other, congratulations.
+
+157
+00:06:18,773 --> 00:06:22,940
+Let's jump over to the
+definition of a random variable.
+
+158
+00:06:24,121 --> 00:06:25,857
+Don't be frightened by this
+
+159
+00:06:25,857 --> 00:06:28,872
+'cause there's a little
+equation, it's nothing at all.
+
+160
+00:06:28,872 --> 00:06:31,204
+Random variable's just a function X
+
+161
+00:06:31,204 --> 00:06:33,261
+from the sample space of the experiment
+
+162
+00:06:33,261 --> 00:06:34,370
+to the real line.
+
+163
+00:06:34,370 --> 00:06:37,452
+I'll give an example to
+show what I mean by that.
+
+164
+00:06:37,452 --> 00:06:39,916
+Let X be the sum of two dice rolls.
+
+165
+00:06:39,916 --> 00:06:43,485
+So the sample space is all the
+pairs of possible dice rolls.
+
+166
+00:06:43,485 --> 00:06:46,924
+One one, one two, dot dot
+dot, all the way to six six.
+
+167
+00:06:46,924 --> 00:06:48,745
+What's that called, boxcars I guess?
+
+168
+00:06:48,745 --> 00:06:51,662
+So in particular, one set of tosses
+
+169
+00:06:53,185 --> 00:06:55,087
+could be a four and a six,
+
+170
+00:06:55,087 --> 00:06:56,664
+and that adds up to 10.
+
+171
+00:06:56,664 --> 00:07:00,581
+So what happens, my
+function X takes an element
+
+172
+00:07:01,812 --> 00:07:03,560
+of the sample space, four six,
+
+173
+00:07:03,560 --> 00:07:06,727
+and it moves it over to the real line.
+
+174
+00:07:07,773 --> 00:07:10,662
+So four six gets transformed
+over to the real line.
+
+175
+00:07:10,662 --> 00:07:13,350
+In addition, the probability that x equals
+
+176
+00:07:13,350 --> 00:07:16,116
+any particular specific value,
+
+177
+00:07:16,116 --> 00:07:18,987
+so capital X is the random thing,
+
+178
+00:07:18,987 --> 00:07:21,341
+little x is a specific value.
+
+179
+00:07:21,341 --> 00:07:23,471
+We know that the probability of the sum
+
+180
+00:07:23,471 --> 00:07:26,044
+of two dice tosses is,
+
+181
+00:07:26,044 --> 00:07:29,216
+if the sum is two the probability is 1/36,
+
+182
+00:07:29,216 --> 00:07:30,508
+there's only one way you can do it,
+
+183
+00:07:30,508 --> 00:07:31,752
+get a one and a one.
+
+184
+00:07:31,752 --> 00:07:35,317
+To get little x equal to
+three, the sum equals three,
+
+185
+00:07:35,317 --> 00:07:36,681
+the only ways you can do that
+
+186
+00:07:36,681 --> 00:07:38,246
+are tossing a one and a two
+
+187
+00:07:38,246 --> 00:07:41,180
+or a two and a one, so that's 2/36.
+
+188
+00:07:41,180 --> 00:07:42,374
+And so you can see you get this,
+
+189
+00:07:42,374 --> 00:07:45,288
+what's called a probability mass function.
+
+190
+00:07:45,288 --> 00:07:47,569
+1/36, 2/36, it goes all the way up
+
+191
+00:07:47,569 --> 00:07:50,037
+to 6/36 when x equals seven,
+
+192
+00:07:50,037 --> 00:07:54,577
+then it comes back down
+to 1/36 for x equals 12.
+
+193
+00:07:54,577 --> 00:07:58,601
+That brings to mind a general
+class of random variables,
+
+194
+00:07:58,601 --> 00:08:01,602
+or I call 'em recreational
+variables sometimes.
+
+195
+00:08:01,602 --> 00:08:04,684
+So the definition I'm aiming at here is,
+
+196
+00:08:04,684 --> 00:08:06,500
+if the number of possible values,
+
+197
+00:08:06,500 --> 00:08:07,955
+of our random variable X,
+
+198
+00:08:07,955 --> 00:08:10,478
+is finite or countably infinite,
+
+199
+00:08:10,478 --> 00:08:12,197
+and in that last example it was finite,
+
+200
+00:08:12,197 --> 00:08:16,258
+there were 12, there were 11
+values, x equals two to 12.
+
+201
+00:08:16,258 --> 00:08:19,277
+Then X is called a
+discrete random variable.
+
+202
+00:08:19,277 --> 00:08:22,182
+Its probability mass function, or pmf,
+
+203
+00:08:22,182 --> 00:08:24,014
+is given by little f of x,
+
+204
+00:08:24,014 --> 00:08:27,137
+that's a function of
+x, and it's defined as
+
+205
+00:08:27,137 --> 00:08:29,678
+the probability that X equals any of these
+
+206
+00:08:29,678 --> 00:08:32,355
+finite or countably infinite x values,
+
+207
+00:08:32,355 --> 00:08:35,825
+and note that they add up to
+one, all these probabilities.
+
+208
+00:08:35,825 --> 00:08:38,999
+The sum of x over little
+f of x equals one.
+
+209
+00:08:38,999 --> 00:08:40,263
+By countably infinite I mean
+
+210
+00:08:40,263 --> 00:08:42,654
+there could be an infinite
+number of these things,
+
+211
+00:08:42,654 --> 00:08:45,151
+but they have a one to one
+correspondence with the integers,
+
+212
+00:08:45,151 --> 00:08:46,803
+that's what countably infinite means.
+
+213
+00:08:46,803 --> 00:08:50,322
+Example, let's flip two coins,
+X is the number of heads.
+
+214
+00:08:50,322 --> 00:08:53,175
+X can only equal zero, one, or two,
+
+215
+00:08:53,175 --> 00:08:55,579
+so the probability that
+I flip the two coins
+
+216
+00:08:55,579 --> 00:08:58,850
+and get zero heads is 1/4,
+
+217
+00:08:58,850 --> 00:09:01,385
+the probability that I
+get two heads, also 1/4.
+
+218
+00:09:01,385 --> 00:09:03,580
+And the probability that
+I get exactly one head,
+
+219
+00:09:03,580 --> 00:09:06,225
+so I either get heads
+tails or tails heads,
+
+220
+00:09:06,225 --> 00:09:08,029
+that's equal to 1/2.
+
+221
+00:09:08,029 --> 00:09:10,840
+And there's no other
+possible values for X.
+
+222
+00:09:10,840 --> 00:09:14,600
+1.5, not possible, negative
+three, not possible.
+
+223
+00:09:14,600 --> 00:09:16,694
+So if you add up all those numbers,
+
+224
+00:09:16,694 --> 00:09:19,484
+1/4 plus 1/4 plus 1/2,
+
+225
+00:09:19,484 --> 00:09:21,547
+wow, magic, it's equal to one.
+
+226
+00:09:21,547 --> 00:09:23,861
+And we have a bunch of other
+
+227
+00:09:23,861 --> 00:09:25,522
+discrete random variables you may remember
+
+228
+00:09:25,522 --> 00:09:28,494
+from Baby Stats class,
+Bernoulli random variable,
+
+229
+00:09:28,494 --> 00:09:30,185
+Binomial, Geometric, Poissin,
+
+230
+00:09:30,185 --> 00:09:32,361
+I'll talk about all those as we need them,
+
+231
+00:09:32,361 --> 00:09:34,565
+so don't panic if you don't remember.
+
+232
+00:09:34,565 --> 00:09:36,184
+Now, the other class of random variables
+
+233
+00:09:36,184 --> 00:09:38,004
+that we're interested in
+
+234
+00:09:38,004 --> 00:09:40,259
+are what's called
+continuous random variables.
+
+235
+00:09:40,259 --> 00:09:41,777
+A continues random variable is one
+
+236
+00:09:41,777 --> 00:09:45,129
+that has probability zero
+at every individual point,
+
+237
+00:09:45,129 --> 00:09:47,110
+and in this case there exists
+
+238
+00:09:47,110 --> 00:09:50,901
+what's called a probability
+density function, or pdf.
+
+239
+00:09:50,901 --> 00:09:53,370
+F of x having the magical property
+
+240
+00:09:53,370 --> 00:09:56,298
+that, well, f of x is not a probability
+
+241
+00:09:56,298 --> 00:09:58,331
+like it was for the
+probability mass function,
+
+242
+00:09:58,331 --> 00:10:01,532
+but you can get
+probabilities from the pdf.
+
+243
+00:10:01,532 --> 00:10:03,468
+And namely, here's how you do it.
+
+244
+00:10:03,468 --> 00:10:06,395
+If A is any set or any event,
+
+245
+00:10:06,395 --> 00:10:09,762
+then the probability
+that X falls in that set
+
+246
+00:10:09,762 --> 00:10:13,829
+is merely the integral of
+f of x taken over that set,
+
+247
+00:10:13,829 --> 00:10:18,131
+and so f of x, the pdf
+is not a probability,
+
+248
+00:10:18,131 --> 00:10:19,818
+but it gets you the probabilities.
+
+249
+00:10:19,818 --> 00:10:21,333
+People mess that up all the time,
+
+250
+00:10:21,333 --> 00:10:22,759
+but that's what it is,
+
+251
+00:10:22,759 --> 00:10:25,206
+and note that if I integrate f of x
+
+252
+00:10:25,206 --> 00:10:28,098
+over the entire real line,
+that integrates to one.
+
+253
+00:10:28,098 --> 00:10:30,759
+That's kinda like adding up
+the pmf and getting a one.
+
+254
+00:10:30,759 --> 00:10:33,260
+So here's the simplest
+example I could think of.
+
+255
+00:10:33,260 --> 00:10:36,195
+Just pick a random real number
+between three and seven.
+
+256
+00:10:36,195 --> 00:10:38,303
+There are an infinite number
+
+257
+00:10:38,303 --> 00:10:40,673
+of real numbers between three and seven,
+
+258
+00:10:40,673 --> 00:10:43,731
+and in fact, it's uncountably infinite,
+
+259
+00:10:43,731 --> 00:10:46,530
+which is a bigger infinity
+than countably infinite,
+
+260
+00:10:46,530 --> 00:10:47,674
+believe it or not.
+
+261
+00:10:47,674 --> 00:10:49,288
+So, the probability that I pick
+
+262
+00:10:49,288 --> 00:10:51,812
+any individual value
+between three and seven,
+
+263
+00:10:51,812 --> 00:10:54,620
+like suppose, what's a
+probability that I pick a five,
+
+264
+00:10:54,620 --> 00:10:56,631
+that probability is zero,
+
+265
+00:10:56,631 --> 00:11:00,798
+'cause I could have easily
+picked 5.00001 or 4.99999
+
+266
+00:11:01,684 --> 00:11:04,219
+so the probability of any
+individual number is zero,
+
+267
+00:11:04,219 --> 00:11:06,697
+that kinda corresponds to the integral
+
+268
+00:11:06,697 --> 00:11:09,716
+of a continuous function over one point.
+
+269
+00:11:09,716 --> 00:11:14,524
+So, even though f of x is not
+the probability of the event,
+
+270
+00:11:14,524 --> 00:11:18,100
+it's the pdf, which gives me the ability
+
+271
+00:11:18,100 --> 00:11:21,723
+to calculate probabilities,
+and for purposes of this,
+
+272
+00:11:21,723 --> 00:11:25,160
+what's called uniform distribution
+between three and seven,
+
+273
+00:11:25,160 --> 00:11:29,573
+the pdf is equal to 1/4 for
+x between three and seven,
+
+274
+00:11:29,573 --> 00:11:32,311
+and notice if you integrate
+1/4 from three to seven
+
+275
+00:11:32,311 --> 00:11:35,081
+that gives you a one, so
+things kinda make sense.
+
+276
+00:11:35,081 --> 00:11:37,776
+Now, some famous continuous
+random variables,
+
+277
+00:11:37,776 --> 00:11:39,787
+which you've heard of, are Uniform,
+
+278
+00:11:39,787 --> 00:11:41,948
+Exponential, and Normal, or Gaussian,
+
+279
+00:11:41,948 --> 00:11:43,553
+we'll talk more about those later.
+
+280
+00:11:43,553 --> 00:11:46,354
+For now, I'm very, very lazy,
+
+281
+00:11:46,354 --> 00:11:48,108
+I'm gonna use that little twiddle thing,
+
+282
+00:11:48,108 --> 00:11:50,256
+that means is distributed as.
+
+283
+00:11:50,256 --> 00:11:52,547
+I don't like writin'
+things out, save some ink.
+
+284
+00:11:52,547 --> 00:11:56,028
+So if I write x twiddle Uniform 0.1,
+
+285
+00:11:56,028 --> 00:11:58,289
+that means that X has
+the uniform distribution
+
+286
+00:11:58,289 --> 00:11:59,344
+from zero to one.
+
+287
+00:11:59,344 --> 00:12:01,142
+Now, I'll give one more definition
+
+288
+00:12:01,142 --> 00:12:04,933
+for any random variable, x
+either discrete or continuous,
+
+289
+00:12:04,933 --> 00:12:08,068
+the cumulative distribution
+function, or cdf,
+
+290
+00:12:08,068 --> 00:12:10,619
+is the probability of
+everything that's happened
+
+291
+00:12:10,619 --> 00:12:12,292
+up to little x.
+
+292
+00:12:12,292 --> 00:12:14,686
+So capital F of x is the probability
+
+293
+00:12:14,686 --> 00:12:16,897
+that capital X is less than or equal
+
+294
+00:12:16,897 --> 00:12:18,843
+to the particular value little x.
+
+295
+00:12:18,843 --> 00:12:22,132
+Capital X is random, little
+x is a specific value,
+
+296
+00:12:22,132 --> 00:12:24,081
+and the thing on the right-hand side
+
+297
+00:12:24,081 --> 00:12:27,351
+is basically the integral
+from minus infinity
+
+298
+00:12:27,351 --> 00:12:29,646
+to x of little f of y dy,
+
+299
+00:12:29,646 --> 00:12:32,350
+so everything that's
+happened up to time x,
+
+300
+00:12:32,350 --> 00:12:34,071
+that's if X is continuous.
+
+301
+00:12:34,071 --> 00:12:35,494
+The reason I'm using little y,
+
+302
+00:12:35,494 --> 00:12:37,064
+is it's just a dummy variable,
+
+303
+00:12:37,064 --> 00:12:38,660
+and it's the same thing with the summation
+
+304
+00:12:38,660 --> 00:12:40,453
+effects as a discrete random variable.
+
+305
+00:12:40,453 --> 00:12:42,795
+Notice that capital F of x,
+
+306
+00:12:42,795 --> 00:12:46,199
+when you let x go to
+minus infinity it's zero,
+
+307
+00:12:46,199 --> 00:12:47,409
+because the probability of x
+
+308
+00:12:47,409 --> 00:12:50,137
+being less than minus infinity is zero.
+
+309
+00:12:50,137 --> 00:12:51,813
+Similarly, the probability that X
+
+310
+00:12:51,813 --> 00:12:54,231
+is less than infinity is one,
+
+311
+00:12:54,231 --> 00:12:56,903
+and the nice thing is, if X is continuous
+
+312
+00:12:56,903 --> 00:12:59,969
+you take the derivative of
+big X, you get little f.
+
+313
+00:12:59,969 --> 00:13:02,931
+Uh, take the derivative of
+big F, you get little f,
+
+314
+00:13:02,931 --> 00:13:06,428
+and vice versa, integrate
+little f, you get big F,
+
+315
+00:13:06,428 --> 00:13:08,995
+that's by fundamental theorem of Calculus.
+
+316
+00:13:08,995 --> 00:13:10,698
+Example, flip two coins.
+
+317
+00:13:10,698 --> 00:13:11,800
+Number of heads?
+
+318
+00:13:11,800 --> 00:13:13,337
+Well remember the probability
+
+319
+00:13:13,337 --> 00:13:16,818
+that we would get zero heads is 1/4,
+
+320
+00:13:16,818 --> 00:13:19,555
+so nothing happens until
+you get x equal to zero,
+
+321
+00:13:19,555 --> 00:13:21,469
+that's why there's a
+zero on the first line
+
+322
+00:13:21,469 --> 00:13:23,162
+and 1/4 on the second line.
+
+323
+00:13:23,162 --> 00:13:24,845
+Then nothing happens
+
+324
+00:13:24,845 --> 00:13:27,179
+until you get to x equals one,
+
+325
+00:13:27,179 --> 00:13:30,795
+whereupon the probability
+that x equals one is 1/2
+
+326
+00:13:30,795 --> 00:13:32,815
+so the cumulative probability goes from
+
+327
+00:13:32,815 --> 00:13:35,414
+1/4 plus 1/2 to 3/4,
+
+328
+00:13:35,414 --> 00:13:39,021
+and then nothing happens
+until you get to x equals two,
+
+329
+00:13:39,021 --> 00:13:41,537
+whereupon the cdf jumps up to one
+
+330
+00:13:41,537 --> 00:13:44,548
+because 3/4 plus the
+probability that x equals two,
+
+331
+00:13:44,548 --> 00:13:46,501
+which is 1/4, that equals one.
+
+332
+00:13:46,501 --> 00:13:48,854
+In the continuous case, let's pretend
+
+333
+00:13:48,854 --> 00:13:51,853
+x has the exponential lambda distribution.
+
+334
+00:13:51,853 --> 00:13:54,363
+This is the old friend
+that I reminded you about
+
+335
+00:13:54,363 --> 00:13:56,409
+a slide or so ago, that just means
+
+336
+00:13:56,409 --> 00:13:59,465
+that little f of x is
+lambda elim minus lambda x,
+
+337
+00:13:59,465 --> 00:14:01,051
+that is by definition,
+
+338
+00:14:01,051 --> 00:14:02,934
+and that's for x greater than zero.
+
+339
+00:14:02,934 --> 00:14:05,497
+Well, if you integrate
+that thing from zero to x,
+
+340
+00:14:05,497 --> 00:14:06,634
+because you don't need to worry
+
+341
+00:14:06,634 --> 00:14:09,483
+about anything below x equals zero,
+
+342
+00:14:09,483 --> 00:14:11,772
+if you integrate that from zero to x
+
+343
+00:14:11,772 --> 00:14:13,580
+it turns out with elementary Calculus
+
+344
+00:14:13,580 --> 00:14:15,636
+that capital F of x is equal to one
+
+345
+00:14:15,636 --> 00:14:17,573
+minus elim minus lambda x.
+
+346
+00:14:17,573 --> 00:14:19,608
+We'll go through this again
+in more detail later on
+
+347
+00:14:19,608 --> 00:14:22,967
+'cause it's a very important distribution.
+
+348
+00:14:22,967 --> 00:14:24,758
+Here's the summary.
+
+349
+00:14:24,758 --> 00:14:28,591
+We started out our basic
+review of Probability
+
+350
+00:14:29,649 --> 00:14:31,583
+and next time I'm gonna show ya
+
+351
+00:14:31,583 --> 00:14:33,511
+how to do some simulation
+in random variables,
+
+352
+00:14:33,511 --> 00:14:34,908
+it's about time, huh?
+
+353
+00:14:34,908 --> 00:14:36,991
+So we will see you then.
+
