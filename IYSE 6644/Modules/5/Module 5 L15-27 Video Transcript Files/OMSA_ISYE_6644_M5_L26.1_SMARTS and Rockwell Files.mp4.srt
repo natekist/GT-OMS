@@ -1,0 +1,192 @@
+1
+00:00:02,160 --> 00:00:07,595
+In this class, I'm finally gonna get smart
+by looking at Arena SMARTS files and
+
+2
+00:00:07,595 --> 00:00:08,990
+Rockwell demos.
+
+3
+00:00:08,990 --> 00:00:11,380
+Rockwell is the company that owns Arena.
+
+4
+00:00:11,380 --> 00:00:15,102
+These are hidden gems that you
+can find and play around with.
+
+5
+00:00:15,102 --> 00:00:17,636
+I actually like Playing
+around with the SMARTS files,
+
+6
+00:00:17,636 --> 00:00:20,179
+during the commercials while
+I'm watching a TV show.
+
+7
+00:00:20,179 --> 00:00:21,373
+So these are fun.
+
+8
+00:00:21,373 --> 00:00:24,063
+[SOUND]
+>> All over the word, the word for
+
+9
+00:00:24,063 --> 00:00:26,433
+great coffee flavor is Nescafé.
+
+10
+00:00:26,433 --> 00:00:29,523
+>> [MUSIC]
+
+11
+00:00:29,523 --> 00:00:33,395
+>> Here's the overview, last time,
+I looked at that nutty re-entrant Q and
+
+12
+00:00:33,395 --> 00:00:37,206
+the crazy behavior In this lesson,
+I'm gonna look at these little gems,
+
+13
+00:00:37,206 --> 00:00:40,280
+the SMART files and the Rockwell demos.
+
+14
+00:00:40,280 --> 00:00:43,440
+And like I said, it makes great
+commercial and bedtime reading.
+
+15
+00:00:44,850 --> 00:00:49,910
+These are very nice little tutorial files
+that are organized by subject area and
+
+16
+00:00:49,910 --> 00:00:53,143
+occasionally help you with difficult
+problems that you might not otherwise be
+
+17
+00:00:53,143 --> 00:00:56,310
+able to get,
+using Arena's terrible help menus.
+
+18
+00:00:56,310 --> 00:00:59,190
+For example,
+there's SMARTS files to create customers
+
+19
+00:00:59,190 --> 00:01:04,370
+with a time-dependent arrival rate that
+varies according to some equation.
+
+20
+00:01:04,370 --> 00:01:05,470
+That's interesting.
+
+21
+00:01:05,470 --> 00:01:08,030
+And, in fact, there are 100s of
+SMARTS files that you can use.
+
+22
+00:01:08,030 --> 00:01:09,730
+That's why I look at them for fun.
+
+23
+00:01:09,730 --> 00:01:12,690
+Rockwell also has many
+prepared professional demos.
+
+24
+00:01:12,690 --> 00:01:14,860
+I'm gonna show you one
+of each of these things.
+
+25
+00:01:14,860 --> 00:01:17,380
+To look for these guys,
+you have to sniff around a little bit.
+
+26
+00:01:17,380 --> 00:01:22,040
+On my implementation, if I go to
+Libraries, Documents, Rockwell software,
+
+27
+00:01:22,040 --> 00:01:23,890
+Arena, that's where you'll find it.
+
+28
+00:01:23,890 --> 00:01:26,550
+It may differ a little
+bit on your computer.
+
+29
+00:01:26,550 --> 00:01:30,360
+And I'll demo a couple of typical
+examples, for instance, SMARTS files,
+
+30
+00:01:30,360 --> 00:01:33,290
+where arrival rates vary
+according to expression,
+
+31
+00:01:33,290 --> 00:01:36,709
+things like this, emergency room,
+these are all very nice little demos.
+
+32
+00:01:38,380 --> 00:01:41,045
+The summary of what we did in this lesson,
+very simple,
+
+33
+00:01:41,045 --> 00:01:44,590
+I looked at several cool Rockwell SMARTS,
+and demo files.
+
+34
+00:01:46,300 --> 00:01:51,460
+And in the next lesson,
+I'm gonna look at a very
+
+35
+00:01:51,460 --> 00:01:56,200
+easy looking, yet extremely
+sophisticated manufacturing cell.
+
+36
+00:01:56,200 --> 00:01:59,270
+And I'll do an allusion to variations,
+
+37
+00:01:59,270 --> 00:02:02,910
+including transporters and
+conveyors for that cell.
+
+38
+00:02:02,910 --> 00:02:05,263
+That's sort of a more advanced concept,
+but it's fun to look at.
+
+39
+00:02:05,263 --> 00:02:06,550
+So, we'll talk about that next time.
+
+40
+00:02:06,550 --> 00:02:08,694
+See you then.
+
+41
+00:02:08,694 --> 00:02:13,590
+[MUSIC]
+

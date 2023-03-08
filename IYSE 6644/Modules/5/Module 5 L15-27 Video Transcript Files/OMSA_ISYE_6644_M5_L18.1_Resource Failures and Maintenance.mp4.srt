@@ -1,0 +1,425 @@
+1
+00:00:02,141 --> 00:00:06,251
+In this lesson we'll be looking at
+how to generate resource failures in
+
+2
+00:00:06,251 --> 00:00:10,740
+order to conduct maintenance, or
+just failures in and of themselves.
+
+3
+00:00:10,740 --> 00:00:14,325
+Arena is very good at this and
+very simple to do this task.
+
+4
+00:00:14,325 --> 00:00:16,870
+Here's what we'll do.
+
+5
+00:00:16,870 --> 00:00:20,470
+Last lesson we learned about
+the Advanced Process template and
+
+6
+00:00:20,470 --> 00:00:24,420
+all the cool stuff that's there,
+a treasure chest of stuff.
+
+7
+00:00:24,420 --> 00:00:31,290
+In this lesson, I'm gonna study model
+breakdowns and maintenance in a way that's
+
+8
+00:00:31,290 --> 00:00:35,020
+way more direct than these fake customer
+things that we used in the last demo.
+
+9
+00:00:36,080 --> 00:00:40,790
+And the idea here is that we'll just be
+looking at a certain type of schedule,
+
+10
+00:00:40,790 --> 00:00:42,099
+a failure schedule.
+
+11
+00:00:43,480 --> 00:00:48,040
+You can cause resource failures
+by scheduling breakdown demons,
+
+12
+00:00:48,040 --> 00:00:50,420
+like we did before, but
+it just ain't elegant.
+
+13
+00:00:50,420 --> 00:00:53,860
+It's perfectly okay, and if you're on
+a desert island, that's what you can do.
+
+14
+00:00:53,860 --> 00:00:56,530
+A better way is to use the Resource and
+
+15
+00:00:56,530 --> 00:00:59,340
+Failure spreadsheets in
+conjunction with each other.
+
+16
+00:00:59,340 --> 00:01:03,100
+A very simple way to do this,
+it takes just less than a minute.
+
+17
+00:01:03,100 --> 00:01:06,890
+So here's the Resource spreadsheet
+on the bottom of the screen.
+
+18
+00:01:06,890 --> 00:01:11,570
+You'll see in the last column
+there's a Failures tab.
+
+19
+00:01:11,570 --> 00:01:14,840
+I've clicked on one row,
+
+20
+00:01:14,840 --> 00:01:19,070
+which is gonna correspond to a failure
+that we'll call Drill Failure.
+
+21
+00:01:19,070 --> 00:01:22,087
+But we'll give the recipe for
+all this in a minute.
+
+22
+00:01:22,087 --> 00:01:24,227
+So, the failure name's gonna
+be called Drill Failure.
+
+23
+00:01:24,227 --> 00:01:27,862
+Then, if I happen to go over
+to the Failure spreadsheet,
+
+24
+00:01:27,862 --> 00:01:30,666
+which is in the Advanced Process template,
+
+25
+00:01:30,666 --> 00:01:35,209
+I'm gonna see Drill Failure is all there,
+waiting for me to use it, and
+
+26
+00:01:35,209 --> 00:01:38,970
+it's this thing called a comp
+failure with a count of ten.
+
+27
+00:01:38,970 --> 00:01:43,221
+I'll just give it away, what that means
+is we're gonna have a failure after ten
+
+28
+00:01:43,221 --> 00:01:45,010
+people have used the drill.
+
+29
+00:01:45,010 --> 00:01:46,690
+So, this could be like maintenance.
+
+30
+00:01:46,690 --> 00:01:50,860
+You purposely take the drill down
+after ten customers are there,
+
+31
+00:01:50,860 --> 00:01:54,990
+then you work on it for
+exponential 30 downtime.
+
+32
+00:01:54,990 --> 00:01:56,960
+Let's look at the recipe here.
+
+33
+00:01:56,960 --> 00:02:00,010
+We go to the Resource spreadsheet
+in the Basic Process template.
+
+34
+00:02:00,010 --> 00:02:01,670
+Click on the Failures column.
+
+35
+00:02:01,670 --> 00:02:04,900
+Add a Failure Name,
+Drill Failure for instance.
+
+36
+00:02:04,900 --> 00:02:08,250
+Choose the Failure Rule,
+which we'll talk about in a minute.
+
+37
+00:02:08,250 --> 00:02:10,580
+So right now,
+the Failure Rule says ignore.
+
+38
+00:02:10,580 --> 00:02:12,130
+Let's ignore that for a second.
+
+39
+00:02:12,130 --> 00:02:14,220
+Then, go the Failure Spreadsheet.
+
+40
+00:02:14,220 --> 00:02:18,480
+You will see the failure name
+that you just chose waiting for
+
+41
+00:02:18,480 --> 00:02:20,850
+you, all happy and ready to go.
+
+42
+00:02:20,850 --> 00:02:22,600
+That's in the Advanced Process template.
+
+43
+00:02:22,600 --> 00:02:26,836
+Choose the type of failure, so
+it could be a count failure.
+
+44
+00:02:26,836 --> 00:02:32,240
+Remember, after ten arrivals, ten uses
+of the machine, we have a failure.
+
+45
+00:02:32,240 --> 00:02:36,870
+Or it could be a time failure, so after a
+random amount of time you have a failure.
+
+46
+00:02:36,870 --> 00:02:38,520
+Both are perfectly reasonable.
+
+47
+00:02:38,520 --> 00:02:41,320
+Then choose a downtime for
+repair, could be any expression.
+
+48
+00:02:41,320 --> 00:02:44,830
+We had exponential on the last page.
+
+49
+00:02:44,830 --> 00:02:45,880
+Couple remarks.
+
+50
+00:02:45,880 --> 00:02:50,170
+You can schedule multiple failures by
+clicking on multiple rows of the Failures
+
+51
+00:02:50,170 --> 00:02:51,710
+column in the Resource spreadsheet.
+
+52
+00:02:51,710 --> 00:02:55,180
+So we just had drill failure, but
+we could also click on rows and
+
+53
+00:02:55,180 --> 00:02:58,490
+we could have a type I failure,
+type II failure, scheduled maintenance.
+
+54
+00:02:58,490 --> 00:03:02,008
+We could make all sorts of failures by
+clicking on more and more rows, and
+
+55
+00:03:02,008 --> 00:03:03,850
+they get scheduled separately.
+
+56
+00:03:03,850 --> 00:03:06,503
+Now, remember how I told
+you to ignore the ignore?
+
+57
+00:03:06,503 --> 00:03:09,430
+Well, these are different
+types of Failure Rules.
+
+58
+00:03:09,430 --> 00:03:14,880
+Ignore means it's not a killer failure,
+in the sense that the failure happens, but
+
+59
+00:03:14,880 --> 00:03:19,475
+you get to complete service of a current
+customer if there's one in the system.
+
+60
+00:03:19,475 --> 00:03:24,000
+So if you're working on somebody and
+you fail, It's not a terrible thing.
+
+61
+00:03:24,000 --> 00:03:25,940
+You get to keep on working at the guy.
+
+62
+00:03:25,940 --> 00:03:29,060
+But then, you reduce the repair time.
+
+63
+00:03:29,060 --> 00:03:34,730
+So in other words, if my repair time is
+supposed to be an hour and the failure
+
+64
+00:03:34,730 --> 00:03:38,550
+occurs and my customer still needs 10
+more minutes, I complete working on him.
+
+65
+00:03:38,550 --> 00:03:43,910
+So I work on him for 10 more minutes and
+the repair time goes down to 50 minutes.
+
+66
+00:03:43,910 --> 00:03:46,910
+It still finishes at the 60 minute or
+one hour mark.
+
+67
+00:03:46,910 --> 00:03:50,060
+So, the ignore means I
+reduce my repair time.
+
+68
+00:03:50,060 --> 00:03:54,910
+On the other hand, a wait means well, I
+still complete the service of the current
+
+69
+00:03:54,910 --> 00:03:57,980
+customer, but I delay the full repair.
+
+70
+00:03:57,980 --> 00:04:03,600
+So again, if the repair time is an hour
+and my current customer needs 10 minutes,
+
+71
+00:04:03,600 --> 00:04:08,225
+then the repair finishes at the 10
+plus 60 equals 70 minute mark, so
+
+72
+00:04:08,225 --> 00:04:10,150
+I've waited to finish the repair.
+
+73
+00:04:10,150 --> 00:04:11,570
+The worst thing is preempt.
+
+74
+00:04:11,570 --> 00:04:16,280
+When the failure occurs, I immediately
+stop service of the current customer, but
+
+75
+00:04:16,280 --> 00:04:18,600
+I complete it after the repair is done.
+
+76
+00:04:18,600 --> 00:04:20,750
+So, I got a guy in service.
+
+77
+00:04:20,750 --> 00:04:24,930
+He needs 10 more minutes, but
+the failure occurs, breakdown occurs.
+
+78
+00:04:24,930 --> 00:04:30,060
+So my current customer
+stops getting served,
+
+79
+00:04:30,060 --> 00:04:32,360
+I complete the repair after 60 minutes,
+and
+
+80
+00:04:32,360 --> 00:04:35,430
+then I remember I've got 10 more minutes
+to work on the finish of that customer.
+
+81
+00:04:35,430 --> 00:04:36,480
+So he's outta there after 70 minutes.
+
+82
+00:04:36,480 --> 00:04:41,190
+So all of these are kinda nice and
+very easy to use, obviously.
+
+83
+00:04:42,920 --> 00:04:43,720
+Here's our summary.
+
+84
+00:04:45,690 --> 00:04:47,260
+How ironic,
+
+85
+00:04:47,260 --> 00:04:52,870
+we have literally succeeded in learning
+how to implement failures, and it's crazy.
+
+86
+00:04:52,870 --> 00:04:55,820
+And speaking of crazy,
+
+87
+00:04:55,820 --> 00:05:01,130
+I'm gonna give a quick intro next time
+to the so-called Blocks template.
+
+88
+00:05:01,130 --> 00:05:05,120
+It just gives us unbelievable
+crazy number of things to look at.
+
+89
+00:05:05,120 --> 00:05:09,800
+But I'll try to be real gentle about it,
+cuz we'll only use a few of them for now.
+
+90
+00:05:09,800 --> 00:05:13,768
+So, really looking forward
+to talking about Blocks.
+
+91
+00:05:13,768 --> 00:05:20,210
+See you a little later.
+

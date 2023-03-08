@@ -1,0 +1,321 @@
+1
+00:00:02,368 --> 00:00:05,364
+Now I'm gonna give a description
+of a manufacturing system with
+
+2
+00:00:05,364 --> 00:00:07,470
+an accompanying demo.
+
+3
+00:00:07,470 --> 00:00:11,810
+This is a very nice little model that
+I'm stealing from the Arena book.
+
+4
+00:00:13,140 --> 00:00:14,507
+Here's the overview.
+
+5
+00:00:14,507 --> 00:00:18,969
+In the last lesson, I looked at some
+very cool SMARTS and Rockwell demos.
+
+6
+00:00:20,270 --> 00:00:23,060
+In this lesson,
+I'm gonna demo a pretty easy-looking,
+
+7
+00:00:23,060 --> 00:00:25,760
+yet very sophisticated manufacturing cell.
+
+8
+00:00:25,760 --> 00:00:29,980
+And I'll look at a couple of variations,
+say, involving transporters and conveyors.
+
+9
+00:00:31,660 --> 00:00:36,330
+The idea is that we can introduce
+movement and multiple part paths.
+
+10
+00:00:36,330 --> 00:00:38,480
+Now you may not be interested in movement,
+
+11
+00:00:38,480 --> 00:00:41,620
+things like that,
+in your particular application.
+
+12
+00:00:41,620 --> 00:00:46,800
+But the fact that I can do multiple
+sequences of paths is very interesting and
+
+13
+00:00:46,800 --> 00:00:48,350
+very nice to generalize.
+
+14
+00:00:48,350 --> 00:00:52,685
+So we'll see how that works,
+here's a description of the general model.
+
+15
+00:00:52,685 --> 00:00:55,285
+I've got a manufacturing cell
+that's got 3 different types of
+
+16
+00:00:55,285 --> 00:00:56,795
+parts that are being produced.
+
+17
+00:00:56,795 --> 00:01:00,745
+Each part follows a different path,
+or what's called a sequence,
+
+18
+00:01:00,745 --> 00:01:01,742
+through the system.
+
+19
+00:01:01,742 --> 00:01:05,892
+Different service times occur to at each
+station, depending on the part type and
+
+20
+00:01:05,892 --> 00:01:07,832
+the place in the visitation sequence.
+
+21
+00:01:07,832 --> 00:01:12,613
+So for instance, you could have part
+type 2's visiting stations 1, 2,
+
+22
+00:01:12,613 --> 00:01:14,921
+4, 2, 3, in that order.
+
+23
+00:01:14,921 --> 00:01:17,971
+And each of those stations will
+have different service times.
+
+24
+00:01:17,971 --> 00:01:22,541
+Even the multiple visits to station
+2 might have different service times.
+
+25
+00:01:22,541 --> 00:01:26,181
+Movement requires
+the Advanced Transfer template.
+
+26
+00:01:26,181 --> 00:01:28,241
+So that's another template
+that you have to load.
+
+27
+00:01:28,241 --> 00:01:33,154
+And then you use blocks, like you use
+modules like Route, Station, Enter, and
+
+28
+00:01:33,154 --> 00:01:33,668
+Leave.
+
+29
+00:01:33,668 --> 00:01:35,729
+You'll see those in the demo.
+
+30
+00:01:35,729 --> 00:01:38,370
+You'll also see something called
+the sequences spreadsheet.
+
+31
+00:01:38,370 --> 00:01:42,960
+Which keeps track of the set of paths
+that the customers can undertake.
+
+32
+00:01:42,960 --> 00:01:46,700
+What sequence of visitations
+do they undergo?
+
+33
+00:01:46,700 --> 00:01:52,171
+And you'll need Advanced Sets
+to handle sets of sequences.
+
+34
+00:01:52,171 --> 00:01:53,991
+So you can have a set of anything.
+
+35
+00:01:53,991 --> 00:01:56,870
+It's perfectly okay to
+have a set of sequences.
+
+36
+00:01:56,870 --> 00:01:59,000
+Now there are ways to get around that.
+
+37
+00:01:59,000 --> 00:02:02,750
+In this particular demo,
+you need Advanced Sets.
+
+38
+00:02:03,990 --> 00:02:05,380
+But you can look at those if you want.
+
+39
+00:02:05,380 --> 00:02:07,750
+I won't go into detail during the demo,
+itself.
+
+40
+00:02:07,750 --> 00:02:10,261
+And parts can move in a variety of ways.
+
+41
+00:02:10,261 --> 00:02:12,350
+They can just move by themselves.
+
+42
+00:02:12,350 --> 00:02:16,260
+Or I can put them on a transporter or
+conveyor, lots of ways they can move.
+
+43
+00:02:16,260 --> 00:02:18,850
+If you move them on transporters or
+conveyors,
+
+44
+00:02:18,850 --> 00:02:22,020
+that will require construction of
+transporter and conveyor paths.
+
+45
+00:02:22,020 --> 00:02:24,270
+But that's something
+that can be done easily.
+
+46
+00:02:24,270 --> 00:02:27,390
+And you'll see what they
+look like in the demo.
+
+47
+00:02:27,390 --> 00:02:30,910
+This is where all the graphics take place,
+and this is the code.
+
+48
+00:02:30,910 --> 00:02:34,087
+It is trivial code once
+you get used to it.
+
+49
+00:02:34,087 --> 00:02:36,240
+So this right here is Route block.
+
+50
+00:02:36,240 --> 00:02:39,871
+You might have a Leave block or
+an Enter block here.
+
+51
+00:02:39,871 --> 00:02:42,490
+These things are called stations,
+sometimes.
+
+52
+00:02:42,490 --> 00:02:47,080
+So there's lots of different types
+of blocks that you could use for
+
+53
+00:02:47,080 --> 00:02:48,862
+the variations of this problem.
+
+54
+00:02:48,862 --> 00:02:51,900
+But it's a very,
+very easy problem to code up.
+
+55
+00:02:51,900 --> 00:02:55,230
+Seemingly a complicated problem,
+but it's actually easy to code.
+
+56
+00:02:56,940 --> 00:02:58,630
+So here's a summary of what we just did.
+
+57
+00:02:59,690 --> 00:03:02,510
+This time, we did demos on a small yet
+
+58
+00:03:02,510 --> 00:03:06,580
+very sophisticated manufacturing cell
+that really has a lot of generalizations.
+
+59
+00:03:06,580 --> 00:03:09,670
+We also looked at a couple of
+variants involving movement.
+
+60
+00:03:09,670 --> 00:03:12,720
+And in fact,
+this ends our module on Arena,
+
+61
+00:03:12,720 --> 00:03:14,620
+even though I don't really want it to end.
+
+62
+00:03:14,620 --> 00:03:17,250
+We're still gonna see Arena later on.
+
+63
+00:03:17,250 --> 00:03:19,744
+And in fact,
+we've only scratched the surface of Arena.
+
+64
+00:03:19,744 --> 00:03:21,680
+There's so
+many other things that we can do.
+
+65
+00:03:23,130 --> 00:03:29,050
+Next time, though, we're gonna start an
+entire module on generating Unif(0,1)'s.
+
+66
+00:03:29,050 --> 00:03:32,220
+Very easy things, but
+very, very, very important.
+
+67
+00:03:32,220 --> 00:03:35,600
+So make sure you get a little break and
+come back and see those uniforms.
+
+68
+00:03:35,600 --> 00:03:42,133
+It'll be well worth it, so see then.
+
+69
+00:03:42,133 --> 00:03:47,257
+[SOUND]
+

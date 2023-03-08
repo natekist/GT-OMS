@@ -1,0 +1,798 @@
+1
+00:00:00,012 --> 00:00:04,874
+[BLANK AUDIO] Now it's finally time to
+do this call center example that I've
+
+2
+00:00:04,874 --> 00:00:06,760
+been hawking the last few lessons.
+
+3
+00:00:06,760 --> 00:00:08,907
+Let's just jump right into it.
+
+4
+00:00:08,907 --> 00:00:10,969
+The lesson overview is as follows.
+
+5
+00:00:10,969 --> 00:00:15,726
+In the last lesson, I mainly discussed
+how to use resource sets along with
+
+6
+00:00:15,726 --> 00:00:18,870
+the Seize-Delay-Release capability.
+
+7
+00:00:18,870 --> 00:00:20,839
+And remember,
+we have to be a little careful.
+
+8
+00:00:20,839 --> 00:00:25,220
+The reason I did that is because that's a
+key component to the call center example.
+
+9
+00:00:25,220 --> 00:00:28,886
+You'll see that in a while, careful.
+
+10
+00:00:28,886 --> 00:00:30,183
+In this lesson,
+
+11
+00:00:30,183 --> 00:00:36,030
+I'm gonna just describe in plain English
+what the call center example is.
+
+12
+00:00:36,030 --> 00:00:38,307
+We've been waiting for this all along.
+
+13
+00:00:38,307 --> 00:00:43,235
+And when we're done with this, you can
+actually start being a consultant if
+
+14
+00:00:43,235 --> 00:00:47,085
+you want, because I think this
+problem is general enough so
+
+15
+00:00:47,085 --> 00:00:50,403
+that you can do a wide class
+of practical problems.
+
+16
+00:00:50,403 --> 00:00:53,308
+And I really, really mean that.
+
+17
+00:00:53,308 --> 00:00:57,750
+So let's start out with the call
+center description in plain English.
+
+18
+00:00:57,750 --> 00:01:01,598
+First of all,
+the program is arranged in submodels.
+
+19
+00:01:01,598 --> 00:01:06,853
+A submodel is just sort of a subroutine
+that undertakes a specific
+
+20
+00:01:06,853 --> 00:01:11,742
+task in the program that would
+otherwise take a lot of space.
+
+21
+00:01:11,742 --> 00:01:15,167
+And you'll see that submodels
+save space in the screen.
+
+22
+00:01:15,167 --> 00:01:16,571
+This is what one looks like.
+
+23
+00:01:16,571 --> 00:01:19,758
+You click inside of it, and
+you see all sorts of good Arena stuff.
+
+24
+00:01:19,758 --> 00:01:22,274
+It just saves a lot of
+space on the screen.
+
+25
+00:01:22,274 --> 00:01:24,700
+In the various submodels,
+here's what you'll do.
+
+26
+00:01:24,700 --> 00:01:28,003
+You'll use one submodel to create and
+direct arrivals.
+
+27
+00:01:28,003 --> 00:01:30,993
+So how often do arrivals show up?
+
+28
+00:01:30,993 --> 00:01:33,345
+Calls, and where do they go?
+
+29
+00:01:33,345 --> 00:01:38,040
+Do they go to Tech Support,
+or Sales, or whatever?
+
+30
+00:01:38,040 --> 00:01:40,814
+Then we have a tech support submodel,
+
+31
+00:01:40,814 --> 00:01:44,029
+where we handle all
+the tech support calls.
+
+32
+00:01:44,029 --> 00:01:47,655
+So in particular,
+what kind of tech support do you need?
+
+33
+00:01:47,655 --> 00:01:50,797
+Turns out there are gonna be three
+different types of products in this model.
+
+34
+00:01:50,797 --> 00:01:55,990
+It also turns out that some of the tech
+support calls require return calls.
+
+35
+00:01:55,990 --> 00:01:57,480
+So that's another submodel.
+
+36
+00:01:57,480 --> 00:02:00,520
+Sometimes, the guy's gotta call you
+back cuz he doesn't know the answer.
+
+37
+00:02:00,520 --> 00:02:05,861
+We'll also have some sales calls, order
+status calls, is my order ready to go?
+
+38
+00:02:05,861 --> 00:02:10,830
+And a time period counter, what one
+half-hour period of the day is it?
+
+39
+00:02:10,830 --> 00:02:15,160
+We'll be using fake customers to
+increment the time period counter,
+
+40
+00:02:15,160 --> 00:02:16,880
+we've seen that trick before.
+
+41
+00:02:16,880 --> 00:02:17,870
+Let's look at arrivals,
+
+42
+00:02:17,870 --> 00:02:21,480
+calls show up according to
+a nonhomogeneous Poisson process.
+
+43
+00:02:21,480 --> 00:02:23,303
+So we're gonna have to schedule arrivals.
+
+44
+00:02:23,303 --> 00:02:27,383
+The call center accepts
+calls from 8AM till 6PM.
+
+45
+00:02:27,383 --> 00:02:30,590
+The arrival rates change every half-hour.
+
+46
+00:02:30,590 --> 00:02:36,600
+Here's a table below that I sort
+of plagiarized from the book.
+
+47
+00:02:36,600 --> 00:02:38,625
+So you can look at that table,
+
+48
+00:02:38,625 --> 00:02:43,336
+and you'll see that the call
+frequencies change every half-hour.
+
+49
+00:02:43,336 --> 00:02:47,338
+And also, I'll show you in the demo
+how to use the Arrival Schedule in
+
+50
+00:02:47,338 --> 00:02:50,450
+the Basic Process template
+to type these numbers in.
+
+51
+00:02:50,450 --> 00:02:55,010
+So during the first half-hour period,
+we'll have a rate of 20 calls per hour.
+
+52
+00:02:55,010 --> 00:03:00,305
+In the second half-hour period, 8:30 to 9,
+the rate goes up to 35 calls per hour.
+
+53
+00:03:00,305 --> 00:03:03,630
+By the way,
+did you notice that I said calls per hour?
+
+54
+00:03:03,630 --> 00:03:05,065
+A little warning sign there.
+
+55
+00:03:05,065 --> 00:03:08,968
+These rates are per hour even though
+the time intervals are 30 minutes.
+
+56
+00:03:08,968 --> 00:03:10,978
+Just a little trick you have to remember.
+
+57
+00:03:10,978 --> 00:03:12,167
+That's Arena for you.
+
+58
+00:03:12,167 --> 00:03:16,176
+A few staff actually stay at
+work until 7PM in order to
+
+59
+00:03:16,176 --> 00:03:20,286
+let those calls that came
+near 6 o'clock filter out.
+
+60
+00:03:20,286 --> 00:03:21,660
+I do that all the time.
+
+61
+00:03:21,660 --> 00:03:24,809
+I call just before the call center closes,
+
+62
+00:03:24,809 --> 00:03:29,798
+which is stupid, but they just
+don't hang up on you at 6 o'clock.
+
+63
+00:03:29,798 --> 00:03:33,055
+They have to patiently get you through.
+
+64
+00:03:33,055 --> 00:03:37,922
+So what you have to do though is, given
+that there are no calls between 6 and
+
+65
+00:03:37,922 --> 00:03:42,637
+7, originating at least, you have
+to explicitly model 0 arrivals for
+
+66
+00:03:42,637 --> 00:03:46,449
+those last half-hour segments
+of the Arrival Schedule.
+
+67
+00:03:46,449 --> 00:03:50,530
+So with the phone lines,
+it turns out we have 26 of them.
+
+68
+00:03:50,530 --> 00:03:53,818
+If you get a busy signal,
+you balk and get out of there.
+
+69
+00:03:53,818 --> 00:03:57,226
+So a busy signals kill you off
+immediately, 26 is the limit.
+
+70
+00:03:57,226 --> 00:03:59,807
+Now what we'll do is
+we'll use a Queue block.
+
+71
+00:03:59,807 --> 00:04:02,780
+We actually did a demo on precisely this.
+
+72
+00:04:02,780 --> 00:04:07,324
+We're gonna use a Queue block with
+capacity 0 to try to seize a line.
+
+73
+00:04:07,324 --> 00:04:11,034
+So what that does,
+if the seize of these 26 lines fails.
+
+74
+00:04:11,034 --> 00:04:13,710
+In other words,
+if 26 lines are all being used,
+
+75
+00:04:13,710 --> 00:04:16,906
+there ain't no place to go in the hotel,
+and you check out.
+
+76
+00:04:16,906 --> 00:04:20,543
+So the Queue will immediately kick
+you out cuz it's got a capacity of 0.
+
+77
+00:04:20,543 --> 00:04:22,770
+This is a nice little trick.
+
+78
+00:04:22,770 --> 00:04:26,440
+The Queue and the Seize both come from the
+Blocks template, we did a demo on that.
+
+79
+00:04:26,440 --> 00:04:30,698
+And this is the only place where
+you get a Queue block, and
+
+80
+00:04:30,698 --> 00:04:33,638
+it only connects to this kind of Seize.
+
+81
+00:04:33,638 --> 00:04:37,125
+We explicitly did this in an old demo,
+okay?
+
+82
+00:04:37,125 --> 00:04:42,210
+So recall that if you use a Seize within
+a Process module in the Basic Process
+
+83
+00:04:42,210 --> 00:04:47,053
+template and the other type of Seize
+in the Advanced Process template,
+
+84
+00:04:47,053 --> 00:04:51,060
+you can't connect it up with
+a Queue block, so too bad.
+
+85
+00:04:51,060 --> 00:04:55,636
+That trick only works,
+a Queue block only works in this case,
+
+86
+00:04:55,636 --> 00:04:58,644
+with a Seize block, not a Seize module.
+
+87
+00:04:58,644 --> 00:05:01,627
+3 general types of calls,
+they come in randomly.
+
+88
+00:05:01,627 --> 00:05:04,928
+We'll handle them with an N-way
+by Chance Decide module.
+
+89
+00:05:04,928 --> 00:05:07,280
+So each customer hears a recording.
+
+90
+00:05:07,280 --> 00:05:09,947
+They hear the little music,
+what type of call do you wanna make?
+
+91
+00:05:09,947 --> 00:05:12,720
+And then he makes his choice of call.
+
+92
+00:05:12,720 --> 00:05:16,922
+76%, like the number of trombones in
+the big parade, go to Tech Support,
+
+93
+00:05:16,922 --> 00:05:17,902
+16 go to Sales.
+
+94
+00:05:17,902 --> 00:05:21,928
+It turns out there are 7 identical,
+faceless vanilla Sales guys that
+
+95
+00:05:21,928 --> 00:05:25,970
+we'll need to schedule as a group of 7,
+not on an individual basis.
+
+96
+00:05:25,970 --> 00:05:29,412
+And the sales calls take a Triangular
+amount of time, unimportant.
+
+97
+00:05:29,412 --> 00:05:31,455
+And then 8% go to Order Status.
+
+98
+00:05:31,455 --> 00:05:33,430
+Is my order ready, basically?
+
+99
+00:05:33,430 --> 00:05:35,605
+You do all that all of the time
+when you call up these places.
+
+100
+00:05:35,605 --> 00:05:38,658
+Most callers do self-service in
+a Triangular amount of time.
+
+101
+00:05:38,658 --> 00:05:42,620
+But some callers, about 15% of
+those guys going to Order Status,
+
+102
+00:05:42,620 --> 00:05:45,713
+need a real Sales guy for
+a Triangular amount of time.
+
+103
+00:05:45,713 --> 00:05:46,937
+Now let's look at Tech Support.
+
+104
+00:05:46,937 --> 00:05:48,810
+This is the best part of the program.
+
+105
+00:05:48,810 --> 00:05:51,430
+There are three different
+types of tech support calls.
+
+106
+00:05:51,430 --> 00:05:55,290
+Again, we'll handle these via by choice,
+a Decide module.
+
+107
+00:05:55,290 --> 00:05:58,354
+These are random Decides to go
+to the three different types
+
+108
+00:05:58,354 --> 00:05:59,612
+of Tech Support calls.
+
+109
+00:05:59,612 --> 00:06:05,680
+25% are for Product 1, 34% are Product 2,
+41% are for Product 3.
+
+110
+00:06:05,680 --> 00:06:09,084
+Each customer gets a little piece of
+music while they make their choice.
+
+111
+00:06:09,084 --> 00:06:13,961
+And all Tech Support calls require
+staff for this Triangular 3, 6,
+
+112
+00:06:13,961 --> 00:06:15,624
+18 duration of time.
+
+113
+00:06:15,624 --> 00:06:18,930
+We can make each type of call require
+a different amount of time, but
+
+114
+00:06:18,930 --> 00:06:20,788
+this is already complicated enough.
+
+115
+00:06:20,788 --> 00:06:22,500
+There are some call backs.
+
+116
+00:06:22,500 --> 00:06:26,229
+4% of Tech Support calls require
+additional investigation.
+
+117
+00:06:26,229 --> 00:06:29,812
+So the Tech Support guy you
+talk to may not be able
+
+118
+00:06:29,812 --> 00:06:32,507
+to handle your request right away.
+
+119
+00:06:32,507 --> 00:06:37,158
+And this additional investigation is
+actually carried out by another group of
+
+120
+00:06:37,158 --> 00:06:39,561
+staff that we are not gonna worry about.
+
+121
+00:06:39,561 --> 00:06:44,844
+So what happens is you talk to your
+server, Sammy, or Tierney, or whoever.
+
+122
+00:06:44,844 --> 00:06:47,800
+They can't answer your questions so
+they ask their boss.
+
+123
+00:06:47,800 --> 00:06:51,292
+Once they ask their boss, Tierney,
+or Sammy, or whoever you talk to,
+
+124
+00:06:51,292 --> 00:06:53,054
+is freed up to talk to other people.
+
+125
+00:06:53,054 --> 00:06:55,027
+They hang up on you for a while.
+
+126
+00:06:55,027 --> 00:06:59,832
+The boss does some work, and then they
+tell the answer to Sammy, or Tierney, or
+
+127
+00:06:59,832 --> 00:07:03,100
+whoever you talk to, and
+then they call you back.
+
+128
+00:07:03,100 --> 00:07:06,505
+Investigation by the boss,
+who we don't care about,
+
+129
+00:07:06,505 --> 00:07:08,878
+takes an EXPO one hour amount of time.
+
+130
+00:07:08,878 --> 00:07:13,347
+And then at that point, the original
+Tech Support guy gets the information from
+
+131
+00:07:13,347 --> 00:07:17,614
+boss, and they call the customer back
+using one of the 26 phone lines, but
+
+132
+00:07:17,614 --> 00:07:18,829
+with high priority.
+
+133
+00:07:18,829 --> 00:07:19,847
+There's no busy signal.
+
+134
+00:07:19,847 --> 00:07:22,840
+They wait till the first one's
+available and then they call you.
+
+135
+00:07:22,840 --> 00:07:25,930
+That return call takes
+a Triangular amount of time.
+
+136
+00:07:25,930 --> 00:07:27,690
+Now let's talk about Tech Support.
+
+137
+00:07:27,690 --> 00:07:30,475
+Tech Support guys have
+some interesting issues.
+
+138
+00:07:30,475 --> 00:07:33,061
+They all have 8 hour days,
+30 minutes for lunch, and
+
+139
+00:07:33,061 --> 00:07:34,900
+they all have different schedules.
+
+140
+00:07:34,900 --> 00:07:37,872
+Every one of them has
+a different schedule.
+
+141
+00:07:37,872 --> 00:07:42,616
+And so we'll need the Resource Schedules
+spreadsheet to model these
+
+142
+00:07:42,616 --> 00:07:44,710
+guys on an individual basis.
+
+143
+00:07:44,710 --> 00:07:47,314
+They all have different product expertise.
+
+144
+00:07:47,314 --> 00:07:51,150
+So we'll need Sets to model this,
+and we've talked about this before.
+
+145
+00:07:51,150 --> 00:07:53,380
+Here the preferred orders for the set and
+
+146
+00:07:53,380 --> 00:07:56,080
+we actually gave an example
+of this in previous lesson.
+
+147
+00:07:56,080 --> 00:08:01,030
+Product 1 can be handled by Charity, Noah,
+Molly in blue, Anna, and Sammy in red.
+
+148
+00:08:01,030 --> 00:08:06,510
+Product 2, Tierney, Sean, Emma,
+Anna and then Sammy, again, same guys.
+
+149
+00:08:06,510 --> 00:08:12,582
+Product 3, Shelley, Jenny, Christie,
+Molly in blue, Anna, and Sammy in red.
+
+150
+00:08:12,582 --> 00:08:15,587
+Molly, by the way,
+turns out was a Math major in real life.
+
+151
+00:08:15,587 --> 00:08:20,458
+You can see the cross functionality that
+we had alluded to before in the previous
+
+152
+00:08:20,458 --> 00:08:21,047
+lesson.
+
+153
+00:08:21,047 --> 00:08:26,120
+Here is the schedule of
+the various Tech Support staff.
+
+154
+00:08:26,120 --> 00:08:27,736
+They're all listed on the left.
+
+155
+00:08:27,736 --> 00:08:31,064
+All the products they can handle
+are listed in the Products column.
+
+156
+00:08:31,064 --> 00:08:33,690
+And then that mess is their schedule.
+
+157
+00:08:33,690 --> 00:08:36,968
+You can see every one of them has
+a little lunch somewhere in there.
+
+158
+00:08:36,968 --> 00:08:38,772
+So here's a summary of what we did.
+
+159
+00:08:38,772 --> 00:08:41,875
+We're gonna do the demo
+in a separate lesson.
+
+160
+00:08:41,875 --> 00:08:46,470
+I gave a long, tedious verbal
+description of the Call Center model.
+
+161
+00:08:46,470 --> 00:08:48,139
+That was the only purpose of this lesson.
+
+162
+00:08:49,420 --> 00:08:52,003
+Next time, it's Gigantic Demo Time, and
+
+163
+00:08:52,003 --> 00:08:56,538
+we're gonna get to see this Arena program
+finally in all of its full glory.
+
+164
+00:08:56,538 --> 00:08:59,680
+And you can see that we're
+putting together a lot of stuff.
+
+165
+00:08:59,680 --> 00:09:01,601
+Everything is actually easy, and
+
+166
+00:09:01,601 --> 00:09:04,788
+we just have to be patient
+about putting it all together.
+
+167
+00:09:04,788 --> 00:09:06,625
+So you'll see it's a really fun demo.
+
+168
+00:09:06,625 --> 00:09:07,457
+And I guarantee,
+
+169
+00:09:07,457 --> 00:09:11,670
+you play around with it a little bit, you
+are a consultant by the time it's over.
+
+170
+00:09:11,670 --> 00:09:16,969
+So let's sit back, relax, and
+we'll look at the demo in the next lesson.
+
+171
+00:09:16,969 --> 00:09:18,066
+So see you then.
+
+172
+00:09:18,066 --> 00:09:25,399
+[SOUND]
+

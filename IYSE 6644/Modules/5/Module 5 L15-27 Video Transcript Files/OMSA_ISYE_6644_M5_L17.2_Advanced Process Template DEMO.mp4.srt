@@ -1,0 +1,244 @@
+1
+00:00:01,190 --> 00:00:05,812
+Well now we're gonna look at the Seize,
+Delay, Release,
+
+2
+00:00:05,812 --> 00:00:09,140
+actually just the Seize Release example,
+
+3
+00:00:09,140 --> 00:00:13,930
+as our demo to introduce
+the Advanced Process template.
+
+4
+00:00:13,930 --> 00:00:18,450
+This is short and sweet,
+very straightforward, very easy.
+
+5
+00:00:18,450 --> 00:00:22,880
+What I'm gonna do here,
+is I'm gonna use separate Seize and
+
+6
+00:00:22,880 --> 00:00:28,150
+Release blocks to do overlapping
+seizes and releases.
+
+7
+00:00:28,150 --> 00:00:29,235
+So what do I mean by that?
+
+8
+00:00:29,235 --> 00:00:30,630
+Well, let's just take a look here.
+
+9
+00:00:30,630 --> 00:00:32,440
+Let's run the thing for a second.
+
+10
+00:00:32,440 --> 00:00:34,820
+I've set this up, and
+you can have access to that.
+
+11
+00:00:34,820 --> 00:00:40,990
+So a bunch of customers here, and they're
+lining up at this Process, getting served.
+
+12
+00:00:40,990 --> 00:00:44,040
+Not sure if it's a barber shop or
+whatever, I'll look into it in a minute.
+
+13
+00:00:44,040 --> 00:00:45,470
+But look at this.
+
+14
+00:00:45,470 --> 00:00:49,450
+It doesn't seem that there's ever
+a line forming at this Process.
+
+15
+00:00:50,550 --> 00:00:51,500
+And why is that?
+
+16
+00:00:51,500 --> 00:00:52,893
+Well, here's what I'm doing.
+
+17
+00:00:54,662 --> 00:01:00,730
+I've got a line forming in front of this
+Process, where I do a Seize and Delay.
+
+18
+00:01:02,150 --> 00:01:05,680
+And then this Seize is for that Process.
+
+19
+00:01:05,680 --> 00:01:08,530
+This Release is for that Process.
+
+20
+00:01:08,530 --> 00:01:12,404
+So a customer can't go through and
+
+21
+00:01:12,404 --> 00:01:17,215
+therefore cannot release the server until
+
+22
+00:01:17,215 --> 00:01:22,436
+a slot is ready over
+here in Process number 2.
+
+23
+00:01:22,436 --> 00:01:24,756
+That's why no alliance forming over here,
+
+24
+00:01:24,756 --> 00:01:27,209
+all the line gets pushed
+back over to this guy.
+
+25
+00:01:27,209 --> 00:01:30,260
+There is no line now, but if there
+was a line it's gonna be over here.
+
+26
+00:01:30,260 --> 00:01:31,620
+So lets see exactly what I did.
+
+27
+00:01:31,620 --> 00:01:33,361
+This is very short and sweet like I said.
+
+28
+00:01:35,602 --> 00:01:37,990
+Create the customer in the usual way.
+
+29
+00:01:39,050 --> 00:01:42,960
+Seize, Delay, Release, so for
+Seize Delay, there's no Release here.
+
+30
+00:01:42,960 --> 00:01:45,900
+For once it's not a barber, Resource 1.
+
+31
+00:01:45,900 --> 00:01:47,900
+So I just do Seize Delay.
+
+32
+00:01:47,900 --> 00:01:52,560
+This is a Seize block that I got
+from the Advanced Process template.
+
+33
+00:01:52,560 --> 00:01:54,330
+Seize and just dragged it over.
+
+34
+00:01:54,330 --> 00:01:56,100
+It comes with its own queue.
+
+35
+00:01:56,100 --> 00:02:00,570
+But since there is no queue,
+you don't see one appear here or here.
+
+36
+00:02:01,650 --> 00:02:04,976
+Then in this release,
+I release Resource 1.
+
+37
+00:02:06,905 --> 00:02:10,780
+And now in Process 2,
+I've already seized it at this point.
+
+38
+00:02:10,780 --> 00:02:14,920
+I do Delay Release and
+all the customers go off hap hap happy.
+
+39
+00:02:14,920 --> 00:02:16,411
+So again,
+I'll show it to you one more time.
+
+40
+00:02:18,431 --> 00:02:20,130
+There you go, see?
+
+41
+00:02:20,130 --> 00:02:22,670
+All the queue is relegated to this area.
+
+42
+00:02:22,670 --> 00:02:24,940
+Now, one thing I promised
+to do is show you,
+
+43
+00:02:24,940 --> 00:02:27,610
+remind you how you get
+the Advanced Process template.
+
+44
+00:02:27,610 --> 00:02:29,780
+It may be easier for you than for me.
+
+45
+00:02:29,780 --> 00:02:35,390
+But I always go to File >
+Template Panel > Attach.
+
+46
+00:02:35,390 --> 00:02:37,150
+And then you start looking around, and
+
+47
+00:02:37,150 --> 00:02:40,770
+since the last time I looked around,
+I actually got to the Template Panel.
+
+48
+00:02:40,770 --> 00:02:43,140
+Eventually it remembered that and
+here I am.
+
+49
+00:02:43,140 --> 00:02:44,860
+So look at all these things I could get.
+
+50
+00:02:44,860 --> 00:02:47,060
+I'm just gonna get the AdvancedProcess,
+
+51
+00:02:47,060 --> 00:02:50,432
+which I clicked on that's why I
+have the panel sitting to my left.
+
+52
+00:02:51,990 --> 00:02:55,990
+And I could also got AdvancedTransfer,
+BasicProcess, which is,
+
+53
+00:02:55,990 --> 00:03:00,481
+we already have blocks which you'll
+see a couple of lessons from now, etc,
+
+54
+00:03:00,481 --> 00:03:01,830
+etc, very very nice.
+

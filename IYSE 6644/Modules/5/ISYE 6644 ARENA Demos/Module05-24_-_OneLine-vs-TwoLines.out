@@ -1,0 +1,102 @@
+
+0.0 Minutes>SIMAN Run Controller.
+
+538.96176 Minutes>
+                                      ARENA Simulation Results
+                                   Nate Kistler - License: STUDENT
+
+                                  Summary for Replication 1 of 1
+
+Project: Simple Processing                                           Run execution date : 3/ 1/2023
+Analyst: Monarocket Desdaship                                        Model revision date: 3/ 1/2023
+
+Replication ended at time      : 538.96176 Minutes 
+Base Time Units: Minutes
+
+                                           TALLY VARIABLES
+
+Identifier                                  Average   Half Width  Minimum    Maximum   Observations
+___________________________________________________________________________________________________
+
+Single Drilling Center.TotalTimePerEntity   12.217     (Insuf)    .09130     54.886         86    
+Drilling Center3.VATimePerEntity            10.429     (Insuf)    .09130     53.435         21    
+Drilling Center2.VATimePerEntity            12.634     (Insuf)    .89267     54.886         24    
+Drilling Center1.VATimePerEntity            7.6141     (Insuf)    .12954     25.139         39    
+Drilling Center3.WaitTimePerEntity          11.376     (Insuf)    .00000     64.453         21    
+Drilling Center2.WaitTimePerEntity          18.921     (Insuf)    .00000     62.597         24    
+Drilling Center1.WaitTimePerEntity          10.047     (Insuf)    .00000     36.737         39    
+Single Drilling Center.VATimePerEntity      10.117     (Insuf)    .09130     54.886         86    
+Single Drilling Center.WaitTimePerEntity    2.0999     (Insuf)    .00000     19.899         86    
+Drilling Center3.TotalTimePerEntity         21.805     (Insuf)    .09130     85.313         21    
+Drilling Center2.TotalTimePerEntity         31.556     (Insuf)    1.0898     65.158         24    
+Drilling Center1.TotalTimePerEntity         17.662     (Insuf)    .12954     48.352         39    
+Part.VATime                                 9.9370     (Insuf)    .09130     54.886        170    
+Part.NVATime                                .00000     (Insuf)    .00000     .00000        170    
+Part.WaitTime                               7.4439     (Insuf)    .00000     64.453        170    
+Part.TranTime                               .00000     (Insuf)    .00000     .00000        170    
+Part.OtherTime                              .00000     (Insuf)    .00000     .00000        170    
+Part.TotalTime                              17.380     (Insuf)    .09130     85.313        170    
+Drilling Center1.Queue.WaitingTime          10.047     (Insuf)    .00000     36.737         39    
+Single Drilling Center.Queue.WaitingTime    2.0522     (Insuf)    .00000     19.899         88    
+Drilling Center3.Queue.WaitingTime          10.859     (Insuf)    .00000     64.453         22    
+Drilling Center2.Queue.WaitingTime          18.885     (Insuf)    .00000     62.597         25    
+
+                                     DISCRETE-CHANGE VARIABLES
+
+Identifier                                  Average   Half Width  Minimum    Maximum   Final Value
+___________________________________________________________________________________________________
+
+Part.WIP                                    5.6900     (Insuf)    .00000     18.000     6.0000    
+Drill Press3.NumberBusy                     .40807     (Insuf)    .00000     1.0000     1.0000    
+Drill Press3.NumberScheduled                1.0000     (Insuf)    1.0000     1.0000     1.0000    
+Drill Press3.Utilization                    .40807     (Insuf)    .00000     1.0000     1.0000    
+Drill Press2.NumberBusy                     .63618     (Insuf)    .00000     1.0000     1.0000    
+Drill Press2.NumberScheduled                1.0000     (Insuf)    1.0000     1.0000     1.0000    
+Drill Press2.Utilization                    .63618     (Insuf)    .00000     1.0000     1.0000    
+Drill Press1.NumberBusy                     .55097     (Insuf)    .00000     1.0000     .00000    
+Drill Press1.NumberScheduled                1.0000     (Insuf)    1.0000     1.0000     1.0000    
+Drill Press1.Utilization                    .55097     (Insuf)    .00000     1.0000     .00000    
+Drill Press.NumberBusy                      1.6160     (Insuf)    .00000     3.0000     2.0000    
+Drill Press.NumberScheduled                 3.0000     (Insuf)    3.0000     3.0000     3.0000    
+Drill Press.Utilization                     .53870     (Insuf)    .00000     1.0000     .66667    
+Drilling Center1.Queue.NumberInQueue        .72708     (Insuf)    .00000     5.0000     .00000    
+Single Drilling Center.Queue.NumberInQueue  .33509     (Insuf)    .00000     6.0000     .00000    
+Drilling Center3.Queue.NumberInQueue        .44329     (Insuf)    .00000     4.0000     1.0000    
+Drilling Center2.Queue.NumberInQueue        .97327     (Insuf)    .00000     5.0000     1.0000    
+
+                                             OUTPUTS
+
+Identifier                                   Value
+_____________________________________________________________
+
+Single Drilling Center Accum VA Time        870.08    
+Single Drilling Center Accum Wait Time      180.59    
+Drilling Center3 Number In                  23.000    
+Drilling Center3 Number Out                 21.000    
+Drilling Center2 Number In                  26.000    
+Drilling Center2 Number Out                 24.000    
+Drilling Center1 Accum VA Time              296.95    
+Drilling Center1 Accum Wait Time            391.86    
+Single Drilling Center Number Out           86.000    
+Single Drilling Center Number In            88.000    
+Drilling Center3 Accum VA Time              219.01    
+Drilling Center3 Accum Wait Time            238.90    
+Drilling Center2 Accum VA Time              303.23    
+Drilling Center1 Number In                  39.000    
+Drilling Center1 Number Out                 39.000    
+Drilling Center2 Accum Wait Time            454.10    
+Part.NumberIn                               176.00    
+Part.NumberOut                              170.00    
+Drill Press3.NumberSeized                   22.000    
+Drill Press3.ScheduledUtilization           .40807    
+Drill Press2.NumberSeized                   25.000    
+Drill Press2.ScheduledUtilization           .63618    
+Drill Press1.NumberSeized                   39.000    
+Drill Press1.ScheduledUtilization           .55097    
+Drill Press.NumberSeized                    88.000    
+Drill Press.ScheduledUtilization            .53870    
+System.NumberOut                            170.00    
+
+
+Simulation run time: 1.22 minutes.
+Simulation run complete.

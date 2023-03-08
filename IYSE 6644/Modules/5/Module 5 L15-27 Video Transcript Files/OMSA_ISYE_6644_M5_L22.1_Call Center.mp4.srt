@@ -1,0 +1,181 @@
+1
+00:00:00,000 --> 00:00:05,549
+[NOISE] All operators are busy
+at this time, please hold.
+
+2
+00:00:05,549 --> 00:00:09,668
+>> Well, now we're finally gonna do our
+call center demo, and what I'll do is I'm
+
+3
+00:00:09,668 --> 00:00:13,077
+gonna describe a little bit of what
+we can expect to see in the demo.
+
+4
+00:00:13,077 --> 00:00:17,703
+Lesson overview is that,
+in the last lesson I described in plain
+
+5
+00:00:17,703 --> 00:00:21,750
+English what was going on
+in the call center model.
+
+6
+00:00:21,750 --> 00:00:23,310
+So I just talked and talked and
+
+7
+00:00:23,310 --> 00:00:25,440
+talked about all the stuff that
+was going on in the model.
+
+8
+00:00:25,440 --> 00:00:28,013
+We didn't do a demo,
+that's what we're gonna do this time.
+
+9
+00:00:28,013 --> 00:00:28,570
+Demo time.
+
+10
+00:00:29,810 --> 00:00:32,400
+Now, what we've done is
+that we're putting together
+
+11
+00:00:32,400 --> 00:00:35,360
+lots of different ideas from
+many of the recent lessons.
+
+12
+00:00:35,360 --> 00:00:39,900
+Everything from sort of this concept
+of fake customers to resource sets.
+
+13
+00:00:39,900 --> 00:00:41,880
+All of that takes place in this demo.
+
+14
+00:00:43,220 --> 00:00:45,170
+Let's be on the lookout for
+the following things.
+
+15
+00:00:46,270 --> 00:00:47,736
+Keep an eye out for these things.
+
+16
+00:00:47,736 --> 00:00:52,139
+Submodels, that's that funny-looking
+icon that I showed you right at
+
+17
+00:00:52,139 --> 00:00:54,240
+the beginning of the last lesson.
+
+18
+00:00:54,240 --> 00:00:58,185
+Fake customers used as timers.
+
+19
+00:00:58,185 --> 00:01:01,943
+We're gonna use a queue
+with a capacity of 0.
+
+20
+00:01:01,943 --> 00:01:07,257
+This is they kick you out
+of the hotel if it's full.
+
+21
+00:01:07,257 --> 00:01:12,300
+So we'll kick customers out if
+all 26 phone lines are busy.
+
+22
+00:01:12,300 --> 00:01:14,753
+You don't even get a chance.
+
+23
+00:01:14,753 --> 00:01:18,638
+Non-Homogeneous Poisson arrivals.
+
+24
+00:01:18,638 --> 00:01:23,076
+Three resource sets for tech support,
+each one of which has a especially
+
+25
+00:01:23,076 --> 00:01:27,896
+a product type one, two, or three,
+and there's some cross functionality.
+
+26
+00:01:27,896 --> 00:01:32,968
+Tricky Seize-Delay-Releases, we've
+talked about those a couple times now.
+
+27
+00:01:32,968 --> 00:01:37,024
+And quirky callback procedures.
+
+28
+00:01:37,024 --> 00:01:38,140
+Now it's demo time.
+
+29
+00:01:39,840 --> 00:01:44,282
+You'll be seeing the following
+interesting screenshots.
+
+30
+00:01:44,282 --> 00:01:48,660
+This is a Top-Level View of the model
+with the various submodels displayed.
+
+31
+00:01:48,660 --> 00:01:50,900
+This is what Tech Support looks like.
+
+32
+00:01:50,900 --> 00:01:54,805
+So you click into that Tech Support
+Submodel up here, you click into that and
+
+33
+00:01:54,805 --> 00:01:56,100
+you get this mess.
+
+34
+00:01:56,100 --> 00:01:57,840
+This is the Time Period Counter.
+
+35
+00:01:57,840 --> 00:02:02,922
+Its only job is to click off 1, 2,
+3, up to 22, cuz there's 22 half
+
+36
+00:02:02,922 --> 00:02:08,194
+hour periods in an 11 hour day, to keep
+track of what period of the day is it.
+
+37
+00:02:08,194 --> 00:02:10,120
+And then the Arrival Submodel.
+
+38
+00:02:10,120 --> 00:02:15,020
+We've actually looked at a very,
+very close variation of this thing before.
+
+39
+00:02:15,020 --> 00:02:17,810
+This is the arrivals where we
+use that cube block etc, etc.
+

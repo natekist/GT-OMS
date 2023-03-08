@@ -1,0 +1,392 @@
+1
+00:00:02,200 --> 00:00:04,650
+What we'll be doing in this
+lesson is talking about
+
+2
+00:00:04,650 --> 00:00:06,250
+the Advanced Process Template.
+
+3
+00:00:07,282 --> 00:00:07,796
+Here's the overview.
+
+4
+00:00:07,796 --> 00:00:14,446
+Last lesson, I talked about fake customers
+and we explained how they can be used for
+
+5
+00:00:14,446 --> 00:00:20,441
+a variety of purposes including the users
+of arrival of breakdown demons.
+
+6
+00:00:20,441 --> 00:00:24,460
+They can be used for other things, but
+we'll talk about it in upcoming lessons.
+
+7
+00:00:25,600 --> 00:00:29,707
+In this lesson, we're gonna add to
+our arsenal of vocabulary modules
+
+8
+00:00:29,707 --> 00:00:32,570
+by introducing the advanced
+process template.
+
+9
+00:00:32,570 --> 00:00:35,410
+None of this is basic stuff any more.
+
+10
+00:00:35,410 --> 00:00:37,158
+That's UGA, University of Georgia stuff.
+
+11
+00:00:37,158 --> 00:00:39,578
+Now, we're gonna do advance
+Georgia Tech stuff.
+
+12
+00:00:39,578 --> 00:00:43,928
+Advanced process template and the idea is
+that we'll get lots of great new stuff,
+
+13
+00:00:43,928 --> 00:00:47,220
+although I don't expect you to
+have to memorize everything.
+
+14
+00:00:48,420 --> 00:00:50,600
+You'll look at a bunch
+of important things and
+
+15
+00:00:50,600 --> 00:00:54,420
+at least, I want you to know where they
+are not necessarily what they all do.
+
+16
+00:00:56,140 --> 00:00:57,270
+Here's the template.
+
+17
+00:00:57,270 --> 00:01:01,650
+You go to File > Template Panel > Attach,
+then you have to sniff around for
+
+18
+00:01:01,650 --> 00:01:05,140
+the Rockwell Software directory
+where you can find it.
+
+19
+00:01:05,140 --> 00:01:07,071
+I'll show you when we do the demo.
+
+20
+00:01:07,071 --> 00:01:08,070
+Here's what it looks like.
+
+21
+00:01:08,070 --> 00:01:09,540
+I mean, to tell you the truth,
+
+22
+00:01:09,540 --> 00:01:12,607
+it's usually gonna appear on your
+screen as a big skinny thing.
+
+23
+00:01:12,607 --> 00:01:16,992
+But I expanded it, so
+you could see it all in one fell swoop.
+
+24
+00:01:16,992 --> 00:01:21,489
+You can see a bunch of modules, the yellow
+things and a bunch of spreadsheets,
+
+25
+00:01:21,489 --> 00:01:22,320
+lots of them.
+
+26
+00:01:22,320 --> 00:01:24,758
+Now I've said already and
+I'll say it again,
+
+27
+00:01:24,758 --> 00:01:27,017
+I don't expect you to memorize all these.
+
+28
+00:01:27,017 --> 00:01:30,379
+Maybe you should know where you
+can find them in a pinch, but
+
+29
+00:01:30,379 --> 00:01:32,678
+we'll only look at a few of them for now.
+
+30
+00:01:32,678 --> 00:01:37,505
+So for the next couple lessons,
+we might be interested in say, Seize,
+
+31
+00:01:37,505 --> 00:01:40,220
+Delay, Release modules.
+
+32
+00:01:40,220 --> 00:01:41,173
+There you go, Seize, Delay, Release.
+
+33
+00:01:41,173 --> 00:01:46,120
+You may have heard those words before and
+the Expression, Failure spreadsheets.
+
+34
+00:01:46,120 --> 00:01:49,447
+So there's special spreadsheets for
+those guys and
+
+35
+00:01:49,447 --> 00:01:52,326
+you've heard those words before, as well.
+
+36
+00:01:52,326 --> 00:01:54,475
+Expression and failure.
+
+37
+00:01:54,475 --> 00:01:55,733
+Seize, Delay, Release.
+
+38
+00:01:55,733 --> 00:01:57,280
+Now, you've heard these things.
+
+39
+00:01:57,280 --> 00:02:00,645
+Why do we have to use separate Seize,
+Delay and
+
+40
+00:02:00,645 --> 00:02:04,886
+Release modules when we have
+those in the process module?
+
+41
+00:02:04,886 --> 00:02:07,678
+Seize, Delay, Release capabilities
+is already in the process module.
+
+42
+00:02:07,678 --> 00:02:12,654
+Why are we messing around with those
+things now and kind of second identities?
+
+43
+00:02:12,654 --> 00:02:13,326
+Well, I agree.
+
+44
+00:02:13,326 --> 00:02:18,466
+They're in the process module, but
+it turns out that there are often
+
+45
+00:02:18,466 --> 00:02:23,440
+things that are too complicated to
+do in the process module alone.
+
+46
+00:02:23,440 --> 00:02:27,619
+It can't handle certain things that
+you would want a Seize and Delay and
+
+47
+00:02:27,619 --> 00:02:29,650
+Release to do kind of separately.
+
+48
+00:02:30,660 --> 00:02:35,569
+And remember, the basic process template
+is for University of Georgia people.
+
+49
+00:02:35,569 --> 00:02:37,504
+And so, it's suppose to be really easy.
+
+50
+00:02:37,504 --> 00:02:39,943
+When you wanna do more complicated stuff,
+
+51
+00:02:39,943 --> 00:02:44,223
+it may be the case that you have to do
+Seize, Delay and Release separately.
+
+52
+00:02:44,223 --> 00:02:46,704
+Possibly together, but
+still separately and
+
+53
+00:02:46,704 --> 00:02:49,062
+we'll talk about various reasons as we go.
+
+54
+00:02:49,062 --> 00:02:54,360
+In particular you can handle things
+like Seize, Assign, Delay, Release.
+
+55
+00:02:54,360 --> 00:02:57,024
+So, what if you wanted to put
+something in between those blocks?
+
+56
+00:02:57,024 --> 00:02:58,210
+Now, you can do it.
+
+57
+00:02:58,210 --> 00:03:02,074
+You can do non-symmetric
+multiple seizes and releases.
+
+58
+00:03:02,074 --> 00:03:07,005
+So before when you did a Seize, delay,
+Release all in one fell swoop in
+
+59
+00:03:07,005 --> 00:03:11,437
+the process block and
+you wanted to seize multiple resources,
+
+60
+00:03:11,437 --> 00:03:15,464
+usually release those same
+resources in the same block.
+
+61
+00:03:15,464 --> 00:03:20,225
+Now, you can avoid having to do stuff
+like and I'll show example later.
+
+62
+00:03:20,225 --> 00:03:23,548
+You can also look at very
+complicated seizes and
+
+63
+00:03:23,548 --> 00:03:27,310
+releases that might depend
+on sets of servers.
+
+64
+00:03:27,310 --> 00:03:29,286
+Now we'll talk about
+resource sets later on,
+
+65
+00:03:29,286 --> 00:03:31,930
+you're gonna see those in
+the upcoming call center example.
+
+66
+00:03:31,930 --> 00:03:36,755
+But the kind of thing that I have in mind
+is just not possible in a process block.
+
+67
+00:03:36,755 --> 00:03:37,740
+Demo time.
+
+68
+00:03:37,740 --> 00:03:41,738
+We're gonna talk about some of these
+Seize, Delay, Release issues and
+
+69
+00:03:41,738 --> 00:03:45,669
+then I'm also gonna sneak in a little
+bit of wisdom about the Expression
+
+70
+00:03:45,669 --> 00:03:47,458
+spreadsheet that you'll see.
+
+71
+00:03:47,458 --> 00:03:50,165
+So, we use Expressions all the time.
+
+72
+00:03:50,165 --> 00:03:55,456
+I'm surprised they didn't put it in
+the basic process, the template.
+
+73
+00:03:55,456 --> 00:03:58,701
+But as long as you know where
+the expression spreadsheet is,
+
+74
+00:03:58,701 --> 00:04:00,874
+it's in the advance process template.
+
+75
+00:04:00,874 --> 00:04:01,437
+There you go and
+
+76
+00:04:01,437 --> 00:04:04,134
+I'll talk about a couple of the things
+associated with that in demo time.
+
+77
+00:04:04,134 --> 00:04:08,852
+The summary of what we did in this
+lesson is that we talked about
+
+78
+00:04:08,852 --> 00:04:11,410
+the Advanced Process template.
+
+79
+00:04:11,410 --> 00:04:14,370
+This is gonna give us more and
+more modules, and
+
+80
+00:04:14,370 --> 00:04:16,590
+spreadsheets to play around with.
+
+81
+00:04:17,990 --> 00:04:22,996
+And in the next less, in particular,
+I'm gonna use the failure
+
+82
+00:04:22,996 --> 00:04:28,018
+spreadsheet to talk about resource
+failures and maintenance.
+
+83
+00:04:28,018 --> 00:04:30,741
+So, do not fail to show up for that.
+
+84
+00:04:30,741 --> 00:04:33,966
+See you then.
+
+85
+00:04:33,966 --> 00:04:39,200
+[MUSIC]
+

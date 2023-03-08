@@ -1,0 +1,822 @@
+1
+00:00:01,897 --> 00:00:05,932
+In this lesson I'm gonna finally look
+at sort of a non trivial two channel
+
+2
+00:00:05,932 --> 00:00:07,398
+manufacturing example.
+
+3
+00:00:07,398 --> 00:00:10,591
+So this is a step up from some of
+the earlier examples that we've been doing
+
+4
+00:00:10,591 --> 00:00:11,165
+with arena.
+
+5
+00:00:11,165 --> 00:00:12,621
+Here's our overview.
+
+6
+00:00:12,621 --> 00:00:17,473
+In the last lesson, I looked at
+different ways to do a run control,
+
+7
+00:00:17,473 --> 00:00:18,871
+setup type stuff.
+
+8
+00:00:18,871 --> 00:00:24,475
+How to implement independent replications,
+run speed, reports, that kind of thing.
+
+9
+00:00:24,475 --> 00:00:28,009
+In this lesson I'll put
+kinda everything together.
+
+10
+00:00:28,009 --> 00:00:32,810
+And we'll demo a two-channel
+manufacturing system where we look at
+
+11
+00:00:32,810 --> 00:00:37,295
+some of the concepts over the last
+few lessons simultaneously.
+
+12
+00:00:37,295 --> 00:00:42,885
+And I want you pay particular
+attention in this demo coming up,
+
+13
+00:00:42,885 --> 00:00:46,479
+in this lesson, how we use attributes.
+
+14
+00:00:46,479 --> 00:00:48,253
+We're gonna use attributes
+to memorize things.
+
+15
+00:00:48,253 --> 00:00:54,534
+Here's the story, I'm plagiarizing
+this model as model 4-1 from
+
+16
+00:00:54,534 --> 00:01:00,186
+the Simulation with Arena book,
+which you may or may not have.
+
+17
+00:01:00,186 --> 00:01:01,449
+I just wanna be
+straightforward about this.
+
+18
+00:01:01,449 --> 00:01:04,416
+In this example, we have two
+different types of arrival streams.
+
+19
+00:01:04,416 --> 00:01:06,936
+And we've looked at multiple
+arrival streams before,
+
+20
+00:01:06,936 --> 00:01:08,874
+now I'll be a little more formal about it.
+
+21
+00:01:08,874 --> 00:01:14,096
+But you have type A parts and
+they show up one at a time occasionally.
+
+22
+00:01:14,096 --> 00:01:18,653
+We have Type B parts, they occasionally
+show up four at a time in little groups,
+
+23
+00:01:18,653 --> 00:01:19,821
+in little batches.
+
+24
+00:01:19,821 --> 00:01:23,591
+Type A's show up a little
+more often than Type B's.
+
+25
+00:01:23,591 --> 00:01:27,033
+So on average,
+there's sort of the same number of A's and
+
+26
+00:01:27,033 --> 00:01:30,490
+B's in the system and
+I I've got little colored marbles.
+
+27
+00:01:30,490 --> 00:01:32,224
+And you'll be able to tell which is which.
+
+28
+00:01:32,224 --> 00:01:37,084
+Type A's feed into a Prep A server,
+where I guess they get prepared.
+
+29
+00:01:37,084 --> 00:01:39,739
+Type B's go to a Prep B server.
+
+30
+00:01:39,739 --> 00:01:42,925
+And they have different service
+times at these preparation places.
+
+31
+00:01:42,925 --> 00:01:44,363
+This is a cool thing.
+
+32
+00:01:44,363 --> 00:01:48,579
+The parts get processed by
+the same Sealer server.
+
+33
+00:01:48,579 --> 00:01:52,747
+I don't know what a Sealer is, whatever
+it is they get processed by the same guy.
+
+34
+00:01:52,747 --> 00:01:54,731
+So they start out at Prep A and
+
+35
+00:01:54,731 --> 00:01:58,718
+Prep B respectively but
+then they both go to the same guy.
+
+36
+00:01:58,718 --> 00:02:00,317
+They compete for the same resource.
+
+37
+00:02:00,317 --> 00:02:04,222
+What makes this interesting
+is that Part A's and
+
+38
+00:02:04,222 --> 00:02:09,757
+Part B's have different service
+time distributions at the sealer.
+
+39
+00:02:09,757 --> 00:02:13,625
+So the sealer is gonna have to identify
+which part is he dealing with.
+
+40
+00:02:13,625 --> 00:02:15,868
+So all parts then undergo an inspection.
+
+41
+00:02:15,868 --> 00:02:18,009
+If they pass, they're out of there.
+
+42
+00:02:18,009 --> 00:02:20,352
+If they fail the inspection,
+they have to get a rework.
+
+43
+00:02:20,352 --> 00:02:23,471
+They go to another server,
+then they get another inspection and
+
+44
+00:02:23,471 --> 00:02:25,908
+whether or not they pass,
+they're out of there.
+
+45
+00:02:25,908 --> 00:02:29,719
+So they get two tries hopefully they
+pass on the second try at least.
+
+46
+00:02:29,719 --> 00:02:31,906
+Here's the flow chart that
+I stole from the book.
+
+47
+00:02:31,906 --> 00:02:36,561
+Part A's come in according to
+an exponential distribution with a mean of
+
+48
+00:02:36,561 --> 00:02:37,565
+five minutes.
+
+49
+00:02:37,565 --> 00:02:42,829
+Part B's, they come in every EXPO 30,
+but in batches of four.
+
+50
+00:02:42,829 --> 00:02:47,591
+So about the same arrival rate if
+you looked at them individually,
+
+51
+00:02:47,591 --> 00:02:49,811
+but they come in Batches of 4.
+
+52
+00:02:49,811 --> 00:02:53,665
+Part A's go to the preparation area,
+Part A Prep.
+
+53
+00:02:53,665 --> 00:02:57,246
+They have a triangular distribution to
+the preparation time, it's not important.
+
+54
+00:02:57,246 --> 00:03:00,253
+Part B's go to the separate
+preparation center.
+
+55
+00:03:00,253 --> 00:03:03,471
+They have a different triangular
+distribution, and again, that's fine.
+
+56
+00:03:03,471 --> 00:03:09,064
+However both types of parts A and
+B go to the Sealer, common Sealer.
+
+57
+00:03:09,064 --> 00:03:12,216
+And the Part As have
+a triangular sealing time, and
+
+58
+00:03:12,216 --> 00:03:14,562
+Part B's have a wide distribution for
+
+59
+00:03:14,562 --> 00:03:19,427
+some other reason, but they're different
+and the sealer needs to know that.
+
+60
+00:03:19,427 --> 00:03:20,418
+How's he gonna know that, I don't know.
+
+61
+00:03:20,418 --> 00:03:26,510
+In any case, 9% of all parts coming out of
+the sealer have to get reworked if they
+
+62
+00:03:26,510 --> 00:03:32,707
+are so unlucky as to get reworked, that's
+going to take 45 minutes on average.
+
+63
+00:03:32,707 --> 00:03:37,692
+And then 20% of those are totally
+no good and they get scrapped.
+
+64
+00:03:37,692 --> 00:03:40,802
+80% are okay, they're salvaged and
+they ship them out.
+
+65
+00:03:40,802 --> 00:03:45,787
+Back over here, the 91% that
+passed the original inspection
+
+66
+00:03:45,787 --> 00:03:49,218
+gets shipped out, happy, happy, happy.
+
+67
+00:03:49,218 --> 00:03:52,751
+So the big question is how
+to handle different A and
+
+68
+00:03:52,751 --> 00:03:54,948
+B service times at the Sealer?
+
+69
+00:03:54,948 --> 00:03:56,181
+How does the Sealer know?
+
+70
+00:03:56,181 --> 00:03:58,376
+I've got a couple of different
+things that he can do.
+
+71
+00:03:58,376 --> 00:03:59,304
+Here's is trick one.
+
+72
+00:03:59,304 --> 00:04:03,532
+Let's pre assign the service
+times as an attribute.
+
+73
+00:04:03,532 --> 00:04:06,121
+We'll call the attribute Sealer Time,
+what a surprise.
+
+74
+00:04:06,121 --> 00:04:10,144
+Then Assign module immediately
+after the customer arrives.
+
+75
+00:04:10,144 --> 00:04:14,096
+So the first thing that happens when
+the customer arrives, no time passes.
+
+76
+00:04:14,096 --> 00:04:15,966
+We hit them with the assign module.
+
+77
+00:04:15,966 --> 00:04:20,395
+And the purpose of the assign module
+is to tell him what is your upcoming
+
+78
+00:04:20,395 --> 00:04:21,304
+Sealer Time.
+
+79
+00:04:21,304 --> 00:04:25,835
+And whether he's a type A or
+Type B, we give him a triangular.
+
+80
+00:04:25,835 --> 00:04:29,241
+Or we give him a wyble,
+depending on if he's Type A, Type B.
+
+81
+00:04:29,241 --> 00:04:33,290
+Since it's an attribute,
+each customer memorizes for
+
+82
+00:04:33,290 --> 00:04:36,485
+the future what his
+Sealer Time is gonna be.
+
+83
+00:04:36,485 --> 00:04:37,223
+He doesn't forget it.
+
+84
+00:04:37,223 --> 00:04:41,540
+When he gets to the Sealer, he tells
+the Sealer, well, I got a triangular,
+
+85
+00:04:41,540 --> 00:04:42,360
+I got a wyble.
+
+86
+00:04:42,360 --> 00:04:49,295
+And so each customer has his own
+attribute that he remembers from then on.
+
+87
+00:04:49,295 --> 00:04:53,840
+And so we use that attribute regardless
+of whether it's a type A or type B.
+
+88
+00:04:53,840 --> 00:04:57,930
+We know what the Sealer Time is gonna be,
+even though we assigned it earlier.
+
+89
+00:04:57,930 --> 00:04:59,640
+I mean heck, it's our simulation.
+
+90
+00:04:59,640 --> 00:05:01,370
+We can do the stuff,
+whatever we want, right.
+
+91
+00:05:01,370 --> 00:05:02,074
+It's our simulation.
+
+92
+00:05:02,074 --> 00:05:08,723
+This is actually sub Trick one, but
+while I'm at it I'm gonna use the assigned
+
+93
+00:05:08,723 --> 00:05:14,584
+module to store each customers
+arrival time, also as an attribute.
+
+94
+00:05:14,584 --> 00:05:18,779
+Because we're interested in seeing
+what the cycle times are gonna be.
+
+95
+00:05:18,779 --> 00:05:23,174
+So we need to know when does the guy show
+up, and we'll store that as an attribute.
+
+96
+00:05:23,174 --> 00:05:24,309
+When does the guy show up?
+
+97
+00:05:24,309 --> 00:05:26,274
+Now how do we know when the guy shows up?
+
+98
+00:05:26,274 --> 00:05:29,037
+Well, when we hit the assign block,
+
+99
+00:05:29,037 --> 00:05:33,774
+I'll use the arena variable TNOW,
+which is the current time.
+
+100
+00:05:33,774 --> 00:05:38,575
+And I'll assign the arrival time
+attribute to the value of TNOW.
+
+101
+00:05:38,575 --> 00:05:42,447
+So it's perfectly okay to
+assign an attribute value,
+
+102
+00:05:42,447 --> 00:05:45,319
+equal to arena internal variable TNOW.
+
+103
+00:05:45,319 --> 00:05:47,506
+So you assign at that point.
+
+104
+00:05:47,506 --> 00:05:52,180
+If you showed up at time 11.7,
+he always has the arrival time for
+
+105
+00:05:52,180 --> 00:05:54,152
+that customer as 11.7.
+
+106
+00:05:54,152 --> 00:05:58,542
+What we'll do is we're gonna record the
+departure times just before the parts get
+
+107
+00:05:58,542 --> 00:05:59,183
+disposed.
+
+108
+00:05:59,183 --> 00:06:01,139
+We're gonna use that record block finally.
+
+109
+00:06:01,139 --> 00:06:03,157
+And this will allow us to get cycle times.
+
+110
+00:06:03,157 --> 00:06:07,513
+What we'll do is I'll take the departure
+time and when he hits the record block
+
+111
+00:06:07,513 --> 00:06:12,009
+just before the dispose, minus the arrival
+time, the arrival time attribute.
+
+112
+00:06:12,009 --> 00:06:16,685
+And what we're interested in is how long
+do these guys stay in the system depending
+
+113
+00:06:16,685 --> 00:06:20,548
+on if they pass the first inspection,
+pass the second inspection or
+
+114
+00:06:20,548 --> 00:06:21,996
+fail both inspections?
+
+115
+00:06:21,996 --> 00:06:23,210
+Let's get logical.
+
+116
+00:06:23,210 --> 00:06:25,041
+This is actually my real sudden trick.
+
+117
+00:06:25,041 --> 00:06:30,084
+Is there another way to model the process
+time at the sealer without having
+
+118
+00:06:30,084 --> 00:06:34,978
+to use that assign block,
+the sealer time attribute for A's and B's?
+
+119
+00:06:34,978 --> 00:06:36,754
+Well, there is.
+
+120
+00:06:36,754 --> 00:06:39,704
+It's a little bit of a hassle,
+but I wanted to show you this.
+
+121
+00:06:39,704 --> 00:06:41,096
+It involves a little work.
+
+122
+00:06:41,096 --> 00:06:42,009
+It's nice to know.
+
+123
+00:06:42,009 --> 00:06:43,848
+This is the kind of thing
+you can use later on.
+
+124
+00:06:43,848 --> 00:06:46,822
+Note that the entity types,
+Part A and Part B,
+
+125
+00:06:46,822 --> 00:06:50,426
+we assign those in any case
+right in the create modules.
+
+126
+00:06:50,426 --> 00:06:52,218
+I'll show you,
+those are assigned right away.
+
+127
+00:06:52,218 --> 00:06:56,588
+So instead of using the Sealer Time
+as an attribute in the assign module,
+
+128
+00:06:56,588 --> 00:07:00,900
+what I can do is, I won't do anything
+until I get to the Sealer Process.
+
+129
+00:07:00,900 --> 00:07:02,837
+Then I'll use a logical expression.
+
+130
+00:07:02,837 --> 00:07:09,638
+Now logical expression reads like this,
+we say that (x==y) = 1.
+
+131
+00:07:09,638 --> 00:07:14,144
+So what this means is does
+really really equal y?
+
+132
+00:07:14,144 --> 00:07:20,551
+We say that this is gonna be equal
+to one if in fact x does equal y.
+
+133
+00:07:20,551 --> 00:07:25,901
+So if I had something like (3==3),
+that value (3==3
+
+134
+00:07:25,901 --> 00:07:30,567
+)as a logical expression is true,
+and so it equals 1.
+
+135
+00:07:30,567 --> 00:07:34,913
+If I had (3==2), then this =0.
+
+136
+00:07:34,913 --> 00:07:36,372
+So that's why it says see why.
+
+137
+00:07:36,372 --> 00:07:40,306
+So I always interpret the double
+equal sign meaning, they really,
+
+138
+00:07:40,306 --> 00:07:41,832
+really equal each other.
+
+139
+00:07:41,832 --> 00:07:44,443
+Okay, so here's the logical
+statement that I'll use.
+
+140
+00:07:44,443 --> 00:07:46,317
+When I get to the sealer,
+
+141
+00:07:46,317 --> 00:07:50,886
+if the entity type is a part A I
+used a triangle distribution.
+
+142
+00:07:50,886 --> 00:07:54,929
+If it's a part B, I used the WEIB
+distribution, which is what we're doing.
+
+143
+00:07:54,929 --> 00:07:56,021
+Now why does this work?
+
+144
+00:07:56,021 --> 00:07:56,658
+Well let's see.
+
+145
+00:07:56,658 --> 00:07:59,431
+If entity type is part A,
+this thing is equals one.
+
+146
+00:07:59,431 --> 00:08:03,336
+And I have one times triangular,
+which is correct.
+
+147
+00:08:03,336 --> 00:08:07,039
+But if it's part A,
+I also have this part equal to zero.
+
+148
+00:08:07,039 --> 00:08:11,204
+So if the entity type is really part A,
+this logical expression = 0 so
+
+149
+00:08:11,204 --> 00:08:12,839
+the WEIB doesn't matter.
+
+150
+00:08:12,839 --> 00:08:19,943
+On the other hand, if entity type
+is a part B, that = 0 and this = 1.
+
+151
+00:08:19,943 --> 00:08:20,743
+So I get the right answer.
+
+152
+00:08:20,743 --> 00:08:23,418
+Now it's cumbersome, but it works.
+
+153
+00:08:23,418 --> 00:08:26,500
+And I'll just show you how
+that does when we do the demo.
+
+154
+00:08:26,500 --> 00:08:29,332
+So here is what the darn thing looks like.
+
+155
+00:08:29,332 --> 00:08:30,628
+Part A is arrive.
+
+156
+00:08:30,628 --> 00:08:34,957
+I do the assign of various things,
+they get prepped, they get sealed,
+
+157
+00:08:34,957 --> 00:08:36,917
+they go through an inspection.
+
+158
+00:08:36,917 --> 00:08:42,748
+If they pass 91% chance, they go through
+the record block and they leave.
+
+159
+00:08:42,748 --> 00:08:44,934
+They're shipped off very nicely,
+hap, hap, happy.
+
+160
+00:08:44,934 --> 00:08:49,435
+If they fail the inspection,
+they get reworked, another inspection,
+
+161
+00:08:49,435 --> 00:08:51,666
+out they go for better or for worse.
+
+162
+00:08:51,666 --> 00:08:54,200
+Part B's, same thing, they get created,
+
+163
+00:08:54,200 --> 00:08:58,868
+they get these various assignments that
+we'll talk about like the sealer time.
+
+164
+00:08:58,868 --> 00:09:03,552
+They get prepped, go to the sealer,
+inspection, out of here one way or
+
+165
+00:09:03,552 --> 00:09:04,342
+the other.
+
+166
+00:09:04,342 --> 00:09:06,757
+So here we go demo time, take a look and
+
+167
+00:09:06,757 --> 00:09:10,319
+you'll get details on what's
+going on in simulation.
+
+168
+00:09:10,319 --> 00:09:13,804
+Here's a summary of what
+we did in this lesson.
+
+169
+00:09:13,804 --> 00:09:17,719
+This time, we sort of looked
+at our first real system.
+
+170
+00:09:17,719 --> 00:09:19,896
+This was a small manufacturing system.
+
+171
+00:09:19,896 --> 00:09:24,322
+And I tossed in a couple nice little
+tricks involving attributes and
+
+172
+00:09:24,322 --> 00:09:25,962
+certain types of logic.
+
+173
+00:09:25,962 --> 00:09:29,708
+Next time,
+we're gonna look at fake customers.
+
+174
+00:09:29,708 --> 00:09:34,683
+These are additional ways that you
+can do some cool little tricks and
+
+175
+00:09:34,683 --> 00:09:38,530
+we'll put them in our bag so
+we can use them later on.
+
+176
+00:09:38,530 --> 00:09:43,445
+So this is a very interesting concept,
+and I'll see you then in the next lesson.
+
+177
+00:09:43,445 --> 00:09:51,249
+[MUSIC]
+

@@ -1,0 +1,564 @@
+1
+00:00:00,730 --> 00:00:05,720
+In this demo, I'm gonna show you
+the use of certain primitive blocks.
+
+2
+00:00:05,720 --> 00:00:08,876
+In particular the queue block,
+the seize block, and the delay block.
+
+3
+00:00:08,876 --> 00:00:10,342
+So let me show you here.
+
+4
+00:00:10,342 --> 00:00:14,242
+Blocks, I previously loaded that template,
+and I go around, I look,
+
+5
+00:00:14,242 --> 00:00:18,662
+they're in alphabetical order, so if I
+want a delay block, bang, there it is,
+
+6
+00:00:18,662 --> 00:00:19,970
+I can just drag it over.
+
+7
+00:00:19,970 --> 00:00:22,549
+I don't want it, so let me Delete it.
+
+8
+00:00:22,549 --> 00:00:27,210
+And we're gonna be seeing pretty much
+the same example again when we do
+
+9
+00:00:27,210 --> 00:00:29,896
+the call center example later on, and so
+
+10
+00:00:29,896 --> 00:00:35,960
+I'm not gonna go into huge detail here
+other than to say, I create some arrivals.
+
+11
+00:00:35,960 --> 00:00:39,131
+I'm gonna try to seize this resource.
+
+12
+00:00:39,131 --> 00:00:41,155
+The resource is called Trunk Line.
+
+13
+00:00:41,155 --> 00:00:44,385
+It's just the number of
+telephone lines that I have.
+
+14
+00:00:44,385 --> 00:00:49,901
+And if I remember correctly,
+let's go to Basic Process > Resource,
+
+15
+00:00:49,901 --> 00:00:53,370
+I have a Trunk Line that
+has a Capacity of 3.
+
+16
+00:00:53,370 --> 00:00:57,541
+So I have three Trunk Lines, in other
+words, three phone lines are available.
+
+17
+00:00:57,541 --> 00:01:01,270
+I'm willing to put up with
+a queue of size 4, so
+
+18
+00:01:01,270 --> 00:01:05,790
+this is where the queue is defined,
+trunkline.queue.
+
+19
+00:01:05,790 --> 00:01:11,579
+So if I go over here,
+this is a first in first out queue and
+
+20
+00:01:11,579 --> 00:01:15,040
+the Capacity of this queue is 4.
+
+21
+00:01:15,040 --> 00:01:18,790
+If I use a queue block, which is
+the main reason I use a queue block.
+
+22
+00:01:18,790 --> 00:01:22,486
+If I exceed the capacity of
+the queue I automatically kill
+
+23
+00:01:22,486 --> 00:01:25,798
+off the customers by sending
+them to this dispose.
+
+24
+00:01:25,798 --> 00:01:28,770
+So that's what is nice about the queue
+block, that's why people use it.
+
+25
+00:01:28,770 --> 00:01:31,702
+If the queue block is overcapacitated,
+out you go.
+
+26
+00:01:31,702 --> 00:01:35,552
+So the only way I can use a seize block
+with this particular queue block is that
+
+27
+00:01:35,552 --> 00:01:37,789
+I've got to use the primitive seize block.
+
+28
+00:01:37,789 --> 00:01:41,637
+That's why I'm not using the yellow
+one from the advanced process or
+
+29
+00:01:41,637 --> 00:01:45,899
+the process version of the seize, so
+I'm stuck with this primitive seize.
+
+30
+00:01:45,899 --> 00:01:48,860
+And then I'm stuck with a primitive delay.
+
+31
+00:01:48,860 --> 00:01:52,794
+So I just want to show you what's
+going on here, this is not a big deal,
+
+32
+00:01:52,794 --> 00:01:55,146
+cuz we'll be seeing this again later on.
+
+33
+00:01:55,146 --> 00:01:58,338
+These numbers here represent
+the number of people in the queue, and
+
+34
+00:01:58,338 --> 00:02:00,360
+the number of servers being used.
+
+35
+00:02:00,360 --> 00:02:05,065
+One thing being queued here is
+that I have a three way by chance.
+
+36
+00:02:05,065 --> 00:02:10,525
+And so the customers will go to
+the first choice with probability 76,
+
+37
+00:02:10,525 --> 00:02:16,167
+just like the number of trombones in
+the big parade, with probably 16%
+
+38
+00:02:16,167 --> 00:02:21,820
+to the second choice and was remaining
+probably 8% to the third choice.
+
+39
+00:02:21,820 --> 00:02:25,901
+So let's watch,
+I'm gonna step through this, here we go.
+
+40
+00:02:25,901 --> 00:02:28,460
+Click, first customer shows up.
+
+41
+00:02:28,460 --> 00:02:31,453
+There's nobody in the queue right now,
+so he goes through,
+
+42
+00:02:31,453 --> 00:02:33,400
+there's nobody seized at this point.
+
+43
+00:02:33,400 --> 00:02:36,491
+One server is now being used.
+
+44
+00:02:36,491 --> 00:02:39,440
+Second guy shows up,
+two servers are being used.
+
+45
+00:02:41,020 --> 00:02:44,586
+Third guy shows up,
+three servers are being used.
+
+46
+00:02:44,586 --> 00:02:47,102
+Fourth guy shows up,
+one person in the line.
+
+47
+00:02:47,102 --> 00:02:49,273
+See how that works?
+
+48
+00:02:49,273 --> 00:02:53,732
+We also had somebody leave and so
+that fourth guy is now being served.
+
+49
+00:02:53,732 --> 00:02:55,010
+So you can see how this works.
+
+50
+00:02:55,010 --> 00:02:56,056
+It's very nice.
+
+51
+00:02:56,056 --> 00:03:02,700
+Let's run this sorta slowly and we'll
+see how the queue builds up and down.
+
+52
+00:03:02,700 --> 00:03:05,693
+There we go, see, we had a queue
+of four so a guy had to leave.
+
+53
+00:03:08,580 --> 00:03:09,218
+We will see that again.
+
+54
+00:03:09,218 --> 00:03:12,390
+See, when the queue gets to be four,
+customers have to leave.
+
+55
+00:03:12,390 --> 00:03:13,176
+Isn't that nice?
+
+56
+00:03:13,176 --> 00:03:15,958
+Very, very easy example.
+
+57
+00:03:15,958 --> 00:03:18,444
+And you can see how the blocks work so
+nicely.
+
+58
+00:03:18,444 --> 00:03:22,570
+Like I said, we'll be going into
+much more detail on that later on.
+
+59
+00:03:22,570 --> 00:03:27,346
+Okay so let me now do a very cute
+little example that I worked up.
+
+60
+00:03:27,346 --> 00:03:30,179
+This is using an alter block.
+
+61
+00:03:30,179 --> 00:03:32,556
+This is the block, this is alter.
+
+62
+00:03:32,556 --> 00:03:34,235
+Now where is he?
+
+63
+00:03:34,235 --> 00:03:39,271
+In alphabetical order, I drag this guy
+over, alter, and what the alter block
+
+64
+00:03:39,271 --> 00:03:44,860
+does, he's responsible for adding servers
+to a resource, or subtracting servers.
+
+65
+00:03:44,860 --> 00:03:45,805
+So let's look at this one.
+
+66
+00:03:45,805 --> 00:03:49,290
+It says Barber 1.
+
+67
+00:03:49,290 --> 00:03:55,024
+What that is doing is if you
+pass a customer through here,
+
+68
+00:03:55,024 --> 00:04:02,317
+or a fake customer, the number of
+servers in the barber increases by 1.
+
+69
+00:04:02,317 --> 00:04:06,414
+And f I wanted to,
+I could put a 2 here or a negative 1.
+
+70
+00:04:06,414 --> 00:04:09,828
+I could change the number of
+servers by anything I want, but
+
+71
+00:04:09,828 --> 00:04:13,660
+alter is used to change the number
+of servers that are resource.
+
+72
+00:04:13,660 --> 00:04:15,420
+Sometimes I say number of resources, but
+
+73
+00:04:15,420 --> 00:04:18,845
+I really mean number of servers that
+are resource, number of parallel servers.
+
+74
+00:04:18,845 --> 00:04:19,828
+So let's watch.
+
+75
+00:04:19,828 --> 00:04:24,273
+Here's the Create block,
+this Decide block is just saying,
+
+76
+00:04:24,273 --> 00:04:30,011
+if the number of people in the queue is
+greater than or equal to 3, add a server.
+
+77
+00:04:30,011 --> 00:04:33,392
+And we can keep track of the number
+of people in the queue and
+
+78
+00:04:33,392 --> 00:04:36,100
+the number of resources being used.
+
+79
+00:04:36,100 --> 00:04:39,990
+Let me actually just see how
+many people are in this barber.
+
+80
+00:04:39,990 --> 00:04:46,669
+So we currently have, in the barber,
+I'm going to look at the number resources.
+
+81
+00:04:46,669 --> 00:04:49,750
+So the barber has a capacity of 1.
+
+82
+00:04:49,750 --> 00:04:52,484
+There's a Trunk Line which
+we're not using anymore so
+
+83
+00:04:52,484 --> 00:04:55,047
+you can ignore that,
+in fact I'll just Delete it.
+
+84
+00:04:55,047 --> 00:04:56,780
+Out you go, okay.
+
+85
+00:04:56,780 --> 00:05:01,782
+So we're keeping track of the number
+of barbers that we have in use and
+
+86
+00:05:01,782 --> 00:05:03,947
+the number of people in line.
+
+87
+00:05:03,947 --> 00:05:05,480
+We'll step through this.
+
+88
+00:05:07,890 --> 00:05:11,650
+Okay so first guy shows up,
+there's only one guy,
+
+89
+00:05:11,650 --> 00:05:15,330
+he's not waiting for
+anybody, so there he goes.
+
+90
+00:05:16,640 --> 00:05:17,824
+Not the fastest guy ever.
+
+91
+00:05:19,678 --> 00:05:21,305
+So one person's being used.
+
+92
+00:05:21,305 --> 00:05:25,140
+Next guy shows up, we still don't
+have a queue bigger than three.
+
+93
+00:05:25,140 --> 00:05:27,170
+I got to speed these guys up.
+
+94
+00:05:30,202 --> 00:05:34,620
+So there's only one server so
+the queue size is one now.
+
+95
+00:05:34,620 --> 00:05:37,420
+Next guy shows up,
+
+96
+00:05:37,420 --> 00:05:42,848
+queue size is going to bump up to two.
+
+97
+00:05:42,848 --> 00:05:45,890
+Next guy shows up,
+let's see what happens to the queue size.
+
+98
+00:05:50,228 --> 00:05:53,638
+That's interesting.
+
+99
+00:05:53,638 --> 00:05:56,260
+Now three, I needed to click,
+another guy shows up.
+
+100
+00:05:56,260 --> 00:05:58,326
+Now, something is gonna happen here.
+
+101
+00:05:58,326 --> 00:06:01,612
+The queue is greater or equal to three so
+we go through an alter block and
+
+102
+00:06:01,612 --> 00:06:04,130
+now we have two servers,
+see what happened?
+
+103
+00:06:04,130 --> 00:06:06,805
+We have two servers because we
+went through the alter block.
+
+104
+00:06:06,805 --> 00:06:08,744
+And the queue went down to two.
+
+105
+00:06:08,744 --> 00:06:11,196
+The guy showed up, so
+then it popped back up to three.
+
+106
+00:06:11,196 --> 00:06:13,206
+Let me see if we have another server here.
+
+107
+00:06:13,206 --> 00:06:16,940
+The queue is three,
+we're gonna add another server.
+
+108
+00:06:16,940 --> 00:06:18,911
+See look at that,
+now we have three servers.
+
+109
+00:06:18,911 --> 00:06:20,880
+And you can see this is quite nice.
+
+110
+00:06:20,880 --> 00:06:24,359
+We're gonna keep on adding
+servers until everybody's happy.
+
+111
+00:06:24,359 --> 00:06:25,563
+There's another one.
+
+112
+00:06:25,563 --> 00:06:29,909
+See, so we can run the simulation for
+awhile.
+
+113
+00:06:29,909 --> 00:06:34,365
+And you'll see that occasionally,
+the number of servers will go up.
+
+114
+00:06:34,365 --> 00:06:40,417
+By the way,
+NR means the number of servers in use.
+
+115
+00:06:40,417 --> 00:06:43,994
+So we'll see, it's won't go above
+four until we really need it.
+
+116
+00:06:43,994 --> 00:06:47,781
+And let's see if that ever does.
+
+117
+00:06:51,239 --> 00:06:53,540
+Well, looks like four is
+probably what we needed.
+
+118
+00:06:53,540 --> 00:06:55,210
+So we're not getting these gigantic lines.
+
+119
+00:06:55,210 --> 00:06:59,290
+So four is probably a very good number for
+the system.
+
+120
+00:06:59,290 --> 00:07:02,272
+Okay well,
+this is a good place to end the demo.
+
+121
+00:07:02,272 --> 00:07:05,552
+Don't want to have you waiting around,
+else the queue size will go up.
+
+122
+00:07:05,552 --> 00:07:07,890
+So we'll see you in the next lesson.
+

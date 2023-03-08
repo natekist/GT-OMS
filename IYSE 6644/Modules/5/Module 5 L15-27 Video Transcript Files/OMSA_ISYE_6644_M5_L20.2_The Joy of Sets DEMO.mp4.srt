@@ -1,0 +1,247 @@
+1
+00:00:00,730 --> 00:00:04,850
+In this demo I'm gonna
+show how you use sets
+
+2
+00:00:04,850 --> 00:00:08,070
+with a small example involving
+four different servers.
+
+3
+00:00:08,070 --> 00:00:09,850
+So let's just watch this for a second.
+
+4
+00:00:11,510 --> 00:00:16,710
+Just a simple seize delay release, and
+it looks like I've got these four barbers.
+
+5
+00:00:16,710 --> 00:00:22,210
+And I'm gonna have the four barbers be
+used in preferred order, A, B, C, D.
+
+6
+00:00:22,210 --> 00:00:25,390
+So A goes first, then B,
+then C, then D if possible.
+
+7
+00:00:25,390 --> 00:00:26,140
+So just, let's watch.
+
+8
+00:00:26,140 --> 00:00:27,338
+They're all being used here.
+
+9
+00:00:27,338 --> 00:00:32,270
+And let's see,
+you'll see that I'm gonna attempt to fill
+
+10
+00:00:32,270 --> 00:00:35,560
+in the left-most zeros
+first if there's a tie.
+
+11
+00:00:35,560 --> 00:00:36,800
+So right now there's no tie.
+
+12
+00:00:36,800 --> 00:00:38,820
+There's a zero,
+he gets filled in immediately.
+
+13
+00:00:39,930 --> 00:00:42,850
+See, when we had two zeros,
+the one on the left gets filled in first.
+
+14
+00:00:42,850 --> 00:00:44,785
+Just watch carefully.
+
+15
+00:00:44,785 --> 00:00:47,810
+When the queue builds down,
+we'll see some zeroes.
+
+16
+00:00:47,810 --> 00:00:50,280
+Eventually the queue will build down,
+we hope.
+
+17
+00:00:50,280 --> 00:00:52,622
+Come on, let's go.
+
+18
+00:00:52,622 --> 00:00:55,920
+Zero, [LAUGH] it takes
+a little longer than we think.
+
+19
+00:00:55,920 --> 00:00:58,670
+See, lots of zeroes,
+left, left, left, left.
+
+20
+00:00:58,670 --> 00:00:59,740
+See how that works?
+
+21
+00:00:59,740 --> 00:01:04,130
+So these queues get handled and
+
+22
+00:01:04,130 --> 00:01:08,520
+the seized resources get
+handled in the preferred order.
+
+23
+00:01:08,520 --> 00:01:10,640
+All right,
+well let's look at some details here.
+
+24
+00:01:11,860 --> 00:01:13,680
+First of all,
+I'm gonna show you how I set up the set.
+
+25
+00:01:14,760 --> 00:01:19,580
+Set, Barbers, and
+Barbers is a set with four rows.
+
+26
+00:01:19,580 --> 00:01:20,910
+Let's click and see the members.
+
+27
+00:01:22,370 --> 00:01:25,950
+Barber A, B, C, D, as I promised.
+
+28
+00:01:25,950 --> 00:01:27,910
+Not very imaginative names,
+but what can I say.
+
+29
+00:01:29,860 --> 00:01:36,350
+And now let's look at the language that
+I have to use in the seize and release.
+
+30
+00:01:36,350 --> 00:01:37,750
+Remember they were awful looking.
+
+31
+00:01:39,600 --> 00:01:46,830
+So here's the seize, and what I did is I
+added this line in plain English it says,
+
+32
+00:01:46,830 --> 00:01:51,340
+seize one guy from the set called Barbers.
+
+33
+00:01:51,340 --> 00:01:55,080
+I want to seize that guy in
+preferred order, A, B, C, D.
+
+34
+00:01:55,080 --> 00:01:59,860
+And I'm going to store whoever
+I seize in the Barber Index.
+
+35
+00:01:59,860 --> 00:02:05,730
+And let's suppose,
+I is customer number 17, C is Barber B.
+
+36
+00:02:05,730 --> 00:02:09,667
+When customer 17 is done,
+he will release Barber B.
+
+37
+00:02:09,667 --> 00:02:14,322
+Okay, then we go through the delay,
+just standard boring delay.
+
+38
+00:02:14,322 --> 00:02:18,314
+And then I release that specific guy,
+click, click.
+
+39
+00:02:18,314 --> 00:02:24,230
+So I've added the release in
+from the set called Barber 1.
+
+40
+00:02:24,230 --> 00:02:27,400
+From the set called Barbers,
+I released one guy,
+
+41
+00:02:27,400 --> 00:02:31,760
+the specific member who's
+stored in the Barber index.
+
+42
+00:02:31,760 --> 00:02:34,480
+So if you want I can look at this
+more carefully by clicking Edit.
+
+43
+00:02:36,370 --> 00:02:39,390
+And that has it,
+you can see all the letters this way.
+
+44
+00:02:39,390 --> 00:02:42,200
+If I wanted to I could do other releases.
+
+45
+00:02:42,200 --> 00:02:48,540
+You don't want to do this necessarily
+because you'll release random guys.
+
+46
+00:02:48,540 --> 00:02:51,960
+But in this case I used a specific member.
+
+47
+00:02:51,960 --> 00:02:53,580
+So very nice, very easy.
+
+48
+00:02:53,580 --> 00:02:55,070
+I'll let you see this one more time.
+
+49
+00:02:56,230 --> 00:03:01,550
+This is just keeping track of which
+server A, B, C, or D is being used.
+
+50
+00:03:01,550 --> 00:03:03,874
+And again, C goes from left to right,
+
+51
+00:03:03,874 --> 00:03:09,000
+we fill in the left most zeros first cuz
+we wanna use A, B, C, D in that order.
+
+52
+00:03:09,000 --> 00:03:09,702
+Very, very simple.
+
+53
+00:03:09,702 --> 00:03:12,030
+You can go play along with
+this model at your leisure.
+

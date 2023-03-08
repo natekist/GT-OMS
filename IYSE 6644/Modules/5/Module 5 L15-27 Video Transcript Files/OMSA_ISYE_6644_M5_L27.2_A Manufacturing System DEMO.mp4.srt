@@ -1,0 +1,322 @@
+1
+00:00:00,760 --> 00:00:02,606
+I'll be doing a demo on
+this manufacturing cell.
+
+2
+00:00:02,606 --> 00:00:04,545
+Let me just get the darn thing running.
+
+3
+00:00:04,545 --> 00:00:06,054
+It's very pretty.
+
+4
+00:00:06,054 --> 00:00:07,525
+Yeah, let me slow down a little bit.
+
+5
+00:00:07,525 --> 00:00:12,096
+You can see different types of customers,
+in fact let's do that setup and
+
+6
+00:00:12,096 --> 00:00:13,803
+make it quite a bit slower.
+
+7
+00:00:13,803 --> 00:00:18,979
+Run speed at a zero,
+we're getting used to this by now.
+
+8
+00:00:18,979 --> 00:00:22,384
+See different types of customers,
+blue, red and
+
+9
+00:00:22,384 --> 00:00:25,070
+green marbles going around the place.
+
+10
+00:00:26,140 --> 00:00:28,921
+They actually have different
+paths that they're travelling.
+
+11
+00:00:28,921 --> 00:00:33,002
+The blue guys go from cell 1,
+2, 3 and 4 in that order.
+
+12
+00:00:33,002 --> 00:00:38,503
+The red guys go, if I remember 1,
+2, 4, 2, 3, in that order.
+
+13
+00:00:38,503 --> 00:00:41,496
+The green guys, I think, are 2, 1, 3.
+
+14
+00:00:41,496 --> 00:00:42,971
+But you can see they're all moving around.
+
+15
+00:00:42,971 --> 00:00:45,624
+They have different sequences.
+
+16
+00:00:45,624 --> 00:00:48,409
+And here's the code.
+
+17
+00:00:48,409 --> 00:00:52,579
+I'm just gonna do this in very,
+very high level language.
+
+18
+00:00:52,579 --> 00:00:57,434
+Parts are created, we assign them their
+sequence here along with their part type.
+
+19
+00:00:57,434 --> 00:00:58,766
+There's a blue guy.
+
+20
+00:00:58,766 --> 00:01:00,885
+He goes to what's called a station.
+
+21
+00:01:00,885 --> 00:01:02,924
+He figures out what his
+sequence is gonna be.
+
+22
+00:01:02,924 --> 00:01:07,291
+And the blue guy's, let's wait for a blue
+one, he'll go to Station 1, 2, 3 and 4,
+
+23
+00:01:07,291 --> 00:01:08,481
+and now there's blue.
+
+24
+00:01:08,481 --> 00:01:10,893
+See right there, Station 1.
+
+25
+00:01:10,893 --> 00:01:13,890
+He pops over,
+now he's gonna go to station 2, see there.
+
+26
+00:01:13,890 --> 00:01:16,963
+Then he's gonna go to station 3 and
+in a second he's going to go to station 4.
+
+27
+00:01:16,963 --> 00:01:18,659
+Let's watch for him over here.
+
+28
+00:01:18,659 --> 00:01:19,659
+Come on go to Station 4.
+
+29
+00:01:19,659 --> 00:01:23,927
+He'll show up in a second.
+
+30
+00:01:23,927 --> 00:01:24,940
+Come on, come on.
+
+31
+00:01:24,940 --> 00:01:32,494
+He really will unless there might have
+been a line at Station 3, there we go.
+
+32
+00:01:32,494 --> 00:01:35,692
+So he goes to Station 4 and
+then he's out of there.
+
+33
+00:01:35,692 --> 00:01:37,713
+So it's very, very nice.
+
+34
+00:01:37,713 --> 00:01:42,630
+And the only thing you need
+is the sequence block,
+
+35
+00:01:42,630 --> 00:01:46,386
+use of sequences in this route block.
+
+36
+00:01:46,386 --> 00:01:48,875
+So route just says,
+where we gonna go next?
+
+37
+00:01:48,875 --> 00:01:52,199
+And it says in plan
+English in transfer time,
+
+38
+00:01:52,199 --> 00:01:56,138
+in this case this is a variable
+of length two minutes.
+
+39
+00:01:56,138 --> 00:02:01,840
+So it takes two minutes to go to the next
+place by sequence by your sequence.
+
+40
+00:02:01,840 --> 00:02:06,160
+That's all you need to do and
+all this stuff is in the so
+
+41
+00:02:06,160 --> 00:02:11,157
+called advanced transfer template
+which I have loaded here.
+
+42
+00:02:11,157 --> 00:02:16,484
+You can see this is the sequence
+spreadsheet, and it's very, very nice.
+
+43
+00:02:16,484 --> 00:02:19,125
+If I want the route block,
+I just drag it over.
+
+44
+00:02:19,125 --> 00:02:22,082
+Stations are just places that you go.
+
+45
+00:02:22,082 --> 00:02:25,954
+So you can see that it's
+very easy to run this model,
+
+46
+00:02:25,954 --> 00:02:31,164
+take about an hour to learn how to do it,
+but that's for another time.
+
+47
+00:02:31,164 --> 00:02:38,117
+The last thing I wanna show you then is
+I can do movement involving a machine.
+
+48
+00:02:38,117 --> 00:02:40,789
+In this case, a transporter.
+
+49
+00:02:40,789 --> 00:02:42,847
+So see the little green thing there?
+
+50
+00:02:42,847 --> 00:02:48,067
+This is just a guy that picks you up,
+like a taxi cab or a cart.
+
+51
+00:02:48,067 --> 00:02:49,245
+And let's run this.
+
+52
+00:02:51,236 --> 00:02:55,542
+He picks up a customer too, drops him
+off at Cell 1, and then he's free.
+
+53
+00:02:55,542 --> 00:02:59,690
+And then he's not free anymore,
+he's gonna go over and get the next guy.
+
+54
+00:03:01,717 --> 00:03:02,876
+And when they move they're not free.
+
+55
+00:03:02,876 --> 00:03:09,621
+I'm gonna go back here and wait for
+the next guy, picks him up, drops him off.
+
+56
+00:03:09,621 --> 00:03:11,580
+Isn't that nice?
+
+57
+00:03:11,580 --> 00:03:14,204
+And if I want,
+just the last thing I'll show you.
+
+58
+00:03:14,204 --> 00:03:16,309
+If I don't think that these
+are enough transporters,
+
+59
+00:03:16,309 --> 00:03:17,642
+let me move these a little faster.
+
+60
+00:03:19,455 --> 00:03:23,403
+If I don't think that I have enough
+transporters, maybe I don't.
+
+61
+00:03:23,403 --> 00:03:26,200
+I can go to the Advance Transfer.
+
+62
+00:03:27,740 --> 00:03:30,275
+Transporter spreadsheet.
+
+63
+00:03:30,275 --> 00:03:32,880
+Let's make four of them.
+
+64
+00:03:32,880 --> 00:03:33,661
+Isn't this easy?
+
+65
+00:03:37,102 --> 00:03:39,393
+And now rerun it.
+
+66
+00:03:42,306 --> 00:03:47,050
+And see now I have four transporters
+moving around, so easy.
+
+67
+00:03:47,050 --> 00:03:49,988
+And so I'll give you a small assignment
+that you can play around with this
+
+68
+00:03:49,988 --> 00:03:50,574
+a little bit.
+
+69
+00:03:50,574 --> 00:03:52,645
+You don't have to do
+the programming itself though.
+
+70
+00:03:52,645 --> 00:03:55,742
+Okay, well that ends this
+last demo of the module.
+
+71
+00:03:55,742 --> 00:03:57,390
+I hope you had a nice time looking at it.
+

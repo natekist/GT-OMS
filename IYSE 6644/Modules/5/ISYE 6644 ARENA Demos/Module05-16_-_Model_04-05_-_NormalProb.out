@@ -1,0 +1,23 @@
+
+                                      ARENA Simulation Results
+                                   Nate Kistler - License: STUDENT
+
+                                  Summary for Replication 1 of 1
+
+Project: One in a miliion can happen                                 Run execution date : 2/28/2023
+Analyst: Johann Karl Friedrich Gauss                                 Model revision date: 2/28/2023
+
+Replication ended at time      : 999999.0 Hours 
+Base Time Units: Hours
+
+                                             COUNTERS
+
+Identifier                                    Count   Limit
+_____________________________________________________________
+
+Greater than 2 Observations                  367460  Infinite
+Less than 2 Observations                     632540  Infinite
+
+
+Simulation run time: 0.03 minutes.
+Simulation run complete.

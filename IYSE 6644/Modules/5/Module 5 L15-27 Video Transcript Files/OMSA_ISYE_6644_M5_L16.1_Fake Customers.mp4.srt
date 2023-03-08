@@ -1,0 +1,298 @@
+1
+00:00:02,254 --> 00:00:04,782
+This lesson has sort of
+the interesting name
+
+2
+00:00:04,782 --> 00:00:08,690
+of Fake Customers as we continue
+our little journey through Arena.
+
+3
+00:00:10,740 --> 00:00:12,250
+Here's our overview.
+
+4
+00:00:12,250 --> 00:00:13,030
+In the last lesson,
+
+5
+00:00:13,030 --> 00:00:17,910
+I demo'd a small electronic assembly and
+test manufacturing system.
+
+6
+00:00:17,910 --> 00:00:20,520
+Very nice,
+pulled together a bunch of concepts.
+
+7
+00:00:20,520 --> 00:00:24,490
+In this lesson, I'm gonna talk about
+fake customers, which we use for
+
+8
+00:00:24,490 --> 00:00:25,410
+a number of tricks.
+
+9
+00:00:26,560 --> 00:00:29,920
+The idea is that these aren't
+real customers at all.
+
+10
+00:00:29,920 --> 00:00:33,590
+Their purpose is just to do some
+specialized tasks that Arena might need in
+
+11
+00:00:33,590 --> 00:00:34,900
+certain circumstances.
+
+12
+00:00:36,130 --> 00:00:39,522
+Let me give a little game
+plan on the next few lessons.
+
+13
+00:00:39,522 --> 00:00:44,036
+We're gonna cover material for a while
+that will lead us to the stimulation of
+
+14
+00:00:44,036 --> 00:00:46,893
+a call center,
+a little bit sexier simulation.
+
+15
+00:00:46,893 --> 00:00:48,899
+We'll talk about fake customers for now,
+
+16
+00:00:48,899 --> 00:00:52,040
+just building up some tools
+to get to that call center.
+
+17
+00:00:52,040 --> 00:00:55,190
+Then I'm gonna look at
+the Advanced Process template.
+
+18
+00:00:55,190 --> 00:01:00,305
+We just got done with the Basic Process
+template, now we're gonna become advanced.
+
+19
+00:01:00,305 --> 00:01:05,480
+I'll look at how we can schedule
+resource failures and maintenance.
+
+20
+00:01:06,940 --> 00:01:08,018
+Scheduling sounds funny,
+
+21
+00:01:08,018 --> 00:01:13,570
+by scheduling it means we model
+the random times that failures occur.
+
+22
+00:01:13,570 --> 00:01:16,630
+We'll then look at the Blocks Template.
+
+23
+00:01:16,630 --> 00:01:21,634
+Blocks are sort of primitive blocks
+originally found in the old Simon
+
+24
+00:01:21,634 --> 00:01:26,734
+language, but they're very useful for
+a number of different tasks.
+
+25
+00:01:26,734 --> 00:01:29,210
+And we're gonna start to get
+a big vocabulary of these things.
+
+26
+00:01:29,210 --> 00:01:31,180
+I'm not gonna expect you
+to memorize them all but
+
+27
+00:01:31,180 --> 00:01:33,120
+this is just another template
+that you can look at.
+
+28
+00:01:34,250 --> 00:01:39,520
+Then we'll do some material on sets,
+which allow us to
+
+29
+00:01:39,520 --> 00:01:45,630
+define things like different sets of
+servers that have unique specialties.
+
+30
+00:01:45,630 --> 00:01:48,860
+So we'll talk about those in that lesson,
+and
+
+31
+00:01:48,860 --> 00:01:51,890
+then I'll describe the call center,
+then we'll demo the call center.
+
+32
+00:01:53,380 --> 00:01:56,840
+So with that in mind,
+I'm gonna go to fake customers.
+
+33
+00:01:58,270 --> 00:02:01,877
+So you can use these fake customers
+to accomplish various tasks
+
+34
+00:02:01,877 --> 00:02:04,130
+during a simulation.
+
+35
+00:02:04,130 --> 00:02:06,980
+Like I said, they're not actual
+customers that you care about
+
+36
+00:02:06,980 --> 00:02:09,090
+in terms of waiting times or
+use of resources.
+
+37
+00:02:10,420 --> 00:02:15,120
+They can use resources but
+only for certain reasons.
+
+38
+00:02:15,120 --> 00:02:21,200
+And we don't care that they have to wait,
+cuz they're not real, in some sense.
+
+39
+00:02:21,200 --> 00:02:22,990
+So, Demo Time's gonna explain it all.
+
+40
+00:02:24,770 --> 00:02:26,960
+Here's what I'll do in the demos.
+
+41
+00:02:26,960 --> 00:02:31,140
+I'm gonna use fake customers to
+calculate normal probabilities.
+
+42
+00:02:31,140 --> 00:02:34,810
+For instance,
+maybe I don't have my book available.
+
+43
+00:02:34,810 --> 00:02:36,990
+I just have Arena around.
+
+44
+00:02:36,990 --> 00:02:38,399
+And I don't have real customers,
+
+45
+00:02:38,399 --> 00:02:41,960
+then I use these fake customers to
+somehow calculate normal probabilities.
+
+46
+00:02:41,960 --> 00:02:42,850
+Show you how to do that.
+
+47
+00:02:44,800 --> 00:02:50,080
+In the call center example, I'm gonna keep
+track of which time period you're in.
+
+48
+00:02:50,080 --> 00:02:54,090
+So, we'll use fake
+customers to do that task.
+
+49
+00:02:54,090 --> 00:02:57,480
+And we'll show it at
+some point in the future.
+
+50
+00:02:57,480 --> 00:03:02,024
+And then I can also use fake
+customers as a breakdown demon,
+
+51
+00:03:02,024 --> 00:03:06,070
+so the fake customers
+will trigger breakdowns.
+
+52
+00:03:06,070 --> 00:03:10,944
+Now, in fact, in a lesson coming up
+there's a direct way to trigger breakdowns
+
+53
+00:03:10,944 --> 00:03:14,899
+but I'll show you one thing that
+you can use fake customers for.
+
+54
+00:03:17,912 --> 00:03:22,365
+The summary of what we did in this lesson
+is that I just introduced this concept of
+
+55
+00:03:22,365 --> 00:03:24,260
+fake customers.
+
+56
+00:03:24,260 --> 00:03:26,989
+And I'm alerting you to
+the fact that we're gonna be
+
+57
+00:03:26,989 --> 00:03:30,535
+using this occasionally several
+times in upcoming applications.
+
+58
+00:03:30,535 --> 00:03:32,250
+So when you see the demo, you'll see this.
+
+59
+00:03:33,840 --> 00:03:39,355
+Next time, I'm gonna be talking about
+this Advanced Process template.
+
+60
+00:03:39,355 --> 00:03:42,470
+Cuz we're really good
+at the basic stuff now.
+
+61
+00:03:42,470 --> 00:03:45,930
+I'll show you how to get it and some of
+the good stuff that you can find in it.
+
+62
+00:03:45,930 --> 00:03:46,760
+So, see you then.
+
+63
+00:03:46,760 --> 00:03:54,429
+[SOUND]
+

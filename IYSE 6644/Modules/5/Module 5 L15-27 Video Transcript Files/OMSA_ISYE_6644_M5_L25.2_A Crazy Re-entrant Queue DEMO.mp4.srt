@@ -1,0 +1,216 @@
+1
+00:00:00,720 --> 00:00:04,560
+Here's our demo on re-entrant queues,
+very cool.
+
+2
+00:00:04,560 --> 00:00:07,840
+I'm gonna show you what's going on,
+and then we'll run it.
+
+3
+00:00:07,840 --> 00:00:11,540
+So create customers every once in a while,
+they go to server 1, server 2,
+
+4
+00:00:11,540 --> 00:00:14,580
+server 1, server 2,
+server 1, in that order.
+
+5
+00:00:14,580 --> 00:00:20,420
+So I'm literally, I was very non-original,
+seize delay release, server 1, how boring.
+
+6
+00:00:20,420 --> 00:00:22,660
+Exponential 0.1 service times.
+
+7
+00:00:22,660 --> 00:00:25,512
+You can refer to the lessons,
+to the lesson,
+
+8
+00:00:25,512 --> 00:00:28,450
+to see what the server
+times were in each case.
+
+9
+00:00:28,450 --> 00:00:32,970
+They're exponential, like 0.1, 0.5,
+but you can look at the order.
+
+10
+00:00:32,970 --> 00:00:36,490
+The only thing that's a little
+different is the priority.
+
+11
+00:00:36,490 --> 00:00:40,140
+And in each case, the first time I
+see server 1, it's low priority.
+
+12
+00:00:40,140 --> 00:00:43,279
+First time I see server 2,
+it's high priority.
+
+13
+00:00:43,279 --> 00:00:46,650
+Second time, I see server 1,
+medium priority.
+
+14
+00:00:46,650 --> 00:00:48,520
+So that's where I'm getting those.
+
+15
+00:00:48,520 --> 00:00:51,280
+I'm keeping track of
+individual queue sizes,
+
+16
+00:00:51,280 --> 00:00:54,090
+I'm keeping track of overall queue sizes.
+
+17
+00:00:54,090 --> 00:00:57,125
+Here we go,
+this is a very fast demo, ready?
+
+18
+00:00:58,602 --> 00:00:59,770
+This is scary, here we go.
+
+19
+00:00:59,770 --> 00:01:06,610
+Now you can see, boring, boring,
+boring, some queues are forming here.
+
+20
+00:01:06,610 --> 00:01:07,570
+You can see the numbers.
+
+21
+00:01:09,170 --> 00:01:13,080
+And it looks like server 1,
+server 2, they've got some queues.
+
+22
+00:01:13,080 --> 00:01:14,940
+The queues look a little bigger now.
+
+23
+00:01:14,940 --> 00:01:17,354
+Server 2's all of a sudden
+got some big queues.
+
+24
+00:01:19,384 --> 00:01:22,720
+Now server 1 seems to be
+getting some big queues.
+
+25
+00:01:22,720 --> 00:01:23,410
+That's interesting.
+
+26
+00:01:25,100 --> 00:01:28,270
+Now looks like it's gone back to server 2,
+and what's going on?
+
+27
+00:01:28,270 --> 00:01:29,280
+Now let's look down here.
+
+28
+00:01:29,280 --> 00:01:31,800
+You don't have to look at the picture,
+just look at the numbers.
+
+29
+00:01:33,440 --> 00:01:38,910
+We're are getting bizarre, oscillating
+queue behavior between server 1 and
+
+30
+00:01:38,910 --> 00:01:39,794
+server 2.
+
+31
+00:01:40,890 --> 00:01:43,390
+One goes up, they clear up,
+the other one comes down.
+
+32
+00:01:43,390 --> 00:01:47,580
+This is the result of the careful
+selection of the priorities and
+
+33
+00:01:47,580 --> 00:01:48,740
+the service times.
+
+34
+00:01:48,740 --> 00:01:50,970
+And we're gonna get oscillating behavior,
+and
+
+35
+00:01:50,970 --> 00:01:54,880
+not only is it oscillating behavior,
+it gets worse and worse.
+
+36
+00:01:54,880 --> 00:01:59,128
+Let me run it faster and we'll see.
+
+37
+00:01:59,128 --> 00:02:06,474
+So this number peaked out at 40,
+60, let's see what this time.
+
+38
+00:02:09,269 --> 00:02:10,820
+It will get worse and worse.
+
+39
+00:02:13,828 --> 00:02:16,218
+75 this time.
+
+40
+00:02:16,218 --> 00:02:20,880
+So what's happening is you're getting this
+crazy oscillating behavior because of
+
+41
+00:02:20,880 --> 00:02:26,780
+the way that we chose the priorities and
+the service times, etc.
+
+42
+00:02:26,780 --> 00:02:29,294
+etc.
+It actually died down a little bit here.
+
+43
+00:02:29,294 --> 00:02:32,894
+If you let this thing run and
+run, it gets worse and worse, and
+
+44
+00:02:32,894 --> 00:02:37,327
+this is extremely interesting behavior,
+which you can play around with and
+
+45
+00:02:37,327 --> 00:02:39,200
+show and amaze your friends.
+
+46
+00:02:39,200 --> 00:02:43,200
+So that's a quick demo, take a look at
+it and we'll see you in the next lesson.
+

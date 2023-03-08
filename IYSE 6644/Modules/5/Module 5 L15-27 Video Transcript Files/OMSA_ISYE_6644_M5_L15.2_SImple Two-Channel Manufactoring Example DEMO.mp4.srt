@@ -1,0 +1,412 @@
+1
+00:00:00,770 --> 00:00:04,740
+Hi, everybody, we're gonna demo
+this small, electronic assembly and
+
+2
+00:00:04,740 --> 00:00:08,890
+manufacturing system that we've
+been talking about in the lesson.
+
+3
+00:00:08,890 --> 00:00:11,190
+Notice that we have two
+different types of arrivals.
+
+4
+00:00:12,410 --> 00:00:17,243
+Part As, they show up exponentially
+every 5 minutes on average.
+
+5
+00:00:17,243 --> 00:00:20,685
+I think that's what we had
+in the specifications.
+
+6
+00:00:20,685 --> 00:00:22,598
+The point is they show up 1 at a time.
+
+7
+00:00:24,637 --> 00:00:30,874
+Part Bs, they show up every 30 minutes,
+but they show up 4 at a time.
+
+8
+00:00:30,874 --> 00:00:34,020
+And you'll see when I run it,
+you'll see, I need to also show you.
+
+9
+00:00:34,020 --> 00:00:38,032
+See, the Entity Type,
+which we defined in the Create module for
+
+10
+00:00:38,032 --> 00:00:40,721
+Part As is called Part A, what a surprise.
+
+11
+00:00:40,721 --> 00:00:44,556
+And Part Bs are called Part B.
+
+12
+00:00:44,556 --> 00:00:49,036
+Now the critical assigns that make
+the whole thing work are, remember,
+
+13
+00:00:49,036 --> 00:00:50,733
+I say we have a Sealer Time?
+
+14
+00:00:50,733 --> 00:00:55,704
+And I'm assigning an attribute called
+Sealer Time to the triangular distribution
+
+15
+00:00:55,704 --> 00:00:56,634
+of your Part A.
+
+16
+00:00:56,634 --> 00:00:59,300
+It's gonna be Weibull
+distribution of your Part B.
+
+17
+00:00:59,300 --> 00:01:03,871
+I also assign the Arrive Time
+as an attribute called TNOW,
+
+18
+00:01:03,871 --> 00:01:07,246
+which I discussed in the lesson, itself.
+
+19
+00:01:07,246 --> 00:01:10,730
+For Part Bs, same thing,
+except the Sealer Time is Weibull,
+
+20
+00:01:10,730 --> 00:01:12,544
+which we'll use in the future.
+
+21
+00:01:12,544 --> 00:01:15,080
+And the arrive time is still TNOW.
+
+22
+00:01:15,080 --> 00:01:19,920
+Here's the Prep A Process,
+Part As go here.
+
+23
+00:01:19,920 --> 00:01:24,040
+We just do a Seize Delay Release
+on Prep A, totally boring.
+
+24
+00:01:24,040 --> 00:01:26,180
+Same thing with Prep B.
+
+25
+00:01:26,180 --> 00:01:29,057
+Sealer Process is the only
+thing that's interesting here.
+
+26
+00:01:31,094 --> 00:01:34,294
+And there it is,
+I do a Seize Delay Release on the Sealer.
+
+27
+00:01:34,294 --> 00:01:38,043
+And instead of exponential sealer times,
+
+28
+00:01:38,043 --> 00:01:42,422
+the expression that we use
+is called sealer time.
+
+29
+00:01:42,422 --> 00:01:45,964
+And that's defined as an attribute
+back in these assign blocks.
+
+30
+00:01:45,964 --> 00:01:50,431
+So if I get over here to the Sealer,
+and it wants to know the sealer time,
+
+31
+00:01:50,431 --> 00:01:54,095
+it says you're a Part A,
+I'll use that sealer time.
+
+32
+00:01:54,095 --> 00:01:58,607
+Or, you're a Part B,
+I'll use this sealer time, right.
+
+33
+00:01:58,607 --> 00:02:04,913
+Then we undergo the inspection,
+this is just a 2-way by Chance.
+
+34
+00:02:04,913 --> 00:02:11,180
+And it goes with 9% chance to the right,
+91% chance down, where it's shipped off.
+
+35
+00:02:11,180 --> 00:02:15,830
+There's a rework here,
+more inspections here, and the exit there.
+
+36
+00:02:15,830 --> 00:02:17,900
+Let's see what the think looks like.
+
+37
+00:02:17,900 --> 00:02:22,140
+I've purposely slowed this down so
+you can see the pretty little marbles.
+
+38
+00:02:22,140 --> 00:02:25,323
+It's still, yeah,
+it's still too fast, really, so
+
+39
+00:02:25,323 --> 00:02:28,010
+what did we learn how to do last time?
+
+40
+00:02:28,010 --> 00:02:32,150
+Go to Run > Setup, and
+let's see, > Run Speed, and
+
+41
+00:02:32,150 --> 00:02:35,150
+we'll slow it down a little more.
+
+42
+00:02:35,150 --> 00:02:39,640
+Amazingly, I'd already slowed it down
+beforehand, but let's run it again.
+
+43
+00:02:41,300 --> 00:02:45,040
+Okay, you can see, there's the red marble.
+
+44
+00:02:45,040 --> 00:02:51,070
+And one, two, three, and
+fourth guy shows up.
+
+45
+00:02:51,070 --> 00:02:53,340
+Four blue marbles,
+there's one being served here.
+
+46
+00:02:53,340 --> 00:02:55,810
+Three in line,
+four more are about to show up.
+
+47
+00:02:55,810 --> 00:03:01,330
+One, two, three, four,
+there are now seven line here.
+
+48
+00:03:01,330 --> 00:03:04,350
+See, they're showing up in groups of four.
+
+49
+00:03:05,370 --> 00:03:07,859
+Now there's only six in line
+cuz one just got processed.
+
+50
+00:03:08,980 --> 00:03:12,050
+So you can see this is very,
+very nice, straightforward system.
+
+51
+00:03:12,050 --> 00:03:13,390
+I'm speeding it up now, finally.
+
+52
+00:03:14,710 --> 00:03:18,170
+And if you run it long enough,
+
+53
+00:03:18,170 --> 00:03:23,610
+you'll see various colorful lines
+forming over here the Sealer Process.
+
+54
+00:03:23,610 --> 00:03:26,704
+But it's a very straightforward model now.
+
+55
+00:03:26,704 --> 00:03:30,764
+The only thing I think I'll
+do is that I'll show you
+
+56
+00:03:30,764 --> 00:03:33,130
+what the full run looks like.
+
+57
+00:03:33,130 --> 00:03:38,040
+So let's hit the go fast button, and
+it looks like, this is interesting.
+
+58
+00:03:38,040 --> 00:03:42,170
+We did 3 replications for 24 hours,
+that's what the 3 means here.
+
+59
+00:03:42,170 --> 00:03:44,040
+Let's look at the results.
+
+60
+00:03:44,040 --> 00:03:47,500
+What a lovely chance to look
+at Crystal Reports, again.
+
+61
+00:03:47,500 --> 00:03:50,510
+Boy, I'm never gonna tire of
+complaining about Crystal Reports.
+
+62
+00:03:50,510 --> 00:03:54,715
+So maybe we'll have some music that we
+can listen to while this is going on.
+
+63
+00:03:54,715 --> 00:03:59,739
+[MUSIC]
+
+64
+00:03:59,739 --> 00:04:02,518
+Get your favorite snack out as we wait.
+
+65
+00:04:02,518 --> 00:04:07,277
+[MUSIC]
+
+66
+00:04:07,277 --> 00:04:09,970
+And here we go, so you can see,
+we have 3 replications.
+
+67
+00:04:11,100 --> 00:04:12,700
+And this is the Category Overview, so
+
+68
+00:04:12,700 --> 00:04:18,060
+what it's showing us is that we'll look at
+the values across all the replications.
+
+69
+00:04:18,060 --> 00:04:24,917
+So you can see that Part As had
+to wait 0.46 units on average.
+
+70
+00:04:24,917 --> 00:04:28,972
+I think we're in hours,
+Part Bs, a little bit more.
+
+71
+00:04:28,972 --> 00:04:31,771
+And the total time in the system,
+it's quite nice.
+
+72
+00:04:33,375 --> 00:04:38,085
+This is the additional
+information on work in process.
+
+73
+00:04:38,085 --> 00:04:41,496
+So you can see, if you go to the reports,
+lots of interesting things.
+
+74
+00:04:41,496 --> 00:04:45,680
+Okay, I'm gonna show one more small demo.
+
+75
+00:04:45,680 --> 00:04:48,560
+And it looks exactly the same
+as the previous one,
+
+76
+00:04:48,560 --> 00:04:52,120
+except I'm changing my server logic.
+
+77
+00:04:52,120 --> 00:04:56,374
+And right here,
+we have this assigned block that
+
+78
+00:04:56,374 --> 00:04:59,811
+supposedly contains the Sealer Time.
+
+79
+00:04:59,811 --> 00:05:01,492
+In fact, I'm not gonna use it.
+
+80
+00:05:01,492 --> 00:05:03,610
+What I'm gonna do,
+let's click into the Sealer.
+
+81
+00:05:03,610 --> 00:05:05,990
+And there's that logic
+that I told you about.
+
+82
+00:05:07,150 --> 00:05:10,524
+And so you just believe me
+that when I run this thing,
+
+83
+00:05:12,955 --> 00:05:19,060
+Look at it go, we get pretty much
+the same type of behavior in the system.
+
+84
+00:05:19,060 --> 00:05:25,202
+The random numbers are,
+The uniforms that the thing uses to
+
+85
+00:05:25,202 --> 00:05:30,350
+run are evoked in a slightly different
+order cuz I changed things around.
+
+86
+00:05:30,350 --> 00:05:34,389
+But basically, you're getting
+the same results from this run,
+
+87
+00:05:34,389 --> 00:05:38,510
+even though I used logic instead
+of the assignments over here.
+
+88
+00:05:38,510 --> 00:05:42,170
+So very nice, okay, that ends this demo,
+and I'll see you in the next lesson.
+

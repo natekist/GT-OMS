@@ -1,0 +1,481 @@
+1
+00:00:00,720 --> 00:00:04,990
+In this demo, I'm gonna calculate
+some normal probabilities.
+
+2
+00:00:04,990 --> 00:00:09,940
+And the goal here is to use fake
+customers, this is a demo on fake
+
+3
+00:00:09,940 --> 00:00:15,910
+customers, to assist me in
+calculating normal probabilities
+
+4
+00:00:15,910 --> 00:00:21,440
+based on the successes and
+failures of certain observations.
+
+5
+00:00:21,440 --> 00:00:26,590
+So what I'll do is I'm gonna create
+a fake customer once per hour.
+
+6
+00:00:26,590 --> 00:00:29,440
+I'm gonna do this,
+what is that number, a million times.
+
+7
+00:00:29,440 --> 00:00:32,019
+I'm gonna generate
+a million fake customers.
+
+8
+00:00:33,320 --> 00:00:38,582
+I'm gonna assign an attribute
+to this fake customer.
+
+9
+00:00:38,582 --> 00:00:41,819
+He's gonna be a normal observation,
+a normal 3 1.
+
+10
+00:00:41,819 --> 00:00:47,499
+And I wanna know, what's the probability
+that a normal 3 1 is gonna go negative.
+
+11
+00:00:47,499 --> 00:00:49,300
+And that's all I'm gonna
+do in this example.
+
+12
+00:00:49,300 --> 00:00:55,162
+So, I take my normal observation that
+the fake customer's generating and
+
+13
+00:00:55,162 --> 00:01:00,093
+to see if the normal observation
+is greater than or equal to 0,
+
+14
+00:01:00,093 --> 00:01:01,782
+it's not negative.
+
+15
+00:01:01,782 --> 00:01:06,019
+So, I count it as a non-negative
+observation, and off it goes,
+
+16
+00:01:06,019 --> 00:01:07,640
+I dispose it.
+
+17
+00:01:07,640 --> 00:01:12,388
+On the other hand, if it is less than 0,
+
+18
+00:01:12,388 --> 00:01:16,260
+right the side block over here.
+
+19
+00:01:16,260 --> 00:01:21,970
+I count it as a negative observation and
+off it goes into this record block.
+
+20
+00:01:21,970 --> 00:01:26,570
+And you can see that I'm counting it
+in the counter, negative observation.
+
+21
+00:01:26,570 --> 00:01:31,400
+So this gets incremented by one
+every time a customer goes through.
+
+22
+00:01:31,400 --> 00:01:34,740
+This one,
+the counter is not negative observations,
+
+23
+00:01:34,740 --> 00:01:39,320
+that counter gets incremented by one every
+time a positive observation goes through.
+
+24
+00:01:39,320 --> 00:01:42,330
+So I generate a normal,
+if it's positive it goes up here, and
+
+25
+00:01:42,330 --> 00:01:43,760
+the counter gets incremented.
+
+26
+00:01:43,760 --> 00:01:47,010
+If it's negative, it goes down here,
+and that counter gets incremented.
+
+27
+00:01:47,010 --> 00:01:49,600
+And then we'll look at the output for
+this thing.
+
+28
+00:01:49,600 --> 00:01:57,410
+Now since I'm paranoid,
+about these awful crystal reports thing.
+
+29
+00:01:57,410 --> 00:02:01,730
+Let's look at the reports and
+I'm gonna go,
+
+30
+00:02:01,730 --> 00:02:04,940
+we're into SIMAN on this one so
+that's fantastic.
+
+31
+00:02:04,940 --> 00:02:05,862
+Okay, so here we go so, let's run it.
+
+32
+00:02:09,201 --> 00:02:14,230
+Okay, I had it in batch mode,
+the run is over let's take a look.
+
+33
+00:02:14,230 --> 00:02:20,507
+Here's a report and it turns out,
+out of those 1 million observations,
+
+34
+00:02:20,507 --> 00:02:26,092
+998,591 were positive,
+and 1,409 were negative.
+
+35
+00:02:26,092 --> 00:02:29,440
+And it seems to me I can
+divide by 1 million.
+
+36
+00:02:29,440 --> 00:02:33,780
+Seems to me that we've got
+about a 99.86 probability.
+
+37
+00:02:33,780 --> 00:02:39,140
+That a normal 3-1 will be positive and
+I can tell you that's the right answer.
+
+38
+00:02:39,140 --> 00:02:42,020
+If I went to the back of my probability
+book that would be the right answer.
+
+39
+00:02:42,020 --> 00:02:44,568
+Congratulations, thank you Arena.
+
+40
+00:02:44,568 --> 00:02:48,480
+Okay, so now the next demo that
+I'll do with fake customers
+
+41
+00:02:48,480 --> 00:02:53,260
+is I'm gonna use fake customers
+to generate break downs.
+
+42
+00:02:53,260 --> 00:02:57,720
+So you'll see,
+let me just run this very slowly.
+
+43
+00:02:57,720 --> 00:03:00,457
+Whenever you see a truck,
+a truck is a fake, oops,
+
+44
+00:03:00,457 --> 00:03:02,442
+I got to stop the other one just a sec.
+
+45
+00:03:02,442 --> 00:03:05,280
+Let's go back here, stop that run.
+
+46
+00:03:05,280 --> 00:03:06,300
+Always remember to stop it.
+
+47
+00:03:08,690 --> 00:03:13,790
+So whenever you see a truck, that's a fake
+customer, and he's gonna be a break down.
+
+48
+00:03:13,790 --> 00:03:19,641
+Yep, there's a break down, right
+the break down's gonna occur right there.
+
+49
+00:03:19,641 --> 00:03:22,120
+You can see how we had a long line form.
+
+50
+00:03:25,240 --> 00:03:28,170
+So the truck is being,
+he's in service right now.
+
+51
+00:03:28,170 --> 00:03:30,530
+That's why we had the long line before.
+
+52
+00:03:30,530 --> 00:03:32,322
+So let's do this again
+a little more slowly.
+
+53
+00:03:32,322 --> 00:03:34,250
+We can see what happened.
+
+54
+00:03:34,250 --> 00:03:38,520
+I create regular customers
+every half an hour.
+
+55
+00:03:38,520 --> 00:03:42,346
+I created a truck every ten hours,
+on average.
+
+56
+00:03:42,346 --> 00:03:46,310
+I assign the service time
+to the regular customer,
+
+57
+00:03:46,310 --> 00:03:50,080
+just plain old triangular distribution.
+
+58
+00:03:50,080 --> 00:03:54,841
+And I assign the regular
+customer priority level of 2.
+
+59
+00:03:54,841 --> 00:03:56,833
+Keep that in mind, priority level of 2.
+
+60
+00:03:56,833 --> 00:04:05,280
+The truck, I have this breakdown time of
+triangular, and his priority level is one.
+
+61
+00:04:05,280 --> 00:04:10,120
+So he's got a priority level that
+the number is lower, just remember that.
+
+62
+00:04:11,300 --> 00:04:16,725
+Let's then, we go to this Process block,
+seize delay release,
+
+63
+00:04:16,725 --> 00:04:20,572
+little, the server, the Barber serves you,
+
+64
+00:04:20,572 --> 00:04:25,822
+what we need to do actually is
+put service time as an attribute.
+
+65
+00:04:25,822 --> 00:04:34,803
+Let's go here expression,
+Let's write out service time.
+
+66
+00:04:39,322 --> 00:04:40,762
+I think that's two words.
+
+67
+00:04:40,762 --> 00:04:45,395
+We'll find out here in a minute So
+what I've done,
+
+68
+00:04:45,395 --> 00:04:49,240
+service time is one word, let's go back.
+
+69
+00:04:51,740 --> 00:04:54,302
+What I've done is I've set
+up the service time now,
+
+70
+00:04:54,302 --> 00:04:58,029
+depending on if you're a truck or
+if you're a regular person I'm gonna step
+
+71
+00:04:58,029 --> 00:05:01,952
+through this thing slowly, op, one last
+thing, that will show you the queue.
+
+72
+00:05:01,952 --> 00:05:07,039
+The queue in front of the barber process
+one.queue, is ranked by a lowest attribute
+
+73
+00:05:07,039 --> 00:05:11,838
+value of priority level, so if a guy with
+a priority level of one comes through,
+
+74
+00:05:11,838 --> 00:05:15,210
+he beats out the guy with
+priority level of two.
+
+75
+00:05:15,210 --> 00:05:19,155
+You'll see a truck goes to the front of
+the line cause he has a higher priority
+
+76
+00:05:19,155 --> 00:05:22,313
+level, actually it's a lower number but
+higher priority.
+
+77
+00:05:22,313 --> 00:05:25,290
+So, let's watch this,
+I'm gonna step through.
+
+78
+00:05:26,780 --> 00:05:29,370
+First guy comes in, he's getting served.
+
+79
+00:05:29,370 --> 00:05:32,780
+You can see right there,
+that 0 changed to a 1.
+
+80
+00:05:32,780 --> 00:05:35,160
+He's now being served,
+a human is being served.
+
+81
+00:05:35,160 --> 00:05:38,940
+A truck comes in, the truck is in line.
+
+82
+00:05:38,940 --> 00:05:43,713
+He's gonna get served after that human
+leaves another human comes through,
+
+83
+00:05:43,713 --> 00:05:45,852
+human is in line behind the truck.
+
+84
+00:05:48,333 --> 00:05:53,660
+Another human, he's in line,
+yet another human.
+
+85
+00:05:53,660 --> 00:05:58,500
+That makes sense because the trucks
+don't show up very often.
+
+86
+00:05:58,500 --> 00:06:00,557
+Another truck is about to show up,
+watch what happens.
+
+87
+00:06:04,396 --> 00:06:06,617
+Okay, couple of things happened there.
+
+88
+00:06:06,617 --> 00:06:10,074
+The second truck actually
+showed up right here,
+
+89
+00:06:10,074 --> 00:06:14,289
+because the guy left in the first
+truck is now in service, so
+
+90
+00:06:14,289 --> 00:06:18,504
+that truck entered went all
+the way to the front of the line,
+
+91
+00:06:18,504 --> 00:06:24,440
+cause he's a truck, he can do that, and
+the first truck is now being served.
+
+92
+00:06:24,440 --> 00:06:28,040
+So now we're gonna get a big long
+line developing, unfortunately.
+
+93
+00:06:29,310 --> 00:06:32,340
+More humans show up, more lines,
+cuz these trucks take a long time.
+
+94
+00:06:33,410 --> 00:06:37,955
+Now, the first truck just left,
+the second one is now in service.
+
+95
+00:06:37,955 --> 00:06:42,384
+So there's still a big long
+task ahead before these guys
+
+96
+00:06:42,384 --> 00:06:44,890
+can start getting served.
+
+97
+00:06:44,890 --> 00:06:49,410
+Just out of curiosity, let's see if I
+can generate another truck and see what,
+
+98
+00:06:49,410 --> 00:06:50,680
+there's another truck.
+
+99
+00:06:50,680 --> 00:06:53,840
+And he goes to the front of the line,
+isn't that awful?
+
+100
+00:06:53,840 --> 00:06:58,631
+So there you go, that's how the system
+runs, the fake customers are trucks, and
+
+101
+00:06:58,631 --> 00:07:03,923
+they're essentially generating breakdowns
+where these real humans can't get served.
+

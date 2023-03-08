@@ -1,0 +1,205 @@
+1
+00:00:00,720 --> 00:00:04,910
+In this demo, I'm just gonna show you how
+to use failures, and we'll take a look and
+
+2
+00:00:04,910 --> 00:00:06,450
+see that they actually work.
+
+3
+00:00:06,450 --> 00:00:08,760
+Failures working is kind of fun.
+
+4
+00:00:08,760 --> 00:00:13,240
+So this is the old example
+out of the Arena book,
+
+5
+00:00:13,240 --> 00:00:16,140
+model 3-1, and what I've done
+is I've added in some failures.
+
+6
+00:00:16,140 --> 00:00:20,130
+So this drilling center is gonna have
+a failure every once in a while.
+
+7
+00:00:20,130 --> 00:00:23,760
+So let's take a look at the resource.
+
+8
+00:00:23,760 --> 00:00:25,790
+This resource is called drill press.
+
+9
+00:00:25,790 --> 00:00:29,630
+It has a fixed capacity of one,
+and I had a failure scheduled.
+
+10
+00:00:29,630 --> 00:00:33,050
+So what I did, I clicked in here,
+I've got one row worth of failure,
+
+11
+00:00:33,050 --> 00:00:37,890
+it's called drill failure,
+what a surprise, I named it that,
+
+12
+00:00:37,890 --> 00:00:41,560
+and the failure rule is in ignore,
+doesn't matter for now.
+
+13
+00:00:41,560 --> 00:00:42,860
+So, what did I say to do?
+
+14
+00:00:42,860 --> 00:00:45,770
+We click in there, and
+then we go to advance process.
+
+15
+00:00:45,770 --> 00:00:48,580
+And we look at the failure spreadsheet.
+
+16
+00:00:48,580 --> 00:00:49,720
+There it is, right there.
+
+17
+00:00:53,060 --> 00:00:56,600
+And we see that I have a drill failure,
+and
+
+18
+00:00:56,600 --> 00:00:59,550
+I've defined it as a count type failure.
+
+19
+00:00:59,550 --> 00:01:04,940
+So after ten customers come in,
+we fail and we have a down time,
+
+20
+00:01:04,940 --> 00:01:09,416
+expo 30 that's nice, Expo(30).
+
+21
+00:01:09,416 --> 00:01:12,830
+And so the system will fail for
+about 30 minutes, and
+
+22
+00:01:12,830 --> 00:01:16,740
+then come back on, we'll get 10 more
+customers, and then another failure.
+
+23
+00:01:16,740 --> 00:01:19,960
+One thing that's interesting
+is clicking into this graphic,
+
+24
+00:01:21,440 --> 00:01:26,220
+we'll see that something's gonna happen.
+
+25
+00:01:26,220 --> 00:01:29,275
+It's gonna disappear
+when a failure occurs.
+
+26
+00:01:31,954 --> 00:01:34,619
+Let me get out here, let's click OK.
+
+27
+00:01:34,619 --> 00:01:35,761
+All right, so here we go.
+
+28
+00:01:38,421 --> 00:01:44,060
+I think what I'll do is
+I'm gonna step through so
+
+29
+00:01:44,060 --> 00:01:47,093
+you can see one customer.
+
+30
+00:01:47,093 --> 00:01:53,021
+Two, three,
+
+31
+00:01:53,021 --> 00:01:55,986
+four.
+
+32
+00:01:55,986 --> 00:02:00,825
+I think we're on our fifth now,
+
+33
+00:02:00,825 --> 00:02:05,134
+sixth, seventh, eighth.
+
+34
+00:02:05,134 --> 00:02:07,570
+Ninth, and I think the tenth is coming up.
+
+35
+00:02:07,570 --> 00:02:10,430
+There's ten, and look what happened, gone.
+
+36
+00:02:10,430 --> 00:02:13,680
+So we're experiencing a failure now,
+let's run it a little bit longer and
+
+37
+00:02:13,680 --> 00:02:15,050
+we'll see what happens.
+
+38
+00:02:15,050 --> 00:02:16,300
+Yeah, failure, failure, failure.
+
+39
+00:02:16,300 --> 00:02:18,530
+The queue's getting bigger,
+it's just terrible.
+
+40
+00:02:18,530 --> 00:02:21,567
+Now he's back, and
+the queue is building down a little bit.
+
+41
+00:02:21,567 --> 00:02:25,310
+A little bit, fails again.
+
+42
+00:02:25,310 --> 00:02:29,960
+So obviously we're gonna have,
+now simulation's over.
+
+43
+00:02:29,960 --> 00:02:31,397
+It was a very quick one.
+
+44
+00:02:31,397 --> 00:02:34,837
+So you can see that the failure
+really does occur and
+
+45
+00:02:34,837 --> 00:02:37,530
+it negatively impacts the queue.
+
+46
+00:02:37,530 --> 00:02:39,380
+Easy demo, we'll see in the next lesson.
+

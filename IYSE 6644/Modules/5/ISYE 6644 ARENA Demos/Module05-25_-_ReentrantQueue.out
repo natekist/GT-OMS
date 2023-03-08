@@ -1,0 +1,65 @@
+SIMAN Run Controller.
+
+0.78596543 Hours>
+                                      ARENA Simulation Results
+                                   Nate Kistler - License: STUDENT
+
+                                  Summary for Replication 1 of 1
+
+Project: Unnamed Project                                             Run execution date : 3/ 1/2023
+Analyst: ISyE                                                        Model revision date: 3/ 1/2023
+
+Replication ended at time      : 0.78596543 Hours 
+Base Time Units: Hours
+
+                                           TALLY VARIABLES
+
+Identifier                                  Average   Half Width  Minimum    Maximum   Observations
+___________________________________________________________________________________________________
+
+Entity 1.VATime                             .02125     (Insuf)    .00256     .06036         27    
+Entity 1.NVATime                            .00000     (Insuf)    .00000     .00000         27    
+Entity 1.WaitTime                           .01440     (Insuf)    .00000     .06422         27    
+Entity 1.TranTime                           .00000     (Insuf)    .00000     .00000         27    
+Entity 1.OtherTime                          .00000     (Insuf)    .00000     .00000         27    
+Entity 1.TotalTime                          .03565     (Insuf)    .00256     .08322         27    
+Process 5.Queue.WaitingTime                 .00484     (Insuf)    .00000     .02650         27    
+Process 4.Queue.WaitingTime                 .00236     (Insuf)    .00000     .01715         27    
+Process 2.Queue.WaitingTime                 .00137     (Insuf)    .00000     .01984         29    
+Process 1.Queue.WaitingTime                 .00350     (Insuf)    .00000     .03040         30    
+Process 3.Queue.WaitingTime                 .00200     (Insuf)    .00000     .03028         28    
+
+                                     DISCRETE-CHANGE VARIABLES
+
+Identifier                                  Average   Half Width  Minimum    Maximum   Final Value
+___________________________________________________________________________________________________
+
+Entity 1.WIP                                1.2525     (Insuf)    .00000     5.0000     3.0000    
+Server1.NumberBusy                          .44841     (Insuf)    .00000     1.0000     1.0000    
+Server1.NumberScheduled                     1.0000     (Insuf)    1.0000     1.0000     1.0000    
+Server1.Utilization                         .44841     (Insuf)    .00000     1.0000     1.0000    
+Server2.NumberBusy                          .29772     (Insuf)    .00000     1.0000     1.0000    
+Server2.NumberScheduled                     1.0000     (Insuf)    1.0000     1.0000     1.0000    
+Server2.Utilization                         .29772     (Insuf)    .00000     1.0000     1.0000    
+Process 5.Queue.NumberInQueue               .16632     (Insuf)    .00000     2.0000     .00000    
+Process 4.Queue.NumberInQueue               .08462     (Insuf)    .00000     2.0000     1.0000    
+Process 2.Queue.NumberInQueue               .05066     (Insuf)    .00000     1.0000     .00000    
+Process 1.Queue.NumberInQueue               .13374     (Insuf)    .00000     3.0000     .00000    
+Process 3.Queue.NumberInQueue               .07111     (Insuf)    .00000     1.0000     .00000    
+
+                                             OUTPUTS
+
+Identifier                                   Value
+_____________________________________________________________
+
+Entity 1.NumberIn                           30.000    
+Entity 1.NumberOut                          27.000    
+Server1.NumberSeized                        85.000    
+Server1.ScheduledUtilization                .44841    
+Server2.NumberSeized                        56.000    
+Server2.ScheduledUtilization                .29772    
+System.NumberOut                            27.000    
+
+
+Simulation run time: 0.35 minutes.
+Simulation run complete.

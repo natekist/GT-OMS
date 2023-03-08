@@ -1,0 +1,263 @@
+1
+00:00:00,700 --> 00:00:05,535
+Now we're gonna be demoing this
+one line versus two line problem.
+
+2
+00:00:05,535 --> 00:00:07,681
+On the top here, I'll actually run it,
+
+3
+00:00:07,681 --> 00:00:11,160
+I've got one line feeding
+into two parallel servers.
+
+4
+00:00:11,160 --> 00:00:15,234
+On the bottom,
+I split the customers evenly,
+
+5
+00:00:15,234 --> 00:00:19,004
+50/50, into two separate servers.
+
+6
+00:00:19,004 --> 00:00:22,652
+So let's watch customers arrive here,
+I can zoom in, you can see the little,
+
+7
+00:00:22,652 --> 00:00:24,840
+marbles coming in, the blue marbles.
+
+8
+00:00:24,840 --> 00:00:28,962
+Parts arrive to the system, I assign
+a server time to them right away, so
+
+9
+00:00:28,962 --> 00:00:32,692
+wherever they go, they're going
+to have the same service time.
+
+10
+00:00:32,692 --> 00:00:36,347
+They're gonna have
+the same arrival time so
+
+11
+00:00:36,347 --> 00:00:42,900
+these are the same exact customers that
+I split into two identical clones.
+
+12
+00:00:42,900 --> 00:00:49,000
+So this is a separate duplicate original,
+Duplicate original and these are clones.
+
+13
+00:00:49,000 --> 00:00:55,570
+One clone goes up here into the single
+line feeding into two parallel servers,
+
+14
+00:00:55,570 --> 00:01:00,430
+the other clone goes here and this
+decide block mainly it's a 50/50 side,
+
+15
+00:01:00,430 --> 00:01:03,290
+splits into the two parallel servers.
+
+16
+00:01:04,410 --> 00:01:10,091
+The single drilling center up here is
+a resource center with capacity two.
+
+17
+00:01:10,091 --> 00:01:14,728
+So basically the only difference
+is capacity two, single line,
+
+18
+00:01:14,728 --> 00:01:19,300
+two separate lines,
+each of which go into server capacity one.
+
+19
+00:01:19,300 --> 00:01:25,540
+So the only things I care about now
+are the average number in the queues,
+
+20
+00:01:26,630 --> 00:01:32,010
+so looks like so far I've got 1.23
+customers average number in this queue,
+
+21
+00:01:32,010 --> 00:01:34,250
+and looks like 0.11 here, 2.116 here.
+
+22
+00:01:34,250 --> 00:01:38,962
+So in this system I've got
+2.3 as opposed to 1.6,
+
+23
+00:01:38,962 --> 00:01:43,777
+little hard to see these numbers,
+and the cycle times for
+
+24
+00:01:43,777 --> 00:01:48,008
+option A are 16 cycle time for
+option B are 21.
+
+25
+00:01:48,008 --> 00:01:52,058
+But what's going on is that
+this simulation is very,
+
+26
+00:01:52,058 --> 00:01:55,860
+very early it's only 166 minutes.
+
+27
+00:01:55,860 --> 00:01:58,640
+Let's run it more quickly I'm zooming here
+
+28
+00:01:58,640 --> 00:02:01,030
+now we're at a 1000
+minutes now 3,000 minutes.
+
+29
+00:02:01,030 --> 00:02:05,540
+And you can see, these queues on average,
+average number in
+
+30
+00:02:05,540 --> 00:02:10,300
+queue's about 7 when you add them up,
+only about 2 when you add them up here.
+
+31
+00:02:10,300 --> 00:02:15,120
+And the cycle times down in option B are
+twice as much as the cycle times up here.
+
+32
+00:02:15,120 --> 00:02:17,754
+Let's run this thing to completion.
+
+33
+00:02:17,754 --> 00:02:21,109
+I think I run it for some 100,000 minutes,
+some huge number of minutes.
+
+34
+00:02:22,490 --> 00:02:26,286
+On it goes, I'll stall, stall,
+stall, I think it goes to 100,000.
+
+35
+00:02:26,286 --> 00:02:31,704
+We're at 60,000, 70,000, 80,000,
+and let's see what we get.
+
+36
+00:02:33,447 --> 00:02:36,287
+It goes even further than that,
+so I'm gonna,
+
+37
+00:02:36,287 --> 00:02:38,850
+what I'll do is I'll run it in batch mode.
+
+38
+00:02:40,100 --> 00:02:44,271
+So Run Control > Batch, Run it.
+
+39
+00:02:44,271 --> 00:02:46,760
+And whatever the number was,
+
+40
+00:02:46,760 --> 00:02:51,930
+it was quite a long time and
+let's see some of the output here.
+
+41
+00:02:51,930 --> 00:02:58,552
+So, you can see that,
+We have just as huge number of runs,
+
+42
+00:02:58,552 --> 00:03:03,942
+and each drilling center
+had a drilling center one,
+
+43
+00:03:03,942 --> 00:03:10,802
+these are the two separate guys,
+this is the drilling center one,
+
+44
+00:03:10,802 --> 00:03:15,579
+drilling center two
+the two single servers and
+
+45
+00:03:15,579 --> 00:03:20,384
+single drilling center
+is the double server.
+
+46
+00:03:20,384 --> 00:03:26,302
+So they have about the same number,
+And these are the number in and out.
+
+47
+00:03:29,104 --> 00:03:33,798
+So the statistics I'm interested
+in are the waiting times and
+
+48
+00:03:33,798 --> 00:03:38,313
+single drilling center this
+is with two parallel servers,
+
+49
+00:03:38,313 --> 00:03:42,030
+41 minutes that's
+the average waiting time.
+
+50
+00:03:43,200 --> 00:03:47,995
+And the two single
+server lines option B is
+
+51
+00:03:47,995 --> 00:03:53,550
+almost it's even more than 200 minutes.
+
+52
+00:03:53,550 --> 00:03:55,820
+Unbelievable, so
+there's a huge difference, and
+
+53
+00:03:55,820 --> 00:03:59,750
+I would definitely use
+Option A just by looking at this.
+
+54
+00:03:59,750 --> 00:04:03,600
+Okay, you can play around with this
+a little bit more if you want, but
+
+55
+00:04:03,600 --> 00:04:06,990
+the story is pretty clear,
+option A definitely beats option B.
+

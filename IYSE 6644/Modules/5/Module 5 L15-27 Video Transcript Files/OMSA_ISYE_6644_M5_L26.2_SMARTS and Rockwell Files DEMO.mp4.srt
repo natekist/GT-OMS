@@ -1,0 +1,214 @@
+1
+00:00:00,700 --> 00:00:05,340
+What we'll be doing here, is we'll look
+at an arrival rate that varies via
+
+2
+00:00:05,340 --> 00:00:10,760
+an expression, and actually a variable
+that depends on the day of the week.
+
+3
+00:00:10,760 --> 00:00:16,072
+So here we have, I'm gonna create
+some customers, and the arrival
+
+4
+00:00:16,072 --> 00:00:21,690
+rate is gonna depend on this expression.
+
+5
+00:00:21,690 --> 00:00:28,230
+One per day of week, and this day of
+week rate is defined as a variable.
+
+6
+00:00:28,230 --> 00:00:29,410
+So let's take a look at that.
+
+7
+00:00:29,410 --> 00:00:30,460
+Day rate of day.
+
+8
+00:00:30,460 --> 00:00:34,680
+So Tuesdays are different than Wednesdays,
+let's say.
+
+9
+00:00:34,680 --> 00:00:39,210
+So we go into basic process,
+variable and look at this.
+
+10
+00:00:39,210 --> 00:00:43,830
+We have day, which can be,
+that's just the day of the week.
+
+11
+00:00:43,830 --> 00:00:45,810
+We'll start out at 1.
+
+12
+00:00:45,810 --> 00:00:51,430
+Day rate 7 rows corresponding
+to different rates per day.
+
+13
+00:00:51,430 --> 00:00:53,388
+How do we know what day it is?
+
+14
+00:00:53,388 --> 00:00:54,780
+Well, very simple.
+
+15
+00:00:54,780 --> 00:01:00,150
+We use this fake observation right
+here to generate the days of the week.
+
+16
+00:01:00,150 --> 00:01:01,020
+Let's just watch.
+
+17
+00:01:02,420 --> 00:01:04,850
+It goes round and
+round every once in a while.
+
+18
+00:01:04,850 --> 00:01:05,700
+Watch this.
+
+19
+00:01:05,700 --> 00:01:07,180
+See?
+Customer comes around, 2.
+
+20
+00:01:07,180 --> 00:01:11,970
+He's gonna come around again, 3.
+
+21
+00:01:11,970 --> 00:01:15,350
+So, once a day this updates,
+and this is kind of smart.
+
+22
+00:01:15,350 --> 00:01:17,640
+It goes 1, 2, 3, 4, 5, 6, 7.
+
+23
+00:01:17,640 --> 00:01:19,400
+Then it's smart enough to come back to 1.
+
+24
+00:01:19,400 --> 00:01:20,830
+You can take a look at that.
+
+25
+00:01:20,830 --> 00:01:24,650
+And here, the rate just changes by looking
+
+26
+00:01:24,650 --> 00:01:27,850
+up what value in
+the variable vector to take.
+
+27
+00:01:27,850 --> 00:01:31,210
+Does it take the first, second, third,
+fourth, fifth, sixth or seventh.
+
+28
+00:01:31,210 --> 00:01:32,710
+So very, very simple and
+
+29
+00:01:32,710 --> 00:01:38,120
+this is just one little tutorial that
+a reading gives you in the smarts file.
+
+30
+00:01:38,120 --> 00:01:40,710
+Another thing that Rockwell
+is very good about,
+
+31
+00:01:40,710 --> 00:01:44,080
+is that it has a lot of cool little demos.
+
+32
+00:01:44,080 --> 00:01:45,760
+I'll show you one, for instance.
+
+33
+00:01:45,760 --> 00:01:48,630
+Let's look at a emergency room.
+
+34
+00:01:48,630 --> 00:01:52,080
+And this is a professionally
+prepared demo from Rockwell.
+
+35
+00:01:52,080 --> 00:01:56,420
+You'll see mostly the graphics and
+not the underlying logic to the thing,
+
+36
+00:01:56,420 --> 00:01:57,405
+but here are the graphics.
+
+37
+00:01:57,405 --> 00:01:58,737
+Let's watch.
+
+38
+00:02:00,178 --> 00:02:02,380
+It's beautiful.
+
+39
+00:02:02,380 --> 00:02:04,010
+If I make this a little bit fuller screen.
+
+40
+00:02:07,275 --> 00:02:11,100
+Quite nice, so you can see customers
+coming in, the clock changes.
+
+41
+00:02:11,100 --> 00:02:12,240
+It's quite nice.
+
+42
+00:02:18,195 --> 00:02:20,806
+And this is prepared by Rockwell, and
+
+43
+00:02:20,806 --> 00:02:24,630
+they have numerous demos
+that you can show people.
+
+44
+00:02:24,630 --> 00:02:26,360
+Very nice.
+They come into the emergency room,
+
+45
+00:02:27,960 --> 00:02:30,650
+get served, there's a waiting area.
+
+46
+00:02:30,650 --> 00:02:34,710
+It's quite nice and it keeps track of
+ongoing conditions in neutralization, and
+
+47
+00:02:34,710 --> 00:02:35,810
+things like that.
+
+48
+00:02:35,810 --> 00:02:36,440
+So, there you go.
+

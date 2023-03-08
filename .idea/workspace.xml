@@ -1,16 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="00d4997a-d299-4612-94f6-1c55e88b044e" name="Default Changelist" comment="" />
+    <list default="true" id="00d4997a-d299-4612-94f6-1c55e88b044e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IYSE 6644/Project/Group 22 - Blackjack.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IYSE 6644/Project/Group 22 - Blackjack/Group 22 - Blackjack.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/GT-OMS.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/GT-OMS.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="2H45omKOTlWx7YTCOaNiSzWs3yL" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RunManager">
+    <configuration name="IYSE 6644" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="GT-OMS" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/IYSE 6644" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -24,5 +70,35 @@
       <updated>1667531693839</updated>
     </task>
     <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="382" y="231" width="1071" height="702" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1678312703832">
+      <screen x="44" y="25" width="1748" height="1095" />
+    </state>
+    <state x="382" y="231" width="1071" height="702" key="#com.intellij.execution.impl.EditConfigurationsDialog/44.25.1748.1095@44.25.1748.1095" timestamp="1678312703832" />
+    <state width="1727" height="300" key="GridCell.Tab.0.bottom" timestamp="1678319831867">
+      <screen x="44" y="25" width="1876" height="1055" />
+    </state>
+    <state width="1727" height="300" key="GridCell.Tab.0.bottom/37.1105.1792.1095/44.25.1876.1055@44.25.1876.1055" timestamp="1678319831867" />
+    <state width="1727" height="300" key="GridCell.Tab.0.bottom/44.25.1748.1095@44.25.1748.1095" timestamp="1678312585408" />
+    <state width="1727" height="300" key="GridCell.Tab.0.center" timestamp="1678319831866">
+      <screen x="44" y="25" width="1876" height="1055" />
+    </state>
+    <state width="1727" height="300" key="GridCell.Tab.0.center/37.1105.1792.1095/44.25.1876.1055@44.25.1876.1055" timestamp="1678319831866" />
+    <state width="1727" height="300" key="GridCell.Tab.0.center/44.25.1748.1095@44.25.1748.1095" timestamp="1678312585407" />
+    <state width="1727" height="300" key="GridCell.Tab.0.left" timestamp="1678319831866">
+      <screen x="44" y="25" width="1876" height="1055" />
+    </state>
+    <state width="1727" height="300" key="GridCell.Tab.0.left/37.1105.1792.1095/44.25.1876.1055@44.25.1876.1055" timestamp="1678319831866" />
+    <state width="1727" height="300" key="GridCell.Tab.0.left/44.25.1748.1095@44.25.1748.1095" timestamp="1678312585407" />
+    <state width="1727" height="300" key="GridCell.Tab.0.right" timestamp="1678319831867">
+      <screen x="44" y="25" width="1876" height="1055" />
+    </state>
+    <state width="1727" height="300" key="GridCell.Tab.0.right/37.1105.1792.1095/44.25.1876.1055@44.25.1876.1055" timestamp="1678319831867" />
+    <state width="1727" height="300" key="GridCell.Tab.0.right/44.25.1748.1095@44.25.1748.1095" timestamp="1678312585407" />
+    <state x="427" y="208" key="SettingsEditor" timestamp="1678312511492">
+      <screen x="44" y="25" width="1748" height="1095" />
+    </state>
+    <state x="427" y="208" key="SettingsEditor/44.25.1748.1095@44.25.1748.1095" timestamp="1678312511492" />
   </component>
 </project>

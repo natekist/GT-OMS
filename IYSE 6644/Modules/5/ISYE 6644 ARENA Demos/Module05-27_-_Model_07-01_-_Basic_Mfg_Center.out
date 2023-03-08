@@ -1,0 +1,210 @@
+
+0.0 Minutes>
+0.0 Minutes>
+0.0 Minutes>
+0.0 Minutes>
+2.0 Minutes>
+2.0 Minutes>
+4.4999795 Minutes>
+4.4999795 Minutes>
+4.4999795 Minutes>
+4.4999795 Minutes>
+5.2822071 Minutes>
+5.2822071 Minutes>
+5.2822071 Minutes>
+5.2822071 Minutes>
+6.4999795 Minutes>
+6.4999795 Minutes>
+6.9058091 Minutes>
+6.9058091 Minutes>
+6.9058091 Minutes>
+6.9058091 Minutes>
+7.2822071 Minutes>
+7.2822071 Minutes>
+8.9058091 Minutes>
+8.9058091 Minutes>
+14.376375 Minutes>
+14.376375 Minutes>
+14.376375 Minutes>
+16.376375 Minutes>
+16.376375 Minutes>
+16.378442 Minutes>
+16.378442 Minutes>
+18.378442 Minutes>
+18.378442 Minutes>
+23.776862 Minutes>
+23.776862 Minutes>
+24.404488 Minutes>
+24.404488 Minutes>
+24.404488 Minutes>
+25.776862 Minutes>
+25.776862 Minutes>
+26.404488 Minutes>
+26.404488 Minutes>
+31.205652 Minutes>
+31.205652 Minutes>
+31.205652 Minutes>
+31.85972 Minutes>
+31.85972 Minutes>
+31.85972 Minutes>
+31.85972 Minutes>
+33.205652 Minutes>
+33.205652 Minutes>
+33.678987 Minutes>
+33.678987 Minutes>
+33.678987 Minutes>
+33.85972 Minutes>
+33.85972 Minutes>
+35.678987 Minutes>
+35.678987 Minutes>
+36.438437 Minutes>
+36.438437 Minutes>
+36.438437 Minutes>
+36.438437 Minutes>
+37.513576 Minutes>
+37.513576 Minutes>
+38.438437 Minutes>
+38.438437 Minutes>
+39.513576 Minutes>
+39.513576 Minutes>
+45.995988 Minutes>
+45.995988 Minutes>
+45.995988 Minutes>
+47.995988 Minutes>
+47.995988 Minutes>
+49.293131 Minutes>
+49.293131 Minutes>
+51.293131 Minutes>
+51.293131 Minutes>
+51.317699 Minutes>
+51.317699 Minutes>
+52.485422 Minutes>
+52.485422 Minutes>
+52.485422 Minutes>
+53.317699 Minutes>
+53.317699 Minutes>
+54.485422 Minutes>
+54.485422 Minutes>
+54.565762 Minutes>
+54.565762 Minutes>
+54.565762 Minutes>
+56.565762 Minutes>
+56.565762 Minutes>
+61.421342 Minutes>
+61.421342 Minutes>
+61.696057 Minutes>
+61.696057 Minutes>
+62.133812 Minutes>
+62.133812 Minutes>
+63.209572 Minutes>
+63.209572 Minutes>
+63.209572 Minutes>
+63.209572 Minutes>
+63.421342 Minutes>
+63.421342 Minutes>
+63.696057 Minutes>
+63.696057 Minutes>
+64.133812 Minutes>
+64.133812 Minutes>
+                                      ARENA Simulation Results
+                                   Nate Kistler - License: STUDENT
+
+                                  Summary for Replication 1 of 1
+
+Project: Small Manufacturing System                                  Run execution date : 3/ 1/2023
+Analyst: Ozzy                                                        Model revision date: 3/ 1/2023
+
+Replication ended at time      : 64.133812 Minutes 
+Base Time Units: Minutes
+
+                                           TALLY VARIABLES
+
+Identifier                                  Average   Half Width  Minimum    Maximum   Observations
+___________________________________________________________________________________________________
+
+Entity 1.VATime                                 --         --         --         --          0
+Entity 1.NVATime                                --         --         --         --          0
+Entity 1.WaitTime                               --         --         --         --          0
+Entity 1.TranTime                               --         --         --         --          0
+Entity 1.OtherTime                              --         --         --         --          0
+Entity 1.TotalTime                              --         --         --         --          0
+Part 2.VATime                                   --         --         --         --          0
+Part 2.NVATime                                  --         --         --         --          0
+Part 2.WaitTime                                 --         --         --         --          0
+Part 2.TranTime                                 --         --         --         --          0
+Part 2.OtherTime                                --         --         --         --          0
+Part 2.TotalTime                                --         --         --         --          0
+Part 3.VATime                               35.804     (Insuf)    35.804     35.804          1    
+Part 3.NVATime                              .00000     (Insuf)    .00000     .00000          1    
+Part 3.WaitTime                             5.3984     (Insuf)    5.3984     5.3984          1    
+Part 3.TranTime                             8.0000     (Insuf)    8.0000     8.0000          1    
+Part 3.OtherTime                            .00000     (Insuf)    .00000     .00000          1    
+Part 3.TotalTime                            49.203     (Insuf)    49.203     49.203          1    
+Part 1.VATime                                   --         --         --         --          0
+Part 1.NVATime                                  --         --         --         --          0
+Part 1.WaitTime                                 --         --         --         --          0
+Part 1.TranTime                                 --         --         --         --          0
+Part 1.OtherTime                                --         --         --         --          0
+Part 1.TotalTime                                --         --         --         --          0
+Cell 4 Process.Queue.WaitingTime            .00000     (Insuf)    .00000     .00000          2    
+Cell 3 Process.Queue.WaitingTime            1.1223     (Insuf)    .00000     4.4894          4    
+Cell 2 Process.Queue.WaitingTime            3.6835     (Insuf)    .00000     8.0281          7    
+Cell 1 Process.Queue.WaitingTime            5.9930     (Insuf)    .00000     12.136          6    
+
+                                     DISCRETE-CHANGE VARIABLES
+
+Identifier                                  Average   Half Width  Minimum    Maximum   Final Value
+___________________________________________________________________________________________________
+
+Entity 1.WIP                                .00000     (Insuf)    .00000     1.0000     .00000    
+Part 2.WIP                                  1.0144     (Insuf)    .00000     2.0000     2.0000    
+Part 3.WIP                                  2.0913     (Insuf)    .00000     3.0000     2.0000    
+Part 1.WIP                                  1.4330     (Insuf)    .00000     2.0000     2.0000    
+Cell 4 Machine.NumberBusy                   .28924     (Insuf)    .00000     1.0000     1.0000    
+Cell 4 Machine.NumberScheduled              1.0000     (Insuf)    1.0000     1.0000     1.0000    
+Cell 4 Machine.Utilization                  .28924     (Insuf)    .00000     1.0000     1.0000    
+Cell 2 Machine.NumberBusy                   .80928     (Insuf)    .00000     1.0000     1.0000    
+Cell 2 Machine.NumberScheduled              1.0000     (Insuf)    1.0000     1.0000     1.0000    
+Cell 2 Machine.Utilization                  .80928     (Insuf)    .00000     1.0000     1.0000    
+Cell 1 Machine.NumberBusy                   .93763     (Insuf)    .00000     1.0000     .00000    
+Cell 1 Machine.NumberScheduled              1.0000     (Insuf)    1.0000     1.0000     1.0000    
+Cell 1 Machine.Utilization                  .93763     (Insuf)    .00000     1.0000     .00000    
+Cell 3 Old.NumberBusy                       .35699     (Insuf)    .00000     1.0000     1.0000    
+Cell 3 Old.NumberScheduled                  1.0000     (Insuf)    1.0000     1.0000     1.0000    
+Cell 3 Old.Utilization                      .35699     (Insuf)    .00000     1.0000     1.0000    
+Cell 3 New.NumberBusy                       .44368     (Insuf)    .00000     1.0000     1.0000    
+Cell 3 New.NumberScheduled                  1.0000     (Insuf)    1.0000     1.0000     1.0000    
+Cell 3 New.Utilization                      .44368     (Insuf)    .00000     1.0000     1.0000    
+Cell 4 Process.Queue.NumberInQueue          .00000     (Insuf)    .00000     .00000     .00000    
+Cell 3 Process.Queue.NumberInQueue          .07000     (Insuf)    .00000     1.0000     .00000    
+Cell 2 Process.Queue.NumberInQueue          .40205     (Insuf)    .00000     2.0000     .00000    
+Cell 1 Process.Queue.NumberInQueue          .56067     (Insuf)    .00000     1.0000     .00000    
+
+                                             OUTPUTS
+
+Identifier                                   Value
+_____________________________________________________________
+
+Entity 1.NumberIn                           7.0000    
+Entity 1.NumberOut                          7.0000    
+Part 2.NumberIn                             2.0000    
+Part 2.NumberOut                            .00000    
+Part 3.NumberIn                             3.0000    
+Part 3.NumberOut                            1.0000    
+Part 1.NumberIn                             2.0000    
+Part 1.NumberOut                            .00000    
+Cell 4 Machine.NumberSeized                 2.0000    
+Cell 4 Machine.ScheduledUtilization         .28924    
+Cell 2 Machine.NumberSeized                 7.0000    
+Cell 2 Machine.ScheduledUtilization         .80928    
+Cell 1 Machine.NumberSeized                 6.0000    
+Cell 1 Machine.ScheduledUtilization         .93763    
+Cell 3 Old.NumberSeized                     2.0000    
+Cell 3 Old.ScheduledUtilization             .35699    
+Cell 3 New.NumberSeized                     2.0000    
+Cell 3 New.ScheduledUtilization             .44368    
+System.NumberOut                            1.0000    
+
+
+Simulation run time: 2.38 minutes.
+Simulation run complete.

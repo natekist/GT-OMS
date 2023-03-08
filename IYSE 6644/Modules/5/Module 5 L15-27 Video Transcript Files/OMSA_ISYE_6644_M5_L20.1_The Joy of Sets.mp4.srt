@@ -1,0 +1,783 @@
+1
+00:00:02,153 --> 00:00:03,060
+Hi class.
+
+2
+00:00:03,060 --> 00:00:05,070
+Well, we have interesting
+lesson this time.
+
+3
+00:00:05,070 --> 00:00:10,082
+We're gonna be talking about two of my
+favorite things, set theory and joy.
+
+4
+00:00:10,082 --> 00:00:13,060
+So we'll see what's in store for us.
+
+5
+00:00:13,060 --> 00:00:17,791
+In the overview, in the last lesson
+we talked about the so-called Blocks
+
+6
+00:00:17,791 --> 00:00:21,150
+template where we came across
+all these millions and
+
+7
+00:00:21,150 --> 00:00:24,993
+millions of new blocks that we
+could use in our simulation.
+
+8
+00:00:24,993 --> 00:00:28,050
+And they occasionally will help us
+with specialized little issues and
+
+9
+00:00:28,050 --> 00:00:30,190
+we'll see a couple examples
+of those coming up.
+
+10
+00:00:30,190 --> 00:00:34,588
+And then in this lesson we're
+gonna learn what sets are and
+
+11
+00:00:34,588 --> 00:00:37,652
+how they enhance our modeling ability.
+
+12
+00:00:37,652 --> 00:00:41,491
+You'll see that there
+are numerous ways to use them.
+
+13
+00:00:41,491 --> 00:00:45,273
+So we'll especially concentrate
+on what are called resource sets.
+
+14
+00:00:45,273 --> 00:00:47,374
+Those are the most important things for
+us right now.
+
+15
+00:00:49,670 --> 00:00:54,629
+Sets, as in baby math that
+you learned in fourth grade,
+
+16
+00:00:54,629 --> 00:00:57,687
+a set is just a group of elements and
+
+17
+00:00:57,687 --> 00:01:02,342
+elements are allowed to
+belong in more than one set.
+
+18
+00:01:02,342 --> 00:01:05,570
+Elements can mean anything in Arena.
+
+19
+00:01:05,570 --> 00:01:07,884
+So there are various types of sets.
+
+20
+00:01:07,884 --> 00:01:09,512
+You have a resource set.
+
+21
+00:01:09,512 --> 00:01:13,731
+So a resource set would
+be a set of servers.
+
+22
+00:01:13,731 --> 00:01:15,410
+You have a counter set.
+
+23
+00:01:15,410 --> 00:01:16,792
+Remember in a previous demo,
+
+24
+00:01:16,792 --> 00:01:20,403
+I showed how to do counts of certain
+things as they passed through the system.
+
+25
+00:01:20,403 --> 00:01:22,823
+We could have a set of these counters.
+
+26
+00:01:22,823 --> 00:01:25,474
+We could have a set of
+what are called tallies.
+
+27
+00:01:25,474 --> 00:01:29,763
+We could have a set of entity types,
+of entity pictures, and
+
+28
+00:01:29,763 --> 00:01:34,320
+even more difficult things,
+which we will talk about later on.
+
+29
+00:01:35,845 --> 00:01:39,507
+Now resource sets in particular
+are very easy to construct.
+
+30
+00:01:39,507 --> 00:01:44,317
+What we'll do is we'll use the Set
+spreadsheet in the basic process template
+
+31
+00:01:44,317 --> 00:01:45,356
+to define sets.
+
+32
+00:01:45,356 --> 00:01:49,077
+So the Set spreadsheet is sitting there
+in the basic process template, and
+
+33
+00:01:49,077 --> 00:01:51,687
+like I said we'll just study
+resource sets for now.
+
+34
+00:01:51,687 --> 00:01:53,860
+Let's review what a resource is.
+
+35
+00:01:53,860 --> 00:01:57,802
+A resource currently, a vanilla
+resource currently has identical,
+
+36
+00:01:57,802 --> 00:01:59,412
+interchangeable servers.
+
+37
+00:01:59,412 --> 00:02:03,650
+So if you have a resource that has
+five barbers, they're all the same.
+
+38
+00:02:03,650 --> 00:02:04,952
+We don't care which is which.
+
+39
+00:02:04,952 --> 00:02:06,526
+We just wanna use one of them.
+
+40
+00:02:06,526 --> 00:02:07,910
+They're all the same to us.
+
+41
+00:02:07,910 --> 00:02:12,966
+A resource set though can have distinct
+servers, Joe, Tom, Bill and they can
+
+42
+00:02:12,966 --> 00:02:18,424
+have different schedules, different
+service speeds, different specialities.
+
+43
+00:02:18,424 --> 00:02:23,049
+So in fact a resource set is much
+more general than this plain
+
+44
+00:02:23,049 --> 00:02:28,241
+vanilla resource that itself might
+have five different servers.
+
+45
+00:02:28,241 --> 00:02:32,422
+A resource set that can have five distinct
+servers all with different properties.
+
+46
+00:02:32,422 --> 00:02:36,521
+In our call center example we'll have
+three products with the following
+
+47
+00:02:36,521 --> 00:02:37,201
+recourse.
+
+48
+00:02:37,201 --> 00:02:39,472
+So we'll have,
+in the call center, you go and
+
+49
+00:02:39,472 --> 00:02:41,805
+you have a question about
+one of the products and
+
+50
+00:02:41,805 --> 00:02:45,383
+you have to talk to one of the people
+associated with the three products.
+
+51
+00:02:45,383 --> 00:02:48,523
+So let's see who can do what.
+
+52
+00:02:48,523 --> 00:02:52,987
+You have a question about product 1 you're
+gonna need to talk to Charity, Noah,
+
+53
+00:02:52,987 --> 00:02:54,423
+Molly, Anna, or Sammy.
+
+54
+00:02:54,423 --> 00:02:55,411
+One of those five.
+
+55
+00:02:55,411 --> 00:03:00,252
+Product 2, you'll need talk to Tierney,
+Sean, Emma, Anna and Sammy.
+
+56
+00:03:00,252 --> 00:03:05,434
+So look those last two kids appear
+as they did in product one.
+
+57
+00:03:05,434 --> 00:03:10,382
+So you're allowed to have people
+appearing in multiple sets.
+
+58
+00:03:10,382 --> 00:03:14,944
+And then product 3 set, you'll need to
+talk to Shelley, Jenny, Christie, Molly,
+
+59
+00:03:14,944 --> 00:03:15,952
+Anna, and Sammy.
+
+60
+00:03:15,952 --> 00:03:19,673
+The reason I call them kids by the way
+is that these are actually the kids of
+
+61
+00:03:19,673 --> 00:03:21,571
+the people who wrote the Arena book.
+
+62
+00:03:21,571 --> 00:03:23,373
+They're no longer kids, but
+
+63
+00:03:23,373 --> 00:03:27,128
+you can see that some of these
+kids have cross functionality.
+
+64
+00:03:27,128 --> 00:03:30,875
+And you'll notice that I've listed
+them at the ends of those lists,
+
+65
+00:03:30,875 --> 00:03:35,204
+because it turns out you can order sets,
+unlike what you learned in math class,
+
+66
+00:03:35,204 --> 00:03:36,383
+sets can be ordered.
+
+67
+00:03:36,383 --> 00:03:39,446
+And what I'm doing, I'm saving
+the most talented guys for last,
+
+68
+00:03:39,446 --> 00:03:42,132
+because you don't wanna waste
+them if you don't need to.
+
+69
+00:03:42,132 --> 00:03:46,603
+So all 11 of these servers, by the way,
+have different schedules too.
+
+70
+00:03:46,603 --> 00:03:49,840
+So not only do they have
+different specialities,
+
+71
+00:03:49,840 --> 00:03:53,950
+they have different schedules
+that they adhere to.
+
+72
+00:03:53,950 --> 00:03:56,300
+Now continuing with resource sets,
+
+73
+00:03:56,300 --> 00:04:00,105
+let's say I wanna define
+a resource set called product 1.
+
+74
+00:04:00,105 --> 00:04:05,410
+What I'll do is when I get to
+the spreadsheet, I choose Type = Resource,
+
+75
+00:04:05,410 --> 00:04:10,715
+because there is other types of sets,
+so the type of this set is resource,
+
+76
+00:04:10,715 --> 00:04:15,790
+I click in members and I enter
+Product 1 servers under Resource Name.
+
+77
+00:04:15,790 --> 00:04:17,442
+But here's what it looks like.
+
+78
+00:04:17,442 --> 00:04:20,562
+This is what the resource
+spreadsheet looks like.
+
+79
+00:04:20,562 --> 00:04:25,525
+You can see we have numerous
+types of set spreadsheet.
+
+80
+00:04:25,525 --> 00:04:28,055
+I have numerous types of sets,
+Product 1 is a resource set.
+
+81
+00:04:28,055 --> 00:04:30,472
+Product 2 also a resource set.
+
+82
+00:04:30,472 --> 00:04:31,711
+We have a tally set.
+
+83
+00:04:31,711 --> 00:04:33,393
+Don't worry about these for now.
+
+84
+00:04:33,393 --> 00:04:35,453
+We'll just look at these resource sets.
+
+85
+00:04:35,453 --> 00:04:38,691
+And I chose type people to resource.
+
+86
+00:04:38,691 --> 00:04:42,983
+I click in members and then I just start
+clicking in the members of that set.
+
+87
+00:04:42,983 --> 00:04:45,501
+Charity, Noah, Molly, Anna and Sammy.
+
+88
+00:04:45,501 --> 00:04:47,691
+Just like I listed on the previous page.
+
+89
+00:04:47,691 --> 00:04:49,070
+See, there's the type.
+
+90
+00:04:49,070 --> 00:04:53,522
+I'm gonna click into the number rows
+there, and I just start typing away.
+
+91
+00:04:53,522 --> 00:04:56,611
+Now Product 1's Preferred Order,
+
+92
+00:04:56,611 --> 00:05:01,003
+all things considered,
+I wanna use Charity first.
+
+93
+00:05:01,003 --> 00:05:04,882
+I wanna wait to use Anna and Sammy
+because of their cross-functionality.
+
+94
+00:05:04,882 --> 00:05:07,750
+I could use those guys for
+other purposes later on.
+
+95
+00:05:07,750 --> 00:05:08,952
+So Charity goes first.
+
+96
+00:05:08,952 --> 00:05:12,122
+If she's not available, I try Noah,
+blah, blah, blah, blah, blah.
+
+97
+00:05:12,122 --> 00:05:16,022
+I saved Sammy for last,
+because he's cross-functional.
+
+98
+00:05:16,022 --> 00:05:18,762
+And it'll turn out, by the way,
+that other orders are possible.
+
+99
+00:05:18,762 --> 00:05:20,321
+We'll talk about that in a minute.
+
+100
+00:05:20,321 --> 00:05:26,642
+Now when I do a seize-delay-release of
+people associated with a resource set.
+
+101
+00:05:26,642 --> 00:05:30,181
+So I wanna seize one of
+these Product 1 workers.
+
+102
+00:05:30,181 --> 00:05:33,018
+I've got to be very, very, very careful.
+
+103
+00:05:33,018 --> 00:05:38,143
+I have to be careful because, and
+there's a little your pre-warning sign.
+
+104
+00:05:38,143 --> 00:05:42,811
+The problem is that you have to
+make sure that you release the same
+
+105
+00:05:42,811 --> 00:05:45,932
+exact person that you originally seized.
+
+106
+00:05:45,932 --> 00:05:50,045
+You just can't say seize-release
+arbitrarily, cuz if you release a random
+
+107
+00:05:50,045 --> 00:05:53,470
+server some other customer may say hey,
+where'd my server go.
+
+108
+00:05:53,470 --> 00:05:58,063
+So you've got to be very careful
+about the person that you release.
+
+109
+00:05:58,063 --> 00:06:00,471
+If you seize Sammy,
+you gotta release Sammy.
+
+110
+00:06:00,471 --> 00:06:01,979
+So here's what it looks like.
+
+111
+00:06:01,979 --> 00:06:06,312
+Seize-Delay-Release using the advance
+process blocks, Seize-Delay-Release.
+
+112
+00:06:06,312 --> 00:06:11,590
+Let's suppose we seize a server from
+the set Product 1 in this preferred order,
+
+113
+00:06:11,590 --> 00:06:12,920
+from top to bottom.
+
+114
+00:06:12,920 --> 00:06:15,612
+And we got to make sure
+we remember who it was.
+
+115
+00:06:15,612 --> 00:06:19,000
+And then when we're done,
+we got to release that same guy.
+
+116
+00:06:19,000 --> 00:06:19,982
+Here's how we do it.
+
+117
+00:06:19,982 --> 00:06:24,662
+Let's go to the seize block and
+you'll see I click on the seize, and
+
+118
+00:06:24,662 --> 00:06:29,730
+I've got this, it looks like this
+complicated bunch of stuff here.
+
+119
+00:06:29,730 --> 00:06:33,616
+So let's click onto what amounts to add or
+edit.
+
+120
+00:06:33,616 --> 00:06:38,084
+And you'll see that the type
+of seize we've done is that
+
+121
+00:06:38,084 --> 00:06:42,282
+we've seized a set,
+the set is called product one.
+
+122
+00:06:42,282 --> 00:06:45,702
+We seize a quantity of one
+in preferred order, and
+
+123
+00:06:45,702 --> 00:06:50,355
+we save the name of that guy in
+an attribute called tech agent index.
+
+124
+00:06:50,355 --> 00:06:53,031
+I'm gonna go over this again,
+cuz it's complicated.
+
+125
+00:06:53,031 --> 00:06:57,353
+The release looks like this,
+same kind of mess up here but
+
+126
+00:06:57,353 --> 00:07:01,513
+I'm gonna do a release from
+the set called Product 1.
+
+127
+00:07:01,513 --> 00:07:07,563
+I'm gonna release one guy, and
+now I'm gonna release a specific member.
+
+128
+00:07:07,563 --> 00:07:12,342
+Namely, the person whoever it
+is stored in Tech Agent Index.
+
+129
+00:07:12,342 --> 00:07:17,613
+So seize one guy from the set called
+Product 1 in the Preferred Order.
+
+130
+00:07:17,613 --> 00:07:20,931
+One guy from Product 1
+in the Preferred Order.
+
+131
+00:07:20,931 --> 00:07:27,341
+And whoever that is, I'm gonna store in
+an attribute called Tech Agent Index.
+
+132
+00:07:27,341 --> 00:07:30,271
+So if I see Sammy, I'm gonna remember,
+
+133
+00:07:30,271 --> 00:07:35,631
+Tech Agent Index is gonna remember that
+I as a customer have seized Sammy.
+
+134
+00:07:35,631 --> 00:07:38,091
+So that name is stored in the attribute.
+
+135
+00:07:38,091 --> 00:07:41,093
+Now I realize that attributes
+only store numbers but
+
+136
+00:07:41,093 --> 00:07:45,524
+let me just assure you that the name Sammy
+is associated with a number as well,
+
+137
+00:07:45,524 --> 00:07:48,064
+which you don't need to know about, okay?
+
+138
+00:07:48,064 --> 00:07:51,110
+Then when I do the release
+sometime later on,
+
+139
+00:07:51,110 --> 00:07:55,841
+I'm no longer releasing in preferred
+order, I'm releasing Sammy,
+
+140
+00:07:55,841 --> 00:07:59,941
+a Specific Member who's stored
+in Tech Agent Index, okay?
+
+141
+00:07:59,941 --> 00:08:02,767
+So once I've got him once I seized him,
+
+142
+00:08:02,767 --> 00:08:06,802
+he now becomes a specific
+number that I need to release.
+
+143
+00:08:06,802 --> 00:08:08,031
+So some remarks.
+
+144
+00:08:08,031 --> 00:08:11,812
+Various seize selection rules
+are possible, not just preferred order.
+
+145
+00:08:11,812 --> 00:08:16,060
+I could seize cyclically and this allows
+me to run through the servers and
+
+146
+00:08:16,060 --> 00:08:18,160
+not tiring any of them out.
+
+147
+00:08:18,160 --> 00:08:21,150
+I can seize randomly,
+i can seize in preferred order,
+
+148
+00:08:21,150 --> 00:08:24,471
+I can seize specific member,
+largest remaining capacity.
+
+149
+00:08:24,471 --> 00:08:29,473
+Now if I seize like barber, barber
+himself, there may be five barbers, and
+
+150
+00:08:29,473 --> 00:08:34,728
+so I'll seize whatever resource has
+the largest number of servers remaining.
+
+151
+00:08:34,728 --> 00:08:37,083
+So I could seize barber,
+I could seize manicurist.
+
+152
+00:08:37,083 --> 00:08:40,444
+If there were five barbers remaining and
+only three manicurists,
+
+153
+00:08:40,444 --> 00:08:42,372
+I'd seize one of those five barbers.
+
+154
+00:08:42,372 --> 00:08:43,942
+So this is really general.
+
+155
+00:08:43,942 --> 00:08:46,952
+I could seize the resource
+with the smallest number busy.
+
+156
+00:08:46,952 --> 00:08:48,182
+There's all sorts of stuff I can do.
+
+157
+00:08:48,182 --> 00:08:50,719
+And this stuff is gonna be very
+useful when we do our call
+
+158
+00:08:50,719 --> 00:08:51,943
+center example later on.
+
+159
+00:08:51,943 --> 00:08:53,582
+So now, demo time.
+
+160
+00:08:53,582 --> 00:08:56,253
+I'm going to do a simple
+model with four servers.
+
+161
+00:08:56,253 --> 00:08:58,902
+And you'll see it's quite easy.
+
+162
+00:08:58,902 --> 00:09:01,602
+He's a summary of what we did.
+
+163
+00:09:01,602 --> 00:09:05,801
+How joyful, we introduced sets,
+and especially resource sets.
+
+164
+00:09:05,801 --> 00:09:11,021
+And then I showed how to use these
+guys with Seize-Delay-Release.
+
+165
+00:09:11,021 --> 00:09:16,544
+And next time, I'm gonna describe in
+plain English the call center example,
+
+166
+00:09:16,544 --> 00:09:19,062
+and it's all the range these days.
+
+167
+00:09:19,062 --> 00:09:22,195
+So we'll see you soon,
+it's gonna be a fun next lesson.
+
+168
+00:09:26,591 --> 00:09:29,489
+[MUSIC]
+

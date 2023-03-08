@@ -1,0 +1,242 @@
+1
+00:00:02,244 --> 00:00:03,122
+Hi everyone.
+
+2
+00:00:03,122 --> 00:00:05,520
+So it's one fish, two fish time,
+
+3
+00:00:05,520 --> 00:00:11,421
+where we're gonna compare one line versus
+two lines in a particular queuing model.
+
+4
+00:00:11,421 --> 00:00:12,911
+Here's the overview.
+
+5
+00:00:12,911 --> 00:00:18,561
+Last lesson, I worked on a simple little
+SS inventory policy example, very nice.
+
+6
+00:00:18,561 --> 00:00:21,272
+You can really play
+around with that a lot.
+
+7
+00:00:21,272 --> 00:00:26,743
+In this lesson I'm gonna ask the simple
+question, should we use one line feeding
+
+8
+00:00:26,743 --> 00:00:32,830
+into two parallel servers, or separate
+lines feeding into two individual servers?
+
+9
+00:00:32,830 --> 00:00:38,303
+You may notice that different fast
+food restaurants explore this problem.
+
+10
+00:00:38,303 --> 00:00:43,055
+So we'll use a very cool trick
+called common random numbers to do
+
+11
+00:00:43,055 --> 00:00:45,882
+an apples-to-apples comparison.
+
+12
+00:00:45,882 --> 00:00:47,340
+Here's our game plan.
+
+13
+00:00:47,340 --> 00:00:49,600
+Option A: Customers show up and
+
+14
+00:00:49,600 --> 00:00:53,372
+they join one line in front
+of two identical servers.
+
+15
+00:00:53,372 --> 00:00:56,801
+And they go to whichever
+server is available first.
+
+16
+00:00:56,801 --> 00:01:01,346
+Option B: Customers randomly choose
+which of two lines in front of
+
+17
+00:01:01,346 --> 00:01:03,061
+single servers to join.
+
+18
+00:01:03,061 --> 00:01:07,562
+Again, you could picture this
+happening at certain food restaurants.
+
+19
+00:01:07,562 --> 00:01:11,702
+We're gonna compare which of A and
+B is better by using
+
+20
+00:01:11,702 --> 00:01:16,591
+the exact same customer arrivals
+thanks to a separate module.
+
+21
+00:01:16,591 --> 00:01:18,901
+So we're gonna use
+the same exact customers.
+
+22
+00:01:18,901 --> 00:01:22,563
+That what allows for apples to apples
+comparison, like a paired key test.
+
+23
+00:01:22,563 --> 00:01:26,944
+And we'll use the same exact service
+times for a particular customer,
+
+24
+00:01:26,944 --> 00:01:29,435
+whether or not he's doing option A or B.
+
+25
+00:01:29,435 --> 00:01:32,802
+And we'll use an early
+assign module to do that.
+
+26
+00:01:32,802 --> 00:01:36,536
+So again, we're using for
+apples to apples comparisons,
+
+27
+00:01:36,536 --> 00:01:41,030
+the same exact customers arriving,
+and the same exact service times.
+
+28
+00:01:41,030 --> 00:01:46,780
+The only thing that changes is the
+discipline that they use, Option A or B.
+
+29
+00:01:46,780 --> 00:01:50,301
+So I'm gonna guess that
+Option A is better.
+
+30
+00:01:50,301 --> 00:01:55,091
+Because well,
+if you use Option B it may be that you
+
+31
+00:01:55,091 --> 00:02:00,582
+randomly choose not to use
+server that has an empty line.
+
+32
+00:02:00,582 --> 00:02:02,661
+So almost certainly Option A is better.
+
+33
+00:02:02,661 --> 00:02:08,070
+So again, apples to apples comparison
+using what's called Common Random Numbers.
+
+34
+00:02:08,070 --> 00:02:11,181
+The same arrival times and
+service times, and
+
+35
+00:02:11,181 --> 00:02:14,622
+this is like doing a paired
+t-test in statistics.
+
+36
+00:02:14,622 --> 00:02:17,530
+Wow, apples and pears in the same example.
+
+37
+00:02:17,530 --> 00:02:20,524
+This Common Random Numbers is something
+that we'll explore again when we do
+
+38
+00:02:20,524 --> 00:02:21,093
+module 10.
+
+39
+00:02:21,093 --> 00:02:23,581
+Really, really nice trick in simulation.
+
+40
+00:02:23,581 --> 00:02:25,093
+Here's what the thing looks like.
+
+41
+00:02:25,093 --> 00:02:30,360
+Up here this is gonna be Option A,
+here's Option B down here.
+
+42
+00:02:30,360 --> 00:02:35,452
+The separate block,
+what that's gonna do is say, put the same
+
+43
+00:02:35,452 --> 00:02:41,522
+exact customer arrivals down to A and
+B, and then we'll see what happens.
+
+44
+00:02:41,522 --> 00:02:44,644
+Here's a summary of what this lesson did.
+
+45
+00:02:44,644 --> 00:02:49,159
+Here we used Arena to compare two
+different server configurations for
+
+46
+00:02:49,159 --> 00:02:50,852
+a simple queuing system.
+
+47
+00:02:50,852 --> 00:02:51,701
+Very, very simple.
+
+48
+00:02:53,312 --> 00:02:58,741
+And next time I'm gonna look at a really
+crazy re-entrant queuing system.
+
+49
+00:02:58,741 --> 00:03:01,842
+It's not intuitive, but
+it's very very cool.
+
+50
+00:03:01,842 --> 00:03:06,773
+Simulations actually the first way that
+people use to analyze this crazy systems.
+
+51
+00:03:06,773 --> 00:03:07,785
+So see you then.
+
+52
+00:03:07,785 --> 00:03:15,304
+[SOUND]
+

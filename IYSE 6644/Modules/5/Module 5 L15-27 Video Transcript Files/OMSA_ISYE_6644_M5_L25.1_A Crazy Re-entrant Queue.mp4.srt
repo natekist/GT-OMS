@@ -1,0 +1,297 @@
+1
+00:00:02,390 --> 00:00:06,060
+In this lesson we're gonna be
+over Crazy Re-entrant Queue
+
+2
+00:00:06,060 --> 00:00:08,250
+that could drive you insane,
+so be careful.
+
+3
+00:00:09,420 --> 00:00:10,660
+Here's our overview.
+
+4
+00:00:10,660 --> 00:00:14,940
+Last time I looked at this one
+line versus two lines example.
+
+5
+00:00:14,940 --> 00:00:18,040
+In this lesson I'm going to look
+at a much more interesting system,
+
+6
+00:00:18,040 --> 00:00:20,400
+a so-called re-entrant queue.
+
+7
+00:00:20,400 --> 00:00:24,740
+Now, what happens here is that
+you're gonna re-use servers, and
+
+8
+00:00:24,740 --> 00:00:27,816
+mess around with priorities, and
+mess around with service times.
+
+9
+00:00:27,816 --> 00:00:32,490
+So I'm re-using servers,
+one customer will go from one to another,
+
+10
+00:00:32,490 --> 00:00:37,700
+then back to the first guy, you can
+get some very non-intuitive outcomes.
+
+11
+00:00:37,700 --> 00:00:41,590
+And you'll see in a second, so
+here are re-entrant queues.
+
+12
+00:00:41,590 --> 00:00:45,700
+Customers go to Server 1, then
+the customer will go back to Server 2,
+
+13
+00:00:45,700 --> 00:00:48,450
+then back to Server 1,
+back to 2, back to 1.
+
+14
+00:00:48,450 --> 00:00:53,877
+So 1, 2, 1, 2, 1, that's sort of
+re-entering, that's why we call them that.
+
+15
+00:00:53,877 --> 00:00:57,961
+They're depicted in Arena as
+5 separate process modules
+
+16
+00:00:57,961 --> 00:01:00,980
+with Seize-Delay-Release trios.
+
+17
+00:01:00,980 --> 00:01:02,570
+And like we've done many times,
+
+18
+00:01:02,570 --> 00:01:06,870
+it's okay to seize The same server
+in different process modules.
+
+19
+00:01:06,870 --> 00:01:12,220
+So, even though they look like they are in
+physically different places on the screen,
+
+20
+00:01:12,220 --> 00:01:14,656
+you are still seizing the same server.
+
+21
+00:01:14,656 --> 00:01:20,690
+So Seize-Delay-Release five times
+servers 1, 2, 1, 2, 1 in that order.
+
+22
+00:01:20,690 --> 00:01:25,250
+Now, this seems like a totally
+perfectly boring model.
+
+23
+00:01:25,250 --> 00:01:26,440
+Let's make it interesting.
+
+24
+00:01:26,440 --> 00:01:30,430
+All service times are gonna be
+exponential, and here are the means.
+
+25
+00:01:30,430 --> 00:01:33,592
+The first time we go to Server 1,
+the mean is 0.1.
+
+26
+00:01:33,592 --> 00:01:36,436
+The first time we go to Server 2,
+the mean is 0.5.
+
+27
+00:01:36,436 --> 00:01:41,164
+Then 0.1 in server 1, then 0.1 in
+server 2, then 0.1 in server 1,
+
+28
+00:01:41,164 --> 00:01:43,833
+these are actually chosen very carefully.
+
+29
+00:01:43,833 --> 00:01:45,280
+Here are the priorities.
+
+30
+00:01:45,280 --> 00:01:50,422
+When the customer goes to server 1 the
+first time, he actually has low priority.
+
+31
+00:01:50,422 --> 00:01:54,556
+So if there's another customer
+going to server 1 down the line,
+
+32
+00:01:54,556 --> 00:01:56,820
+he's gonna have higher priority.
+
+33
+00:01:56,820 --> 00:01:59,150
+Anyway, when the customer
+gets to server 2 for
+
+34
+00:01:59,150 --> 00:02:01,630
+the first time, he's got high priority.
+
+35
+00:02:01,630 --> 00:02:05,150
+Then when he goes to server 1 the second
+time, he's got medium priority.
+
+36
+00:02:05,150 --> 00:02:06,683
+So see what's going on?
+
+37
+00:02:06,683 --> 00:02:08,402
+The service times are changing and
+
+38
+00:02:08,402 --> 00:02:11,890
+the priorities are changing as
+they move from server to server.
+
+39
+00:02:11,890 --> 00:02:16,070
+So in other words,
+on the customer's third visit to Server 1,
+
+40
+00:02:16,070 --> 00:02:20,020
+he has a high priority,
+exponential 0.5 service time.
+
+41
+00:02:20,020 --> 00:02:23,130
+High priority,
+that's the third visit to server 1 with
+
+42
+00:02:23,130 --> 00:02:24,430
+exponential 0.5 service time.
+
+43
+00:02:24,430 --> 00:02:30,220
+So it's a complicated little model, in
+a sense, simple model, complicated logic.
+
+44
+00:02:30,220 --> 00:02:31,150
+Here's what it looks like.
+
+45
+00:02:31,150 --> 00:02:33,270
+Very simple, we'll see this in a minute.
+
+46
+00:02:33,270 --> 00:02:36,311
+He goes from 1, 2, 1, 2, 1.
+
+47
+00:02:36,311 --> 00:02:38,970
+We're gonna keep track of
+how big the lines are.
+
+48
+00:02:38,970 --> 00:02:42,029
+And we're gonna keep track of
+the total queue in front of Server 1.
+
+49
+00:02:42,029 --> 00:02:46,438
+So the total queue is gonna be
+the queue here plus the queue here plus
+
+50
+00:02:46,438 --> 00:02:47,560
+the queue here.
+
+51
+00:02:47,560 --> 00:02:52,370
+So again, even though server 1 is
+physically in the same place, we can
+
+52
+00:02:52,370 --> 00:02:57,670
+pretend that at least for purposes of the
+screen, these are separate little lines,
+
+53
+00:02:57,670 --> 00:03:00,500
+this is the line that forms in front
+of sever 1 when you're there for
+
+54
+00:03:00,500 --> 00:03:01,478
+the first time.
+
+55
+00:03:01,478 --> 00:03:03,850
+This is a line that forms when
+you're there for the second time.
+
+56
+00:03:03,850 --> 00:03:06,780
+Maybe they're next to each other,
+but they're technically treated as
+
+57
+00:03:06,780 --> 00:03:10,310
+separate lines, and here's what you
+get when you add up the two lines.
+
+58
+00:03:10,310 --> 00:03:13,240
+So, it's demo time, and
+we're gonna see some cool behavior.
+
+59
+00:03:14,980 --> 00:03:17,166
+Here's the summary.
+
+60
+00:03:17,166 --> 00:03:20,480
+It was just so cool, so very cool.
+
+61
+00:03:20,480 --> 00:03:22,110
+Words escape me, hard to believe.
+
+62
+00:03:23,560 --> 00:03:27,472
+Next time, I'm gonna get smart,
+finally and literally.
+
+63
+00:03:27,472 --> 00:03:30,809
+So, see you in the next lesson.
+
+64
+00:03:30,809 --> 00:03:37,089
+[MUSIC]
+

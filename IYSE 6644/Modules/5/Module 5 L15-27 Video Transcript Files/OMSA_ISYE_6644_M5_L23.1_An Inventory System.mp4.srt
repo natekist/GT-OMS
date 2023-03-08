@@ -1,0 +1,335 @@
+1
+00:00:02,156 --> 00:00:06,277
+Now that we've done this call center demo,
+I'm gonna do a few additional
+
+2
+00:00:06,277 --> 00:00:10,607
+specialty demos, and we'll describe
+them in a little bit of detail as we go.
+
+3
+00:00:10,607 --> 00:00:13,520
+You'll see kinda the wide range
+of things that Arena can do.
+
+4
+00:00:14,940 --> 00:00:16,240
+Here's the overview.
+
+5
+00:00:16,240 --> 00:00:19,610
+Last lesson,
+we did that call center simulation demo.
+
+6
+00:00:19,610 --> 00:00:23,432
+This time, I'll give a plain English
+description of a simple inventory system,
+
+7
+00:00:23,432 --> 00:00:25,790
+an (s,S) inventory model, and a demo.
+
+8
+00:00:27,430 --> 00:00:31,641
+In the next few lessons, well, we'll look
+at several demos like I just promised.
+
+9
+00:00:31,641 --> 00:00:33,100
+Inventory model for now.
+
+10
+00:00:34,250 --> 00:00:39,448
+A quickie little demo on whether you
+should use one line versus two lines.
+
+11
+00:00:39,448 --> 00:00:43,316
+What's called a re-entrant queue,
+that's a lot of fun.
+
+12
+00:00:43,316 --> 00:00:46,711
+Things called SMARTS files and
+other Rockwell demos,
+
+13
+00:00:46,711 --> 00:00:48,710
+these are all Rockwell things.
+
+14
+00:00:50,120 --> 00:00:53,010
+And then a manufacturing
+system with transporters,
+
+15
+00:00:53,010 --> 00:00:56,380
+conveyors, and various forms of movement.
+
+16
+00:00:57,840 --> 00:01:01,757
+Here's a description of the (s,S)
+inventory policy that we'll be looking at
+
+17
+00:01:01,757 --> 00:01:02,803
+in the current demo.
+
+18
+00:01:02,803 --> 00:01:07,600
+I'm gonna simulate the widget
+inventory of some stock over time.
+
+19
+00:01:07,600 --> 00:01:11,800
+And we'll be using modules from
+the Basic and Advanced panels.
+
+20
+00:01:11,800 --> 00:01:17,370
+Customer arrivals, a form of Poisson
+process, Exponential 0.1 interarrivals.
+
+21
+00:01:17,370 --> 00:01:20,500
+So we have about ten arrivals
+per day of customers.
+
+22
+00:01:20,500 --> 00:01:23,109
+The demand size uses the DISC function,
+
+23
+00:01:23,109 --> 00:01:26,370
+which we've mentioned once or
+twice before.
+
+24
+00:01:26,370 --> 00:01:27,886
+That's a discreet distribution.
+
+25
+00:01:27,886 --> 00:01:29,970
+I'll mention what it
+is when we look at it.
+
+26
+00:01:29,970 --> 00:01:33,017
+Demand is always quote unquote met.
+
+27
+00:01:33,017 --> 00:01:37,875
+So even if you don't have stock,
+we backlog so eventually it's met.
+
+28
+00:01:37,875 --> 00:01:40,341
+You never send a guy away angry.
+
+29
+00:01:40,341 --> 00:01:44,659
+Inventory is taken, or evaluated,
+at the start of each day.
+
+30
+00:01:44,659 --> 00:01:48,481
+You only notice that you're understocked
+at the beginning of each day.
+
+31
+00:01:48,481 --> 00:01:50,240
+If you run out of stock, too bad.
+
+32
+00:01:50,240 --> 00:01:51,899
+You just backlog, backlog, backlog.
+
+33
+00:01:51,899 --> 00:01:58,900
+If inventory is below s, we order up to S,
+that's the (s,S) inventory policy.
+
+34
+00:01:58,900 --> 00:02:03,555
+If s is 5 and S is 20, and
+you end up with an inventory of 4
+
+35
+00:02:03,555 --> 00:02:07,837
+at the beginning of the day,
+you order 16 that day.
+
+36
+00:02:07,837 --> 00:02:11,162
+The delivery lead time is
+a uniform distribution,
+
+37
+00:02:11,162 --> 00:02:16,270
+takes more then half a day but less
+then a full day before an order arrives.
+
+38
+00:02:16,270 --> 00:02:19,390
+It's pretty quick, but
+by the time the order arrives
+
+39
+00:02:19,390 --> 00:02:23,540
+other customers will have also
+arrived depleting inventory further.
+
+40
+00:02:23,540 --> 00:02:24,517
+That's an issue.
+
+41
+00:02:24,517 --> 00:02:27,868
+There are order costs like
+set up costs for an order.
+
+42
+00:02:27,868 --> 00:02:30,561
+Incremental cost,
+the more you order the more it costs.
+
+43
+00:02:30,561 --> 00:02:35,070
+Holding costs, if you've got stuff in
+stock it costs you money to hold it.
+
+44
+00:02:35,070 --> 00:02:39,300
+And penalty costs, just because
+orders are all eventually filled
+
+45
+00:02:39,300 --> 00:02:42,730
+doesn't mean that you don't pay
+a penalty for having to backlog.
+
+46
+00:02:42,730 --> 00:02:46,790
+Maybe customers noticed that you didn't
+have it in stock and they're ticked off.
+
+47
+00:02:46,790 --> 00:02:51,480
+Now what we'll do is that using all these
+various costs, we wanna automatically
+
+48
+00:02:51,480 --> 00:02:55,940
+calculate average total cost
+per day over a 120 day period.
+
+49
+00:02:55,940 --> 00:02:57,917
+And I'll show you how we set that up.
+
+50
+00:02:57,917 --> 00:03:02,582
+This is gonna involve some statistics
+that you'll have to figure out how to use
+
+51
+00:03:02,582 --> 00:03:03,295
+yourself.
+
+52
+00:03:03,295 --> 00:03:05,250
+But I'll show you where that's contained.
+
+53
+00:03:05,250 --> 00:03:08,990
+Inventory, unit costs,
+like how much does it cost to order, and
+
+54
+00:03:08,990 --> 00:03:13,980
+things like that, these, and
+all other parameters, are variables.
+
+55
+00:03:13,980 --> 00:03:16,040
+So I'll show you the list of variables.
+
+56
+00:03:16,040 --> 00:03:20,789
+Inventory is decremented by demands,
+incremented by received orders.
+
+57
+00:03:20,789 --> 00:03:23,336
+So demand comes in,
+we decrement inventory.
+
+58
+00:03:23,336 --> 00:03:27,585
+When we receive an order, after
+the lead time, we increment inventory.
+
+59
+00:03:27,585 --> 00:03:30,280
+Interarrival times, demands, lead times,
+
+60
+00:03:30,280 --> 00:03:34,720
+these are all expressions that we get
+from the Advanced Process template.
+
+61
+00:03:34,720 --> 00:03:36,599
+Expressions come from advanced processes.
+
+62
+00:03:36,599 --> 00:03:39,200
+It's a little piece of
+trivia that I always forget.
+
+63
+00:03:39,200 --> 00:03:43,790
+Accumulated costs are calculated
+in the Statistic spreadsheet
+
+64
+00:03:43,790 --> 00:03:46,890
+that's located in
+the Advanced Process panel.
+
+65
+00:03:46,890 --> 00:03:49,630
+So it's a spreadsheet
+in the Advanced panel.
+
+66
+00:03:49,630 --> 00:03:55,432
+Daily inventory review is conducted by a
+fake customer at the beginning of the day.
+
+67
+00:03:55,432 --> 00:04:01,397
+In this lesson, we took a little time
+to discuss the (s,S) inventory policy.
+
+68
+00:04:01,397 --> 00:04:04,450
+Not the most complicated one,
+but certainly an interesting one.
+
+69
+00:04:06,320 --> 00:04:08,844
+In the next lesson,
+I'll look at that old Dr.
+
+70
+00:04:08,844 --> 00:04:12,028
+Seuss demo, One Line,
+Two Lines, Red Line, Blue Line.
+
+71
+00:04:12,028 --> 00:04:20,009
+[SOUND]
+

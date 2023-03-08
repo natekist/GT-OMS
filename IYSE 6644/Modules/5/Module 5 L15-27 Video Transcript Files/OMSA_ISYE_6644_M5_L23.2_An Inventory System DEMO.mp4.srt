@@ -1,0 +1,635 @@
+1
+00:00:00,690 --> 00:00:02,700
+This is the inventory policy demo,
+
+2
+00:00:02,700 --> 00:00:07,100
+using the SS inventory method that
+we talked about in the lesson.
+
+3
+00:00:07,100 --> 00:00:08,620
+Let's kind of watch it.
+
+4
+00:00:08,620 --> 00:00:10,830
+You can see all these things.
+
+5
+00:00:10,830 --> 00:00:13,174
+These are all arrivals
+occurring right here,
+
+6
+00:00:13,174 --> 00:00:15,225
+these things going through the system.
+
+7
+00:00:15,225 --> 00:00:19,050
+The arrivals, if I zoom in,
+these are arrivals of customers.
+
+8
+00:00:19,050 --> 00:00:21,400
+They show up about ten times a day.
+
+9
+00:00:21,400 --> 00:00:25,921
+Let's see, the interarrival time
+distribution turns out to be EXPO(0.1).
+
+10
+00:00:25,921 --> 00:00:27,230
+I'll show you that in a minute.
+
+11
+00:00:27,230 --> 00:00:31,883
+We decrease inventory by a discreet
+amount of the order, and
+
+12
+00:00:31,883 --> 00:00:33,990
+then the customer leaves.
+
+13
+00:00:33,990 --> 00:00:36,160
+That's all that's going on.
+
+14
+00:00:36,160 --> 00:00:39,628
+I don't care about servers or anything
+here, all I care about is inventory.
+
+15
+00:00:39,628 --> 00:00:42,447
+And let's, we can watch this over here.
+
+16
+00:00:42,447 --> 00:00:45,319
+This is called an inventory
+level field bar
+
+17
+00:00:45,319 --> 00:00:49,130
+which you can grab from
+the template up here.
+
+18
+00:00:49,130 --> 00:00:55,870
+This is a graph of inventory level, blue
+means in the black, red means in the red.
+
+19
+00:00:55,870 --> 00:00:58,150
+This is back logged inventory.
+
+20
+00:00:58,150 --> 00:01:02,300
+This is displaying the familiar saw
+tooth function that you would see
+
+21
+00:01:02,300 --> 00:01:04,890
+using a standard SS inventory policy.
+
+22
+00:01:04,890 --> 00:01:09,570
+If I zoom in, you can see inventory
+goes down, down, down, down, down.
+
+23
+00:01:09,570 --> 00:01:13,755
+Sometimes in the red, then it jumps
+up when an order is received.
+
+24
+00:01:13,755 --> 00:01:18,375
+When it goes below little s, which I
+forget what it is here we order and
+
+25
+00:01:18,375 --> 00:01:22,295
+the next day, inventory shows up and
+it jumps up and down, down, down, down,
+
+26
+00:01:22,295 --> 00:01:24,165
+down, up, up, up.
+
+27
+00:01:24,165 --> 00:01:25,625
+Okay, see how that works.
+
+28
+00:01:25,625 --> 00:01:28,185
+Whatever we're doing here,
+we're not going in the red very often.
+
+29
+00:01:30,139 --> 00:01:34,690
+Okay, so let's now, we'll zoom back
+out and I'll show you what I'm doing.
+
+30
+00:01:34,690 --> 00:01:38,790
+These customers come in according
+to an interarrival distribution,
+
+31
+00:01:38,790 --> 00:01:41,330
+as I promised, interdemand time.
+
+32
+00:01:41,330 --> 00:01:43,387
+Turns out that's gonna be exponential,
+
+33
+00:01:43,387 --> 00:01:46,158
+that's an expression which
+I'll show you in a minute.
+
+34
+00:01:46,158 --> 00:01:50,862
+We decrease inventory by the inventory
+level equals the inventory
+
+35
+00:01:50,862 --> 00:01:52,980
+level minus the demand size.
+
+36
+00:01:52,980 --> 00:01:57,190
+Demand size is also an expression,
+which I'll show you in a minute.
+
+37
+00:01:57,190 --> 00:01:59,920
+Inventory level is a variable
+because it's global.
+
+38
+00:02:00,940 --> 00:02:04,888
+If you decrease inventory here,
+you decrease it everywhere.
+
+39
+00:02:04,888 --> 00:02:11,560
+Once a day, I use a fake customer,
+evaluation interval is once a day.
+
+40
+00:02:11,560 --> 00:02:13,060
+This is a fake customer.
+
+41
+00:02:13,060 --> 00:02:15,680
+His only job is to review the inventory.
+
+42
+00:02:15,680 --> 00:02:17,180
+See he goes through.
+
+43
+00:02:17,180 --> 00:02:18,429
+Didn't really do much.
+
+44
+00:02:18,429 --> 00:02:23,270
+It seems to be going through,
+no order, no order.
+
+45
+00:02:23,270 --> 00:02:24,530
+Let's look and see what's going on.
+
+46
+00:02:24,530 --> 00:02:26,660
+Sometimes he goes up to this side.
+
+47
+00:02:26,660 --> 00:02:27,570
+There, right there.
+
+48
+00:02:27,570 --> 00:02:29,390
+We placed an order.
+
+49
+00:02:29,390 --> 00:02:30,140
+Let's take a look.
+
+50
+00:02:31,280 --> 00:02:39,573
+This decide block, ongoing that just
+means the simulation's continuing.
+
+51
+00:02:39,573 --> 00:02:45,266
+If the order decision, if the inventory
+level is less than little s,
+
+52
+00:02:45,266 --> 00:02:49,200
+the order decision is to place an order.
+
+53
+00:02:49,200 --> 00:02:54,480
+If the inventory's greater than
+equal to little s, no order.
+
+54
+00:02:54,480 --> 00:02:57,070
+So let's scroll over,
+assuming an order has been placed.
+
+55
+00:02:58,830 --> 00:03:04,730
+We update some costs,
+these are various different costs.
+
+56
+00:03:04,730 --> 00:03:10,050
+This is the order quantity, big S minus
+the current level, as I've described.
+
+57
+00:03:10,050 --> 00:03:12,640
+Now we have an ongoing order.
+
+58
+00:03:12,640 --> 00:03:16,790
+What I'm doing is I'm keeping track of
+whether or not an order has occurred so
+
+59
+00:03:16,790 --> 00:03:21,385
+I don't place multiple
+orders within two days.
+
+60
+00:03:21,385 --> 00:03:22,915
+We just do one order at a time.
+
+61
+00:03:22,915 --> 00:03:25,552
+That's what ongoing is doing.
+
+62
+00:03:27,060 --> 00:03:29,916
+Then we wait for
+delivery by a delivery lag.
+
+63
+00:03:29,916 --> 00:03:32,576
+It's a uniform 0.5, 1.0.
+
+64
+00:03:32,576 --> 00:03:34,570
+I'll show you where that
+expression is in a minute.
+
+65
+00:03:34,570 --> 00:03:39,790
+And then eventually, the delivery occurs,
+thanks to the fake customer, and
+
+66
+00:03:39,790 --> 00:03:43,840
+we update the inventory by adding,
+
+67
+00:03:43,840 --> 00:03:47,340
+inventory level equals inventory
+level plus the order quantity.
+
+68
+00:03:47,340 --> 00:03:49,870
+And we turn the ongoing into zero,
+
+69
+00:03:49,870 --> 00:03:53,840
+which means there are no
+ongoing inventory orders.
+
+70
+00:03:53,840 --> 00:03:56,030
+Then, the fake customer goes away.
+
+71
+00:03:56,030 --> 00:03:57,470
+That is it.
+
+72
+00:03:57,470 --> 00:03:58,880
+That's how the thing runs.
+
+73
+00:03:58,880 --> 00:04:02,904
+And then, like I said, we keep track
+of the inventory level up here.
+
+74
+00:04:02,904 --> 00:04:08,980
+There you go, inventory on hand,
+that's what we're referring to as,
+
+75
+00:04:08,980 --> 00:04:12,210
+this is the name of the data piece.
+
+76
+00:04:12,210 --> 00:04:17,520
+And the expression is, this is actually,
+this is the red version and
+
+77
+00:04:17,520 --> 00:04:23,730
+x inventory level zero, this is the
+maximum of the inventory level in zero,
+
+78
+00:04:23,730 --> 00:04:28,210
+which produces the red
+curve that you see here.
+
+79
+00:04:28,210 --> 00:04:31,730
+The black curve, sorry,
+not the red curve, blue curve.
+
+80
+00:04:31,730 --> 00:04:34,771
+Get my colors straight.
+
+81
+00:04:34,771 --> 00:04:35,920
+See you can see the curve.
+
+82
+00:04:37,750 --> 00:04:41,206
+This produces the positive
+part of the curve and
+
+83
+00:04:41,206 --> 00:04:46,020
+then there's another version that
+produces the red negative version.
+
+84
+00:04:46,020 --> 00:04:49,560
+Okay, fantastic, so
+let's look at a couple of things here.
+
+85
+00:04:49,560 --> 00:04:51,940
+In the Advanced Process,
+I've got some expressions.
+
+86
+00:04:54,885 --> 00:04:58,338
+Interdemand time,
+exponential as I promised.
+
+87
+00:04:58,338 --> 00:05:00,468
+EXPO(0.1).
+
+88
+00:05:00,468 --> 00:05:03,970
+Demand Size, DISC, looks like disco.
+
+89
+00:05:03,970 --> 00:05:08,933
+And that means discrete distribution
+with probability one-sixth
+
+90
+00:05:08,933 --> 00:05:12,770
+equals one with 0.5 minus
+one-sixth equals 2.
+
+91
+00:05:12,770 --> 00:05:17,630
+So these are the demands, one, two,
+
+92
+00:05:17,630 --> 00:05:21,120
+three, four with different
+probabilities described here.
+
+93
+00:05:23,480 --> 00:05:28,200
+Evaluation Interval, well,
+this is every 0.5 days.
+
+94
+00:05:28,200 --> 00:05:29,130
+That's why we're getting so
+
+95
+00:05:29,130 --> 00:05:34,450
+much blue, because I was
+evaluating the thing all the time.
+
+96
+00:05:34,450 --> 00:05:36,850
+As it's doing multiple evaluations.
+
+97
+00:05:36,850 --> 00:05:39,690
+Let's see what happens if I
+evaluate only once per day.
+
+98
+00:05:42,802 --> 00:05:49,800
+We have less information, and
+then the delivery lag is UNIF(0.5,10).
+
+99
+00:05:49,800 --> 00:05:54,340
+So I have just changed the evaluation
+period to be more pessimistic in a sense.
+
+100
+00:05:54,340 --> 00:05:57,630
+And then we have a number of variables and
+a basic process.
+
+101
+00:06:01,659 --> 00:06:05,759
+Inventory level, little s,
+big S, total ordering,
+
+102
+00:06:05,759 --> 00:06:10,900
+setup costs, incremental,
+these are all variables.
+
+103
+00:06:10,900 --> 00:06:14,390
+How many days to run, 120,
+you can take a look at all those.
+
+104
+00:06:14,390 --> 00:06:18,184
+And then the last thing I wanna show
+you before looking at some output.
+
+105
+00:06:18,184 --> 00:06:22,965
+Advanced Process,
+is we also use the statistic block,
+
+106
+00:06:22,965 --> 00:06:26,540
+which keeps track of various costs.
+
+107
+00:06:26,540 --> 00:06:30,210
+Holding costs, shortage costs, average
+ordering costs, average shore costs.
+
+108
+00:06:30,210 --> 00:06:35,480
+I will leave it to you to figure
+out how these are being calculated.
+
+109
+00:06:35,480 --> 00:06:38,113
+These are using internal arena commands.
+
+110
+00:06:38,113 --> 00:06:40,130
+See, for instance, MX is maximum.
+
+111
+00:06:40,130 --> 00:06:41,252
+You can look at these things.
+
+112
+00:06:41,252 --> 00:06:43,160
+It takes five minutes to figure them out.
+
+113
+00:06:43,160 --> 00:06:47,220
+Okay, so the only thing I'm gonna do now
+is I'm gonna run this one more time with
+
+114
+00:06:47,220 --> 00:06:52,530
+my updated evaluation period, so
+we're not evaluating as much.
+
+115
+00:06:52,530 --> 00:06:54,520
+I predict we're gonna see more red.
+
+116
+00:06:57,793 --> 00:07:01,310
+Let's see, yeah, we are getting a little
+more red than what we saw before.
+
+117
+00:07:04,428 --> 00:07:05,680
+Yep, that makes sense.
+
+118
+00:07:05,680 --> 00:07:08,010
+More red than before because
+we're not evaluating as often.
+
+119
+00:07:09,550 --> 00:07:12,420
+And just out of curiosity,
+let's go back and
+
+120
+00:07:12,420 --> 00:07:15,300
+look at what little s and
+big S were in the variable.
+
+121
+00:07:16,600 --> 00:07:23,080
+So little s equals 30, and
+big S equals 60, that's very conservative.
+
+122
+00:07:23,080 --> 00:07:26,500
+Let's see what happens if
+I change these things.
+
+123
+00:07:26,500 --> 00:07:30,412
+Little s equals 10 which is
+really cutting it close I think.
+
+124
+00:07:30,412 --> 00:07:33,860
+And big S equals 30,
+let's see what happens.
+
+125
+00:07:36,228 --> 00:07:38,740
+This will be the last change that
+I make and we'll run the thing.
+
+126
+00:07:41,361 --> 00:07:44,820
+And I predict, yeah,
+we're gonna get much more red now.
+
+127
+00:07:44,820 --> 00:07:46,150
+Yeah, this is a disaster.
+
+128
+00:07:47,370 --> 00:07:51,190
+I'm evaluating things too late,
+I'm getting these gigantic reds.
+
+129
+00:07:51,190 --> 00:07:54,840
+Too bad, let's run it to completion,
+so I'll hit the Go Fast sign.
+
+130
+00:07:56,620 --> 00:07:59,302
+Bang, I ran it for 600 days, not 120.
+
+131
+00:07:59,302 --> 00:08:01,770
+Let's look at the outputs.
+
+132
+00:08:03,950 --> 00:08:07,611
+And let me see,
+I'll just show you where the costs incur.
+
+133
+00:08:07,611 --> 00:08:12,983
+If I had you look at various
+different trials of this to optimize,
+
+134
+00:08:12,983 --> 00:08:18,970
+you would want to look at
+the average total cost, $142, $143.
+
+135
+00:08:18,970 --> 00:08:20,800
+This is the thing that you care about.
+
+136
+00:08:20,800 --> 00:08:24,766
+Now I can guarantee that if you mess
+around with the various variables,
+
+137
+00:08:24,766 --> 00:08:26,894
+you can get this down to about 115.
+
+138
+00:08:26,894 --> 00:08:31,090
+I guarantee that and perhaps you'll see
+an exercise about that pretty soon.
+
