@@ -1,4 +1,6 @@
 import random
+import matplotlib.pyplot as plt
+import numpy as np
 
 def deal(deck, hand):
     random.shuffle(deck)
@@ -98,32 +100,48 @@ def play():
     elif player_cnt == dealer_cnt:
         return player_hand, dealer_hand, "Draw", 0
 
-win_cnt = 0
-lose_cnt = 0
-draw_cnt = 0
-blackjack_cnt = 0
-bet = 10
-winnings = 0
-num_games = 10000
 
-for i in range(num_games):
-    _, _, result_str, result = play()
-    if result > 0:
-        win_cnt += 1
-    elif result < 0:
-        lose_cnt += 1
-    else:
-        draw_cnt += 1
+def test_play(num_games):
+    win_cnt = 0
+    lose_cnt = 0
+    draw_cnt = 0
+    blackjack_cnt = 0
+    bet = 10
+    winnings = 0
 
-    if result_str == 'Blackjack!':
-        blackjack_cnt += 1
-        winnings += bet * result * 1.25 # Get more money back for a black jack
-    else:
-        winnings += bet * result
+    for i in range(num_games):
+        _, _, result_str, result = play()
+        if result > 0:
+            win_cnt += 1
+        elif result < 0:
+            lose_cnt += 1
+        else:
+            draw_cnt += 1
 
+        if result_str == 'Blackjack!':
+            blackjack_cnt += 1
+            winnings += bet * result * 1.25 # Get more money back for a black jack
+        else:
+            winnings += bet * result
 
-print('********************************************************************************')
-print('***** The win percentage is: %', round((win_cnt / num_games) * 100, 2))
-print('***** The percentage of blackjacks was: %', round((blackjack_cnt/ num_games) * 100, 2))
-print('***** The net proceeds were: $', winnings)
-print('********************************************************************************')
+    return round((win_cnt / num_games) * 100, 2)
+
+sim_test_games = np.linspace(10, 100000, num=100, dtype=int)
+print(sim_test_games)
+sim_test_results = []
+
+for num_games in sim_test_games:
+    result = test_play(num_games)
+    sim_test_results.append(result)
+
+plt.plot(sim_test_games, sim_test_results)
+plt.ylabel("Win Percentage")
+plt.xlabel("Number of Games Played")
+
+plt.show()
+#print('********************************************************************************')
+#print('***** The win percentage is: %', round((win_cnt / num_games) * 100, 2))
+#print('***** The percentage of blackjacks was: %', round((blackjack_cnt/ num_games) * 100, 2))
+#print('***** The net proceeds were: $', winnings)
+#print('********************************************************************************')
+
