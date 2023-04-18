@@ -51,35 +51,79 @@ def play():
         if i == 1:
             dealer_first = dealer_cnt
 
-    # Hit when the players count is less than 17 and the dealers first card is greater than 6; otherwise stay
-    while ((player_cnt < 17) & (dealer_first > 6)):
-        next_card = deck.pop()
-        player_hand.append(next_card)
-        if next_card.isnumeric():
-            player_cnt += int(next_card)
-        else:
-            if next_card in ['J', 'Q', 'K']:
-                player_cnt += 10
-            # Decide what to do with an ace
-            elif (next_card == 'A') & (player_cnt <= 10):
-                player_cnt += 11
-            else:
-                player_cnt += 1
+    # Split if the hand is a pair
+    if player_hand[0] == player_hand[1]:
+        hand_type = 'Doubles'
 
-    # Allow the dealer to hit until they are greater than 17
-    while dealer_cnt < 17:
-        next_card = deck.pop()
-        dealer_hand.append(next_card)
-        if next_card.isnumeric():
-            dealer_cnt += int(next_card)
-        else:
-            if next_card in ['J', 'Q', 'K']:
-                dealer_cnt += 10
-           # Decide what to do with an ace
-            elif (next_card == 'A') & (player_cnt <= 10):
-                dealer_cnt += 11
+    if hand_type == 'Doubles':
+
+        player_cnt_1 = 0
+        player_hand_1 = [player_hand[0]]
+        deal(deck, player_hand_1)           # Add another card to the first new hand
+        # Loop through new hand and decide what to do
+        for i, card in enumerate(player_hand_1):
+            if card.isnumeric():
+                player_cnt_1 += int(card)
             else:
-                dealer_cnt += 1
+                if card in ['J', 'Q', 'K']:
+                    player_cnt_1 += 10
+                # Decide what to do with an ace, play as 11 if total will be greater than or equal to 17
+                elif (card == 'A') & ((player_cnt_1 >= 6) | (player_cnt_1 == 0)):
+                    player_cnt_1 += 11
+                else:
+                    player_cnt_1 += 1
+
+        while ((player_cnt_1 < 17) & (dealer_first > 6)):
+            next_card = deck.pop()
+            player_hand.append(next_card)
+            if next_card.isnumeric():
+                player_cnt += int(next_card)
+            else:
+                if next_card in ['J', 'Q', 'K']:
+                    player_cnt += 10
+                # Decide what to do with an ace
+                elif (next_card == 'A') & (player_cnt <= 10):
+                    player_cnt += 11
+                else:
+                    player_cnt += 1
+    else:
+        # Add in conditions for staying depending on draw
+        donotdraw = 0
+        if (player_cnt in (13, 14, 15, 16)) & (dealer_first in (2, 3, 4, 5, 6)):
+            donotdraw = 1
+        elif (player_cnt == 12) & (dealer_first in (4, 5, 6)):
+            donotdraw = 1
+
+        # Hit when the players count is less than 17 and the dealers first card is greater than 6; otherwise stay
+        while ((player_cnt < 17) & (dealer_first > 6) & (donotdraw == 0)):
+            next_card = deck.pop()
+            player_hand.append(next_card)
+            if next_card.isnumeric():
+                player_cnt += int(next_card)
+            else:
+                if next_card in ['J', 'Q', 'K']:
+                    player_cnt += 10
+                # Decide what to do with an ace
+                elif (next_card == 'A') & (player_cnt <= 10):
+                    player_cnt += 11
+                else:
+                    player_cnt += 1
+
+        # Allow the dealer to hit until they are greater than 17
+        while dealer_cnt < 17:
+            next_card = deck.pop()
+            dealer_hand.append(next_card)
+            if next_card.isnumeric():
+                dealer_cnt += int(next_card)
+            else:
+                if next_card in ['J', 'Q', 'K']:
+                    dealer_cnt += 10
+                # Decide what to do with an ace
+                elif (next_card == 'A') & (player_cnt <= 10):
+                    dealer_cnt += 11
+                else:
+                    dealer_cnt += 1
+
 
     # If the players cards equal 21 and they were only deal two cards than it is a black jack
     if (player_cnt == 21) & (len(player_hand) == 2):

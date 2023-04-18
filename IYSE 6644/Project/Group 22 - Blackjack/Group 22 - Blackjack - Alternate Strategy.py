@@ -21,6 +21,7 @@ def play():
     for i in range(2):
         deal(deck, dealer_hand)
 
+    # Count players cards
     player_cnt = 0
     for i, card in enumerate(player_hand):
         if card.isnumeric():
@@ -34,8 +35,10 @@ def play():
             else:
                 player_cnt += 1
 
+    # Count dealers carts
     dealer_cnt = 0
     for i, card in enumerate(dealer_hand):
+        # Check to see if the card is a "face" (A, J, Q, K) or numeric card (i.e., 2-10) card and add to count
         if card.isnumeric():
             dealer_cnt += int(card)
         else:
@@ -52,19 +55,53 @@ def play():
             dealer_first = dealer_cnt
 
     # Hit when the players count is less than 17 and the dealers first card is greater than 6; otherwise stay
-    while ((player_cnt < 17) & (dealer_first > 6)):
-        next_card = deck.pop()
-        player_hand.append(next_card)
-        if next_card.isnumeric():
-            player_cnt += int(next_card)
-        else:
-            if next_card in ['J', 'Q', 'K']:
-                player_cnt += 10
-            # Decide what to do with an ace
-            elif (next_card == 'A') & (player_cnt <= 10):
-                player_cnt += 11
+    # initialize hit or stay criteria
+    stay = 0
+    while stay == 0:
+        # Hit if count of cards is less than 17 and dealer up card is greater than 6
+        if ((player_cnt < 17) & (dealer_first > 6)): # then hit
+            # Deal next card
+            next_card = deck.pop()
+
+            # Append next card to player hand
+            player_hand.append(next_card)
+
+            # Count the same way as above
+            if next_card.isnumeric():
+                player_cnt += int(next_card)
             else:
-                player_cnt += 1
+                if next_card in ['J', 'Q', 'K']:
+                    player_cnt += 10
+                # Decide what to do with an ace
+                elif (next_card == 'A') & (player_cnt <= 10):
+                    player_cnt += 11
+                else:
+                    player_cnt += 1
+
+        # Hit if Soft 18 and dealer 9, 10, or A
+        elif ((player_hand[0] == 'A' & player_hand[1] == '7' & dealer_first in ('9', '10', 'A') & len(player_hand) == 2)
+              | (player_hand[0] == '7' & player_hand[1] == 'A' & dealer_first in ('9', '10', 'A')  & len(player_hand) == 2)):
+            # Deal next card
+            next_card = deck.pop()
+
+            # Append next card to player hand
+            player_hand.append(next_card)
+
+            # Count the same way as above
+            if next_card.isnumeric():
+                player_cnt += int(next_card)
+            else:
+                if next_card in ['J', 'Q', 'K']:
+                    player_cnt += 10
+                # Decide what to do with an ace
+                elif (next_card == 'A') & (player_cnt <= 10):
+                    player_cnt += 11
+                else:
+                    player_cnt += 1
+        else:
+            stay = 1
+
+    ###### Other Strategies #########
 
     # Allow the dealer to hit until they are greater than 17
     while dealer_cnt < 17:
@@ -126,7 +163,7 @@ def test_play(num_games):
 
     return round((win_cnt / num_games) * 100, 2)
 
-sim_test_games = np.linspace(10, 100000, num=100, dtype=int)
+sim_test_games = np.linspace(10, 100, num=10, dtype=int)
 print(sim_test_games)
 sim_test_results = []
 

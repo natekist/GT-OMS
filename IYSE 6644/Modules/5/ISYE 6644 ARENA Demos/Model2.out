@@ -1,0 +1,50 @@
+
+                                      ARENA Simulation Results
+                                   Nate Kistler - License: STUDENT
+
+                                  Summary for Replication 1 of 1
+
+Project: Unnamed Project                                             Run execution date : 4/ 4/2023
+Analyst: Nate Kistler                                                Model revision date: 4/ 4/2023
+
+Replication ended at time      : 1000000.0 Hours 
+Base Time Units: Hours
+
+                                           TALLY VARIABLES
+
+Identifier                                  Average   Half Width  Minimum    Maximum   Observations
+___________________________________________________________________________________________________
+
+Entity 1.VATime                             8.0285     .05985      1.6071E-5 121.62      99883    
+Entity 1.NVATime                            .00000     .00000     .00000     .00000      99883    
+Entity 1.WaitTime                           15.433     1.3219     .00000     199.89      99883    
+Entity 1.TranTime                           .00000     .00000     .00000     .00000      99883    
+Entity 1.OtherTime                          .00000     .00000     .00000     .00000      99883    
+Entity 1.TotalTime                          23.462     1.3684      7.5208E-4 209.40      99883    
+Process 1.Queue.WaitingTime                 15.434     1.3219     .00000     199.89      99884    
+
+                                     DISCRETE-CHANGE VARIABLES
+
+Identifier                                  Average   Half Width  Minimum    Maximum   Final Value
+___________________________________________________________________________________________________
+
+Entity 1.WIP                                2.3438     .11223     .00000     23.000     8.0000    
+Resource 1.NumberBusy                       .80193     .00604     .00000     1.0000     1.0000    
+Resource 1.NumberScheduled                  1.0000     (Insuf)    1.0000     1.0000     1.0000    
+Resource 1.Utilization                      .80193     .00604     .00000     1.0000     1.0000    
+Process 1.Queue.NumberInQueue               1.5418     .10755     .00000     22.000     7.0000    
+
+                                             OUTPUTS
+
+Identifier                                   Value
+_____________________________________________________________
+
+Entity 1.NumberIn                           99891.    
+Entity 1.NumberOut                          99883.    
+Resource 1.NumberSeized                     99884.    
+Resource 1.ScheduledUtilization             .80193    
+System.NumberOut                            99883.    
+
+
+Simulation run time: 1.73 minutes.
+Simulation run complete.
