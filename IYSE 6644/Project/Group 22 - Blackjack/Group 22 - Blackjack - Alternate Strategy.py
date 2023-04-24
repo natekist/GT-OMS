@@ -1,6 +1,7 @@
 import random
 import matplotlib.pyplot as plt
 import numpy as np
+import pandas as pd
 
 def deal(deck, hand):
     random.shuffle(deck)
@@ -51,8 +52,9 @@ def play():
                 dealer_cnt += 1
 
         # Show the dealers first card
-        if i == 1:
+        if i == 0:
             dealer_first = dealer_cnt
+            dealer_first_card = card
 
     # Hit when the players count is less than 17 and the dealers first card is greater than 6; otherwise stay
     # initialize hit or stay criteria
@@ -79,8 +81,7 @@ def play():
                     player_cnt += 1
 
         # Hit if Soft 18 and dealer 9, 10, or A
-        elif ((player_hand[0] == 'A' & player_hand[1] == '7' & dealer_first in ('9', '10', 'A') & len(player_hand) == 2)
-              | (player_hand[0] == '7' & player_hand[1] == 'A' & dealer_first in ('9', '10', 'A')  & len(player_hand) == 2)):
+        elif ((player_hand[0] == 'A') & (player_hand[1] == '7') & (dealer_first_card in ['9', '10', 'A']) & (len(player_hand) == 2)) | ((player_hand[0] == '7') & (player_hand[1] == 'A') & (dealer_first_card in ['9', '10', 'A']) & (len(player_hand) == 2)):
             # Deal next card
             next_card = deck.pop()
 
@@ -98,10 +99,9 @@ def play():
                     player_cnt += 11
                 else:
                     player_cnt += 1
+
         else:
             stay = 1
-
-    ###### Other Strategies #########
 
     # Allow the dealer to hit until they are greater than 17
     while dealer_cnt < 17:
@@ -163,7 +163,7 @@ def test_play(num_games):
 
     return round((win_cnt / num_games) * 100, 2)
 
-sim_test_games = np.linspace(10, 100, num=10, dtype=int)
+sim_test_games = np.linspace(1000, 100000, num=100, dtype=int)
 print(sim_test_games)
 sim_test_results = []
 
@@ -171,11 +171,17 @@ for num_games in sim_test_games:
     result = test_play(num_games)
     sim_test_results.append(result)
 
+d = {'Simulations': sim_test_games, 'Results': sim_test_results}
+df = pd.DataFrame(data=d)
+
+df.to_csv('Alternative_Strategies_Results.csv')
+
 plt.plot(sim_test_games, sim_test_results)
 plt.ylabel("Win Percentage")
 plt.xlabel("Number of Games Played")
 
 plt.show()
+
 #print('********************************************************************************')
 #print('***** The win percentage is: %', round((win_cnt / num_games) * 100, 2))
 #print('***** The percentage of blackjacks was: %', round((blackjack_cnt/ num_games) * 100, 2))

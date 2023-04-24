@@ -1,6 +1,7 @@
 import random
 import matplotlib.pyplot as plt
 import numpy as np
+import pandas as pd
 
 def deal(deck, hand):
     random.shuffle(deck)
@@ -133,6 +134,11 @@ sim_test_results = []
 for num_games in sim_test_games:
     result = test_play(num_games)
     sim_test_results.append(result)
+
+d = {'Simulations': sim_test_games, 'Results': sim_test_results}
+df = pd.DataFrame(data=d)
+
+df.to_csv('Basic_Strategy_Results.csv')
 
 plt.plot(sim_test_games, sim_test_results)
 plt.ylabel("Win Percentage")
